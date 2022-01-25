@@ -28,7 +28,7 @@ jobs:
 
       - name: Update docs
         run: |
-          pkgdev::update_docs(build_readme = FALSE)
+          pkgdev::update_docs()
 
         shell: Rscript {0}
 
@@ -40,7 +40,7 @@ jobs:
           git commit -m 'Update docs with pkgdev' || echo "No changes to commit"
           git push origin || echo "No changes to commit"
 
-      - uses: r-lib/actions/check-r-package@master
+      - uses: r-lib/actions/check-r-package@v1
 
       - name: Show testthat output
         if: always()
