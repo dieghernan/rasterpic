@@ -59,6 +59,9 @@
 <li class="nav-item">
   <a class="nav-link" href="reference/index.html">Reference</a>
 </li>
+<li class="nav-item">
+  <a class="nav-link" href="news/index.html">Changelog</a>
+</li>
       </ul>
 <form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="search.json" id="search-input" placeholder="Search for" autocomplete="off">
@@ -111,9 +114,13 @@
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/terra/" class="external-link">terra</a></span><span class="op">)</span>
 
 <span class="co"># The flag of the United Kingdom</span>
-<span class="va">img</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"img/UK_flag.png"</span>, package <span class="op">=</span> <span class="st">"rasterpic"</span><span class="op">)</span>
-<span class="va">uk</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">st_read</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"gpkg/uk.gpkg"</span>, package <span class="op">=</span> <span class="st">"rasterpic"</span><span class="op">)</span>,
-  quiet <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="va">img</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"img/UK_flag.png"</span>,
+  package <span class="op">=</span> <span class="st">"rasterpic"</span>
+<span class="op">)</span>
+<span class="va">uk</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">st_read</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"gpkg/uk.gpkg"</span>,
+  package <span class="op">=</span> <span class="st">"rasterpic"</span>
+<span class="op">)</span>,
+quiet <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="op">)</span>
 
 <span class="co"># Rasterize!</span>
@@ -121,19 +128,24 @@
 
 <span class="va">uk_flag</span>
 <span class="co">#&gt; class       : SpatRaster </span>
-<span class="co">#&gt; dimensions  : 400, 800, 4  (nrow, ncol, nlyr)</span>
+<span class="co">#&gt; dimensions  : 400, 800, 3  (nrow, ncol, nlyr)</span>
 <span class="co">#&gt; resolution  : 5398.319, 5398.319  (x, y)</span>
 <span class="co">#&gt; extent      : -2542183, 1776472, 6430573, 8589900  (xmin, xmax, ymin, ymax)</span>
 <span class="co">#&gt; coord. ref. : WGS 84 / Pseudo-Mercator (EPSG:3857) </span>
 <span class="co">#&gt; source      : memory </span>
-<span class="co">#&gt; names       : lyr.1, lyr.2, lyr.3, lyr.4 </span>
-<span class="co">#&gt; min values  :     0,    13,    34,   255 </span>
-<span class="co">#&gt; max values  :   255,   255,   255,   255</span>
+<span class="co">#&gt; names       : lyr.1, lyr.2, lyr.3 </span>
+<span class="co">#&gt; min values  :     0,    13,    34 </span>
+<span class="co">#&gt; max values  :   255,   255,   255</span>
 
 <span class="co"># Plot it!</span>
 
 <span class="fu"><a href="https://rdrr.io/pkg/terra/man/plotRGB.html" class="external-link">plotRGB</a></span><span class="op">(</span><span class="va">uk_flag</span><span class="op">)</span>
-<span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">uk</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/adjustcolor.html" class="external-link">adjustcolor</a></span><span class="op">(</span><span class="st">"blue"</span>, alpha.f <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">uk</span><span class="op">)</span>,
+  add <span class="op">=</span> <span class="cn">TRUE</span>,
+  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/adjustcolor.html" class="external-link">adjustcolor</a></span><span class="op">(</span><span class="st">"blue"</span>,
+    alpha.f <span class="op">=</span> <span class="fl">0.5</span>
+  <span class="op">)</span>
+<span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-example-basic-1.png" width="50%" style="display: block; margin: auto;"></p>
 <p>We can also play with other parameters, as well as modifying the alignment of the image with respect to the object:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
