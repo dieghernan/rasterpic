@@ -142,7 +142,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1562.681KB",
+  "fileSize": "1561.957KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -158,7 +158,6 @@
       "url": "https://dieghernan.github.io/rasterpic/"
     }
   ],
-  "releaseNotes": "https://github.com/dieghernan/rasterpic/blob/master/NEWS.md",
   "readme": "https://github.com/dieghernan/rasterpic/blob/main/README.md",
   "contIntegration": ["https://github.com/dieghernan/rasterpic/actions/workflows/check-full.yaml", "https://app.codecov.io/gh/dieghernan/rasterpic"],
   "developmentStatus": "https://www.repostatus.org/#active",
