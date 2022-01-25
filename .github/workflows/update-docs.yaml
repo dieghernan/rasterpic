@@ -28,7 +28,7 @@ jobs:
 
       - name: Update docs
         run: |
-
+          devtools::instal()
           pkgdev::update_docs()
 
         shell: Rscript {0}
