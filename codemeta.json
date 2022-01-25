@@ -142,7 +142,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1572.162KB",
+  "fileSize": "1562.732KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -157,5 +157,10 @@
       "name": "rasterpic: Create a Spatial Raster from Plain Images",
       "url": "https://dieghernan.github.io/rasterpic/"
     }
-  ]
+  ],
+  "releaseNotes": "https://github.com/dieghernan/rasterpic/blob/master/NEWS.md",
+  "readme": "https://github.com/dieghernan/rasterpic/blob/main/README.md",
+  "contIntegration": ["https://github.com/dieghernan/rasterpic/actions/workflows/check-full.yaml", "https://app.codecov.io/gh/dieghernan/rasterpic"],
+  "developmentStatus": "https://www.repostatus.org/#active",
+  "keywords": ["r", "r-stats", "r-package", "terra", "raster", "sf", "png", "jpeg", "jpg", "tiff", "tif", "maps"]
 }

@@ -36,6 +36,19 @@ contact:
   given-names: Diego
   email: diego.hernangomezherrero@gmail.com
   orcid: https://orcid.org/0000-0001-8457-4658
+keywords:
+- jpeg
+- jpg
+- maps
+- png
+- r
+- r-package
+- r-stats
+- raster
+- sf
+- terra
+- tif
+- tiff
 references:
 - type: software
   title: 'R: A Language and Environment for Statistical Computing'

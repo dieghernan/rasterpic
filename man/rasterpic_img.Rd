@@ -64,7 +64,7 @@ library(sf)
 library(terra)
 
 x_path <- system.file("gpkg/UK.gpkg", package = "rasterpic")
-x <- st_read(x_path)
+x <- st_read(x_path, quiet = TRUE)
 img <- system.file("img/vertical.png", package = "rasterpic")
 
 # Default config
@@ -74,44 +74,100 @@ class(ex1)
 
 
 plotRGB(ex1)
-plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
+plot(x$geom,
+  add = TRUE,
+  col = NA,
+  border = "white",
+  lwd = 2
+)
 
 # Expand
-ex2 <- rasterpic_img(x, img, expand = 0.5)
+ex2 <- rasterpic_img(x,
+  img,
+  expand = 0.5
+)
 
 plotRGB(ex2)
-plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
+plot(x$geom,
+  add = TRUE,
+  col = NA,
+  border = "white",
+  lwd = 2
+)
 
 # Align
-ex3 <- rasterpic_img(x, img, halign = 0)
+ex3 <- rasterpic_img(x,
+  img,
+  halign = 0
+)
 
 plotRGB(ex3)
-plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
+plot(x$geom,
+  add = TRUE,
+  col = NA,
+  border = "white",
+  lwd = 2
+)
 
 # Crop
-ex4 <- rasterpic_img(x, img, crop = TRUE)
+ex4 <- rasterpic_img(x,
+  img,
+  crop = TRUE
+)
 
 plotRGB(ex4)
-plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
+plot(x$geom,
+  add = TRUE,
+  col = NA,
+  border = "white",
+  lwd = 2
+)
 
 # Mask
-ex5 <- rasterpic_img(x, img, mask = TRUE)
+ex5 <- rasterpic_img(x,
+  img,
+  mask = TRUE
+)
 
 plotRGB(ex5)
-plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
+plot(x$geom,
+  add = TRUE,
+  col = NA,
+  border = "white",
+  lwd = 2
+)
 
 
 # Mask inverse
-ex6 <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
+ex6 <- rasterpic_img(x,
+  img,
+  mask = TRUE,
+  inverse = TRUE
+)
 
 plotRGB(ex6)
-plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
+plot(x$geom,
+  add = TRUE,
+  col = NA,
+  border = "white",
+  lwd = 2
+)
 
 
 # Combine Mask inverse and crop
-ex7 <- rasterpic_img(x, img, crop = TRUE, mask = TRUE, inverse = TRUE)
+ex7 <- rasterpic_img(x,
+  img,
+  crop = TRUE,
+  mask = TRUE,
+  inverse = TRUE
+)
 
 plotRGB(ex7)
-plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
+plot(x$geom,
+  add = TRUE,
+  col = NA,
+  border = "white",
+  lwd = 2
+)
 }
 }

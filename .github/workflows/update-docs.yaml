@@ -20,16 +20,16 @@ jobs:
       - uses: r-lib/actions/setup-r-dependencies@master
         with:
           extra-packages: |
-            rcmdcheck
-            pkgdown
-            dieghernan/pkgdev
-            V8
+            local::.
+            any::rcmdcheck
+            any::pkgdown
+            any::dieghernan/pkgdev
+            any::V8
           needs: website
 
       - name: Update docs
         run: |
-          devtools::install()
-          pkgdev::update_docs()
+          pkgdev::update_docs(build_readme = FALSE)
 
         shell: Rscript {0}
 

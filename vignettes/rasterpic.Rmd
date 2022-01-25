@@ -29,10 +29,14 @@ library(sf)
 library(terra)
 library(rasterpic)
 
-x <- st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
-  quiet = TRUE
+x <- st_read(system.file("gpkg/austria.gpkg",
+  package = "rasterpic"
+),
+quiet = TRUE
 )
-img <- system.file("img/vertical.png", package = "rasterpic")
+img <- system.file("img/vertical.png",
+  package = "rasterpic"
+)
 
 # Create!
 
@@ -79,7 +83,11 @@ mask <- rasterpic_img(x, img, crop = TRUE, mask = TRUE)
 
 plotRGB(mask)
 
-maskinverse <- rasterpic_img(x, img, crop = TRUE, mask = TRUE, inverse = TRUE)
+maskinverse <- rasterpic_img(x, img,
+  crop = TRUE,
+  mask = TRUE,
+  inverse = TRUE
+)
 
 plotRGB(maskinverse)
 ```

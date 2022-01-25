@@ -48,9 +48,13 @@ library(sf)
 library(terra)
 
 # The flag of the United Kingdom
-img <- system.file("img/UK_flag.png", package = "rasterpic")
-uk <- st_read(system.file("gpkg/uk.gpkg", package = "rasterpic"),
-  quiet = TRUE
+img <- system.file("img/UK_flag.png",
+  package = "rasterpic"
+)
+uk <- st_read(system.file("gpkg/uk.gpkg",
+  package = "rasterpic"
+),
+quiet = TRUE
 )
 
 # Rasterize!
@@ -58,19 +62,24 @@ uk_flag <- rasterpic_img(uk, img)
 
 uk_flag
 #> class       : SpatRaster 
-#> dimensions  : 400, 800, 4  (nrow, ncol, nlyr)
+#> dimensions  : 400, 800, 3  (nrow, ncol, nlyr)
 #> resolution  : 5398.319, 5398.319  (x, y)
 #> extent      : -2542183, 1776472, 6430573, 8589900  (xmin, xmax, ymin, ymax)
 #> coord. ref. : WGS 84 / Pseudo-Mercator (EPSG:3857) 
 #> source      : memory 
-#> names       : lyr.1, lyr.2, lyr.3, lyr.4 
-#> min values  :     0,    13,    34,   255 
-#> max values  :   255,   255,   255,   255
+#> names       : lyr.1, lyr.2, lyr.3 
+#> min values  :     0,    13,    34 
+#> max values  :   255,   255,   255
 
 # Plot it!
 
 plotRGB(uk_flag)
-plot(st_geometry(uk), add = TRUE, col = adjustcolor("blue", alpha.f = 0.5))
+plot(st_geometry(uk),
+  add = TRUE,
+  col = adjustcolor("blue",
+    alpha.f = 0.5
+  )
+)
 ```
 
 <img src="man/figures/README-example-basic-1.png" width="50%" style="display: block; margin: auto;" />

@@ -64,9 +64,13 @@ library(sf)
 library(terra)
 
 # The flag of the United Kingdom
-img <- system.file("img/UK_flag.png", package = "rasterpic")
-uk <- st_read(system.file("gpkg/uk.gpkg", package = "rasterpic"),
-  quiet = TRUE
+img <- system.file("img/UK_flag.png",
+  package = "rasterpic"
+)
+uk <- st_read(system.file("gpkg/uk.gpkg",
+  package = "rasterpic"
+),
+quiet = TRUE
 )
 
 # Rasterize!
@@ -77,7 +81,12 @@ uk_flag
 # Plot it!
 
 plotRGB(uk_flag)
-plot(st_geometry(uk), add = TRUE, col = adjustcolor("blue", alpha.f = 0.5))
+plot(st_geometry(uk),
+  add = TRUE,
+  col = adjustcolor("blue",
+    alpha.f = 0.5
+  )
+)
 ```
 
 We can also play with other parameters, as well as modifying the alignment of
