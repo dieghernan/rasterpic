@@ -1,0 +1,29 @@
+Package: rasterpic
+Title: Create a Spatial Raster from Plain Images
+Version: 0.0.0.9000
+Authors@R: 
+    person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre", "cph"),
+           comment = c(ORCID = "0000-0001-8457-4658"))
+Description: Creates a spatial raster, as the ones provided by 'terra',
+    from regular pictures.
+License: MIT + file LICENSE
+URL: https://dieghernan.github.io/rasterpic/,
+    https://github.com/dieghernan/rasterpic
+BugReports: https://github.com/dieghernan/rasterpic/issues
+Depends: 
+    R (>= 3.6.0)
+Imports: 
+    png (>= 0.1-5),
+    sf (>= 1.0.0),
+    terra (>= 1.4-22)
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0),
+    vdiffr (>= 1.0.0)
+VignetteBuilder: 
+    knitr
+Config/testthat/edition: 3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2

@@ -1,0 +1,14 @@
+year <- format(Sys.time(), "%Y")
+abs <- trimws(gsub("\\s+", " ", meta$Description))
+
+bibentry(
+  "Manual",
+  header = "To cite the rasterpic package in publications use:",
+  title = paste("rasterpic:", meta$Title),
+  author = person("Diego", "Hernangómez"),
+  year = year,
+  version = meta$Version,
+  #doi = "10.5281/zenodo.5113195",
+  url = unlist(strsplit(meta$URL, ","))[1],
+  abstract = abs
+)

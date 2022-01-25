@@ -1,0 +1,14 @@
+^rasterpic\.Rproj$
+^\.Rproj\.user$
+^LICENSE\.md$
+^README\.Rmd$
+^cran-comments\.md$
+^data-raw$
+^tests/testthat/test_imgs$
+^revdep$
+^codemeta\.json$
+^CITATION\.cff$
+^tests/testthat/_snaps$
+^CRAN-SUBMISSION$
+^.github$
+^pkgdown$

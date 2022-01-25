@@ -1,0 +1,22 @@
+url: 'https://dieghernan.github.io/rasterpic'
+
+navbar:
+  type: dark
+  bg: primary
+
+template:
+  bootstrap: 5
+  params:
+    bootswatch: flatly
+    ganalytics: G-5SLV8G8QD4
+  opengraph:
+    twitter:
+      creator: "@dhernangomez"
+      card: summary_large_image
+
+repo:
+  branch: main
+
+authors:
+  Diego Hernangómez:
+    href: 'https://dieghernan.github.io/'
