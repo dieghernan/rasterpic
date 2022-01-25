@@ -3,7 +3,7 @@ pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
   rasterpic: rasterpic.html
-last_built: 2022-01-25T13:33Z
+last_built: 2022-01-25T13:40Z
 urls:
   reference: https://dieghernan.github.io/rasterpic/reference
   article: https://dieghernan.github.io/rasterpic/articles
