@@ -11,6 +11,7 @@
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+
 <!-- badges: end -->
 
 **rasterpic** is a tiny package with one single goal: to transform an
@@ -119,7 +120,7 @@ A BibTeX entry for LaTeX users is:
       title = {rasterpic: Create a Spatial Raster from Plain Images},
       author = {Diego Hernangómez},
       year = {2022},
-      version = {0.0.0.9000},
+      version = {0.1.0},
       url = {https://dieghernan.github.io/rasterpic/},
       abstract = {Creates a spatial raster, as the ones provided by 'terra', from regular pictures.},
     }
