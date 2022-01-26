@@ -1,11 +1,11 @@
-test_that("Test SpatExtent", {
+test_that("Test bbox", {
   img <- system.file("img/UK_flag.png", package = "rasterpic")
   x <- sf::st_read(system.file("gpkg/UK.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
 
-  x <- terra::ext(terra::vect(x))
-  expect_s4_class(x, "SpatExtent")
+  x <- sf::st_bbox(x)
+  expect_s3_class(x, "bbox")
 
   expect_message(rasterpic_img(x, img), "'crs' is NA")
   raster <- rasterpic_img(x, img)
@@ -16,39 +16,38 @@ test_that("Test SpatExtent", {
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
   # Same y coords
-  expect_true(terra::ymin(raster) == terra::ymin(x))
-  expect_true(terra::ymax(raster) == terra::ymax(x))
+  expect_true(terra::ymin(raster) == x[2])
+  expect_true(terra::ymax(raster) == x[4])
 
   # Different x coords
-  expect_true(terra::xmin(raster) < terra::xmin(x))
-  expect_true(terra::xmax(raster) > terra::xmax(x))
+  expect_true(terra::xmin(raster) < x[1])
+  expect_true(terra::xmax(raster) > x[3])
 })
 
-test_that("Test SpatExtent with projs", {
+test_that("Test bbox with projs", {
   img <- system.file("img/UK_flag.png", package = "rasterpic")
   x <- sf::st_read(system.file("gpkg/UK.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
 
   x_a <- sf::st_transform(x, 25830)
-  x_v <- terra::vect(x_a)
-  crs_wkt_terra <- terra::crs(x_v)
   crs_wkt_sf <- sf::st_crs(x_a)$wkt
 
-  x <- terra::ext(x_v)
-  expect_s4_class(x, "SpatExtent")
+  x <- sf::st_bbox(x)
+  expect_s3_class(x, "bbox")
 
-  raster <- rasterpic_img(x, img, crs = crs_wkt_terra)
-  expect_true(terra::crs(raster) == crs_wkt_terra)
+  raster <- rasterpic_img(x, img, crs = crs_wkt_sf)
+  expect_false(terra::crs(raster) == "")
+
 
   png_dim <- png::readPNG(img)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
   # Same y coords
-  expect_true(terra::ymin(raster) == terra::ymin(x))
-  expect_true(terra::ymax(raster) == terra::ymax(x))
+  expect_true(terra::ymin(raster) == x[2])
+  expect_true(terra::ymax(raster) == x[4])
 
   # Different x coords
-  expect_true(terra::xmin(raster) < terra::xmin(x))
-  expect_true(terra::xmax(raster) > terra::xmax(x))
+  expect_true(terra::xmin(raster) < x[1])
+  expect_true(terra::xmax(raster) > x[3])
 })

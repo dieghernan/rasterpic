@@ -46,7 +46,7 @@ rpic_crop <- function(crop, box_marg, new_rast) {
   return(new_rast)
 }
 
-rpic_read <- function(img, crs) {
+rpic_read <- function(img, crs = NA) {
   if (!file.exists(img)) stop("'img' file not found", call. = FALSE)
 
   # pngs
@@ -62,11 +62,6 @@ rpic_read <- function(img, crs) {
         row[alpha, ] <- NA
         pngfile[i, , ] <- row
       }
-    }
-
-    if (missing(crs)) {
-      message("'crs' is NA.")
-      crs <- NA
     }
 
     rast <- terra::rast(pngfile)
@@ -86,4 +81,64 @@ rpic_read <- function(img, crs) {
       call. = FALSE
     )
   }
+}
+
+
+rpic_input <- function(x, crs) {
+  # Convert sf to SpatVector
+
+  if (inherits(x, "sf") || inherits(x, "sfc")) {
+    x <- terra::vect(x)
+  }
+
+  if (inherits(x, "SpatRaster") | inherits(x, "SpatVector")) {
+    if (terra::is.lonlat(x)) {
+      message(
+        "Warning: x has geographic coordinates. ",
+        "Assuming planar coordinates."
+      )
+    }
+
+    crs <- terra::crs(x)
+
+    box <- c(
+      terra::xmin(x),
+      terra::ymin(x),
+      terra::xmax(x),
+      terra::ymax(x)
+    )
+  } else if (inherits(x, "SpatExtent")) {
+    box <- c(
+      terra::xmin(x),
+      terra::ymin(x),
+      terra::xmax(x),
+      terra::ymax(x)
+    )
+  } else if (inherits(x, "bbox") & length(x) == 4) {
+    box <- c(
+      x["xmin"],
+      x["ymin"],
+      x["xmax"],
+      x["ymax"]
+    )
+    box <- unname(box)
+  } else {
+    stop("Don't know how to extract a bounding box from 'x'")
+  }
+
+
+
+  if (missing(crs)) {
+    message("'crs' is NA.")
+    crs <- NA
+  }
+
+  # Output object is a list
+  result <- list(
+    x = x,
+    box = box,
+    crs = crs
+  )
+
+  return(result)
 }

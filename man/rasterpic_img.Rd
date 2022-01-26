@@ -19,7 +19,8 @@ rasterpic_img(
 \arguments{
 \item{x}{It could be
 \itemize{
-\item A \code{sf} or \code{sfc} object (\strong{sf} package)
+\item A \code{sf}, \code{sfc} or bounding box (see \code{\link[sf:st_bbox]{sf::st_bbox()}}) object
+(\strong{sf} package).
 \item A \code{SpatRaster}, \code{SpatVector} or \code{SpatExtent} object (\strong{terra} package).
 }}
 
@@ -186,5 +187,5 @@ plot(x$geom,
 }
 }
 \seealso{
-\code{\link[sf:st_crs]{sf::st_crs()}}, \code{\link[terra:crs]{terra::crs()}}.
+\code{\link[sf:st_crs]{sf::st_crs()}}, \code{\link[sf:st_bbox]{sf::st_bbox()}}, \code{\link[terra:crs]{terra::crs()}}.
 }

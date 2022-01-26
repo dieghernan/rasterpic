@@ -3,7 +3,7 @@ test_that("Error on bad x formatting", {
   img <- system.file("img/UK_flag.png", package = "rasterpic")
   expect_error(
     rasterpic_img(x, img),
-    "x should be a sf/sfc or a SpatRaster object"
+    "Don't know how to extract a bounding box from 'x'"
   )
 })
 

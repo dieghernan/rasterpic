@@ -4,7 +4,8 @@
 #' Geotags an image based on the coordinates of a given spatial object.
 #'
 #' @param x It could be
-#'   * A `sf` or `sfc` object (**sf** package)
+#'   * A `sf`, `sfc` or bounding box (see [sf::st_bbox()]) object
+#'     (**sf** package).
 #'   * A `SpatRaster`, `SpatVector` or `SpatExtent` object (**terra** package).
 #' @param img An image to be geotagged. The following image extensions are
 #'   accepted:
@@ -43,7 +44,7 @@
 #' be also retrieved as `sf::st_crs(25830)$wkt`. See `value` and **Notes** on
 #' [terra::crs()].
 #'
-#' @seealso [sf::st_crs()], [terra::crs()].
+#' @seealso [sf::st_crs()], [sf::st_bbox()], [terra::crs()].
 #'
 #' @export
 #'
@@ -175,38 +176,12 @@ rasterpic_img <- function(x,
 
   # A. Extract values from x: crs and initial extent----
 
-  # Convert sf to SpatVector
+  process <- rpic_input(x, crs)
 
-  if (inherits(x, "sf") || inherits(x, "sfc")) {
-    x <- terra::vect(x)
-  }
-
-  if (inherits(x, "SpatRaster") | inherits(x, "SpatVector")) {
-    if (terra::is.lonlat(x)) {
-      message(
-        "Warning: x has geographic coordinates. ",
-        "Assuming planar coordinates."
-      )
-    }
-
-    crs <- terra::crs(x)
-
-    box <- c(
-      terra::xmin(x),
-      terra::ymin(x),
-      terra::xmax(x),
-      terra::ymax(x)
-    )
-  } else if (inherits(x, "SpatExtent")) {
-    box <- c(
-      terra::xmin(x),
-      terra::ymin(x),
-      terra::xmax(x),
-      terra::ymax(x)
-    )
-  } else {
-    stop("x should be a sf/sfc or a SpatRaster object")
-  }
+  # Unpack
+  crs <- process$crs
+  box <- process$box
+  x <- process$x
 
   # B. Read img file----
   rast <- rpic_read(img, crs)
