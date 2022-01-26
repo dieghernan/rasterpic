@@ -16,8 +16,11 @@ rasterpic_img(
 )
 }
 \arguments{
-\item{x}{A \code{sf} or \code{sfc} object (\strong{sf} package) or a
-\code{SpatRaster} object (\strong{terra} package).}
+\item{x}{It could be
+\itemize{
+\item A \code{sf} or \code{sfc} object (\strong{sf} package)
+\item A \code{SpatRaster} or a \code{SpatVector} object (\strong{terra} package).
+}}
 
 \item{img}{An image to be geotagged. The following image extensions are
 accepted:

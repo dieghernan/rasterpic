@@ -88,7 +88,7 @@ test_that("Message in mask raster", {
 
   expect_message(
     rasterpic_img(x, img, mask = TRUE),
-    "'mask' only available when 'x' is an 'sf/sfc' object"
+    "'mask' only available when 'x' is an 'sf/sfc/SpatVector' object"
   )
 
   res2 <- rasterpic_img(x, img, mask = TRUE)

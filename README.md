@@ -52,7 +52,7 @@ library(terra)
 img <- system.file("img/UK_flag.png",
   package = "rasterpic"
 )
-uk <- st_read(system.file("gpkg/uk.gpkg",
+uk <- st_read(system.file("gpkg/UK.gpkg",
   package = "rasterpic"
 ),
 quiet = TRUE
@@ -120,7 +120,7 @@ A BibTeX entry for LaTeX users is:
       title = {rasterpic: Create a Spatial Raster from Plain Images},
       author = {Diego Hernangómez},
       year = {2022},
-      version = {0.1.0},
+      version = {0.1.0.9000},
       url = {https://dieghernan.github.io/rasterpic/},
       abstract = {Creates a spatial raster, as the ones provided by 'terra', from regular pictures.},
     }

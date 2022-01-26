@@ -3,8 +3,9 @@
 #' @description
 #' Geotags an image based on the coordinates of a given spatial object.
 #'
-#' @param x A `sf` or `sfc` object (**sf** package) or a
-#'   `SpatRaster` object (**terra** package).
+#' @param x It could be
+#'   * A `sf` or `sfc` object (**sf** package)
+#'   * A `SpatRaster` or a `SpatVector` object (**terra** package).
 #' @param img An image to be geotagged. The following image extensions are
 #'   accepted:
 #'   * `png`
@@ -161,18 +162,14 @@ rasterpic_img <- function(x,
   if (valign < 0 | valign > 1) stop("'valing' should be between 0 and 1")
 
   # A. Extract values from x: crs and initial extent----
+
+  # Convert sf to SpatVector
+
   if (inherits(x, "sf") || inherits(x, "sfc")) {
-    if (sf::st_is_longlat(x)) {
-      message(
-        "Warning: x has geographic coordinates. ",
-        "Assuming planar coordinates."
-      )
-    }
-    box <- as.double(sf::st_bbox(x))
-    # Convert to SpatVector for extracting the crs
-    spatvect <- terra::vect(x)
-    crs <- terra::crs(spatvect)
-  } else if (inherits(x, "SpatRaster")) {
+    x <- terra::vect(x)
+  }
+
+  if (inherits(x, "SpatRaster") | inherits(x, "SpatVector")) {
     if (terra::is.lonlat(x)) {
       message(
         "Warning: x has geographic coordinates. ",
@@ -257,10 +254,9 @@ rasterpic_img <- function(x,
 
   if (mask) {
     if (inherits(x, "SpatRaster")) {
-      message("'mask' only available when 'x' is an 'sf/sfc' object")
+      message("'mask' only available when 'x' is an 'sf/sfc/SpatVector' object")
     } else {
-      to_mask <- terra::vect(x)
-      new_rast <- terra::mask(new_rast, to_mask,
+      new_rast <- terra::mask(new_rast, x,
         inverse = inverse
       )
     }

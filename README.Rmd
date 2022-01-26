@@ -69,7 +69,7 @@ library(terra)
 img <- system.file("img/UK_flag.png",
   package = "rasterpic"
 )
-uk <- st_read(system.file("gpkg/uk.gpkg",
+uk <- st_read(system.file("gpkg/UK.gpkg",
   package = "rasterpic"
 ),
 quiet = TRUE
