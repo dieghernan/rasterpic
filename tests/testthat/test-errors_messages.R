@@ -100,3 +100,28 @@ test_that("Message in mask raster", {
 
   expect_identical(v1, v2)
 })
+
+test_that("Message in mask raster with SpatExtent", {
+  x <- terra::rast(system.file("tiff/elev.tiff", package = "rasterpic"))
+  x <- terra::project(x, "epsg:3857")
+  img <- system.file("img/UK_flag.png", package = "rasterpic")
+
+  extent <- terra::ext(x)
+  crs <- terra::crs(x)
+
+  res1 <- rasterpic_img(extent, img, crs = crs)
+
+  expect_message(
+    rasterpic_img(extent, img, mask = TRUE, crs = crs),
+    "'mask' only available when 'x' is an 'sf/sfc/SpatVector' object"
+  )
+
+  res2 <- rasterpic_img(extent, img, mask = TRUE, crs = crs)
+
+  expect_true(terra::ext(res1) == terra::ext(res2))
+  expect_true(terra::crs(res1) == terra::crs(res2))
+  v1 <- terra::values(res1)
+  v2 <- terra::values(res2)
+
+  expect_identical(v1, v2)
+})

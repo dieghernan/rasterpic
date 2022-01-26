@@ -5,7 +5,7 @@
 #'
 #' @param x It could be
 #'   * A `sf` or `sfc` object (**sf** package)
-#'   * A `SpatRaster` or a `SpatVector` object (**terra** package).
+#'   * A `SpatRaster`, `SpatVector` or `SpatExtent` object (**terra** package).
 #' @param img An image to be geotagged. The following image extensions are
 #'   accepted:
 #'   * `png`
@@ -26,6 +26,10 @@
 #'  for details. This option is only valid if `x` is a `sf/sfc` object.
 #' @param inverse Logical. It affects only if `mask = TRUE`. If `TRUE`, areas on
 #'   the raster that do not overlap with `x` are masked.
+#' @param crs Character string describing a coordinate reference system.
+#'   This parameter would only affect if `x` does not present a Coordinate
+#'   Reference System (e.g. when `x` is a `SpatExtent`, a `bbox` or a
+#'   vector of coordinates). See **Details**
 #'
 #' @return A `SpatRaster` object.
 #'
@@ -33,6 +37,13 @@
 #'
 #' The function preserves the Coordinate Reference System of the `x` object. For
 #' optimal results do not use geographic coordinates (longitude/latitude).
+#'
+#' `crs` can be in a WKT format, as a "authority:number" code such as
+#' `"EPSG:4326"`, or a PROJ-string format such as "+proj=utm +zone=12". It can
+#' be also retrieved as `sf::st_crs(25830)$wkt`. See `value` and **Notes** on
+#' [terra::crs()].
+#'
+#' @seealso [sf::st_crs()], [terra::crs()].
 #'
 #' @export
 #'
@@ -155,7 +166,8 @@ rasterpic_img <- function(x,
                           expand = 0,
                           crop = FALSE,
                           mask = FALSE,
-                          inverse = FALSE) {
+                          inverse = FALSE,
+                          crs) {
 
   # Initial validations
   if (halign < 0 | halign > 1) stop("'haling' should be between 0 and 1")
@@ -179,6 +191,13 @@ rasterpic_img <- function(x,
 
     crs <- terra::crs(x)
 
+    box <- c(
+      terra::xmin(x),
+      terra::ymin(x),
+      terra::xmax(x),
+      terra::ymax(x)
+    )
+  } else if (inherits(x, "SpatExtent")) {
     box <- c(
       terra::xmin(x),
       terra::ymin(x),
@@ -253,12 +272,12 @@ rasterpic_img <- function(x,
   # E. (Optionally) Mask ----
 
   if (mask) {
-    if (inherits(x, "SpatRaster")) {
-      message("'mask' only available when 'x' is an 'sf/sfc/SpatVector' object")
-    } else {
+    if (inherits(x, "SpatVector")) {
       new_rast <- terra::mask(new_rast, x,
         inverse = inverse
       )
+    } else {
+      message("'mask' only available when 'x' is an 'sf/sfc/SpatVector' object")
     }
   }
 

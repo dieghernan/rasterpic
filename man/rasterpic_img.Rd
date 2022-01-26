@@ -12,14 +12,15 @@ rasterpic_img(
   expand = 0,
   crop = FALSE,
   mask = FALSE,
-  inverse = FALSE
+  inverse = FALSE,
+  crs
 )
 }
 \arguments{
 \item{x}{It could be
 \itemize{
 \item A \code{sf} or \code{sfc} object (\strong{sf} package)
-\item A \code{SpatRaster} or a \code{SpatVector} object (\strong{terra} package).
+\item A \code{SpatRaster}, \code{SpatVector} or \code{SpatExtent} object (\strong{terra} package).
 }}
 
 \item{img}{An image to be geotagged. The following image extensions are
@@ -50,6 +51,11 @@ for details. This option is only valid if \code{x} is a \code{sf/sfc} object.}
 
 \item{inverse}{Logical. It affects only if \code{mask = TRUE}. If \code{TRUE}, areas on
 the raster that do not overlap with \code{x} are masked.}
+
+\item{crs}{Character string describing a coordinate reference system.
+This parameter would only affect if \code{x} does not present a Coordinate
+Reference System (e.g. when \code{x} is a \code{SpatExtent}, a \code{bbox} or a
+vector of coordinates). See \strong{Details}}
 }
 \value{
 A \code{SpatRaster} object.
@@ -60,6 +66,11 @@ Geotags an image based on the coordinates of a given spatial object.
 \details{
 The function preserves the Coordinate Reference System of the \code{x} object. For
 optimal results do not use geographic coordinates (longitude/latitude).
+
+\code{crs} can be in a WKT format, as a "authority:number" code such as
+\code{"EPSG:4326"}, or a PROJ-string format such as "+proj=utm +zone=12". It can
+be also retrieved as \code{sf::st_crs(25830)$wkt}. See \code{value} and \strong{Notes} on
+\code{\link[terra:crs]{terra::crs()}}.
 }
 \examples{
 \donttest{
@@ -173,4 +184,7 @@ plot(x$geom,
   lwd = 2
 )
 }
+}
+\seealso{
+\code{\link[sf:st_crs]{sf::st_crs()}}, \code{\link[terra:crs]{terra::crs()}}.
 }

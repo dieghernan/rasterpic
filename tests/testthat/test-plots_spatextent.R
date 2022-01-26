@@ -20,42 +20,46 @@ test_fun_rast <- function(x, prefix, ...) {
 
 
 
-test_that("Raster plots regular", {
+test_that("SpatExtent plots regular", {
   skip_if_not_installed("vdiffr")
 
   x <- terra::rast(system.file("tiff/elev.tiff", package = "rasterpic"))
   x <- terra::project(x, "epsg:3857")
+  x <- terra::ext(x)
 
-  test_fun_rast(x, "regular")
+  test_fun_rast(x, "regular", crs = "epsg:3857")
 })
 
-test_that("Raster plots expand", {
+test_that("SpatExtent plots expand", {
   skip_if_not_installed("vdiffr")
 
   x <- terra::rast(system.file("tiff/elev.tiff", package = "rasterpic"))
   x <- terra::project(x, "epsg:3857")
+  x <- terra::ext(x)
 
-  test_fun_rast(x, "expand", expand = 1)
+  test_fun_rast(x, "expand", expand = 1, crs = "epsg:3857")
 })
 
 
-test_that("Raster plots aligns", {
+test_that("SpatExtent plots aligns", {
   skip_if_not_installed("vdiffr")
 
   x <- terra::rast(system.file("tiff/elev.tiff", package = "rasterpic"))
   x <- terra::project(x, "epsg:3857")
+  x <- terra::ext(x)
 
-  test_fun_rast(x, "left", halign = 0)
-  test_fun_rast(x, "right", halign = 1)
-  test_fun_rast(x, "bottom", valign = 0)
-  test_fun_rast(x, "top", valign = 1)
+  test_fun_rast(x, "left", halign = 0, crs = "epsg:3857")
+  test_fun_rast(x, "right", halign = 1, crs = "epsg:3857")
+  test_fun_rast(x, "bottom", valign = 0, crs = "epsg:3857")
+  test_fun_rast(x, "top", valign = 1, crs = "epsg:3857")
 })
 
-test_that("Raster plots crop", {
+test_that("SpatExtent plots crop", {
   skip_if_not_installed("vdiffr")
 
   x <- terra::rast(system.file("tiff/elev.tiff", package = "rasterpic"))
   x <- terra::project(x, "epsg:3857")
+  x <- terra::ext(x)
 
-  test_fun_rast(x, "crop", crop = TRUE)
+  test_fun_rast(x, "crop", crop = TRUE, crs = "epsg:3857")
 })

@@ -1,6 +1,6 @@
 # rasterpic (development version)
 
--   Add support for `SpatVector`
+-   Add support for `SpatVector`, `SpatExtent`.
 
 # rasterpic 0.1.0
 

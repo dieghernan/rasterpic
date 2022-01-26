@@ -64,10 +64,12 @@ rpic_read <- function(img, crs) {
       }
     }
 
+    if (missing(crs)) {
+      message("'crs' is NA.")
+      crs <- NA
+    }
 
-    rast <- terra::rast(pngfile,
-      crs = crs
-    )
+    rast <- terra::rast(pngfile)
 
     terra::crs(rast) <- crs
 
