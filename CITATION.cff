@@ -8,7 +8,7 @@ message: 'To cite package "rasterpic" in publications use:'
 type: software
 license: MIT
 title: 'rasterpic: Create a Spatial Raster from Plain Images'
-version: 0.1.0
+version: 0.1.0.9000
 doi: 10.5281/zenodo.5910095
 abstract: Creates a spatial raster, as the ones provided by 'terra', from regular
   pictures.
@@ -26,7 +26,7 @@ preferred-citation:
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
   year: '2022'
-  version: 0.1.0
+  version: 0.1.0.9000
   doi: 10.5281/zenodo.5910095
   url: https://dieghernan.github.io/rasterpic/
   abstract: Creates a spatial raster, as the ones provided by 'terra', from regular
@@ -40,6 +40,7 @@ contact:
   email: diego.hernangomezherrero@gmail.com
   orcid: https://orcid.org/0000-0001-8457-4658
 keywords:
+- cran
 - jpeg
 - jpg
 - maps
@@ -48,6 +49,7 @@ keywords:
 - r-package
 - r-stats
 - raster
+- rstats
 - sf
 - terra
 - tif
@@ -74,7 +76,7 @@ references:
     given-names: Simon
     email: Simon.Urbanek@r-project.org
   year: '2022'
-  url: https://CRAN.R-project.org/package=png
+  url: http://www.rforge.net/png/
   version: '>= 0.1-5'
 - type: software
   title: sf
@@ -86,7 +88,6 @@ references:
     email: edzer.pebesma@uni-muenster.de
     orcid: https://orcid.org/0000-0001-8049-7069
   year: '2022'
-  url: https://CRAN.R-project.org/package=sf
   version: '>= 1.0.0'
 - type: software
   title: terra
@@ -98,7 +99,7 @@ references:
     email: r.hijmans@gmail.com
     orcid: https://orcid.org/0000-0001-5872-2872
   year: '2022'
-  url: https://CRAN.R-project.org/package=terra
+  url: https://rspatial.org/terra/
   version: '>= 1.4-22'
 - type: software
   title: knitr
@@ -110,7 +111,7 @@ references:
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
   year: '2022'
-  url: https://CRAN.R-project.org/package=knitr
+  url: https://yihui.org/knitr/
 - type: software
   title: rmarkdown
   abstract: 'rmarkdown: Dynamic Documents for R'
@@ -149,7 +150,6 @@ references:
     email: rich@rstudio.com
     orcid: https://orcid.org/0000-0003-3925-190X
   year: '2022'
-  url: https://CRAN.R-project.org/package=rmarkdown
 - type: software
   title: testthat
   abstract: 'testthat: Unit Testing for R'
@@ -159,7 +159,6 @@ references:
     given-names: Hadley
     email: hadley@rstudio.com
   year: '2022'
-  url: https://CRAN.R-project.org/package=testthat
   version: '>= 3.0.0'
 - type: software
   title: vdiffr
@@ -183,5 +182,4 @@ references:
     given-names: Vaudor
     email: lise.vaudor@ens-lyon.fr
   year: '2022'
-  url: https://CRAN.R-project.org/package=vdiffr
   version: '>= 1.0.0'

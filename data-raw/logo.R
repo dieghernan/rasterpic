@@ -95,4 +95,3 @@ dev.off()
 
 usethis::use_logo("data-raw/logo_alpha.png")
 pkgdown::build_favicons(overwrite = TRUE)
-
