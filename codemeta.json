@@ -148,7 +148,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1563.733KB",
+  "fileSize": "2011.945KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -167,9 +167,8 @@
       "sameAs": "https://doi.org/10.5281/zenodo.5910095"
     }
   ],
-  "releaseNotes": "https://github.com/dieghernan/rasterpic/blob/master/NEWS.md",
   "readme": "https://github.com/dieghernan/rasterpic/blob/main/README.md",
   "contIntegration": ["https://github.com/dieghernan/rasterpic/actions/workflows/check-full.yaml", "https://app.codecov.io/gh/dieghernan/rasterpic"],
   "developmentStatus": "https://www.repostatus.org/#active",
-  "keywords": ["r", "r-stats", "r-package", "terra", "raster", "sf", "png", "jpeg", "jpg", "tiff", "tif", "maps"]
+  "keywords": ["r", "r-stats", "r-package", "terra", "raster", "sf", "png", "jpeg", "jpg", "tiff", "tif", "maps", "cran", "rstats"]
 }
