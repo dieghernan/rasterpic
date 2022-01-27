@@ -5,12 +5,17 @@
 
 <!-- badges: start -->
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/rasterpic)](https://CRAN.R-project.org/package=rasterpic)
+[![CRAN
+results](https://cranchecks.info/badges/worst/rasterpic)](https://cran.r-project.org/web/checks/check_results_rasterpic.html)
 [![R-CMD-check](https://github.com/dieghernan/rasterpic/actions/workflows/check-full.yaml/badge.svg)](https://github.com/dieghernan/rasterpic/actions/workflows/check-full.yaml)
 [![codecov](https://codecov.io/gh/dieghernan/rasterpic/branch/main/graph/badge.svg?token=jSZ4RIsj91)](https://app.codecov.io/gh/dieghernan/rasterpic)
 [![r-universe](https://dieghernan.r-universe.dev/badges/rasterpic)](https://dieghernan.r-universe.dev/)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![status](https://tinyverse.netlify.com/badge/rasterpic)](https://CRAN.R-project.org/package=rasterpic)
 
 <!-- badges: end -->
 
@@ -112,7 +117,9 @@ plot(st_geometry(uk), col = NA, border = "black", add = TRUE)
 To cite the rasterpic package in publications use:
 
 Hernangómez D (2022). *rasterpic: Create a Spatial Raster from Plain
-Images*. \<URL: <https://dieghernan.github.io/rasterpic/>\>.
+Images*. doi: 10.5281/zenodo.5910095 (URL:
+<https://doi.org/10.5281/zenodo.5910095>), \<URL:
+<https://dieghernan.github.io/rasterpic/>\>.
 
 A BibTeX entry for LaTeX users is:
 
@@ -120,7 +127,8 @@ A BibTeX entry for LaTeX users is:
       title = {rasterpic: Create a Spatial Raster from Plain Images},
       author = {Diego Hernangómez},
       year = {2022},
-      version = {0.1.0.9000},
+      version = {0.1.0},
+      doi = {10.5281/zenodo.5910095},
       url = {https://dieghernan.github.io/rasterpic/},
       abstract = {Creates a spatial raster, as the ones provided by 'terra', from regular pictures.},
     }
