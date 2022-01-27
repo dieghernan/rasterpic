@@ -24,6 +24,13 @@ image into a spatial raster.
 
 ## Installation
 
+Install `rasterpic` from
+[**CRAN**](https://CRAN.R-project.org/package=rasterpic):
+
+``` r
+install.packages("rasterpic")
+```
+
 You can install the developing version of **rasterpic** with:
 
 ``` r
