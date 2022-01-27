@@ -22,6 +22,8 @@ rasterpic_img(
 \item A \code{sf}, \code{sfc}, \code{sfg} or bounding box (see \code{\link[sf:st_bbox]{sf::st_bbox()}}) object
 (\strong{sf} package).
 \item A \code{SpatRaster}, \code{SpatVector} or \code{SpatExtent} object (\strong{terra} package).
+\item A numeric vector of length 4 with the extent to be used for geotagging (
+i.e. c(\code{xmin}, \code{ymin}, \code{xmax}, \code{ymax}))
 }}
 
 \item{img}{An image to be geotagged. The following image extensions are
@@ -55,7 +57,7 @@ the raster that do not overlap with \code{x} are masked.}
 
 \item{crs}{Character string describing a coordinate reference system.
 This parameter would only affect if \code{x} does not present a Coordinate
-Reference System (e.g. when \code{x} is a \code{SpatExtent}, a \code{bbox} or a
+Reference System (e.g. when \code{x} is a \code{SpatExtent}, \code{sfg} \code{bbox} or a
 vector of coordinates). See \strong{Details}}
 }
 \value{

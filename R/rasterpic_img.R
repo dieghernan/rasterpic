@@ -7,6 +7,8 @@
 #'   * A `sf`, `sfc`, `sfg` or bounding box (see [sf::st_bbox()]) object
 #'     (**sf** package).
 #'   * A `SpatRaster`, `SpatVector` or `SpatExtent` object (**terra** package).
+#'   * A numeric vector of length 4 with the extent to be used for geotagging (
+#'     i.e. c(`xmin`, `ymin`, `xmax`, `ymax`))
 #' @param img An image to be geotagged. The following image extensions are
 #'   accepted:
 #'   * `png`
@@ -29,7 +31,7 @@
 #'   the raster that do not overlap with `x` are masked.
 #' @param crs Character string describing a coordinate reference system.
 #'   This parameter would only affect if `x` does not present a Coordinate
-#'   Reference System (e.g. when `x` is a `SpatExtent`, a `bbox` or a
+#'   Reference System (e.g. when `x` is a `SpatExtent`, `sfg` `bbox` or a
 #'   vector of coordinates). See **Details**
 #'
 #' @return A `SpatRaster` object.

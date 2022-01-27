@@ -51,9 +51,17 @@ install.packages("rasterpic")
 
 ## Example
 
-This package allows you to create cool maps by using a pre-existing
-spatial object (`sf` or `SpatRaster`) and geotagging a regular image
-using the metadata of the object.
+This package allows you to create cool maps by using a wide variety of
+objects:
+
+-   Spatial object of the **sf** package: `sf`, `sfc`, `sfg`or `bbox`.
+
+-   Spatial objects of the **terra** package: `SpatRaster`,
+    `SpatVector`, `SpatExtent`.
+
+-   A vector of coordinates with the form `c(xmin, ymin, xmax, yman)`
+
+An example using a `sf` object:
 
 ``` r
 library(rasterpic)

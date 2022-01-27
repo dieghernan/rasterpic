@@ -1,6 +1,11 @@
+CMD
 Geotags
 ORCID
+PROJ
+WKT
+codecov
 dieghernan
+doi
 geo
 geotagged
 geotagging
@@ -8,4 +13,7 @@ github
 https
 io
 pre
+proj
 terra
+utm
+zenodo

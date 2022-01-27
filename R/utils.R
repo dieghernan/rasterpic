@@ -130,6 +130,13 @@ rpic_input <- function(x, crs) {
       x["ymax"]
     )
     box <- unname(box)
+  } else if (is.numeric(x) & length(x) == 4) {
+    box <- c(
+      x[1],
+      x[2],
+      x[3],
+      x[4]
+    )
   } else {
     stop("Don't know how to extract a bounding box from 'x'")
   }
