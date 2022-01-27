@@ -21,8 +21,9 @@ dev.off()
 
 # Font
 
-sysfonts::font_add("Mochiy",
-  regular = "data-raw/MochiyPopPOne-Regular.ttf"
+sysfonts::font_add("cabin",
+  regular = "data-raw/CabinSketch-Regular.ttf",
+  bold = "data-raw/CabinSketch-Bold.ttf"
 )
 
 showtext::showtext_auto()
@@ -42,14 +43,14 @@ p
 
 sticker(p,
   package = "rasterpic",
-  p_family = "Mochiy",
-  # p_fontface = "regular",
+  p_family = "cabin",
+  p_fontface = "bold",
   s_width = 3,
   s_height = 3,
   s_x = 1,
   s_y = 1,
-  p_color = adjustcolor("black", alpha.f = 0.6),
-  p_size = 15,
+  p_color = "black",
+  p_size = 21,
   p_y = 1.6,
   h_fill = "white",
   h_color = adjustcolor("brown", alpha.f = 0.5),
@@ -60,13 +61,13 @@ sticker(p,
 # Remove white
 
 r <- png::readPNG("data-raw/logo.png") * 255
-
+library(terra)
 img <- terra::rast(r)
 terra::plotRGB(img)
 f <- values(img, dataframe = TRUE)
 # Identify white and change to NA
 
-r <- f[1, ]
+
 mod <- lapply(seq_len(nrow(f)), function(x) {
   s <- f[x, ]
   if (s[, 1] == 255 & s[, 2] == 255 & s[, 3] == 255) {
@@ -93,3 +94,5 @@ dev.off()
 
 
 usethis::use_logo("data-raw/logo_alpha.png")
+pkgdown::build_favicons(overwrite = TRUE)
+

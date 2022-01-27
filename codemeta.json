@@ -4,7 +4,7 @@
   "identifier": "rasterpic",
   "description": "Creates a spatial raster, as the ones provided by 'terra', from regular pictures.",
   "name": "rasterpic: Create a Spatial Raster from Plain Images",
-  "relatedLink": "https://dieghernan.github.io/rasterpic/",
+  "relatedLink": ["https://dieghernan.github.io/rasterpic/", "https://CRAN.R-project.org/package=rasterpic"],
   "codeRepository": "https://github.com/dieghernan/rasterpic",
   "issueTracker": "https://github.com/dieghernan/rasterpic/issues",
   "license": "https://spdx.org/licenses/MIT",
@@ -15,6 +15,12 @@
     "url": "https://r-project.org"
   },
   "runtimePlatform": "R version 4.1.2 (2021-11-01)",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
   "author": [
     {
       "@type": "Person",
@@ -142,7 +148,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1561.957KB",
+  "fileSize": "1563.733KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -155,9 +161,13 @@
         }
       ],
       "name": "rasterpic: Create a Spatial Raster from Plain Images",
-      "url": "https://dieghernan.github.io/rasterpic/"
+      "identifier": "10.5281/zenodo.5910095",
+      "url": "https://dieghernan.github.io/rasterpic/",
+      "@id": "https://doi.org/10.5281/zenodo.5910095",
+      "sameAs": "https://doi.org/10.5281/zenodo.5910095"
     }
   ],
+  "releaseNotes": "https://github.com/dieghernan/rasterpic/blob/master/NEWS.md",
   "readme": "https://github.com/dieghernan/rasterpic/blob/main/README.md",
   "contIntegration": ["https://github.com/dieghernan/rasterpic/actions/workflows/check-full.yaml", "https://app.codecov.io/gh/dieghernan/rasterpic"],
   "developmentStatus": "https://www.repostatus.org/#active",

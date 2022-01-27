@@ -22,12 +22,17 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/rasterpic)](https://CRAN.R-project.org/package=rasterpic)
+[![CRAN
+results](https://cranchecks.info/badges/worst/rasterpic)](https://cran.r-project.org/web/checks/check_results_rasterpic.html)
 [![R-CMD-check](https://github.com/dieghernan/rasterpic/actions/workflows/check-full.yaml/badge.svg)](https://github.com/dieghernan/rasterpic/actions/workflows/check-full.yaml)
 [![codecov](https://codecov.io/gh/dieghernan/rasterpic/branch/main/graph/badge.svg?token=jSZ4RIsj91)](https://app.codecov.io/gh/dieghernan/rasterpic)
 [![r-universe](https://dieghernan.r-universe.dev/badges/rasterpic)](https://dieghernan.r-universe.dev/)
 [![Project Status: Active – The project has reached a stable, usable state and
 is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![status](https://tinyverse.netlify.com/badge/rasterpic)](https://CRAN.R-project.org/package=rasterpic)
 
 <!-- badges: end -->
 
@@ -69,7 +74,7 @@ library(terra)
 img <- system.file("img/UK_flag.png",
   package = "rasterpic"
 )
-uk <- st_read(system.file("gpkg/uk.gpkg",
+uk <- st_read(system.file("gpkg/UK.gpkg",
   package = "rasterpic"
 ),
 quiet = TRUE
