@@ -19,7 +19,7 @@ rasterpic_img(
 \arguments{
 \item{x}{It could be
 \itemize{
-\item A \code{sf}, \code{sfc} or bounding box (see \code{\link[sf:st_bbox]{sf::st_bbox()}}) object
+\item A \code{sf}, \code{sfc}, \code{sfg} or bounding box (see \code{\link[sf:st_bbox]{sf::st_bbox()}}) object
 (\strong{sf} package).
 \item A \code{SpatRaster}, \code{SpatVector} or \code{SpatExtent} object (\strong{terra} package).
 }}

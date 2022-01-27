@@ -107,6 +107,14 @@ rpic_input <- function(x, crs) {
       terra::xmax(x),
       terra::ymax(x)
     )
+  } else if (inherits(x, "sfg")) {
+    x <- terra::vect(x)
+    box <- c(
+      terra::xmin(x),
+      terra::ymin(x),
+      terra::xmax(x),
+      terra::ymax(x)
+    )
   } else if (inherits(x, "SpatExtent")) {
     box <- c(
       terra::xmin(x),

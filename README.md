@@ -101,7 +101,6 @@ We can also play with other parameters, as well as modifying the
 alignment of the image with respect to the object:
 
 ``` r
-
 # Align, crop and mask
 uk_flag2 <- rasterpic_img(uk, img, halign = 0.2, crop = TRUE, mask = TRUE)
 
@@ -116,9 +115,9 @@ plot(st_geometry(uk), col = NA, border = "black", add = TRUE)
 
 **rasterpic** can parse the following image formats:
 
-  - `png` files.
-  - `jpg/jpeg` files.
-  - `tif/tiff` files.
+-   `png` files.
+-   `jpg/jpeg` files.
+-   `tif/tiff` files.
 
 ## Citation
 

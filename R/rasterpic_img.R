@@ -4,7 +4,7 @@
 #' Geotags an image based on the coordinates of a given spatial object.
 #'
 #' @param x It could be
-#'   * A `sf`, `sfc` or bounding box (see [sf::st_bbox()]) object
+#'   * A `sf`, `sfc`, `sfg` or bounding box (see [sf::st_bbox()]) object
 #'     (**sf** package).
 #'   * A `SpatRaster`, `SpatVector` or `SpatExtent` object (**terra** package).
 #' @param img An image to be geotagged. The following image extensions are

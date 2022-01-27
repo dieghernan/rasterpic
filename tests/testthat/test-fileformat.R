@@ -23,7 +23,6 @@ test_that("Test all image formats with UK", {
 
   # Test
   for (file in otherformats) {
-    message("Testing ", tools::file_ext(file))
     raster_test <- rasterpic_img(x, file)
     expect_equal(asp_ratio(raster_test), asp_ratio(raster_test))
     expect_true(terra::ext(raster_test) == terra::ext(raster))
@@ -56,7 +55,6 @@ test_that("Test all image formats with AT vertical", {
 
   # Test
   for (file in otherformats) {
-    message("Testing ", tools::file_ext(file))
     raster_test <- rasterpic_img(x, file)
     expect_equal(asp_ratio(raster_test), asp_ratio(raster_test))
     expect_true(terra::ext(raster_test) == terra::ext(raster))
@@ -89,7 +87,6 @@ test_that("Test all image formats with UK", {
 
   # Test
   for (file in otherformats) {
-    message("Testing ", tools::file_ext(file))
     raster_test <- rasterpic_img(x, file)
     expect_equal(asp_ratio(raster_test), asp_ratio(raster_test))
     expect_true(terra::ext(raster_test) == terra::ext(raster))
@@ -149,7 +146,6 @@ test_that("Test all image formats with a raster", {
 
   # Test
   for (file in otherformats) {
-    message("Testing ", tools::file_ext(file))
     raster_test <- rasterpic_img(x, file)
     expect_equal(asp_ratio(raster_test), asp_ratio(raster_test))
     expect_true(terra::ext(raster_test) == terra::ext(raster))
@@ -184,7 +180,6 @@ test_that("Test all image formats with sfc vertical", {
 
   # Test
   for (file in otherformats) {
-    message("Testing ", tools::file_ext(file))
     raster_test <- rasterpic_img(x, file)
     expect_equal(asp_ratio(raster_test), asp_ratio(raster_test))
     expect_true(terra::ext(raster_test) == terra::ext(raster))
@@ -219,7 +214,6 @@ test_that("Test all image formats with SpatExtent", {
 
   # Test
   for (file in otherformats) {
-    message("Testing ", tools::file_ext(file))
     raster_test <- rasterpic_img(x, file, crs = "epsg:3035")
     expect_equal(asp_ratio(raster_test), asp_ratio(raster_test))
     expect_true(terra::ext(raster_test) == terra::ext(raster))
