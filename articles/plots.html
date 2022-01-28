@@ -97,7 +97,7 @@
 <div class="section level2">
 <h2 id="base-plots">Base plots<a class="anchor" aria-label="anchor" href="#base-plots"></a>
 </h2>
-<p>The most straightforward option is to use the base <code><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot()</a></code> methods provided by the package <strong>terra</strong> (<code><a href="https://rdrr.io/pkg/terra/man/plotRGB.html" class="external-link">terra::plotRGB()</a></code>)</p>
+<p>The most straightforward option is to use the base <code><a href="https://r-spatial.github.io/sf/reference/plot.html" class="external-link">plot()</a></code> methods provided by the package <strong>terra</strong> (<code><a href="https://rdrr.io/pkg/terra/man/plotRGB.html" class="external-link">terra::plotRGB()</a></code>)</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/rasterpic/">rasterpic</a></span><span class="op">)</span>
@@ -145,6 +145,30 @@ quiet <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://paleolimbot.github.io/ggspatial/reference/layer_spatial.html" class="external-link">layer_spatial</a></span><span class="op">(</span><span class="va">uk_img</span><span class="op">)</span></code></pre></div>
 <p><img src="plots_files/figure-html/unnamed-chunk-3-1.png" width="100%"></p>
+</div>
+<div class="section level2">
+<h2 id="with-mapsf">With mapsf<a class="anchor" aria-label="anchor" href="#with-mapsf"></a>
+</h2>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/mapsf/" class="external-link">mapsf</a></span><span class="op">)</span>
+
+<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_raster.html" class="external-link">mf_raster</a></span><span class="op">(</span><span class="va">uk_img</span><span class="op">)</span>
+<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_scale.html" class="external-link">mf_scale</a></span><span class="op">(</span><span class="op">)</span>
+<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_inset_on.html" class="external-link">mf_inset_on</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"worldmap"</span>, pos <span class="op">=</span> <span class="st">"topright"</span><span class="op">)</span>
+<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_worldmap.html" class="external-link">mf_worldmap</a></span><span class="op">(</span><span class="va">uk</span><span class="op">)</span>
+<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_inset_on.html" class="external-link">mf_inset_off</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p><img src="plots_files/figure-html/unnamed-chunk-4-1.png" width="100%"> ## With maptiles</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/maptiles/" class="external-link">maptiles</a></span><span class="op">)</span>
+
+<span class="va">other_tile</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/maptiles/man/get_tiles.html" class="external-link">get_tiles</a></span><span class="op">(</span><span class="va">uk</span>, crop <span class="op">=</span> <span class="cn">TRUE</span>, zoom <span class="op">=</span> <span class="fl">6</span><span class="op">)</span>
+
+<span class="va">other_tile_crop</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/crop.html" class="external-link">crop</a></span><span class="op">(</span><span class="va">other_tile</span>, <span class="va">uk_img</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/pkg/maptiles/man/plot_tiles.html" class="external-link">plot_tiles</a></span><span class="op">(</span><span class="va">other_tile_crop</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/maptiles/man/plot_tiles.html" class="external-link">plot_tiles</a></span><span class="op">(</span><span class="va">uk_img</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<p><img src="plots_files/figure-html/unnamed-chunk-5-1.png" width="100%"></p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
