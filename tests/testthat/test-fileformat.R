@@ -66,6 +66,8 @@ test_that("Test all image formats with AT vertical", {
 
 
 test_that("Test all image formats with a raster", {
+
+  skip_on_cran()
   img <- system.file("img/vertical.png", package = "rasterpic")
   x <- terra::rast(system.file("tiff/elev.tiff", package = "rasterpic"))
 
@@ -134,6 +136,8 @@ test_that("Test all image formats with sfc vertical", {
 })
 
 test_that("Test all image formats with SpatExtent", {
+  skip_on_cran()
+
   img <- system.file("img/vertical.png", package = "rasterpic")
   x <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE
