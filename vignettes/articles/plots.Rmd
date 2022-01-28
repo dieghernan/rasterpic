@@ -1,5 +1,5 @@
 ---
-title: "Plotting rasters"
+title: "Plotting terra rasters"
 ---
 
 ```{r, include = FALSE}
@@ -13,7 +13,8 @@ knitr::opts_chunk$set(
 )
 ```
 
-This article shows how to plot the results of `rasterpic_img()`
+This article shows how to plot the results of `rasterpic_img()` with several 
+packages.
 
 ## Base plots
 
@@ -70,6 +71,8 @@ ggplot() +
 
 ## With mapsf
 
+**mapsf**, the replacement of **cartography**, also provides this functionality:
+
 ```{r}
 library(mapsf)
 
@@ -79,7 +82,12 @@ mf_inset_on(x = "worldmap", pos = "topright")
 mf_worldmap(uk)
 mf_inset_off()
 ```
+
 ## With maptiles
+
+**maptiles** is a interesting package that provides the ability of downloading
+map tiles from different providers. It also has a specific function for 
+plotting  **terra** rasters:
 
 ```{r}
 
