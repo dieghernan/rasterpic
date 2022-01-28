@@ -54,6 +54,12 @@
 <li class="nav-item">
   <a class="nav-link" href="reference/index.html">Reference</a>
 </li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="articles/plots.html">Plotting terra rasters</a>
+  </div>
+</li>
 <li class="nav-item">
   <a class="nav-link" href="news/index.html">Changelog</a>
 </li>
@@ -88,11 +94,14 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the developing version of <strong>rasterpic</strong> with:</p>
+<p>Install <code>rasterpic</code> from <a href="https://CRAN.R-project.org/package=rasterpic" class="external-link"><strong>CRAN</strong></a>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"dieghernan/rasterpic"</span><span class="op">)</span></code></pre></div>
-<p>Alternatively, you can install <strong>rasterpic</strong> using the <a href="https://dieghernan.r-universe.dev/ui#builds" class="external-link">r-universe</a>:</p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"rasterpic"</span><span class="op">)</span></code></pre></div>
+<p>You can install the developing version of <strong>rasterpic</strong> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"dieghernan/rasterpic"</span><span class="op">)</span></code></pre></div>
+<p>Alternatively, you can install <strong>rasterpic</strong> using the <a href="https://dieghernan.r-universe.dev/ui#builds" class="external-link">r-universe</a>:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Enable this universe</span>
 <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>
   dieghernan <span class="op">=</span> <span class="st">"https://dieghernan.r-universe.dev"</span>,
@@ -103,8 +112,14 @@
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
-<p>This package allows you to create cool maps by using a pre-existing spatial object (<code>sf</code> or <code>SpatRaster</code>) and geotagging a regular image using the metadata of the object.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<p>This package allows you to create cool maps by using a wide variety of objects:</p>
+<ul>
+<li><p>Spatial object of the <strong>sf</strong> package: <code>sf</code>, <code>sfc</code>, <code>sfg</code>or <code>bbox</code>.</p></li>
+<li><p>Spatial objects of the <strong>terra</strong> package: <code>SpatRaster</code>, <code>SpatVector</code>, <code>SpatExtent</code>.</p></li>
+<li><p>A vector of coordinates with the form <code>c(xmin, ymin, xmax, yman)</code></p></li>
+</ul>
+<p>An example using a <code>sf</code> object:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/rasterpic/">rasterpic</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/terra/" class="external-link">terra</a></span><span class="op">)</span>
@@ -144,9 +159,8 @@ quiet <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-example-basic-1.png" width="50%" style="display: block; margin: auto;"></p>
 <p>We can also play with other parameters, as well as modifying the alignment of the image with respect to the object:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co"># Align, crop and mask</span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Align, crop and mask</span>
 <span class="va">uk_flag2</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/rasterpic_img.html">rasterpic_img</a></span><span class="op">(</span><span class="va">uk</span>, <span class="va">img</span>, halign <span class="op">=</span> <span class="fl">0.2</span>, crop <span class="op">=</span> <span class="cn">TRUE</span>, mask <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 
 <span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">uk</span><span class="op">)</span>, axes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
@@ -173,15 +187,15 @@ quiet <span class="op">=</span> <span class="cn">TRUE</span>
 <p>To cite the rasterpic package in publications use:</p>
 <p>Hernangómez D (2022). <em>rasterpic: Create a Spatial Raster from Plain Images</em>. doi: 10.5281/zenodo.5910095 (URL: <a href="https://doi.org/10.5281/zenodo.5910095" class="external-link uri">https://doi.org/10.5281/zenodo.5910095</a>), &lt;URL: <a href="https://dieghernan.github.io/rasterpic/" class="uri">https://dieghernan.github.io/rasterpic/</a>&gt;.</p>
 <p>A BibTeX entry for LaTeX users is:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="op">@</span>Manual{,</span>
-<span id="cb5-2"><a href="#cb5-2"></a>  title =<span class="st"> </span>{rasterpic<span class="op">:</span><span class="st"> </span>Create a Spatial Raster from Plain Images},</span>
-<span id="cb5-3"><a href="#cb5-3"></a>  author =<span class="st"> </span>{Diego Hernangómez},</span>
-<span id="cb5-4"><a href="#cb5-4"></a>  year =<span class="st"> </span>{<span class="dv">2022</span>},</span>
-<span id="cb5-5"><a href="#cb5-5"></a>  version =<span class="st"> </span>{<span class="dv">0</span>.<span class="dv">1</span>.<span class="fl">0.9000</span>},</span>
-<span id="cb5-6"><a href="#cb5-6"></a>  doi =<span class="st"> </span>{<span class="fl">10.5281</span><span class="op">/</span>zenodo<span class="fl">.5910095</span>},</span>
-<span id="cb5-7"><a href="#cb5-7"></a>  url =<span class="st"> </span>{https<span class="op">:</span><span class="er">//</span>dieghernan.github.io<span class="op">/</span>rasterpic<span class="op">/</span>},</span>
-<span id="cb5-8"><a href="#cb5-8"></a>  abstract =<span class="st"> </span>{Creates a spatial raster, as the ones provided by <span class="st">'terra'</span>, from regular pictures.},</span>
-<span id="cb5-9"><a href="#cb5-9"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="sc">@</span>Manual{,</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  title <span class="ot">=</span> {rasterpic<span class="sc">:</span> Create a Spatial Raster from Plain Images},</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  author <span class="ot">=</span> {Diego Hernangómez},</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  year <span class="ot">=</span> {<span class="dv">2022</span>},</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">0</span>.<span class="dv">1</span>.<span class="fl">0.9000</span>},</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  doi <span class="ot">=</span> {<span class="fl">10.5281</span><span class="sc">/</span>zenodo<span class="fl">.5910095</span>},</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>dieghernan.github.io<span class="sc">/</span>rasterpic<span class="sc">/</span>},</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  abstract <span class="ot">=</span> {Creates a spatial raster, as the ones provided by <span class="st">'terra'</span>, from regular pictures.},</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="contribute">Contribute<a class="anchor" aria-label="anchor" href="#contribute"></a>

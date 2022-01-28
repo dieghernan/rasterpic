@@ -52,6 +52,12 @@
 <li class="nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/plots.html">Plotting terra rasters</a>
+  </div>
+</li>
 <li class="nav-item">
   <a class="nav-link" href="../news/index.html">Changelog</a>
 </li>
@@ -76,7 +82,8 @@
 
 
 
-<script src="rasterpic_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+<div class="row">
   <main id="main"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Get Started</h1>
             
@@ -162,6 +169,28 @@ quiet <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="fu"><a href="https://rdrr.io/pkg/terra/man/plotRGB.html" class="external-link">plotRGB</a></span><span class="op">(</span><span class="va">maskinverse</span><span class="op">)</span></code></pre></div>
 <p><img src="rasterpic_files/figure-html/unnamed-chunk-4-2.png" width="50%" style="display: block; margin: auto;"></p>
 </div>
+</div>
+<div class="section level2">
+<h2 id="objects-admitted-for-geotagging">Objects admitted for geotagging<a class="anchor" aria-label="anchor" href="#objects-admitted-for-geotagging"></a>
+</h2>
+<ul>
+<li><p>Spatial object of the <strong>sf</strong> package: <code>sf</code>, <code>sfc</code>, <code>sfg</code>or <code>bbox</code>.</p></li>
+<li><p>Spatial objects of the <strong>terra</strong> package: <code>SpatRaster</code>, <code>SpatVector</code>, <code>SpatExtent</code>.</p></li>
+<li><p>A vector of coordinates with the form <code>c(xmin, ymin, xmax, yman)</code></p></li>
+</ul>
+</div>
+<div class="section level2">
+<h2 id="image-formats-admitted">Image formats admitted<a class="anchor" aria-label="anchor" href="#image-formats-admitted"></a>
+</h2>
+<p><strong>rasterpic</strong> can parse the following image formats:</p>
+<ul>
+<li>
+<code>png</code> files.</li>
+<li>
+<code>jpg/jpeg</code> files.</li>
+<li>
+<code>tif/tiff</code> files.</li>
+</ul>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>

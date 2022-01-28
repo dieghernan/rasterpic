@@ -24,6 +24,12 @@
 <li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/plots.html">Plotting terra rasters</a>
+  </div>
+</li>
 <li class="nav-item">
   <a class="nav-link" href="../news/index.html">Changelog</a>
 </li>
@@ -70,13 +76,16 @@
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>x</dt>
-<dd><p>It could be</p><ul><li><p>A <code>sf</code>, <code>sfc</code> or bounding box (see <code><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">sf::st_bbox()</a></code>) object
+<dd><p>It could be</p><ul><li><p>A <code>sf</code>, <code>sfc</code>, <code>sfg</code> or bounding box (see <code><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">sf::st_bbox()</a></code>) object
 (<strong>sf</strong> package).</p></li>
 <li><p>A <code>SpatRaster</code>, <code>SpatVector</code> or <code>SpatExtent</code> object (<strong>terra</strong> package).</p></li>
+<li><p>A numeric vector of length 4 with the extent to be used for geotagging (
+i.e. <code>c(xmin, ymin, xmax, ymax)</code>).</p></li>
 </ul></dd>
 <dt>img</dt>
-<dd><p>An image to be geotagged. The following image extensions are
-accepted:</p><ul><li><p><code>png</code></p></li>
+<dd><p>An image to be geotagged. It can be a local file or an online
+file (e.g. "https://i.imgur.com/6yHmlwT.jpeg"). The following image
+extensions are accepted:</p><ul><li><p><code>png</code></p></li>
 <li><p><code>jpeg/jpg</code></p></li>
 <li><p><code>tiff/tif</code></p></li>
 </ul></dd>
@@ -104,7 +113,7 @@ the raster that do not overlap with <code>x</code> are masked.</p></dd>
 <dt>crs</dt>
 <dd><p>Character string describing a coordinate reference system.
 This parameter would only affect if <code>x</code> does not present a Coordinate
-Reference System (e.g. when <code>x</code> is a <code>SpatExtent</code>, a <code>bbox</code> or a
+Reference System (e.g. when <code>x</code> is a <code>SpatExtent</code>, <code>sfg</code> <code>bbox</code> or a
 vector of coordinates). See <strong>Details</strong></p></dd>
 </dl></div>
     <div class="section level2">
