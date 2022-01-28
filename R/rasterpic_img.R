@@ -8,9 +8,10 @@
 #'     (**sf** package).
 #'   * A `SpatRaster`, `SpatVector` or `SpatExtent` object (**terra** package).
 #'   * A numeric vector of length 4 with the extent to be used for geotagging (
-#'     i.e. c(`xmin`, `ymin`, `xmax`, `ymax`))
-#' @param img An image to be geotagged. The following image extensions are
-#'   accepted:
+#'     i.e. `c(xmin, ymin, xmax, ymax)`).
+#' @param img An image to be geotagged. It can be a local file or an online
+#'   file (e.g. "https://i.imgur.com/6yHmlwT.jpeg"). The following image
+#'   extensions are accepted:
 #'   * `png`
 #'   * `jpeg/jpg`
 #'   * `tiff/tif`

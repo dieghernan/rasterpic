@@ -47,6 +47,37 @@ rpic_crop <- function(crop, box_marg, new_rast) {
 }
 
 rpic_read <- function(img, crs = NA) {
+  # Try to check if it is a local image or http
+  if (grepl("^http:|^https:", img)) {
+    # Try to download
+    tmp <- tempfile(fileext = paste0(".", tools::file_ext(img)))
+
+
+    err_dwnload <- tryCatch(
+      download.file(img, tmp,
+        quiet = TRUE,
+        mode = "wb"
+      ),
+      warning = function(x) {
+        return(TRUE)
+      },
+      error = function(x) {
+        return(TRUE)
+      }
+    )
+
+    # On error
+    if (err_dwnload) {
+      stop("Cannot reach img on url ",
+        img,
+        call. = FALSE
+      )
+    }
+
+    # If everything is well, rename img
+    img <- tmp
+  }
+
   if (!file.exists(img)) stop("'img' file not found", call. = FALSE)
 
   # pngs

@@ -23,11 +23,12 @@ rasterpic_img(
 (\strong{sf} package).
 \item A \code{SpatRaster}, \code{SpatVector} or \code{SpatExtent} object (\strong{terra} package).
 \item A numeric vector of length 4 with the extent to be used for geotagging (
-i.e. c(\code{xmin}, \code{ymin}, \code{xmax}, \code{ymax}))
+i.e. \code{c(xmin, ymin, xmax, ymax)}).
 }}
 
-\item{img}{An image to be geotagged. The following image extensions are
-accepted:
+\item{img}{An image to be geotagged. It can be a local file or an online
+file (e.g. "https://i.imgur.com/6yHmlwT.jpeg"). The following image
+extensions are accepted:
 \itemize{
 \item \code{png}
 \item \code{jpeg/jpg}
