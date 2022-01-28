@@ -22,8 +22,12 @@ jobs:
           extra-packages: |
             any::rcmdcheck
             any::pkgdown
-            any::tmap
             any::ggplot2
+            any::tmap
+            any::mapsf
+            any::maptiles
+            local::.
+            paleolimbot/ggspatial
             dieghernan/pkgdev
           needs: website
 

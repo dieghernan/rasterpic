@@ -1,5 +1,5 @@
 ---
-title: "Plotting rasters"
+title: "Plotting terra rasters"
 ---
 
 ```{r, include = FALSE}
@@ -13,7 +13,8 @@ knitr::opts_chunk$set(
 )
 ```
 
-This article shows how to plot the results of `rasterpic_img()`
+This article shows how to plot the results of `rasterpic_img()` with several 
+packages.
 
 ## Base plots
 
@@ -38,9 +39,6 @@ quiet = TRUE
 
 uk_img <- rasterpic_img(uk, img, mask = TRUE, inverse = TRUE)
 plotRGB(uk_img)
-
-
-
 ```
 
 ## With tmap
@@ -69,6 +67,37 @@ library(ggspatial)
 
 ggplot() +
   layer_spatial(uk_img)
+```
 
+## With mapsf
+
+**mapsf**, the replacement of **cartography**, also provides this functionality:
+
+```{r}
+library(mapsf)
+
+mf_raster(uk_img)
+mf_scale()
+mf_inset_on(x = "worldmap", pos = "topright")
+mf_worldmap(uk)
+mf_inset_off()
+```
+
+## With maptiles
+
+**maptiles** is a interesting package that provides the ability of downloading
+map tiles from different providers. It also has a specific function for 
+plotting  **terra** rasters:
+
+```{r}
+
+library(maptiles)
+
+other_tile <- get_tiles(uk, crop = TRUE, zoom = 6)
+
+other_tile_crop <- terra::crop(other_tile, uk_img)
+
+plot_tiles(other_tile_crop)
+plot_tiles(uk_img, add = TRUE)
 ```
 
