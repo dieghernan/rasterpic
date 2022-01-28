@@ -10,5 +10,6 @@ bibentry(
   version = meta$Version,
   doi = "10.5281/zenodo.5910095",
   url = unlist(strsplit(meta$URL, ","))[1],
-  abstract = abs
+  abstract = abs,
+  key = "R-rasterpic"
 )
