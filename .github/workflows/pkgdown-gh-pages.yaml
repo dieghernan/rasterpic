@@ -24,7 +24,11 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2-branch
         with:
-          extra-packages: any::pkgdown, local::.
+          extra-packages:
+            any::pkgdown
+            any::ggplot2
+            any::tmap
+            paleolimbot/ggspatial
           needs: website
 
       - name: Build site
