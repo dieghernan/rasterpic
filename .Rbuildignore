@@ -12,6 +12,7 @@
 ^CRAN-SUBMISSION$
 ^.github$
 ^pkgdown$
+^vignettes/articles$
 ^rasterpic\.Rcheck$
 ^rasterpic.*\.tar\.gz$
 ^rasterpic.*\.tgz$

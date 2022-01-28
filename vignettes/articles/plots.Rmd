@@ -1,0 +1,74 @@
+---
+title: "Plotting rasters"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE,
+  dpi = 300,
+  out.width = "100%"
+)
+```
+
+This article shows how to plot the results of `rasterpic_img()`
+
+## Base plots
+
+The most straightforward option is to use the base `plot()` methods provided by
+the package **terra** (`terra::plotRGB()`)
+
+```{r setup}
+
+library(rasterpic)
+library(terra)
+
+# The flag of the United Kingdom
+img <- system.file("img/UK_flag.png",
+  package = "rasterpic"
+)
+
+uk <- sf::st_read(system.file("gpkg/UK.gpkg",
+  package = "rasterpic"
+),
+quiet = TRUE
+)
+
+uk_img <- rasterpic_img(uk, img, mask = TRUE, inverse = TRUE)
+plotRGB(uk_img)
+
+
+
+```
+
+## With tmap
+
+**tmap** can be also used to create great maps:
+
+```{r}
+
+library(tmap)
+
+tm_shape(uk_img) +
+  tm_graticules() +
+  tm_rgb()
+```
+
+## With ggplot2 + ggspatial
+
+The dev version of **ggspatial** provides also support for **terra** rasters:
+
+```{r}
+
+# devtools::install_github("paleolimbot/ggspatial")
+
+library(ggplot2)
+library(ggspatial)
+
+ggplot() +
+  layer_spatial(uk_img)
+
+```
+
