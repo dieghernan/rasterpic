@@ -51,9 +51,17 @@ install.packages("rasterpic")
 
 ## Example
 
-This package allows you to create cool maps by using a pre-existing
-spatial object (`sf` or `SpatRaster`) and geotagging a regular image
-using the metadata of the object.
+This package allows you to create cool maps by using a wide variety of
+objects:
+
+-   Spatial object of the **sf** package: `sf`, `sfc`, `sfg`or `bbox`.
+
+-   Spatial objects of the **terra** package: `SpatRaster`,
+    `SpatVector`, `SpatExtent`.
+
+-   A vector of coordinates with the form `c(xmin, ymin, xmax, yman)`
+
+An example using a `sf` object:
 
 ``` r
 library(rasterpic)
@@ -101,7 +109,6 @@ We can also play with other parameters, as well as modifying the
 alignment of the image with respect to the object:
 
 ``` r
-
 # Align, crop and mask
 uk_flag2 <- rasterpic_img(uk, img, halign = 0.2, crop = TRUE, mask = TRUE)
 
@@ -116,9 +123,9 @@ plot(st_geometry(uk), col = NA, border = "black", add = TRUE)
 
 **rasterpic** can parse the following image formats:
 
-  - `png` files.
-  - `jpg/jpeg` files.
-  - `tif/tiff` files.
+-   `png` files.
+-   `jpg/jpeg` files.
+-   `tif/tiff` files.
 
 ## Citation
 
@@ -135,7 +142,7 @@ A BibTeX entry for LaTeX users is:
       title = {rasterpic: Create a Spatial Raster from Plain Images},
       author = {Diego Hernangómez},
       year = {2022},
-      version = {0.1.0},
+      version = {0.1.0.9000},
       doi = {10.5281/zenodo.5910095},
       url = {https://dieghernan.github.io/rasterpic/},
       abstract = {Creates a spatial raster, as the ones provided by 'terra', from regular pictures.},

@@ -46,7 +46,38 @@ rpic_crop <- function(crop, box_marg, new_rast) {
   return(new_rast)
 }
 
-rpic_read <- function(img, crs) {
+rpic_read <- function(img, crs = NA) {
+  # Try to check if it is a local image or http
+  if (grepl("^http:|^https:", img)) {
+    # Try to download
+    tmp <- tempfile(fileext = paste0(".", tools::file_ext(img)))
+
+
+    err_dwnload <- tryCatch(
+      download.file(img, tmp,
+        quiet = TRUE,
+        mode = "wb"
+      ),
+      warning = function(x) {
+        return(TRUE)
+      },
+      error = function(x) {
+        return(TRUE)
+      }
+    )
+
+    # On error
+    if (err_dwnload) {
+      stop("Cannot reach img on url ",
+        img,
+        call. = FALSE
+      )
+    }
+
+    # If everything is well, rename img
+    img <- tmp
+  }
+
   if (!file.exists(img)) stop("'img' file not found", call. = FALSE)
 
   # pngs
@@ -64,10 +95,7 @@ rpic_read <- function(img, crs) {
       }
     }
 
-
-    rast <- terra::rast(pngfile,
-      crs = crs
-    )
+    rast <- terra::rast(pngfile)
 
     terra::crs(rast) <- crs
 
@@ -84,4 +112,79 @@ rpic_read <- function(img, crs) {
       call. = FALSE
     )
   }
+}
+
+
+rpic_input <- function(x, crs) {
+  # Convert sf to SpatVector
+
+  if (inherits(x, "sf") || inherits(x, "sfc")) {
+    x <- terra::vect(x)
+  }
+
+  if (inherits(x, "SpatRaster") | inherits(x, "SpatVector")) {
+    if (terra::is.lonlat(x)) {
+      message(
+        "Warning: x has geographic coordinates. ",
+        "Assuming planar coordinates."
+      )
+    }
+
+    crs <- terra::crs(x)
+
+    box <- c(
+      terra::xmin(x),
+      terra::ymin(x),
+      terra::xmax(x),
+      terra::ymax(x)
+    )
+  } else if (inherits(x, "sfg")) {
+    x <- terra::vect(x)
+    box <- c(
+      terra::xmin(x),
+      terra::ymin(x),
+      terra::xmax(x),
+      terra::ymax(x)
+    )
+  } else if (inherits(x, "SpatExtent")) {
+    box <- c(
+      terra::xmin(x),
+      terra::ymin(x),
+      terra::xmax(x),
+      terra::ymax(x)
+    )
+  } else if (inherits(x, "bbox") & length(x) == 4) {
+    box <- c(
+      x["xmin"],
+      x["ymin"],
+      x["xmax"],
+      x["ymax"]
+    )
+    box <- unname(box)
+  } else if (is.numeric(x) & length(x) == 4) {
+    box <- c(
+      x[1],
+      x[2],
+      x[3],
+      x[4]
+    )
+  } else {
+    stop("Don't know how to extract a bounding box from 'x'")
+  }
+
+
+
+  if (missing(crs)) {
+    message("'crs' is NA.")
+    crs <- NA
+  }
+
+  # Output object is a list
+  result <- list(
+    x = x,
+    box = box,
+    crs = crs
+  )
+
+  return(result)
 }

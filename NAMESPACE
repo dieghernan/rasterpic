@@ -2,3 +2,4 @@
 
 export(asp_ratio)
 export(rasterpic_img)
+importFrom(utils,download.file)

@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/dieghernan/rasterpic",
   "issueTracker": "https://github.com/dieghernan/rasterpic/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.1.0",
+  "version": "0.1.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -148,7 +148,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "2011.945KB",
+  "fileSize": "1846.047KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -167,6 +167,7 @@
       "sameAs": "https://doi.org/10.5281/zenodo.5910095"
     }
   ],
+  "releaseNotes": "https://github.com/dieghernan/rasterpic/blob/master/NEWS.md",
   "readme": "https://github.com/dieghernan/rasterpic/blob/main/README.md",
   "contIntegration": ["https://github.com/dieghernan/rasterpic/actions/workflows/check-full.yaml", "https://app.codecov.io/gh/dieghernan/rasterpic"],
   "developmentStatus": "https://www.repostatus.org/#active",

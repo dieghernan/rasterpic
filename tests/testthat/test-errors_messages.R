@@ -3,7 +3,7 @@ test_that("Error on bad x formatting", {
   img <- system.file("img/UK_flag.png", package = "rasterpic")
   expect_error(
     rasterpic_img(x, img),
-    "x should be a sf/sfc or a SpatRaster object"
+    "Don't know how to extract a bounding box from 'x'"
   )
 })
 
@@ -67,6 +67,8 @@ test_that("Message in lonlat sf", {
 })
 
 test_that("Message in lonlat raster", {
+  skip_on_cran()
+
   x <- terra::rast(system.file("tiff/elev.tiff", package = "rasterpic"))
   x <- terra::project(x, "epsg:4326")
   img <- system.file("img/UK_flag.png", package = "rasterpic")
@@ -81,6 +83,8 @@ test_that("Message in lonlat raster", {
 
 
 test_that("Message in mask raster", {
+  skip_on_cran()
+
   x <- terra::rast(system.file("tiff/elev.tiff", package = "rasterpic"))
   x <- terra::project(x, "epsg:3857")
   img <- system.file("img/UK_flag.png", package = "rasterpic")
@@ -88,10 +92,35 @@ test_that("Message in mask raster", {
 
   expect_message(
     rasterpic_img(x, img, mask = TRUE),
-    "'mask' only available when 'x' is an 'sf/sfc' object"
+    "'mask' only available when 'x' is an 'sf/sfc/SpatVector' object"
   )
 
   res2 <- rasterpic_img(x, img, mask = TRUE)
+
+  expect_true(terra::ext(res1) == terra::ext(res2))
+  expect_true(terra::crs(res1) == terra::crs(res2))
+  v1 <- terra::values(res1)
+  v2 <- terra::values(res2)
+
+  expect_identical(v1, v2)
+})
+
+test_that("Message in mask raster with SpatExtent", {
+  x <- terra::rast(system.file("tiff/elev.tiff", package = "rasterpic"))
+  x <- terra::project(x, "epsg:3857")
+  img <- system.file("img/UK_flag.png", package = "rasterpic")
+
+  extent <- terra::ext(x)
+  crs <- terra::crs(x)
+
+  res1 <- rasterpic_img(extent, img, crs = crs)
+
+  expect_message(
+    rasterpic_img(extent, img, mask = TRUE, crs = crs),
+    "'mask' only available when 'x' is an 'sf/sfc/SpatVector' object"
+  )
+
+  res2 <- rasterpic_img(extent, img, mask = TRUE, crs = crs)
 
   expect_true(terra::ext(res1) == terra::ext(res2))
   expect_true(terra::crs(res1) == terra::crs(res2))

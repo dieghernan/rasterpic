@@ -12,15 +12,23 @@ rasterpic_img(
   expand = 0,
   crop = FALSE,
   mask = FALSE,
-  inverse = FALSE
+  inverse = FALSE,
+  crs
 )
 }
 \arguments{
-\item{x}{A \code{sf} or \code{sfc} object (\strong{sf} package) or a
-\code{SpatRaster} object (\strong{terra} package).}
+\item{x}{It could be
+\itemize{
+\item A \code{sf}, \code{sfc}, \code{sfg} or bounding box (see \code{\link[sf:st_bbox]{sf::st_bbox()}}) object
+(\strong{sf} package).
+\item A \code{SpatRaster}, \code{SpatVector} or \code{SpatExtent} object (\strong{terra} package).
+\item A numeric vector of length 4 with the extent to be used for geotagging (
+i.e. \code{c(xmin, ymin, xmax, ymax)}).
+}}
 
-\item{img}{An image to be geotagged. The following image extensions are
-accepted:
+\item{img}{An image to be geotagged. It can be a local file or an online
+file (e.g. "https://i.imgur.com/6yHmlwT.jpeg"). The following image
+extensions are accepted:
 \itemize{
 \item \code{png}
 \item \code{jpeg/jpg}
@@ -47,6 +55,11 @@ for details. This option is only valid if \code{x} is a \code{sf/sfc} object.}
 
 \item{inverse}{Logical. It affects only if \code{mask = TRUE}. If \code{TRUE}, areas on
 the raster that do not overlap with \code{x} are masked.}
+
+\item{crs}{Character string describing a coordinate reference system.
+This parameter would only affect if \code{x} does not present a Coordinate
+Reference System (e.g. when \code{x} is a \code{SpatExtent}, \code{sfg} \code{bbox} or a
+vector of coordinates). See \strong{Details}}
 }
 \value{
 A \code{SpatRaster} object.
@@ -57,6 +70,11 @@ Geotags an image based on the coordinates of a given spatial object.
 \details{
 The function preserves the Coordinate Reference System of the \code{x} object. For
 optimal results do not use geographic coordinates (longitude/latitude).
+
+\code{crs} can be in a WKT format, as a "authority:number" code such as
+\code{"EPSG:4326"}, or a PROJ-string format such as "+proj=utm +zone=12". It can
+be also retrieved as \code{sf::st_crs(25830)$wkt}. See \code{value} and \strong{Notes} on
+\code{\link[terra:crs]{terra::crs()}}.
 }
 \examples{
 \donttest{
@@ -170,4 +188,7 @@ plot(x$geom,
   lwd = 2
 )
 }
+}
+\seealso{
+\code{\link[sf:st_crs]{sf::st_crs()}}, \code{\link[sf:st_bbox]{sf::st_bbox()}}, \code{\link[terra:crs]{terra::crs()}}.
 }

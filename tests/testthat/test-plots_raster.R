@@ -1,4 +1,5 @@
 test_fun_rast <- function(x, prefix, ...) {
+  skip_on_cran()
   images <- list.files(system.file("img", package = "rasterpic"),
     full.names = TRUE
   )
@@ -21,6 +22,7 @@ test_fun_rast <- function(x, prefix, ...) {
 
 test_that("Raster plots regular", {
   skip_if_not_installed("vdiffr")
+  skip_on_cran()
 
   x <- terra::rast(system.file("tiff/elev.tiff", package = "rasterpic"))
   x <- terra::project(x, "epsg:3857")
@@ -30,6 +32,7 @@ test_that("Raster plots regular", {
 
 test_that("Raster plots expand", {
   skip_if_not_installed("vdiffr")
+  skip_on_cran()
 
   x <- terra::rast(system.file("tiff/elev.tiff", package = "rasterpic"))
   x <- terra::project(x, "epsg:3857")
@@ -40,6 +43,7 @@ test_that("Raster plots expand", {
 
 test_that("Raster plots aligns", {
   skip_if_not_installed("vdiffr")
+  skip_on_cran()
 
   x <- terra::rast(system.file("tiff/elev.tiff", package = "rasterpic"))
   x <- terra::project(x, "epsg:3857")
@@ -52,6 +56,7 @@ test_that("Raster plots aligns", {
 
 test_that("Raster plots crop", {
   skip_if_not_installed("vdiffr")
+  skip_on_cran()
 
   x <- terra::rast(system.file("tiff/elev.tiff", package = "rasterpic"))
   x <- terra::project(x, "epsg:3857")

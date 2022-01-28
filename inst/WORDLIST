@@ -1,6 +1,8 @@
 CMD
 Geotags
 ORCID
+PROJ
+WKT
 codecov
 dev
 dieghernan
@@ -12,11 +14,15 @@ ggplot
 ggspatial
 github
 https
+imgur
 io
+jpeg
 mapsf
 maptiles
-pre
+proj
 rasters
 terra
 tmap
+utm
+yHmlwT
 zenodo
