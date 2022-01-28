@@ -23,6 +23,8 @@ jobs:
             any::pkgdown
             any::ggplot2
             any::tmap
+            any::mapsf
+            any::maptiles
             local::.
             paleolimbot/ggspatial
           needs: website

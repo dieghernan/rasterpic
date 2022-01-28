@@ -38,9 +38,6 @@ quiet = TRUE
 
 uk_img <- rasterpic_img(uk, img, mask = TRUE, inverse = TRUE)
 plotRGB(uk_img)
-
-
-
 ```
 
 ## With tmap
@@ -69,6 +66,30 @@ library(ggspatial)
 
 ggplot() +
   layer_spatial(uk_img)
+```
 
+## With mapsf
+
+```{r}
+library(mapsf)
+
+mf_raster(uk_img)
+mf_scale()
+mf_inset_on(x = "worldmap", pos = "topright")
+mf_worldmap(uk)
+mf_inset_off()
+```
+## With maptiles
+
+```{r}
+
+library(maptiles)
+
+other_tile <- get_tiles(uk, crop = TRUE, zoom = 6)
+
+other_tile_crop <- terra::crop(other_tile, uk_img)
+
+plot_tiles(other_tile_crop)
+plot_tiles(uk_img, add = TRUE)
 ```
 
