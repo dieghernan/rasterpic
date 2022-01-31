@@ -16,3 +16,4 @@
 ^rasterpic\.Rcheck$
 ^rasterpic.*\.tar\.gz$
 ^rasterpic.*\.tgz$
+^\.github$
