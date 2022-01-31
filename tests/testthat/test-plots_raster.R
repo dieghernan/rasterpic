@@ -1,5 +1,4 @@
 test_fun_rast <- function(x, prefix, ...) {
-  skip_on_cran()
   images <- list.files(system.file("img", package = "rasterpic"),
     full.names = TRUE
   )

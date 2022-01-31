@@ -52,7 +52,7 @@ rpic_read <- function(img, crs = NA) {
     # Try to download
     tmp <- tempfile(fileext = paste0(".", tools::file_ext(img)))
 
-
+    # nocov start
     err_dwnload <- tryCatch(
       download.file(img, tmp,
         quiet = TRUE,
@@ -73,7 +73,7 @@ rpic_read <- function(img, crs = NA) {
         call. = FALSE
       )
     }
-
+    # nocov end
     # If everything is well, rename img
     img <- tmp
   }
