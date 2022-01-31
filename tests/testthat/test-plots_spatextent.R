@@ -1,5 +1,4 @@
 test_fun_rast <- function(x, prefix, ...) {
-  skip_on_cran()
   images <- list.files(system.file("img", package = "rasterpic"),
     full.names = TRUE
   )
@@ -24,7 +23,7 @@ test_that("SpatExtent plots regular", {
   skip_if_not_installed("vdiffr")
   skip_on_cran()
 
-  x <- terra::rast(system.file("tiff/elev.tiff", package = "rasterpic"))
+  x <- testhelp_load_rast(system.file("tiff/elev.tiff", package = "rasterpic"))
   x <- terra::project(x, "epsg:3857")
   x <- terra::ext(x)
 
@@ -35,7 +34,7 @@ test_that("SpatExtent plots expand", {
   skip_if_not_installed("vdiffr")
   skip_on_cran()
 
-  x <- terra::rast(system.file("tiff/elev.tiff", package = "rasterpic"))
+  x <- testhelp_load_rast(system.file("tiff/elev.tiff", package = "rasterpic"))
   x <- terra::project(x, "epsg:3857")
   x <- terra::ext(x)
 
@@ -47,7 +46,7 @@ test_that("SpatExtent plots aligns", {
   skip_if_not_installed("vdiffr")
   skip_on_cran()
 
-  x <- terra::rast(system.file("tiff/elev.tiff", package = "rasterpic"))
+  x <- testhelp_load_rast(system.file("tiff/elev.tiff", package = "rasterpic"))
   x <- terra::project(x, "epsg:3857")
   x <- terra::ext(x)
 
@@ -61,7 +60,7 @@ test_that("SpatExtent plots crop", {
   skip_if_not_installed("vdiffr")
   skip_on_cran()
 
-  x <- terra::rast(system.file("tiff/elev.tiff", package = "rasterpic"))
+  x <- testhelp_load_rast(system.file("tiff/elev.tiff", package = "rasterpic"))
   x <- terra::project(x, "epsg:3857")
   x <- terra::ext(x)
 

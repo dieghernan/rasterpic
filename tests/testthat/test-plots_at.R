@@ -1,5 +1,4 @@
 test_fun <- function(x, prefix, ...) {
-  skip_on_cran()
   images <- list.files(system.file("img", package = "rasterpic"),
     full.names = TRUE
   )
@@ -26,7 +25,7 @@ test_fun <- function(x, prefix, ...) {
 
 test_that("Austria plots regular", {
   skip_if_not_installed("vdiffr")
-
+  skip_on_cran()
   x <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
@@ -35,6 +34,7 @@ test_that("Austria plots regular", {
 
 test_that("Austria plots expand", {
   skip_if_not_installed("vdiffr")
+  skip_on_cran()
 
   x <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE
@@ -45,7 +45,7 @@ test_that("Austria plots expand", {
 
 test_that("Austria plots aligns", {
   skip_if_not_installed("vdiffr")
-
+  skip_on_cran()
   x <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
@@ -57,7 +57,7 @@ test_that("Austria plots aligns", {
 
 test_that("Austria plots crop and mask", {
   skip_if_not_installed("vdiffr")
-
+  skip_on_cran()
   x <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE
   )

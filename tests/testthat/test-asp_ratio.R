@@ -1,5 +1,5 @@
 test_that("asp_ratio for raster", {
-  x <- terra::rast(system.file("tiff/elev.tiff", package = "rasterpic"))
+  x <- testhelp_load_rast(system.file("tiff/elev.tiff", package = "rasterpic"))
   expect_s4_class(x, "SpatRaster")
   expect_type(asp_ratio(x), "double")
   expect_length(asp_ratio(x), 1)

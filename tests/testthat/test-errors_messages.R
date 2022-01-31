@@ -67,9 +67,7 @@ test_that("Message in lonlat sf", {
 })
 
 test_that("Message in lonlat raster", {
-  skip_on_cran()
-
-  x <- terra::rast(system.file("tiff/elev.tiff", package = "rasterpic"))
+  x <- testhelp_load_rast(system.file("tiff/elev.tiff", package = "rasterpic"))
   x <- terra::project(x, "epsg:4326")
   img <- system.file("img/UK_flag.png", package = "rasterpic")
   expect_message(
@@ -83,9 +81,7 @@ test_that("Message in lonlat raster", {
 
 
 test_that("Message in mask raster", {
-  skip_on_cran()
-
-  x <- terra::rast(system.file("tiff/elev.tiff", package = "rasterpic"))
+  x <- testhelp_load_rast(system.file("tiff/elev.tiff", package = "rasterpic"))
   x <- terra::project(x, "epsg:3857")
   img <- system.file("img/UK_flag.png", package = "rasterpic")
   res1 <- rasterpic_img(x, img)
@@ -106,7 +102,7 @@ test_that("Message in mask raster", {
 })
 
 test_that("Message in mask raster with SpatExtent", {
-  x <- terra::rast(system.file("tiff/elev.tiff", package = "rasterpic"))
+  x <- testhelp_load_rast(system.file("tiff/elev.tiff", package = "rasterpic"))
   x <- terra::project(x, "epsg:3857")
   img <- system.file("img/UK_flag.png", package = "rasterpic")
 

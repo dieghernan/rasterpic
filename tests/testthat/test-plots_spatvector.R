@@ -1,5 +1,4 @@
 test_fun_spat <- function(x, prefix, ...) {
-  skip_on_cran()
   images <- list.files(system.file("img", package = "rasterpic"),
     full.names = TRUE
   )
@@ -26,6 +25,7 @@ test_fun_spat <- function(x, prefix, ...) {
 
 test_that("SpatVector plots regular", {
   skip_if_not_installed("vdiffr")
+  skip_on_cran()
 
   x <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE
@@ -38,6 +38,7 @@ test_that("SpatVector plots regular", {
 
 test_that("SpatVector plots expand", {
   skip_if_not_installed("vdiffr")
+  skip_on_cran()
 
   x <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE
@@ -51,6 +52,7 @@ test_that("SpatVector plots expand", {
 
 test_that("SpatVector plots aligns", {
   skip_if_not_installed("vdiffr")
+  skip_on_cran()
 
   x <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE
@@ -66,6 +68,7 @@ test_that("SpatVector plots aligns", {
 
 test_that("SpatVector plots crop and mask", {
   skip_if_not_installed("vdiffr")
+  skip_on_cran()
 
   x <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE

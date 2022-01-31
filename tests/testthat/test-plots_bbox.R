@@ -1,5 +1,4 @@
 test_fun_bbox <- function(x, prefix, ...) {
-  skip_on_cran()
   images <- list.files(system.file("img", package = "rasterpic"),
     full.names = TRUE
   )
@@ -26,6 +25,7 @@ test_fun_bbox <- function(x, prefix, ...) {
 
 test_that("bbox plots regular", {
   skip_if_not_installed("vdiffr")
+  skip_on_cran()
 
   x <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE
@@ -35,6 +35,7 @@ test_that("bbox plots regular", {
 
 test_that("bbox plots expand", {
   skip_if_not_installed("vdiffr")
+  skip_on_cran()
 
   x <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE
@@ -45,6 +46,7 @@ test_that("bbox plots expand", {
 
 test_that("bbox plots aligns", {
   skip_if_not_installed("vdiffr")
+  skip_on_cran()
 
   x <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE
@@ -57,6 +59,7 @@ test_that("bbox plots aligns", {
 
 test_that("bbox plots crop", {
   skip_if_not_installed("vdiffr")
+  skip_on_cran()
 
   x <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE
