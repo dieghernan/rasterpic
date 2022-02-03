@@ -18,6 +18,24 @@ repo:
 
 development:
   mode: auto
+  
+navbar:
+  structure:
+    left:
+      - intro
+      - reference
+      - articles
+      - posts
+      - news
+    right:
+      - search
+      - github
+  components:
+    posts:
+      text: Blog
+      menu:
+        - text: 'Beautiful Maps with R (IV): Fun with flags revisited'
+          href: 'https://dieghernan.github.io/202201_maps-flags/'
 
 authors:
   Diego Hernangómez:
