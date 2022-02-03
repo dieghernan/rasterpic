@@ -3,23 +3,6 @@ url: 'https://dieghernan.github.io/rasterpic'
 navbar:
   type: dark
   bg: primary
-
-template:
-  bootstrap: 5
-  params:
-    bootswatch: sketchy
-  opengraph:
-    twitter:
-      creator: "@dhernangomez"
-      card: summary_large_image
-
-repo:
-  branch: main
-
-development:
-  mode: auto
-  
-navbar:
   structure:
     left:
       - intro
@@ -36,6 +19,25 @@ navbar:
       menu:
         - text: 'Beautiful Maps with R (IV): Fun with flags revisited'
           href: 'https://dieghernan.github.io/202201_maps-flags/'
+        - text: 'Quick Brazil'
+          href: 'https://twitter.com/dhernangomez/status/1486666356544225281?s=21'
+  
+
+template:
+  bootstrap: 5
+  params:
+    bootswatch: sketchy
+  opengraph:
+    twitter:
+      creator: "@dhernangomez"
+      card: summary_large_image
+
+repo:
+  branch: main
+
+development:
+  mode: auto
+  
 
 authors:
   Diego Hernangómez:
