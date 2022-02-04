@@ -187,35 +187,3 @@ references:
   year: '2022'
   url: https://CRAN.R-project.org/package=vdiffr
   version: '>= 1.0.0'
-- type: software
-  title: tmap
-  abstract: 'tmap: Thematic Maps'
-  notes: Suggests
-  authors:
-  - family-names: Tennekes
-    given-names: Martijn
-    email: mtennekes@gmail.com
-  year: '2022'
-  url: https://CRAN.R-project.org/package=tmap
-- type: software
-  title: mapsf
-  abstract: 'mapsf: Thematic Cartography'
-  notes: Suggests
-  authors:
-  - family-names: Giraud
-    given-names: Timothée
-    email: timothee.giraud@cnrs.fr
-    orcid: https://orcid.org/0000-0002-1932-3323
-  year: '2022'
-  url: https://CRAN.R-project.org/package=mapsf
-- type: software
-  title: maptiles
-  abstract: 'maptiles: Download and Display Map Tiles'
-  notes: Suggests
-  authors:
-  - family-names: Giraud
-    given-names: Timothée
-    email: timothee.giraud@cnrs.fr
-    orcid: https://orcid.org/0000-0002-1932-3323
-  year: '2022'
-  url: https://CRAN.R-project.org/package=maptiles
