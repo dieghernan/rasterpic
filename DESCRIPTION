@@ -4,7 +4,7 @@ Version: 0.1.0.9000
 Authors@R: 
     person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-8457-4658"))
-Description: Creates a spatial raster, as the ones provided by 'terra',
+Description: Create a spatial raster, as the ones provided by 'terra',
     from regular pictures.
 License: MIT + file LICENSE
 URL: https://dieghernan.github.io/rasterpic/,
