@@ -20,7 +20,10 @@ Suggests:
     knitr,
     rmarkdown,
     testthat (>= 3.0.0),
-    vdiffr (>= 1.0.0)
+    vdiffr (>= 1.0.0),
+    tmap,
+    mapsf,
+    maptiles
 VignetteBuilder: 
     knitr
 Config/testthat/edition: 3

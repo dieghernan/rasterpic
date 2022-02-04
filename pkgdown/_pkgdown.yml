@@ -19,26 +19,37 @@ navbar:
       menu:
         - text: 'Beautiful Maps with R (IV): Fun with flags revisited'
           href: 'https://dieghernan.github.io/202201_maps-flags/'
-        - text: 'Quick Brazil'
+        - text: Quick Brazil
           href: 'https://twitter.com/dhernangomez/status/1486666356544225281?s=21'
-  
-
+          
 template:
   bootstrap: 5
   params:
     bootswatch: sketchy
   opengraph:
     twitter:
-      creator: "@dhernangomez"
+      creator: '@dhernangomez'
       card: summary_large_image
 
 repo:
   branch: main
-
 development:
   mode: auto
-  
-
 authors:
   Diego Hernangómez:
     href: 'https://dieghernan.github.io/'
+reference:
+  - title: Functions
+    contents:
+      - rasterpic_img
+      - asp_ratio
+  - title: Plotting
+    desc: Functions from other packages from plotting SpatRasters
+    contents:
+      - 'terra::plotRGB()'
+      - 'tmap::tm_rgb()'
+      - 'mapsf::mf_raster()'
+      - 'maptiles::plot_tiles()'
+  - title: About the package
+    contents:
+      - mapSpain-package
