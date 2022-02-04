@@ -52,4 +52,4 @@ reference:
       - 'maptiles::plot_tiles()'
   - title: About the package
     contents:
-      - mapSpain-package
+      - rasterpic-package
