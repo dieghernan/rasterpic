@@ -10,8 +10,7 @@ license: MIT
 title: 'rasterpic: Create a Spatial Raster from Plain Images'
 version: 0.1.0.9000
 doi: 10.5281/zenodo.5910095
-abstract: Creates a spatial raster, as the ones provided by 'terra', from regular
-  pictures.
+abstract: Create a spatial raster, as the ones provided by 'terra', from regular pictures.
 authors:
 - family-names: Hernangómez
   given-names: Diego
@@ -29,7 +28,7 @@ preferred-citation:
   version: 0.1.0.9000
   doi: 10.5281/zenodo.5910095
   url: https://dieghernan.github.io/rasterpic/
-  abstract: Creates a spatial raster, as the ones provided by 'terra', from regular
+  abstract: Create a spatial raster, as the ones provided by 'terra', from regular
     pictures.
 repository: https://CRAN.R-project.org/package=rasterpic
 repository-code: https://github.com/dieghernan/rasterpic

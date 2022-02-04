@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-Creates a spatial raster, as the ones provided by 'terra', from regular pictures.
+Create a spatial raster, as the ones provided by 'terra', from regular pictures.
 }
 \seealso{
 Useful links:

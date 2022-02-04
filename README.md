@@ -146,7 +146,7 @@ A BibTeX entry for LaTeX users is:
       version = {0.1.0.9000},
       doi = {10.5281/zenodo.5910095},
       url = {https://dieghernan.github.io/rasterpic/},
-      abstract = {Creates a spatial raster, as the ones provided by 'terra', from regular pictures.},
+      abstract = {Create a spatial raster, as the ones provided by 'terra', from regular pictures.},
     }
 
 ## Contribute

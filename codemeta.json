@@ -2,7 +2,7 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "rasterpic",
-  "description": "Creates a spatial raster, as the ones provided by 'terra', from regular pictures.",
+  "description": "Create a spatial raster, as the ones provided by 'terra', from regular pictures.",
   "name": "rasterpic: Create a Spatial Raster from Plain Images",
   "relatedLink": ["https://dieghernan.github.io/rasterpic/", "https://CRAN.R-project.org/package=rasterpic"],
   "codeRepository": "https://github.com/dieghernan/rasterpic",
@@ -148,7 +148,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "2037.556KB",
+  "fileSize": "2037.553KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
