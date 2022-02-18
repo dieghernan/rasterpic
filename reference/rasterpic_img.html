@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">rasterpic</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,6 +28,13 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/plots.html">Plotting terra rasters</a>
+  </div>
+</li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-blog">Blog</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-blog">
+    <a class="external-link dropdown-item" href="https://dieghernan.github.io/202201_maps-flags/">Beautiful Maps with R (IV): Fun with flags revisited</a>
+    <a class="external-link dropdown-item" href="https://twitter.com/dhernangomez/status/1486666356544225281?s=21">Quick Brazil</a>
   </div>
 </li>
 <li class="nav-item">
@@ -68,18 +75,24 @@
   expand <span class="op">=</span> <span class="fl">0</span>,
   crop <span class="op">=</span> <span class="cn">FALSE</span>,
   mask <span class="op">=</span> <span class="cn">FALSE</span>,
-  inverse <span class="op">=</span> <span class="cn">FALSE</span>
+  inverse <span class="op">=</span> <span class="cn">FALSE</span>,
+  <span class="va">crs</span>
 <span class="op">)</span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>x</dt>
-<dd><p>A <code>sf</code> or <code>sfc</code> object (<strong>sf</strong> package) or a
-<code>SpatRaster</code> object (<strong>terra</strong> package).</p></dd>
+<dd><p>It could be</p><ul><li><p>A <code>sf</code>, <code>sfc</code>, <code>sfg</code> or bounding box (see <code><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">sf::st_bbox()</a></code>) object
+(<strong>sf</strong> package).</p></li>
+<li><p>A <code>SpatRaster</code>, <code>SpatVector</code> or <code>SpatExtent</code> object (<strong>terra</strong> package).</p></li>
+<li><p>A numeric vector of length 4 with the extent to be used for geotagging (
+i.e. <code>c(xmin, ymin, xmax, ymax)</code>).</p></li>
+</ul></dd>
 <dt>img</dt>
-<dd><p>An image to be geotagged. The following image extensions are
-accepted:</p><ul><li><p><code>png</code></p></li>
+<dd><p>An image to be geotagged. It can be a local file or an online
+file (e.g. "https://i.imgur.com/6yHmlwT.jpeg"). The following image
+extensions are accepted:</p><ul><li><p><code>png</code></p></li>
 <li><p><code>jpeg/jpg</code></p></li>
 <li><p><code>tiff/tif</code></p></li>
 </ul></dd>
@@ -104,6 +117,11 @@ for details. This option is only valid if <code>x</code> is a <code>sf/sfc</code
 <dt>inverse</dt>
 <dd><p>Logical. It affects only if <code>mask = TRUE</code>. If <code>TRUE</code>, areas on
 the raster that do not overlap with <code>x</code> are masked.</p></dd>
+<dt>crs</dt>
+<dd><p>Character string describing a coordinate reference system.
+This parameter would only affect if <code>x</code> does not present a Coordinate
+Reference System (e.g. when <code>x</code> is a <code>SpatExtent</code>, <code>sfg</code> <code>bbox</code> or a
+vector of coordinates). See <strong>Details</strong></p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -113,6 +131,14 @@ the raster that do not overlap with <code>x</code> are masked.</p></dd>
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>The function preserves the Coordinate Reference System of the <code>x</code> object. For
 optimal results do not use geographic coordinates (longitude/latitude).</p>
+<p><code>crs</code> can be in a WKT format, as a "authority:number" code such as
+<code>"EPSG:4326"</code>, or a PROJ-string format such as "+proj=utm +zone=12". It can
+be also retrieved as <code>sf::st_crs(25830)$wkt</code>. See <code>value</code> and <strong>Notes</strong> on
+<code><a href="https://rdrr.io/pkg/terra/man/crs.html" class="external-link">terra::crs()</a></code>.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
+    <div class="dont-index"><p><code><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">sf::st_crs()</a></code>, <code><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">sf::st_bbox()</a></code>, <code><a href="https://rdrr.io/pkg/terra/man/crs.html" class="external-link">terra::crs()</a></code>.</p></div>
     </div>
 
     <div class="section level2">
