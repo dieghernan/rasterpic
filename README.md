@@ -143,7 +143,7 @@ A BibTeX entry for LaTeX users is:
       title = {rasterpic: Create a Spatial Raster from Plain Images},
       author = {Diego Hernangómez},
       year = {2022},
-      version = {0.1.0.9000},
+      version = {0.2.0},
       doi = {10.5281/zenodo.5910095},
       url = {https://dieghernan.github.io/rasterpic/},
       abstract = {Create a spatial raster, as the ones provided by 'terra', from regular pictures.},
