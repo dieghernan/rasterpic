@@ -130,7 +130,7 @@ plot(st_geometry(uk), col = NA, border = "black", add = TRUE)
 
 ## Citation
 
-To cite the rasterpic package in publications use:
+To cite ‘rasterpic’ in publications use:
 
 Hernangómez D (2022). *rasterpic: Create a Spatial Raster from Plain
 Images*. doi: 10.5281/zenodo.5910095 (URL:
