@@ -54,19 +54,17 @@ tm_shape(uk_img) +
   tm_rgb()
 ```
 
-## With ggplot2 + ggspatial
+## With ggplot2 + tidyterra
 
-The dev version of **ggspatial** provides also support for **terra** rasters:
+**tidyterra** provides full support for **terra** rasters:
 
 ```{r}
 
-# devtools::install_github("paleolimbot/ggspatial")
-
 library(ggplot2)
-library(ggspatial)
+library(tidyterra)
 
 ggplot() +
-  layer_spatial(uk_img)
+  geom_spatraster_rgb(data = uk_img)
 ```
 
 ## With mapsf

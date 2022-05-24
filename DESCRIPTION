@@ -20,6 +20,7 @@ Suggests:
     knitr,
     rmarkdown,
     testthat (>= 3.0.0),
+    tidyterra,
     vdiffr (>= 1.0.0)
 VignetteBuilder: 
     knitr
