@@ -124,6 +124,21 @@ plotRGB(uk_flag2, add = TRUE)
 plot(st_geometry(uk), col = NA, border = "black", add = TRUE)
 ```
 
+You can plot the rasters with **ggplot2** + **tidyterra**:
+
+```{r example-ggplot, out.width="50%"}
+
+library(ggplot2)
+library(tidyterra)
+
+ggplot(uk) +
+  geom_spatraster_rgb(data = uk_flag2) +
+  geom_sf(fill = NA)
+  
+
+
+```
+
 ## Image formats admitted
 
 **rasterpic** can parse the following image formats:
