@@ -134,9 +134,6 @@ library(tidyterra)
 ggplot(uk) +
   geom_spatraster_rgb(data = uk_flag2) +
   geom_sf(fill = NA)
-  
-
-
 ```
 
 ## Image formats admitted

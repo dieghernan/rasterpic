@@ -120,6 +120,19 @@ plot(st_geometry(uk), col = NA, border = "black", add = TRUE)
 
 <img src="man/figures/README-align-crop-mask-1.png" width="50%" style="display: block; margin: auto;" />
 
+You can plot the rasters with **ggplot2** + **tidyterra**:
+
+``` r
+library(ggplot2)
+library(tidyterra)
+
+ggplot(uk) +
+  geom_spatraster_rgb(data = uk_flag2) +
+  geom_sf(fill = NA)
+```
+
+<img src="man/figures/README-example-ggplot-1.png" width="50%" style="display: block; margin: auto;" />
+
 ## Image formats admitted
 
 **rasterpic** can parse the following image formats:
@@ -133,9 +146,9 @@ plot(st_geometry(uk), col = NA, border = "black", add = TRUE)
 To cite ‘rasterpic’ in publications use:
 
 Hernangómez D (2022). *rasterpic: Create a Spatial Raster from Plain
-Images*. doi: 10.5281/zenodo.5910095 (URL:
-<https://doi.org/10.5281/zenodo.5910095>), \<URL:
-<https://dieghernan.github.io/rasterpic/>\>.
+Images*. <doi:10.5281/zenodo.5910095>
+<https://doi.org/10.5281/zenodo.5910095>,
+<https://dieghernan.github.io/rasterpic/>.
 
 A BibTeX entry for LaTeX users is:
 
@@ -143,7 +156,7 @@ A BibTeX entry for LaTeX users is:
       title = {rasterpic: Create a Spatial Raster from Plain Images},
       author = {Diego Hernangómez},
       year = {2022},
-      version = {0.2.0},
+      version = {0.2.0.9000},
       doi = {10.5281/zenodo.5910095},
       url = {https://dieghernan.github.io/rasterpic/},
       abstract = {Create a spatial raster, as the ones provided by 'terra', from regular pictures.},

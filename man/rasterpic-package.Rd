@@ -6,7 +6,7 @@
 \alias{rasterpic-package}
 \title{rasterpic: Create a Spatial Raster from Plain Images}
 \description{
-\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
 Create a spatial raster, as the ones provided by 'terra', from regular pictures.
 }
