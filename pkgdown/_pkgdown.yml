@@ -47,6 +47,7 @@ reference:
     desc: Functions from other packages from plotting SpatRasters
     contents:
       - 'terra::plotRGB()'
+      - 'tidyterra::geom_spatraster_rgb()'
       - 'tmap::tm_rgb()'
       - 'mapsf::mf_raster()'
       - 'maptiles::plot_tiles()'
