@@ -1,4 +1,4 @@
-# rasterpic (development version)
+# rasterpic 0.2.1
 
 -   Add **tidyterra** to 'Suggests'
 

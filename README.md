@@ -145,10 +145,9 @@ ggplot(uk) +
 
 To cite ‘rasterpic’ in publications use:
 
-Hernangómez D (2022). *rasterpic: Create a Spatial Raster from Plain
-Images*. <doi:10.5281/zenodo.5910095>
-<https://doi.org/10.5281/zenodo.5910095>,
-<https://dieghernan.github.io/rasterpic/>.
+Hernangomez D (2022). rasterpic: Create a Spatial Raster from Plain
+Images. <https://doi.org/10.5281/zenodo.5910095>,
+<https://dieghernan.github.io/rasterpic/>
 
 A BibTeX entry for LaTeX users is:
 
@@ -156,10 +155,10 @@ A BibTeX entry for LaTeX users is:
       title = {rasterpic: Create a Spatial Raster from Plain Images},
       author = {Diego Hernangómez},
       year = {2022},
-      version = {0.2.0.9000},
+      version = {0.2.1},
       doi = {10.5281/zenodo.5910095},
       url = {https://dieghernan.github.io/rasterpic/},
-      abstract = {Create a spatial raster, as the ones provided by 'terra', from regular pictures.},
+      abstract = {Create a spatial raster, as the ones provided by terra, from regular pictures.},
     }
 
 ## Contribute

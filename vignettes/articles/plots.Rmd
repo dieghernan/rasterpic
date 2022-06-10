@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-This article shows how to plot the results of `rasterpic_img()` with several 
+This article shows how to plot the results of `rasterpic_img()` with several
 packages.
 
 ## Base plots
@@ -41,19 +41,6 @@ uk_img <- rasterpic_img(uk, img, mask = TRUE, inverse = TRUE)
 plotRGB(uk_img)
 ```
 
-## With tmap
-
-**tmap** can be also used to create great maps:
-
-```{r}
-
-library(tmap)
-
-tm_shape(uk_img) +
-  tm_graticules() +
-  tm_rgb()
-```
-
 ## With ggplot2 + tidyterra
 
 **tidyterra** provides full support for **terra** rasters:
@@ -65,6 +52,19 @@ library(tidyterra)
 
 ggplot() +
   geom_spatraster_rgb(data = uk_img)
+```
+
+## With tmap
+
+**tmap** can be also used to create great maps:
+
+```{r}
+
+library(tmap)
+
+tm_shape(uk_img) +
+  tm_graticules() +
+  tm_rgb()
 ```
 
 ## With mapsf
@@ -84,8 +84,8 @@ mf_inset_off()
 ## With maptiles
 
 **maptiles** is a interesting package that provides the ability of downloading
-map tiles from different providers. It also has a specific function for 
-plotting  **terra** rasters:
+map tiles from different providers. It also has a specific function for plotting
+**terra** rasters:
 
 ```{r}
 
@@ -98,4 +98,3 @@ other_tile_crop <- terra::crop(other_tile, uk_img)
 plot_tiles(other_tile_crop)
 plot_tiles(uk_img, add = TRUE)
 ```
-

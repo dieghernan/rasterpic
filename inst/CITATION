@@ -1,5 +1,7 @@
 year <- format(Sys.time(), "%Y")
 abs <- trimws(gsub("\\s+", " ", meta$Description))
+abs <- gsub("'", "", abs)
+doi <- "10.5281/zenodo.5910095"
 
 bibentry(
   "Manual",
@@ -8,8 +10,13 @@ bibentry(
   author = person("Diego", "Hernangómez"),
   year = year,
   version = meta$Version,
-  doi = "10.5281/zenodo.5910095",
+  doi = doi,
   url = unlist(strsplit(meta$URL, ","))[1],
   abstract = abs,
-  key = "R-rasterpic"
+  key = "R-rasterpic",
+  textVersion = paste0(
+    "Hernangomez D (", year, "). rasterpic: ",
+    gsub("'", "", meta$Title), ". <https://doi.org/", doi, ">, <",
+    unlist(strsplit(meta$URL, ","))[1], ">"
+  )
 )
