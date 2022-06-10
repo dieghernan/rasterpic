@@ -22,4 +22,5 @@ rasterpic*.tgz
 inst/doc
 CRAN-SUBMISSION
 .github/pkg.lock
+cran-comments*
 cran-comments.md
