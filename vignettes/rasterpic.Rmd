@@ -31,10 +31,11 @@ library(sf)
 library(terra)
 library(rasterpic)
 
-x <- st_read(system.file("gpkg/austria.gpkg",
-  package = "rasterpic"
-),
-quiet = TRUE
+x <- st_read(
+  system.file("gpkg/austria.gpkg",
+    package = "rasterpic"
+  ),
+  quiet = TRUE
 )
 img <- system.file("img/vertical.png",
   package = "rasterpic"

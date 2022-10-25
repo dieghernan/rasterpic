@@ -172,7 +172,6 @@ rasterpic_img <- function(x,
                           mask = FALSE,
                           inverse = FALSE,
                           crs) {
-
   # Initial validations
   if (halign < 0 | halign > 1) stop("'haling' should be between 0 and 1")
   if (valign < 0 | valign > 1) stop("'valing' should be between 0 and 1")

@@ -31,10 +31,11 @@ img <- system.file("img/UK_flag.png",
   package = "rasterpic"
 )
 
-uk <- sf::st_read(system.file("gpkg/UK.gpkg",
-  package = "rasterpic"
-),
-quiet = TRUE
+uk <- sf::st_read(
+  system.file("gpkg/UK.gpkg",
+    package = "rasterpic"
+  ),
+  quiet = TRUE
 )
 
 uk_img <- rasterpic_img(uk, img, mask = TRUE, inverse = TRUE)
