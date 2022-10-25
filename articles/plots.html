@@ -115,10 +115,11 @@
 <span>  package <span class="op">=</span> <span class="st">"rasterpic"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">uk</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">st_read</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"gpkg/UK.gpkg"</span>,</span>
-<span>  package <span class="op">=</span> <span class="st">"rasterpic"</span></span>
-<span><span class="op">)</span>,</span>
-<span>quiet <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="va">uk</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">st_read</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"gpkg/UK.gpkg"</span>,</span>
+<span>    package <span class="op">=</span> <span class="st">"rasterpic"</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  quiet <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">uk_img</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rasterpic_img.html">rasterpic_img</a></span><span class="op">(</span><span class="va">uk</span>, <span class="va">img</span>, mask <span class="op">=</span> <span class="cn">TRUE</span>, inverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
