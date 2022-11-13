@@ -55,12 +55,12 @@ install.packages("rasterpic")
 This package allows you to create cool maps by using a wide variety of
 objects:
 
--   Spatial object of the **sf** package: `sf`, `sfc`, `sfg`or `bbox`.
+- Spatial object of the **sf** package: `sf`, `sfc`, `sfg`or `bbox`.
 
--   Spatial objects of the **terra** package: `SpatRaster`,
-    `SpatVector`, `SpatExtent`.
+- Spatial objects of the **terra** package: `SpatRaster`, `SpatVector`,
+  `SpatExtent`.
 
--   A vector of coordinates with the form `c(xmin, ymin, xmax, yman)`
+- A vector of coordinates with the form `c(xmin, ymin, xmax, yman)`
 
 An example using a `sf` object:
 
@@ -111,6 +111,7 @@ We can also play with other parameters, as well as modifying the
 alignment of the image with respect to the object:
 
 ``` r
+
 # Align, crop and mask
 uk_flag2 <- rasterpic_img(uk, img, halign = 0.2, crop = TRUE, mask = TRUE)
 
@@ -124,6 +125,7 @@ plot(st_geometry(uk), col = NA, border = "black", add = TRUE)
 You can plot the rasters with **ggplot2** + **tidyterra**:
 
 ``` r
+
 library(ggplot2)
 library(tidyterra)
 
@@ -138,9 +140,9 @@ ggplot(uk) +
 
 **rasterpic** can parse the following image formats:
 
--   `png` files.
--   `jpg/jpeg` files.
--   `tif/tiff` files.
+- `png` files.
+- `jpg/jpeg` files.
+- `tif/tiff` files.
 
 ## Citation
 
