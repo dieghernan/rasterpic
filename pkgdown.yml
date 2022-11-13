@@ -1,10 +1,10 @@
-pandoc: 2.14.2
+pandoc: 2.19.2
 pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   plots: plots.html
   rasterpic: rasterpic.html
-last_built: 2022-10-25T22:26Z
+last_built: 2022-11-13T09:32Z
 urls:
   reference: https://dieghernan.github.io/rasterpic/reference
   article: https://dieghernan.github.io/rasterpic/articles

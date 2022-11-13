@@ -100,11 +100,14 @@
 
     
     
-<p>This article shows how to plot the results of <code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> with several packages.</p>
+<p>This article shows how to plot the results of
+<code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> with several packages.</p>
 <div class="section level2">
 <h2 id="base-plots">Base plots<a class="anchor" aria-label="anchor" href="#base-plots"></a>
 </h2>
-<p>The most straightforward option is to use the base <code><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot()</a></code> methods provided by the package <strong>terra</strong> (<code><a href="https://rdrr.io/pkg/terra/man/plotRGB.html" class="external-link">terra::plotRGB()</a></code>)</p>
+<p>The most straightforward option is to use the base
+<code><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot()</a></code> methods provided by the package
+<strong>terra</strong> (<code><a href="https://rdrr.io/pkg/terra/man/plotRGB.html" class="external-link">terra::plotRGB()</a></code>)</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/rasterpic/">rasterpic</a></span><span class="op">)</span></span>
@@ -129,7 +132,8 @@
 <div class="section level2">
 <h2 id="with-ggplot2-tidyterra">With ggplot2 + tidyterra<a class="anchor" aria-label="anchor" href="#with-ggplot2-tidyterra"></a>
 </h2>
-<p><strong>tidyterra</strong> provides full support for <strong>terra</strong> rasters:</p>
+<p><strong>tidyterra</strong> provides full support for
+<strong>terra</strong> rasters:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
@@ -155,7 +159,8 @@
 <div class="section level2">
 <h2 id="with-mapsf">With mapsf<a class="anchor" aria-label="anchor" href="#with-mapsf"></a>
 </h2>
-<p><strong>mapsf</strong>, the replacement of <strong>cartography</strong>, also provides this functionality:</p>
+<p><strong>mapsf</strong>, the replacement of
+<strong>cartography</strong>, also provides this functionality:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/mapsf/" class="external-link">mapsf</a></span><span class="op">)</span></span>
 <span></span>
@@ -169,7 +174,9 @@
 <div class="section level2">
 <h2 id="with-maptiles">With maptiles<a class="anchor" aria-label="anchor" href="#with-maptiles"></a>
 </h2>
-<p><strong>maptiles</strong> is a interesting package that provides the ability of downloading map tiles from different providers. It also has a specific function for plotting <strong>terra</strong> rasters:</p>
+<p><strong>maptiles</strong> is a interesting package that provides the
+ability of downloading map tiles from different providers. It also has a
+specific function for plotting <strong>terra</strong> rasters:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/maptiles/" class="external-link">maptiles</a></span><span class="op">)</span></span>
