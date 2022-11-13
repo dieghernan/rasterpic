@@ -11,6 +11,7 @@ knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
   tidy = "styler",
+  dev = "ragg_png",
   fig.path = "man/figures/README-",
   dpi = 300,
   out.width = "50%",

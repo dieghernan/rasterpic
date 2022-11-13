@@ -8,6 +8,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   warning = FALSE,
   message = FALSE,
+  dev = "ragg_png",
   dpi = 300,
   out.width = "100%"
 )
