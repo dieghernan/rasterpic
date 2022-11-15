@@ -164,3 +164,19 @@ test_that("Test all image formats with SpatExtent", {
     expect_true(terra::crs(raster_test) == terra::crs(raster))
   }
 })
+
+test_that("Test transparent", {
+  img <- system.file("img/transparent.png", package = "rasterpic")
+
+  x <- sf::st_read(system.file("gpkg/UK.gpkg", package = "rasterpic"),
+    quiet = TRUE
+  )
+
+  raster <- rasterpic_img(x, img)
+
+  png_dim <- png::readPNG(img)
+
+  expect_true(dim(png_dim)[3] == 4)
+  expect_true(terra::nlyr(raster) == 4)
+  expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
+})
