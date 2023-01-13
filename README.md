@@ -89,7 +89,7 @@ uk_flag
 #> resolution  : 5398.319, 5398.319  (x, y)
 #> extent      : -2542183, 1776472, 6430573, 8589900  (xmin, xmax, ymin, ymax)
 #> coord. ref. : WGS 84 / Pseudo-Mercator (EPSG:3857) 
-#> source      : memory 
+#> source(s)   : memory
 #> names       : lyr.1, lyr.2, lyr.3 
 #> min values  :     0,    13,    34 
 #> max values  :   255,   255,   255
@@ -148,7 +148,7 @@ ggplot(uk) +
 
 To cite ‘rasterpic’ in publications use:
 
-Hernangomez D (2022). rasterpic: Create a Spatial Raster from Plain
+Hernangomez D (2023). rasterpic: Create a Spatial Raster from Plain
 Images. <https://doi.org/10.5281/zenodo.5910095>,
 <https://dieghernan.github.io/rasterpic/>
 
@@ -157,7 +157,7 @@ A BibTeX entry for LaTeX users is:
     @Manual{R-rasterpic,
       title = {rasterpic: Create a Spatial Raster from Plain Images},
       author = {Diego Hernangómez},
-      year = {2022},
+      year = {2023},
       version = {0.2.1},
       doi = {10.5281/zenodo.5910095},
       url = {https://dieghernan.github.io/rasterpic/},
