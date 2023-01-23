@@ -111,7 +111,6 @@ We can also play with other parameters, as well as modifying the
 alignment of the image with respect to the object:
 
 ``` r
-
 # Align, crop and mask
 uk_flag2 <- rasterpic_img(uk, img, halign = 0.2, crop = TRUE, mask = TRUE)
 
@@ -125,7 +124,6 @@ plot(st_geometry(uk), col = NA, border = "black", add = TRUE)
 You can plot the rasters with **ggplot2** + **tidyterra**:
 
 ``` r
-
 library(ggplot2)
 library(tidyterra)
 

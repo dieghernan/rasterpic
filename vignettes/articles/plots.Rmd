@@ -23,7 +23,6 @@ The most straightforward option is to use the base `plot()` methods provided by
 the package **terra** (`terra::plotRGB()`)
 
 ```{r setup}
-
 library(rasterpic)
 library(terra)
 
@@ -48,7 +47,6 @@ plotRGB(uk_img)
 **tidyterra** provides full support for **terra** rasters:
 
 ```{r}
-
 library(ggplot2)
 library(tidyterra)
 
@@ -61,7 +59,6 @@ ggplot() +
 **tmap** can be also used to create great maps:
 
 ```{r}
-
 library(tmap)
 
 tm_shape(uk_img) +
@@ -90,7 +87,6 @@ map tiles from different providers. It also has a specific function for plotting
 **terra** rasters:
 
 ```{r}
-
 library(maptiles)
 
 other_tile <- get_tiles(uk, crop = TRUE, zoom = 6)
