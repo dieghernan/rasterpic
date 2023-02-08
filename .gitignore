@@ -15,7 +15,6 @@ vignettes/*.pdf
 *.utf8.md
 *.knit.md
 .Renviron
-revdep
 rasterpic.Rcheck/
 rasterpic*.tar.gz
 rasterpic*.tgz
@@ -24,3 +23,4 @@ CRAN-SUBMISSION
 .github/pkg.lock
 cran-comments*
 cran-comments.md
+.Rdata
