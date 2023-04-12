@@ -80,7 +80,7 @@ This package allows you to create cool maps by using a wide variety of objects:
 
 An example using a `sf` object:
 
-```{r example-basic, out.width="50%"}
+```{r example-basic}
 library(rasterpic)
 library(sf)
 library(terra)
@@ -115,7 +115,7 @@ plot(st_geometry(uk),
 We can also play with other parameters, as well as modifying the alignment of
 the image with respect to the object:
 
-```{r align-crop-mask, out.width="50%"}
+```{r align-crop-mask}
 # Align, crop and mask
 uk_flag2 <- rasterpic_img(uk, img, halign = 0.2, crop = TRUE, mask = TRUE)
 
@@ -126,7 +126,7 @@ plot(st_geometry(uk), col = NA, border = "black", add = TRUE)
 
 You can plot the rasters with **ggplot2** + **tidyterra**:
 
-```{r example-ggplot, out.width="50%"}
+```{r example-ggplot}
 library(ggplot2)
 library(tidyterra)
 

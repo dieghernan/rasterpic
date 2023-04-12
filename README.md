@@ -105,7 +105,7 @@ plot(st_geometry(uk),
 )
 ```
 
-<img src="man/figures/README-example-basic-1.png" width="50%" />
+<img src="man/figures/README-example-basic-1.png" />
 
 We can also play with other parameters, as well as modifying the
 alignment of the image with respect to the object:
@@ -119,7 +119,7 @@ plotRGB(uk_flag2, add = TRUE)
 plot(st_geometry(uk), col = NA, border = "black", add = TRUE)
 ```
 
-<img src="man/figures/README-align-crop-mask-1.png" width="50%" />
+<img src="man/figures/README-align-crop-mask-1.png" />
 
 You can plot the rasters with **ggplot2** + **tidyterra**:
 
@@ -132,7 +132,7 @@ ggplot(uk) +
   geom_sf(fill = NA)
 ```
 
-<img src="man/figures/README-example-ggplot-1.png" width="50%" />
+<img src="man/figures/README-example-ggplot-1.png" />
 
 ## Image formats admitted
 
