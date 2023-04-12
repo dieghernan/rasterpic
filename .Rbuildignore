@@ -17,3 +17,6 @@
 ^rasterpic.*\.tar\.gz$
 ^rasterpic.*\.tgz$
 ^\.github$
+^pkgdown\.yaml$
+^pkgdown\.yml$
+^\.imgbotconfig$
