@@ -14,8 +14,7 @@ knitr::opts_chunk$set(
   dev = "ragg_png",
   fig.path = "man/figures/README-",
   dpi = 300,
-  out.width = "50%",
-  fig.align = "center"
+  out.width = "100%"
 )
 ```
 
