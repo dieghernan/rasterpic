@@ -31,22 +31,22 @@ test_that("Error on invalid parameters", {
   img <- system.file("img/UK_flag.png", package = "rasterpic")
   expect_error(
     rasterpic_img(x, img, valign = 1.2),
-    "'valing' should be between 0 and 1"
+    "'valign' should be between 0 and 1"
   )
 
   expect_error(
     rasterpic_img(x, img, valign = -1.2),
-    "'valing' should be between 0 and 1"
+    "'valign' should be between 0 and 1"
   )
 
   expect_error(
     rasterpic_img(x, img, halign = 1.2),
-    "'haling' should be between 0 and 1"
+    "'halign' should be between 0 and 1"
   )
 
   expect_error(
     rasterpic_img(x, img, halign = -1.2),
-    "'haling' should be between 0 and 1"
+    "'halign' should be between 0 and 1"
   )
 })
 

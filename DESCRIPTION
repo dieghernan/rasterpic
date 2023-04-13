@@ -1,6 +1,6 @@
 Package: rasterpic
 Title: Create a Spatial Raster from Plain Images
-Version: 0.2.1
+Version: 0.2.1.9000
 Authors@R: 
     person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-8457-4658"))
@@ -20,11 +20,11 @@ Suggests:
     knitr,
     rmarkdown,
     testthat (>= 3.0.0),
-    tidyterra,
-    vdiffr (>= 1.0.0)
+    tidyterra
 VignetteBuilder: 
     knitr
 Config/testthat/edition: 3
+Config/testthat/parallel: true
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3

@@ -39,7 +39,7 @@ devtools::install_github("dieghernan/rasterpic")
 ```
 
 Alternatively, you can install **rasterpic** using the
-[r-universe](http://dieghernan.r-universe.dev/ui/):
+[r-universe](https://dieghernan.r-universe.dev/rasterpic):
 
 ``` r
 # Enable this universe
@@ -105,7 +105,7 @@ plot(st_geometry(uk),
 )
 ```
 
-<img src="man/figures/README-example-basic-1.png" />
+<img src="man/figures/README-example-basic-1.png" width="100%" />
 
 We can also play with other parameters, as well as modifying the
 alignment of the image with respect to the object:
@@ -119,7 +119,7 @@ plotRGB(uk_flag2, add = TRUE)
 plot(st_geometry(uk), col = NA, border = "black", add = TRUE)
 ```
 
-<img src="man/figures/README-align-crop-mask-1.png" />
+<img src="man/figures/README-align-crop-mask-1.png" width="100%" />
 
 You can plot the rasters with **ggplot2** + **tidyterra**:
 
@@ -132,7 +132,7 @@ ggplot(uk) +
   geom_sf(fill = NA)
 ```
 
-<img src="man/figures/README-example-ggplot-1.png" />
+<img src="man/figures/README-example-ggplot-1.png" width="100%" />
 
 ## Image formats admitted
 
@@ -156,7 +156,7 @@ A BibTeX entry for LaTeX users is:
       title = {rasterpic: Create a Spatial Raster from Plain Images},
       author = {Diego Hernangómez},
       year = {2023},
-      version = {0.2.1},
+      version = {0.2.1.9000},
       doi = {10.5281/zenodo.5910095},
       url = {https://dieghernan.github.io/rasterpic/},
       abstract = {Create a spatial raster, as the ones provided by terra, from regular pictures.},

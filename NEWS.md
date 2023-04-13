@@ -1,3 +1,11 @@
+# rasterpic (development version)
+
+-   Remove unused dependencies
+
+-   Improve docs.
+
+-   Fix typos on messages.
+
 # rasterpic 0.2.1
 
 -   Add **tidyterra** to 'Suggests'

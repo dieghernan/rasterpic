@@ -8,7 +8,7 @@ message: 'To cite package "rasterpic" in publications use:'
 type: software
 license: MIT
 title: 'rasterpic: Create a Spatial Raster from Plain Images'
-version: 0.2.1
+version: 0.2.1.9000
 doi: 10.5281/zenodo.5910095
 abstract: Create a spatial raster, as the ones provided by 'terra', from regular pictures.
 authors:
@@ -25,7 +25,7 @@ preferred-citation:
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
   year: '2023'
-  version: 0.2.1
+  version: 0.2.1.9000
   doi: 10.5281/zenodo.5910095
   url: https://dieghernan.github.io/rasterpic/
   abstract: Create a spatial raster, as the ones provided by terra, from regular pictures.
@@ -183,28 +183,3 @@ references:
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
   year: '2023'
-- type: software
-  title: vdiffr
-  abstract: 'vdiffr: Visual Regression Testing and Graphical Diffing'
-  notes: Suggests
-  url: https://vdiffr.r-lib.org/
-  repository: https://CRAN.R-project.org/package=vdiffr
-  authors:
-  - family-names: Henry
-    given-names: Lionel
-    email: lionel@rstudio.com
-  - family-names: Pedersen
-    given-names: Thomas Lin
-    email: thomas.pedersen@rstudio.com
-    orcid: https://orcid.org/0000-0002-5147-4711
-  - family-names: Luciani
-    given-names: T Jake
-    email: jake@apache.org
-  - family-names: Decorde
-    given-names: Matthieu
-    email: matthieu.decorde@ens-lyon.fr
-  - family-names: Lise
-    given-names: Vaudor
-    email: lise.vaudor@ens-lyon.fr
-  year: '2023'
-  version: '>= 1.0.0'

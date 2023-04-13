@@ -173,8 +173,8 @@ rasterpic_img <- function(x,
                           inverse = FALSE,
                           crs) {
   # Initial validations
-  if (halign < 0 | halign > 1) stop("'haling' should be between 0 and 1")
-  if (valign < 0 | valign > 1) stop("'valing' should be between 0 and 1")
+  if (halign < 0 || halign > 1) stop("'halign' should be between 0 and 1")
+  if (valign < 0 || valign > 1) stop("'valign' should be between 0 and 1")
 
   # A. Extract values from x: crs and initial extent----
 

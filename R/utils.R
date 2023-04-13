@@ -18,7 +18,7 @@
 asp_ratio <- function(x) {
   if (inherits(x, "SpatRaster")) {
     ratio <- terra::ncol(x) / terra::nrow(x)
-  } else if (inherits(x, "sf") | inherits(x, "sfc")) {
+  } else if (inherits(x, "sf") || inherits(x, "sfc")) {
     bbox <- as.double(sf::st_bbox(x))
     ratio <- (bbox[3] - bbox[1]) / (bbox[4] - bbox[2])
   } else if (length(x) == 4 && is.numeric(x)) {
@@ -122,7 +122,7 @@ rpic_input <- function(x, crs) {
     x <- terra::vect(x)
   }
 
-  if (inherits(x, "SpatRaster") | inherits(x, "SpatVector")) {
+  if (inherits(x, "SpatRaster") || inherits(x, "SpatVector")) {
     if (terra::is.lonlat(x)) {
       message(
         "Warning: x has geographic coordinates. ",
@@ -153,7 +153,7 @@ rpic_input <- function(x, crs) {
       terra::xmax(x),
       terra::ymax(x)
     )
-  } else if (inherits(x, "bbox") & length(x) == 4) {
+  } else if (inherits(x, "bbox") && length(x) == 4) {
     box <- c(
       x["xmin"],
       x["ymin"],
@@ -161,7 +161,7 @@ rpic_input <- function(x, crs) {
       x["ymax"]
     )
     box <- unname(box)
-  } else if (is.numeric(x) & length(x) == 4) {
+  } else if (is.numeric(x) && length(x) == 4) {
     box <- c(
       x[1],
       x[2],
