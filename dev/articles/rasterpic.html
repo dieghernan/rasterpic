@@ -115,22 +115,20 @@ using it.</p>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/rasterpic/">rasterpic</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">st_read</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"gpkg/austria.gpkg"</span>,</span>
-<span>    package <span class="op">=</span> <span class="st">"rasterpic"</span></span>
-<span>  <span class="op">)</span>,</span>
-<span>  quiet <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span><span class="op">)</span></span>
-<span><span class="va">img</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"img/vertical.png"</span>,</span>
-<span>  package <span class="op">=</span> <span class="st">"rasterpic"</span></span>
-<span><span class="op">)</span></span>
+<span><span class="co"># Plot</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/tidyterra/" class="external-link">tidyterra</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Shape and image</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">read_sf</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"gpkg/austria.gpkg"</span>, package <span class="op">=</span> <span class="st">"rasterpic"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">img</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"img/vertical.png"</span>, package <span class="op">=</span> <span class="st">"rasterpic"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Create!</span></span>
 <span></span>
 <span><span class="va">default</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rasterpic_img.html">rasterpic_img</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">img</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plotRGB.html" class="external-link">plotRGB</a></span><span class="op">(</span><span class="va">default</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, col <span class="op">=</span> <span class="st">"grey90"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">default</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <p><img src="rasterpic_files/figure-html/setup-1.png" width="100%"></p>
 </div>
 <div class="section level2">
@@ -145,8 +143,9 @@ cropping.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">expand</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rasterpic_img.html">rasterpic_img</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">img</span>, expand <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plotRGB.html" class="external-link">plotRGB</a></span><span class="op">(</span><span class="va">expand</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, col <span class="op">=</span> <span class="st">"grey90"</span><span class="op">)</span></span></code></pre></div>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">expand</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <p><img src="rasterpic_files/figure-html/unnamed-chunk-2-1.png" width="100%"></p>
 </div>
 <div class="section level3">
@@ -156,8 +155,8 @@ cropping.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bottom</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rasterpic_img.html">rasterpic_img</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">img</span>, valign <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plotRGB.html" class="external-link">plotRGB</a></span><span class="op">(</span><span class="va">bottom</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, col <span class="op">=</span> <span class="st">"grey90"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">bottom</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <p><img src="rasterpic_files/figure-html/unnamed-chunk-3-1.png" width="100%"></p>
 </div>
 <div class="section level3">
@@ -167,17 +166,13 @@ cropping.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mask</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rasterpic_img.html">rasterpic_img</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">img</span>, crop <span class="op">=</span> <span class="cn">TRUE</span>, mask <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plotRGB.html" class="external-link">plotRGB</a></span><span class="op">(</span><span class="va">mask</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">mask</span><span class="op">)</span></span></code></pre></div>
 <p><img src="rasterpic_files/figure-html/unnamed-chunk-4-1.png" width="100%"></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="va">maskinverse</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rasterpic_img.html">rasterpic_img</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">img</span>,</span>
-<span>  crop <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  mask <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  inverse <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span><span class="op">)</span></span>
+<span><span class="va">maskinverse</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rasterpic_img.html">rasterpic_img</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">img</span>, crop <span class="op">=</span> <span class="cn">TRUE</span>, mask <span class="op">=</span> <span class="cn">TRUE</span>, inverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plotRGB.html" class="external-link">plotRGB</a></span><span class="op">(</span><span class="va">maskinverse</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">maskinverse</span><span class="op">)</span></span></code></pre></div>
 <p><img src="rasterpic_files/figure-html/unnamed-chunk-4-2.png" width="100%"></p>
 </div>
 </div>
