@@ -17,6 +17,7 @@ Imports:
     sf (>= 1.0.0),
     terra (>= 1.4-22)
 Suggests: 
+    ggplot2,
     knitr,
     rmarkdown,
     testthat (>= 3.0.0),

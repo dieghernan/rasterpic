@@ -30,22 +30,20 @@ library(sf)
 library(terra)
 library(rasterpic)
 
-x <- st_read(
-  system.file("gpkg/austria.gpkg",
-    package = "rasterpic"
-  ),
-  quiet = TRUE
-)
-img <- system.file("img/vertical.png",
-  package = "rasterpic"
-)
+# Plot
+library(tidyterra)
+library(ggplot2)
+
+# Shape and image
+x <- read_sf(system.file("gpkg/austria.gpkg", package = "rasterpic"))
+img <- system.file("img/vertical.png", package = "rasterpic")
 
 # Create!
 
 default <- rasterpic_img(x, img)
 
-plotRGB(default)
-plot(st_geometry(x), add = TRUE, col = "grey90")
+autoplot(default) +
+  geom_sf(data = x)
 ```
 
 ## Options
@@ -59,8 +57,9 @@ With this option the image is zoomed out of the spatial object:
 ```{r}
 expand <- rasterpic_img(x, img, expand = 1)
 
-plotRGB(expand)
-plot(st_geometry(x), add = TRUE, col = "grey90")
+
+autoplot(expand) +
+  geom_sf(data = x)
 ```
 
 ### Alignment
@@ -70,8 +69,8 @@ Decide where to align the image:
 ```{r}
 bottom <- rasterpic_img(x, img, valign = 0)
 
-plotRGB(bottom)
-plot(st_geometry(x), add = TRUE, col = "grey90")
+autoplot(bottom) +
+  geom_sf(data = x)
 ```
 
 ### Crop and mask
@@ -81,15 +80,11 @@ Create impressive maps!:
 ```{r}
 mask <- rasterpic_img(x, img, crop = TRUE, mask = TRUE)
 
-plotRGB(mask)
+autoplot(mask)
 
-maskinverse <- rasterpic_img(x, img,
-  crop = TRUE,
-  mask = TRUE,
-  inverse = TRUE
-)
+maskinverse <- rasterpic_img(x, img, crop = TRUE, mask = TRUE, inverse = TRUE)
 
-plotRGB(maskinverse)
+autoplot(maskinverse)
 ```
 
 ## Objects admitted for geotagging

@@ -14,12 +14,12 @@ test_that("Expand factor", {
 
   # Check bboxes
   bbox_x <- as.double(sf::st_bbox(x))
-  bbox_x0 <- terra::ext(x0)@ptr[["vector"]]
+  bbox_x0 <- unname(as.vector(terra::ext(x0)))
   expect_equal(bbox_x[c(2, 4)], bbox_x0[c(3, 4)])
   expect_true(bbox_x[1] > bbox_x0[1])
   expect_true(bbox_x[3] < bbox_x0[2])
 
-  bbox_x_5 <- terra::ext(x_5)@ptr[["vector"]]
+  bbox_x_5 <- unname(as.vector(terra::ext(x_5)))
   expect_true(
     all(
       c(
@@ -29,7 +29,7 @@ test_that("Expand factor", {
     )
   )
 
-  bbox_x1 <- terra::ext(x1)@ptr[["vector"]]
+  bbox_x1 <- unname(as.vector(terra::ext(x1)))
   expect_true(
     all(
       c(

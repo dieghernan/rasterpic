@@ -70,15 +70,8 @@ library(sf)
 library(terra)
 
 # The flag of the United Kingdom
-img <- system.file("img/UK_flag.png",
-  package = "rasterpic"
-)
-uk <- st_read(
-  system.file("gpkg/UK.gpkg",
-    package = "rasterpic"
-  ),
-  quiet = TRUE
-)
+img <- system.file("img/UK_flag.png", package = "rasterpic")
+uk <- read_sf(system.file("gpkg/UK.gpkg", package = "rasterpic"))
 
 # Rasterize!
 uk_flag <- rasterpic_img(uk, img)
@@ -90,19 +83,18 @@ uk_flag
 #> extent      : -2542183, 1776472, 6430573, 8589900  (xmin, xmax, ymin, ymax)
 #> coord. ref. : WGS 84 / Pseudo-Mercator (EPSG:3857) 
 #> source(s)   : memory
+#> colors RGB  : 1, 2, 3 
 #> names       : lyr.1, lyr.2, lyr.3 
 #> min values  :     0,    13,    34 
 #> max values  :   255,   255,   255
 
 # Plot it!
+# Using ggplot2 + tidyterra
+library(tidyterra)
+library(ggplot2)
 
-plotRGB(uk_flag)
-plot(st_geometry(uk),
-  add = TRUE,
-  col = adjustcolor("blue",
-    alpha.f = 0.5
-  )
-)
+autoplot(uk_flag) +
+  geom_sf(data = uk, color = alpha("blue", 0.5))
 ```
 
 <img src="man/figures/README-example-basic-1.png" width="100%" />
@@ -114,25 +106,11 @@ alignment of the image with respect to the object:
 # Align, crop and mask
 uk_flag2 <- rasterpic_img(uk, img, halign = 0.2, crop = TRUE, mask = TRUE)
 
-plot(st_geometry(uk), axes = TRUE)
-plotRGB(uk_flag2, add = TRUE)
-plot(st_geometry(uk), col = NA, border = "black", add = TRUE)
+autoplot(uk_flag2) +
+  geom_sf(data = uk, fill = NA)
 ```
 
 <img src="man/figures/README-align-crop-mask-1.png" width="100%" />
-
-You can plot the rasters with **ggplot2** + **tidyterra**:
-
-``` r
-library(ggplot2)
-library(tidyterra)
-
-ggplot(uk) +
-  geom_spatraster_rgb(data = uk_flag2) +
-  geom_sf(fill = NA)
-```
-
-<img src="man/figures/README-example-ggplot-1.png" width="100%" />
 
 ## Image formats admitted
 

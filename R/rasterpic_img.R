@@ -258,5 +258,6 @@ rasterpic_img <- function(x,
     }
   }
 
+  terra::RGB(new_rast) <- c(1, 2, 3)
   return(new_rast)
 }

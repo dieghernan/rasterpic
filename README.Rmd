@@ -30,7 +30,7 @@ results](https://badges.cranchecks.info/worst/rasterpic.svg)](https://cran.r-pro
 [![codecov](https://codecov.io/gh/dieghernan/rasterpic/branch/main/graph/badge.svg?token=jSZ4RIsj91)](https://app.codecov.io/gh/dieghernan/rasterpic)
 [![r-universe](https://dieghernan.r-universe.dev/badges/rasterpic)](https://dieghernan.r-universe.dev/)
 [![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.5910095-blue)](https://doi.org/10.5281/zenodo.5910095)
-[![Project Status: Active – The project has reached a stable, usable state and
+[![Project Status: Active -- The project has reached a stable, usable state and
 is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![status](https://tinyverse.netlify.com/badge/rasterpic)](https://CRAN.R-project.org/package=rasterpic)
@@ -86,15 +86,8 @@ library(sf)
 library(terra)
 
 # The flag of the United Kingdom
-img <- system.file("img/UK_flag.png",
-  package = "rasterpic"
-)
-uk <- st_read(
-  system.file("gpkg/UK.gpkg",
-    package = "rasterpic"
-  ),
-  quiet = TRUE
-)
+img <- system.file("img/UK_flag.png", package = "rasterpic")
+uk <- read_sf(system.file("gpkg/UK.gpkg", package = "rasterpic"))
 
 # Rasterize!
 uk_flag <- rasterpic_img(uk, img)
@@ -102,14 +95,12 @@ uk_flag <- rasterpic_img(uk, img)
 uk_flag
 
 # Plot it!
+# Using ggplot2 + tidyterra
+library(tidyterra)
+library(ggplot2)
 
-plotRGB(uk_flag)
-plot(st_geometry(uk),
-  add = TRUE,
-  col = adjustcolor("blue",
-    alpha.f = 0.5
-  )
-)
+autoplot(uk_flag) +
+  geom_sf(data = uk, color = alpha("blue", 0.5))
 ```
 
 We can also play with other parameters, as well as modifying the alignment of
@@ -119,20 +110,8 @@ the image with respect to the object:
 # Align, crop and mask
 uk_flag2 <- rasterpic_img(uk, img, halign = 0.2, crop = TRUE, mask = TRUE)
 
-plot(st_geometry(uk), axes = TRUE)
-plotRGB(uk_flag2, add = TRUE)
-plot(st_geometry(uk), col = NA, border = "black", add = TRUE)
-```
-
-You can plot the rasters with **ggplot2** + **tidyterra**:
-
-```{r example-ggplot}
-library(ggplot2)
-library(tidyterra)
-
-ggplot(uk) +
-  geom_spatraster_rgb(data = uk_flag2) +
-  geom_sf(fill = NA)
+autoplot(uk_flag2) +
+  geom_sf(data = uk, fill = NA)
 ```
 
 ## Image formats admitted

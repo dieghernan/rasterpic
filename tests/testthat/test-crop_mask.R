@@ -11,7 +11,7 @@ test_that("Test crop", {
 
   # Bboxes
   bbox_x <- as.double(sf::st_bbox(x))
-  bbox_x0 <- as.double(terra::ext(x0)@ptr[["vector"]])
+  bbox_x0 <- as.vector(terra::ext(x0))
 
   # Tolerance limit
   min_length <- min(abs(bbox_x))
@@ -43,12 +43,9 @@ test_that("Test mask", {
   expect_true(terra::xmax(raster) > sf::st_bbox(x)[3])
 
   # Expect NAs
-  df <- terra::values(raster, dataframe = TRUE)
-  expect_true(any(is.na(df)))
-
-  # Count NAs on layer1
-  v1 <- length(df[is.na(df$lyr.1), 1])
-
+  rws <- terra::ncell(raster)
+  df <- as.data.frame(raster, na.rm = TRUE)
+  expect_gt(rws, nrow(df))
 
   # Inverse
   raster_inv <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
@@ -65,10 +62,9 @@ test_that("Test mask", {
   expect_true(terra::xmax(raster_inv) > sf::st_bbox(x)[3])
 
   # Expect NAs
-  df2 <- terra::values(raster_inv, dataframe = TRUE)
-  expect_true(any(is.na(df2)))
-  v2 <- length(df2[is.na(df2$lyr.1), 1])
-  expect_gt(v1, v2)
+  df2 <- as.data.frame(raster_inv, na.rm = TRUE)
+  expect_gt(rws, nrow(df2))
+  expect_gt(nrow(df2), nrow(df))
 })
 
 test_that("Test crop SpatVector", {
@@ -88,7 +84,7 @@ test_that("Test crop SpatVector", {
 
   # Bboxes
   bbox_x <- as.double(sf::st_bbox(x))
-  bbox_x0 <- as.double(terra::ext(x0)@ptr[["vector"]])
+  bbox_x0 <- as.vector(terra::ext(x0))
 
   # Tolerance limit
   min_length <- min(abs(bbox_x))
@@ -123,12 +119,9 @@ test_that("Test mask SpatVector", {
   expect_true(terra::xmax(raster) > sf::st_bbox(x)[3])
 
   # Expect NAs
-  df <- terra::values(raster, dataframe = TRUE)
-  expect_true(any(is.na(df)))
-
-  # Count NAs on layer1
-  v1 <- length(df[is.na(df$lyr.1), 1])
-
+  rws <- terra::ncell(raster)
+  df <- as.data.frame(raster, na.rm = TRUE)
+  expect_gt(rws, nrow(df))
 
   # Inverse
   raster_inv <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
@@ -145,11 +138,11 @@ test_that("Test mask SpatVector", {
   expect_true(terra::xmax(raster_inv) > sf::st_bbox(x)[3])
 
   # Expect NAs
-  df2 <- terra::values(raster_inv, dataframe = TRUE)
-  expect_true(any(is.na(df2)))
-  v2 <- length(df2[is.na(df2$lyr.1), 1])
-  expect_gt(v1, v2)
+  df2 <- as.data.frame(raster_inv, na.rm = TRUE)
+  expect_gt(rws, nrow(df2))
+  expect_gt(nrow(df2), nrow(df))
 })
+
 
 test_that("Test crop sfg", {
   img <- system.file("img/UK_flag.png", package = "rasterpic")
@@ -177,7 +170,7 @@ test_that("Test crop sfg", {
 
   # Bboxes
   bbox_x <- as.double(sf::st_bbox(x))
-  bbox_x0 <- as.double(terra::ext(x0)@ptr[["vector"]])
+  bbox_x0 <- as.vector(terra::ext(x0))
 
   # Tolerance limit
   min_length <- min(abs(bbox_x))
@@ -221,18 +214,12 @@ test_that("Test mask sfg", {
   expect_true(terra::xmax(raster) > sf::st_bbox(x)[3])
 
   # Expect NAs
-  df <- terra::values(raster, dataframe = TRUE)
-  expect_true(any(is.na(df)))
-
-  # Count NAs on layer1
-  v1 <- length(df[is.na(df$lyr.1), 1])
-
+  rws <- terra::ncell(raster)
+  df <- as.data.frame(raster, na.rm = TRUE)
+  expect_gt(rws, nrow(df))
 
   # Inverse
-  raster_inv <- rasterpic_img(x, img,
-    mask = TRUE, inverse = TRUE,
-    crs = crs_wkt_sf
-  )
+  raster_inv <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
 
   expect_true(asp_ratio(raster_inv) == dim(png_dim)[2] / dim(png_dim)[1])
 
@@ -246,8 +233,7 @@ test_that("Test mask sfg", {
   expect_true(terra::xmax(raster_inv) > sf::st_bbox(x)[3])
 
   # Expect NAs
-  df2 <- terra::values(raster_inv, dataframe = TRUE)
-  expect_true(any(is.na(df2)))
-  v2 <- length(df2[is.na(df2$lyr.1), 1])
-  expect_gt(v1, v2)
+  df2 <- as.data.frame(raster_inv, na.rm = TRUE)
+  expect_gt(rws, nrow(df2))
+  expect_gt(nrow(df2), nrow(df))
 })
