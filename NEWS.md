@@ -1,4 +1,4 @@
-# rasterpic (development version)
+# rasterpic 0.2.2
 
 -   Remove unused dependencies
 
