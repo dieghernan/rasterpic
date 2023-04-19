@@ -23,11 +23,9 @@ jobs:
           extra-packages: |
             local::.
             any::pkgdown
-            any::ggplot2
             any::tmap
             any::mapsf
             any::maptiles
-            paleolimbot/ggspatial
           needs: website
 
       - name: Deploy package

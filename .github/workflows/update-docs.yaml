@@ -24,7 +24,6 @@ jobs:
             local::.
             any::rcmdcheck
             any::pkgdown
-            any::ggplot2
             any::tmap
             any::mapsf
             any::maptiles
