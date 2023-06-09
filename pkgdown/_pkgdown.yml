@@ -1,8 +1,6 @@
 url: 'https://dieghernan.github.io/rasterpic'
 
 navbar:
-  type: dark
-  bg: primary
   structure:
     left:
       - intro
@@ -22,10 +20,8 @@ navbar:
         - text: Quick Brazil
           href: 'https://twitter.com/dhernangomez/status/1486666356544225281?s=21'
           
-template:
-  bootstrap: 5
-  params:
-    bootswatch: sketchy
+template:  
+  package: gitdevr
   opengraph:
     twitter:
       creator: '@dhernangomez'

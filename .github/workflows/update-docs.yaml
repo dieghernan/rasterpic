@@ -24,9 +24,6 @@ jobs:
             local::.
             any::rcmdcheck
             any::pkgdown
-            any::tmap
-            any::mapsf
-            any::maptiles
             dieghernan/pkgdev
           needs: website
 
