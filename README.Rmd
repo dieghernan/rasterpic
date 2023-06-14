@@ -125,7 +125,7 @@ autoplot(uk_flag2) +
 ## Citation
 
 ```{r echo=FALSE, results='asis'}
-print(citation("rasterpic"), bibtex = FALSE)
+print(citation("rasterpic"), style = "html")
 ```
 
 A BibTeX entry for LaTeX users is:
