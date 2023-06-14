@@ -159,7 +159,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "2229.061KB",
+  "fileSize": "2228.956KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -171,7 +171,7 @@
           "familyName": "Hernangómez"
         }
       ],
-      "name": "rasterpic: Create a Spatial Raster from Plain Images",
+      "name": "{rasterpic}: Create a Spatial Raster from Plain Images",
       "identifier": "10.5281/zenodo.5910095",
       "url": "https://dieghernan.github.io/rasterpic/",
       "@id": "https://doi.org/10.5281/zenodo.5910095",

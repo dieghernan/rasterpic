@@ -124,14 +124,15 @@ autoplot(uk_flag2) +
 
 To cite ‘rasterpic’ in publications use:
 
-Hernangomez D (2023). rasterpic: Create a Spatial Raster from Plain
-Images. <https://doi.org/10.5281/zenodo.5910095>,
-<https://dieghernan.github.io/rasterpic/>
+Hernangómez D (2023). *rasterpic: Create a Spatial Raster from Plain
+Images*. <doi:10.5281/zenodo.5910095>
+<https://doi.org/10.5281/zenodo.5910095>,
+<https://dieghernan.github.io/rasterpic/>.
 
 A BibTeX entry for LaTeX users is:
 
     @Manual{R-rasterpic,
-      title = {rasterpic: Create a Spatial Raster from Plain Images},
+      title = {{rasterpic}: Create a Spatial Raster from Plain Images},
       author = {Diego Hernangómez},
       year = {2023},
       version = {0.2.2},
