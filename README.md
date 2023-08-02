@@ -11,7 +11,8 @@ status](https://www.r-pkg.org/badges/version/rasterpic)](https://CRAN.R-project.
 results](https://badges.cranchecks.info/worst/rasterpic.svg)](https://cran.r-project.org/web/checks/check_results_rasterpic.html)
 [![R-CMD-check](https://github.com/dieghernan/rasterpic/actions/workflows/check-full.yaml/badge.svg)](https://github.com/dieghernan/rasterpic/actions/workflows/check-full.yaml)
 [![codecov](https://codecov.io/gh/dieghernan/rasterpic/branch/main/graph/badge.svg?token=jSZ4RIsj91)](https://app.codecov.io/gh/dieghernan/rasterpic)
-[![r-universe](https://dieghernan.r-universe.dev/badges/rasterpic)](https://dieghernan.r-universe.dev/)
+[![r-universe](https://dieghernan.r-universe.dev/badges/rasterpic)](https://dieghernan.r-universe.dev/rasterpic)
+[![CodeFactor](https://www.codefactor.io/repository/github/dieghernan/rasterpic/badge)](https://www.codefactor.io/repository/github/dieghernan/rasterpic)
 [![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.5910095-blue)](https://doi.org/10.5281/zenodo.5910095)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
@@ -42,12 +43,11 @@ Alternatively, you can install **rasterpic** using the
 [r-universe](https://dieghernan.r-universe.dev/rasterpic):
 
 ``` r
-# Enable this universe
-options(repos = c(
-  dieghernan = "https://dieghernan.r-universe.dev",
-  CRAN = "https://cloud.r-project.org"
+# Install rasterpic in R:
+install.packages("rasterpic", repos = c(
+  "https://dieghernan.r-universe.dev",
+  "https://cloud.r-project.org"
 ))
-install.packages("rasterpic")
 ```
 
 ## Example
@@ -140,8 +140,3 @@ A BibTeX entry for LaTeX users is:
       url = {https://dieghernan.github.io/rasterpic/},
       abstract = {Create a spatial raster, as the ones provided by terra, from regular pictures.},
     }
-
-## Contribute
-
-Check the GitHub page for [source
-code](https://github.com/dieghernan/rasterpic/).

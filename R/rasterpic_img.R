@@ -5,37 +5,46 @@
 #'
 #' @param x It could be
 #'   * A `sf`, `sfc`, `sfg` or bounding box (see [sf::st_bbox()]) object
-#'     (**sf** package).
-#'   * A `SpatRaster`, `SpatVector` or `SpatExtent` object (**terra** package).
+#'     (from the \CRANpkg{sf} package).
+#'   * A `SpatRaster`, `SpatVector` or `SpatExtent` object (from the
+#'     \CRANpkg{terra} package).
 #'   * A numeric vector of length 4 with the extent to be used for geotagging (
 #'     i.e. `c(xmin, ymin, xmax, ymax)`).
+#'
 #' @param img An image to be geotagged. It can be a local file or an online
 #'   file (e.g. "https://i.imgur.com/6yHmlwT.jpeg"). The following image
 #'   extensions are accepted:
 #'   * `png`
 #'   * `jpeg/jpg`
 #'   * `tiff/tif`
+#'
 #' @param halign Horizontal alignment of `img` with respect to the `x` object.
 #'  It should be a value between `0` (`x` is aligned on the left edge of the
 #'  raster) and `1` (`x` is on the right edge of the raster).
+#'
 #' @param valign Vertical alignment of `img` with respect to the `x` object.
 #'  It should be a value between `0` (`x` is aligned on the bottom edge of the
 #'  raster) and `1` (`x` is on the top edge of the raster).
+#'
 #' @param expand An expansion factor of the bounding box of `x`. `0` means that
 #'  no expansion is added, `1` means that the bounding box is expanded to double
 #'  the original size.
+#'
 #' @param crop Logical. Should the raster be cropped to the (expanded) bounding
 #'  box of `x`?
+#'
 #' @param mask Logical. Should the raster be masked to `x`? See [terra::mask()]
 #'  for details. This option is only valid if `x` is a `sf/sfc` object.
+#'
 #' @param inverse Logical. It affects only if `mask = TRUE`. If `TRUE`, areas on
 #'   the raster that do not overlap with `x` are masked.
+#'
 #' @param crs Character string describing a coordinate reference system.
 #'   This parameter would only affect if `x` does not present a Coordinate
 #'   Reference System (e.g. when `x` is a `SpatExtent`, `sfg` `bbox` or a
 #'   vector of coordinates). See **Details**
 #'
-#' @return A `SpatRaster` object.
+#' @return A `SpatRaster` object. See [terra::rast()].
 #'
 #' @details
 #'
@@ -43,9 +52,9 @@
 #' optimal results do not use geographic coordinates (longitude/latitude).
 #'
 #' `crs` can be in a WKT format, as a "authority:number" code such as
-#' `"EPSG:4326"`, or a PROJ-string format such as "+proj=utm +zone=12". It can
-#' be also retrieved as `sf::st_crs(25830)$wkt`. See `value` and **Notes** on
-#' [terra::crs()].
+#' `"EPSG:4326"`, or a PROJ-string format such as `"+proj=utm +zone=12"`. It can
+#' be also retrieved as `sf::st_crs(25830)$wkt` or using
+#' [tidyterra::pull_crs()]. See `value` and **Notes** on [terra::crs()].
 #'
 #' @seealso [sf::st_crs()], [sf::st_bbox()], [terra::crs()].
 #'
@@ -65,113 +74,48 @@
 #'
 #' class(ex1)
 #'
-#'
-#' plotRGB(ex1)
-#' plot(x$geom,
-#'   add = TRUE,
-#'   col = NA,
-#'   border = "white",
-#'   lwd = 2
-#' )
+#' #' plotRGB(ex1)
+#' plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
 #'
 #' # Expand
-#' ex2 <- rasterpic_img(x,
-#'   img,
-#'   expand = 0.5
-#' )
+#' ex2 <- rasterpic_img(x, img, expand = 0.5)
 #'
 #' plotRGB(ex2)
-#' plot(x$geom,
-#'   add = TRUE,
-#'   col = NA,
-#'   border = "white",
-#'   lwd = 2
-#' )
+#' plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
 #'
 #' # Align
-#' ex3 <- rasterpic_img(x,
-#'   img,
-#'   halign = 0
-#' )
+#' ex3 <- rasterpic_img(x, img, halign = 0)
 #'
 #' plotRGB(ex3)
-#' plot(x$geom,
-#'   add = TRUE,
-#'   col = NA,
-#'   border = "white",
-#'   lwd = 2
-#' )
+#' plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
 #'
 #' # Crop
-#' ex4 <- rasterpic_img(x,
-#'   img,
-#'   crop = TRUE
-#' )
+#' ex4 <- rasterpic_img(x, img, crop = TRUE)
 #'
 #' plotRGB(ex4)
-#' plot(x$geom,
-#'   add = TRUE,
-#'   col = NA,
-#'   border = "white",
-#'   lwd = 2
-#' )
+#' plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
 #'
 #' # Mask
-#' ex5 <- rasterpic_img(x,
-#'   img,
-#'   mask = TRUE
-#' )
+#' ex5 <- rasterpic_img(x, img, mask = TRUE)
 #'
 #' plotRGB(ex5)
-#' plot(x$geom,
-#'   add = TRUE,
-#'   col = NA,
-#'   border = "white",
-#'   lwd = 2
-#' )
-#'
+#' plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
 #'
 #' # Mask inverse
-#' ex6 <- rasterpic_img(x,
-#'   img,
-#'   mask = TRUE,
-#'   inverse = TRUE
-#' )
+#' ex6 <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
 #'
 #' plotRGB(ex6)
-#' plot(x$geom,
-#'   add = TRUE,
-#'   col = NA,
-#'   border = "white",
-#'   lwd = 2
-#' )
-#'
+#' plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
 #'
 #' # Combine Mask inverse and crop
-#' ex7 <- rasterpic_img(x,
-#'   img,
-#'   crop = TRUE,
-#'   mask = TRUE,
-#'   inverse = TRUE
-#' )
+#' ex7 <- rasterpic_img(x, img, crop = TRUE, mask = TRUE, inverse = TRUE)
 #'
 #' plotRGB(ex7)
-#' plot(x$geom,
-#'   add = TRUE,
-#'   col = NA,
-#'   border = "white",
-#'   lwd = 2
-#' )
+#' plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
+#' #'
 #' }
-rasterpic_img <- function(x,
-                          img,
-                          halign = 0.5,
-                          valign = 0.5,
-                          expand = 0,
-                          crop = FALSE,
-                          mask = FALSE,
-                          inverse = FALSE,
-                          crs) {
+rasterpic_img <- function(x, img, halign = .5, valign = .5, expand = 0,
+                          crop = FALSE, mask = FALSE, inverse = FALSE, crs) {
   # Initial validations
   if (halign < 0 || halign > 1) stop("'halign' should be between 0 and 1")
   if (valign < 0 || valign > 1) stop("'valign' should be between 0 and 1")
@@ -196,7 +140,6 @@ rasterpic_img <- function(x,
   ) * expand
 
   box_marg <- box + c(rep(-innermarg, 2), rep(innermarg, 2))
-
 
   ## 2. Adjust extent----
   # ratio w/h raster
@@ -229,15 +172,8 @@ rasterpic_img <- function(x,
     y_init <- box_marg[2] - valign * (new_h - h)
   }
 
-
   # Create the final extent of the raster
-  ext <- c(
-    x_init,
-    x_init + new_w,
-    y_init,
-    y_init + new_h
-  )
-
+  ext <- c(x_init, x_init + new_w, y_init, y_init + new_h)
 
   # Copy!
   new_rast <- rast

@@ -17,10 +17,10 @@ navbar:
       menu:
         - text: 'Beautiful Maps with R (IV): Fun with flags revisited'
           href: 'https://dieghernan.github.io/202201_maps-flags/'
-        - text: Quick Brazil
+        - text: 'Quick Brazil'
           href: 'https://twitter.com/dhernangomez/status/1486666356544225281?s=21'
-          
-template:  
+
+template:
   package: gitdevr
   opengraph:
     twitter:

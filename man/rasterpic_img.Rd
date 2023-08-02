@@ -20,8 +20,9 @@ rasterpic_img(
 \item{x}{It could be
 \itemize{
 \item A \code{sf}, \code{sfc}, \code{sfg} or bounding box (see \code{\link[sf:st_bbox]{sf::st_bbox()}}) object
-(\strong{sf} package).
-\item A \code{SpatRaster}, \code{SpatVector} or \code{SpatExtent} object (\strong{terra} package).
+(from the \CRANpkg{sf} package).
+\item A \code{SpatRaster}, \code{SpatVector} or \code{SpatExtent} object (from the
+\CRANpkg{terra} package).
 \item A numeric vector of length 4 with the extent to be used for geotagging (
 i.e. \code{c(xmin, ymin, xmax, ymax)}).
 }}
@@ -62,7 +63,7 @@ Reference System (e.g. when \code{x} is a \code{SpatExtent}, \code{sfg} \code{bb
 vector of coordinates). See \strong{Details}}
 }
 \value{
-A \code{SpatRaster} object.
+A \code{SpatRaster} object. See \code{\link[terra:rast]{terra::rast()}}.
 }
 \description{
 Geotags an image based on the coordinates of a given spatial object.
@@ -72,9 +73,9 @@ The function preserves the Coordinate Reference System of the \code{x} object. F
 optimal results do not use geographic coordinates (longitude/latitude).
 
 \code{crs} can be in a WKT format, as a "authority:number" code such as
-\code{"EPSG:4326"}, or a PROJ-string format such as "+proj=utm +zone=12". It can
-be also retrieved as \code{sf::st_crs(25830)$wkt}. See \code{value} and \strong{Notes} on
-\code{\link[terra:crs]{terra::crs()}}.
+\code{"EPSG:4326"}, or a PROJ-string format such as \code{"+proj=utm +zone=12"}. It can
+be also retrieved as \code{sf::st_crs(25830)$wkt} or using
+\code{\link[tidyterra:pull_crs]{tidyterra::pull_crs()}}. See \code{value} and \strong{Notes} on \code{\link[terra:crs]{terra::crs()}}.
 }
 \examples{
 \donttest{
@@ -90,103 +91,45 @@ ex1 <- rasterpic_img(x, img)
 
 class(ex1)
 
-
-plotRGB(ex1)
-plot(x$geom,
-  add = TRUE,
-  col = NA,
-  border = "white",
-  lwd = 2
-)
+#' plotRGB(ex1)
+plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
 
 # Expand
-ex2 <- rasterpic_img(x,
-  img,
-  expand = 0.5
-)
+ex2 <- rasterpic_img(x, img, expand = 0.5)
 
 plotRGB(ex2)
-plot(x$geom,
-  add = TRUE,
-  col = NA,
-  border = "white",
-  lwd = 2
-)
+plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
 
 # Align
-ex3 <- rasterpic_img(x,
-  img,
-  halign = 0
-)
+ex3 <- rasterpic_img(x, img, halign = 0)
 
 plotRGB(ex3)
-plot(x$geom,
-  add = TRUE,
-  col = NA,
-  border = "white",
-  lwd = 2
-)
+plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
 
 # Crop
-ex4 <- rasterpic_img(x,
-  img,
-  crop = TRUE
-)
+ex4 <- rasterpic_img(x, img, crop = TRUE)
 
 plotRGB(ex4)
-plot(x$geom,
-  add = TRUE,
-  col = NA,
-  border = "white",
-  lwd = 2
-)
+plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
 
 # Mask
-ex5 <- rasterpic_img(x,
-  img,
-  mask = TRUE
-)
+ex5 <- rasterpic_img(x, img, mask = TRUE)
 
 plotRGB(ex5)
-plot(x$geom,
-  add = TRUE,
-  col = NA,
-  border = "white",
-  lwd = 2
-)
-
+plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
 
 # Mask inverse
-ex6 <- rasterpic_img(x,
-  img,
-  mask = TRUE,
-  inverse = TRUE
-)
+ex6 <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
 
 plotRGB(ex6)
-plot(x$geom,
-  add = TRUE,
-  col = NA,
-  border = "white",
-  lwd = 2
-)
-
+plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
 
 # Combine Mask inverse and crop
-ex7 <- rasterpic_img(x,
-  img,
-  crop = TRUE,
-  mask = TRUE,
-  inverse = TRUE
-)
+ex7 <- rasterpic_img(x, img, crop = TRUE, mask = TRUE, inverse = TRUE)
 
 plotRGB(ex7)
-plot(x$geom,
-  add = TRUE,
-  col = NA,
-  border = "white",
-  lwd = 2
-)
+plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
+#'
 }
 }
 \seealso{
