@@ -1,7 +1,7 @@
 test_that("Test error online", {
   skip_on_cran()
   skip_if_offline()
-  
+
   img <- "http://this_is_an_error_url.fake"
   x <- sf::st_read(system.file("gpkg/UK.gpkg", package = "rasterpic"),
     quiet = TRUE
