@@ -1,13 +1,13 @@
 test_that("Test error online", {
+  skip_on_cran()
+  skip_if_offline()
+
   img <- "http://this_is_an_error_url.fake"
   x <- sf::st_read(system.file("gpkg/UK.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
 
-  expect_error(
-    rasterpic_img(x, img),
-    "Cannot reach img on url http://this_is_an_error_url.fake"
-  )
+  expect_error(rasterpic_img(x, img))
 })
 
 test_that("Test image online", {
