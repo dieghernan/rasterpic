@@ -25,3 +25,4 @@ x <- rast(system.file("tiff/elev.tiff", package = "rasterpic"))
 plot(x)
 asp_ratio(x)
 }
+\keyword{internal}

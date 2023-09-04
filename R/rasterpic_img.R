@@ -54,7 +54,7 @@
 #' `crs` can be in a WKT format, as a "authority:number" code such as
 #' `"EPSG:4326"`, or a PROJ-string format such as `"+proj=utm +zone=12"`. It can
 #' be also retrieved as `sf::st_crs(25830)$wkt` or using
-#' [tidyterra::pull_crs()]. See `value` and **Notes** on [terra::crs()].
+#' [tidyterra::pull_crs()]. See **Value** and **Notes** on [terra::crs()].
 #'
 #' @seealso [sf::st_crs()], [sf::st_bbox()], [terra::crs()].
 #'
@@ -74,7 +74,7 @@
 #'
 #' class(ex1)
 #'
-#' #' plotRGB(ex1)
+#' plotRGB(ex1)
 #' plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
 #'
 #' # Expand
@@ -112,7 +112,6 @@
 #'
 #' plotRGB(ex7)
 #' plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
-#' #'
 #' }
 rasterpic_img <- function(x, img, halign = .5, valign = .5, expand = 0,
                           crop = FALSE, mask = FALSE, inverse = FALSE, crs) {

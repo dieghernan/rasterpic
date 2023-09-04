@@ -38,7 +38,6 @@ reference:
   - title: Functions
     contents:
       - rasterpic_img
-      - asp_ratio
   - title: Plotting
     desc: Functions from other packages from plotting SpatRasters
     contents:

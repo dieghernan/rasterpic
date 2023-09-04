@@ -8,6 +8,7 @@
 #'
 #' @return The aspect ratio
 #' @export
+#' @keywords internal
 #' @examples
 #'
 #' library(terra)

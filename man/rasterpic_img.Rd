@@ -75,7 +75,7 @@ optimal results do not use geographic coordinates (longitude/latitude).
 \code{crs} can be in a WKT format, as a "authority:number" code such as
 \code{"EPSG:4326"}, or a PROJ-string format such as \code{"+proj=utm +zone=12"}. It can
 be also retrieved as \code{sf::st_crs(25830)$wkt} or using
-\code{\link[tidyterra:pull_crs]{tidyterra::pull_crs()}}. See \code{value} and \strong{Notes} on \code{\link[terra:crs]{terra::crs()}}.
+\code{\link[tidyterra:pull_crs]{tidyterra::pull_crs()}}. See \strong{Value} and \strong{Notes} on \code{\link[terra:crs]{terra::crs()}}.
 }
 \examples{
 \donttest{
@@ -91,7 +91,7 @@ ex1 <- rasterpic_img(x, img)
 
 class(ex1)
 
-#' plotRGB(ex1)
+plotRGB(ex1)
 plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
 
 # Expand
@@ -129,7 +129,6 @@ ex7 <- rasterpic_img(x, img, crop = TRUE, mask = TRUE, inverse = TRUE)
 
 plotRGB(ex7)
 plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
-#'
 }
 }
 \seealso{
