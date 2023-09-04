@@ -89,7 +89,7 @@ autoplot(maskinverse)
 
 ## Objects admitted for geotagging
 
--   Spatial object of the `sf` package: `sf`, `sfc`, `sfg`or `bbox`.
+-   Spatial object of the `sf` package: `sf`, `sfc`, `sfg` or `bbox`.
 
 -   Spatial objects of the `terra` package: `SpatRaster`, `SpatVector`,
     `SpatExtent`.
