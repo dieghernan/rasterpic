@@ -185,6 +185,9 @@ rasterpic_img <- function(x, img, halign = .5, valign = .5, expand = 0,
 
   if (mask) {
     if (inherits(x, "SpatVector")) {
+      # Ensure CRS in the SpatVector
+      terra::crs(x) <- crs
+
       new_rast <- terra::mask(new_rast, x,
         inverse = inverse
       )
