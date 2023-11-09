@@ -1,6 +1,6 @@
 test_that("Test error online", {
   skip_on_cran()
-  skip_
+  skip_if_not_installed("curl")
   skip_if_offline()
 
   img <- "http://this_is_an_error_url.fake"
@@ -13,6 +13,7 @@ test_that("Test error online", {
 
 test_that("Test image online", {
   skip_on_cran()
+  skip_if_not_installed("curl")
   skip_if_offline()
 
   img <- "https://i.imgur.com/6yHmlwT.jpeg"
