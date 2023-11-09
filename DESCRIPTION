@@ -24,7 +24,9 @@ Suggests:
     tidyterra
 VignetteBuilder: 
     knitr
-Config/Needs/website: dieghernan/gitdevr, tmap, mapsf, maptiles
+Config/Needs/check: curl
+Config/Needs/coverage: curl
+Config/Needs/website: dieghernan/gitdevr, tmap, mapsf, maptiles, devtools
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Encoding: UTF-8

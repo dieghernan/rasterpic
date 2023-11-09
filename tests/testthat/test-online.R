@@ -1,5 +1,6 @@
 test_that("Test error online", {
   skip_on_cran()
+  skip_
   skip_if_offline()
 
   img <- "http://this_is_an_error_url.fake"
