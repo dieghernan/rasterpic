@@ -123,7 +123,7 @@ autoplot(uk_flag2) +
 ## Citation
 
 <p>
-Hernangómez D (2023). <em>rasterpic: Create a Spatial Raster from Plain
+Hernangómez D (2024). <em>rasterpic: Create a Spatial Raster from Plain
 Images</em>.
 <a href="https://doi.org/10.5281/zenodo.5910095">doi:10.5281/zenodo.5910095</a>,
 <a href="https://dieghernan.github.io/rasterpic/">https://dieghernan.github.io/rasterpic/</a>.
@@ -134,8 +134,8 @@ A BibTeX entry for LaTeX users is:
     @Manual{R-rasterpic,
       title = {{rasterpic}: Create a Spatial Raster from Plain Images},
       author = {Diego Hernangómez},
-      year = {2023},
-      version = {0.2.3},
+      year = {2024},
+      version = {0.2.3.9000},
       doi = {10.5281/zenodo.5910095},
       url = {https://dieghernan.github.io/rasterpic/},
       abstract = {Create a spatial raster, as the ones provided by terra, from regular pictures.},

@@ -219,7 +219,13 @@ test_that("Test mask sfg", {
   expect_gt(rws, nrow(df))
 
   # Inverse
-  raster_inv <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
+  expect_message(
+    raster_inv <- rasterpic_img(x,
+      img,
+      mask = TRUE, inverse = TRUE
+    ),
+    "'crs' is NA"
+  )
 
   expect_true(asp_ratio(raster_inv) == dim(png_dim)[2] / dim(png_dim)[1])
 

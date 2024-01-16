@@ -1,3 +1,8 @@
+# rasterpic (development version)
+
+-   Update docs and tests.
+-   Ensure `SpatVector`s always have `crs`.
+
 # rasterpic 0.2.3
 
 -   Now `asp_ratio` is an internal function.

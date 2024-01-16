@@ -13,8 +13,7 @@ test_that("Test sfg", {
 
   expect_s3_class(x, "sfg")
 
-  expect_message(rasterpic_img(x, img), "'crs' is NA")
-  raster <- rasterpic_img(x, img)
+  expect_message(raster <- rasterpic_img(x, img), "'crs' is NA")
 
   expect_true(terra::crs(raster) == "")
 

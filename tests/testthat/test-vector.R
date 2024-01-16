@@ -9,8 +9,7 @@ test_that("Test vector", {
   expect_length(x, 4)
 
   expect_error(rasterpic_img(x[1:3], img))
-  expect_message(rasterpic_img(x, img), "'crs' is NA")
-  raster <- rasterpic_img(x, img)
+  expect_message(raster <- rasterpic_img(x, img), "'crs' is NA")
 
   expect_true(terra::crs(raster) == "")
 
@@ -55,9 +54,8 @@ test_that("Test vector with projs", {
   expect_true(terra::xmax(raster) > x[3])
 
   # On mask message
-  expect_message(rasterpic_img(x, img, crs = crs_wkt_sf, mask = TRUE))
+  expect_message(mask <- rasterpic_img(x, img, crs = crs_wkt_sf, mask = TRUE))
 
-  mask <- rasterpic_img(x, img, crs = crs_wkt_sf, mask = TRUE)
 
   expect_true(terra::ext(raster) == terra::ext(mask))
 

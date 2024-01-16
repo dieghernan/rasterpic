@@ -1,9 +1,9 @@
 test_that("Error on bad x formatting", {
   x <- 1
   img <- system.file("img/UK_flag.png", package = "rasterpic")
-  expect_error(
+  expect_snapshot(
     rasterpic_img(x, img),
-    "Don't know how to extract a bounding box from 'x'"
+    error = TRUE
   )
 })
 
@@ -12,41 +12,41 @@ test_that("Error on bad img formatting", {
     quiet = TRUE
   )
   img <- "nofile"
-  expect_error(
+  expect_snapshot(
     rasterpic_img(x, img),
-    "'img' file not found"
+    error = TRUE
   )
 
 
   img2 <- system.file("gpkg/UK.gpkg", package = "rasterpic")
 
-  expect_error(
+  expect_snapshot(
     rasterpic_img(x, img2),
-    "'img' only accepts 'png', 'jpg' or 'jpeg' files"
+    error = TRUE
   )
 })
 
 test_that("Error on invalid parameters", {
   x <- 1
   img <- system.file("img/UK_flag.png", package = "rasterpic")
-  expect_error(
+  expect_snapshot(
     rasterpic_img(x, img, valign = 1.2),
-    "'valign' should be between 0 and 1"
+    error = TRUE
   )
 
-  expect_error(
+  expect_snapshot(
     rasterpic_img(x, img, valign = -1.2),
-    "'valign' should be between 0 and 1"
+    error = TRUE
   )
 
-  expect_error(
+  expect_snapshot(
     rasterpic_img(x, img, halign = 1.2),
-    "'halign' should be between 0 and 1"
+    error = TRUE
   )
 
-  expect_error(
+  expect_snapshot(
     rasterpic_img(x, img, halign = -1.2),
-    "'halign' should be between 0 and 1"
+    error = TRUE
   )
 })
 
@@ -87,11 +87,10 @@ test_that("Message in mask raster", {
   res1 <- rasterpic_img(x, img)
 
   expect_message(
-    rasterpic_img(x, img, mask = TRUE),
+    res2 <- rasterpic_img(x, img, mask = TRUE),
     "'mask' only available when 'x' is an 'sf/sfc/SpatVector' object"
   )
 
-  res2 <- rasterpic_img(x, img, mask = TRUE)
 
   expect_true(terra::ext(res1) == terra::ext(res2))
   expect_true(terra::crs(res1) == terra::crs(res2))
@@ -112,11 +111,10 @@ test_that("Message in mask raster with SpatExtent", {
   res1 <- rasterpic_img(extent, img, crs = crs)
 
   expect_message(
-    rasterpic_img(extent, img, mask = TRUE, crs = crs),
+    res2 <- rasterpic_img(extent, img, mask = TRUE, crs = crs),
     "'mask' only available when 'x' is an 'sf/sfc/SpatVector' object"
   )
 
-  res2 <- rasterpic_img(extent, img, mask = TRUE, crs = crs)
 
   expect_true(terra::ext(res1) == terra::ext(res2))
   expect_true(terra::crs(res1) == terra::crs(res2))
