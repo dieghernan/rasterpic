@@ -66,6 +66,10 @@
 <h2 class="pkg-version" data-toc-text="development version" id="rasterpic-development-version">rasterpic (development version)<a class="anchor" aria-label="anchor" href="#rasterpic-development-version"></a></h2>
 <ul><li>Update docs and tests.</li>
 <li>Ensure <code>SpatVector</code>s always have <code>crs</code>.</li>
+<li>Handling of <code>img</code> with unexpected number of channels (layers). There are likely to be corner cases:
+<ul><li>If the image has less than 3 channels the raster output does not have the property RGB (<code><a href="https://rdrr.io/pkg/terra/man/RGB.html" class="external-link">terra::has.RGB()</a></code> is <code>FALSE</code>).</li>
+<li>If the image has more than 4 channels only channels 1 to 3 are provided.</li>
+</ul></li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.3" id="rasterpic-023">rasterpic 0.2.3<a class="anchor" aria-label="anchor" href="#rasterpic-023"></a></h2><p class="text-muted">CRAN release: 2023-09-08</p>

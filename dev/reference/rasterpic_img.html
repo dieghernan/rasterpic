@@ -147,7 +147,10 @@ vector of coordinates). See <strong>Details</strong></p></dd>
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A <code>SpatRaster</code> object. See <code><a href="https://rdrr.io/pkg/terra/man/rast.html" class="external-link">terra::rast()</a></code>.</p>
+<p>A <code>SpatRaster</code> object with <code><a href="https://rdrr.io/pkg/terra/man/RGB.html" class="external-link">terra::has.RGB()</a></code></p>
+<p></p>
+<p><code>TRUE</code>.
+See <code><a href="https://rdrr.io/pkg/terra/man/rast.html" class="external-link">terra::rast()</a></code>.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -158,6 +161,14 @@ optimal results do not use geographic coordinates (longitude/latitude).</p>
 be also retrieved as <code>sf::st_crs(25830)$wkt</code> or using
 <code><a href="https://dieghernan.github.io/tidyterra/reference/pull_crs.html" class="external-link">tidyterra::pull_crs()</a></code>. See <strong>Value</strong> and <strong>Notes</strong> on <code><a href="https://rdrr.io/pkg/terra/man/crs.html" class="external-link">terra::crs()</a></code>.</p>
     </div>
+    <div class="section level2">
+    <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
+    <p>It is expected that <code>img</code> has 3 or 4 channels (in case of transparent
+images):</p><ul><li><p>If less channels are detected then <code><a href="https://rdrr.io/pkg/terra/man/RGB.html" class="external-link">terra::has.RGB()</a></code> would be <code>FALSE</code>
+and the output would have 1 or 2 channels/layers.</p></li>
+<li><p>If more than 4 channels are detected then <code><a href="https://rdrr.io/pkg/terra/man/RGB.html" class="external-link">terra::has.RGB()</a></code> would be
+<code>TRUE</code> and the output would have the first 3 channels/layers.</p></li>
+</ul></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p><code><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">sf::st_crs()</a></code>, <code><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">sf::st_bbox()</a></code>, <code><a href="https://rdrr.io/pkg/terra/man/crs.html" class="external-link">terra::crs()</a></code>.</p></div>
