@@ -5,6 +5,7 @@ test_that("Test all image formats with UK", {
   )
 
   raster <- rasterpic_img(x, img)
+  expect_true(terra::has.RGB(raster))
   png_dim <- png::readPNG(img)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
@@ -27,6 +28,7 @@ test_that("Test all image formats with UK", {
     expect_equal(asp_ratio(raster_test), asp_ratio(raster_test))
     expect_true(terra::ext(raster_test) == terra::ext(raster))
     expect_true(terra::crs(raster_test) == terra::crs(raster))
+    expect_true(terra::has.RGB(raster_test))
   }
 })
 
@@ -38,6 +40,8 @@ test_that("Test all image formats with AT vertical", {
   )
 
   raster <- rasterpic_img(x, img)
+  expect_true(terra::has.RGB(raster))
+
   png_dim <- png::readPNG(img)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
   # Different y coords
@@ -59,6 +63,7 @@ test_that("Test all image formats with AT vertical", {
     expect_equal(asp_ratio(raster_test), asp_ratio(raster_test))
     expect_true(terra::ext(raster_test) == terra::ext(raster))
     expect_true(terra::crs(raster_test) == terra::crs(raster))
+    expect_true(terra::has.RGB(raster_test))
   }
 })
 
@@ -71,6 +76,7 @@ test_that("Test all image formats with a raster", {
   x <- terra::project(x, "epsg:3857")
 
   raster <- rasterpic_img(x, img)
+  expect_true(terra::has.RGB(raster))
   png_dim <- png::readPNG(img)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
   # Different y coords
@@ -92,6 +98,7 @@ test_that("Test all image formats with a raster", {
     expect_equal(asp_ratio(raster_test), asp_ratio(raster_test))
     expect_true(terra::ext(raster_test) == terra::ext(raster))
     expect_true(terra::crs(raster_test) == terra::crs(raster))
+    expect_true(terra::has.RGB(raster_test))
   }
 })
 
@@ -105,6 +112,8 @@ test_that("Test all image formats with sfc vertical", {
   expect_s3_class(x, "sfc")
 
   raster <- rasterpic_img(x, img)
+  expect_true(terra::has.RGB(raster))
+
   png_dim <- png::readPNG(img)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
   # Different y coords
@@ -126,6 +135,7 @@ test_that("Test all image formats with sfc vertical", {
     expect_equal(asp_ratio(raster_test), asp_ratio(raster_test))
     expect_true(terra::ext(raster_test) == terra::ext(raster))
     expect_true(terra::crs(raster_test) == terra::crs(raster))
+    expect_true(terra::has.RGB(raster_test))
   }
 })
 
@@ -173,6 +183,7 @@ test_that("Test transparent", {
   )
 
   raster <- rasterpic_img(x, img)
+  expect_true(terra::has.RGB(raster))
 
   png_dim <- png::readPNG(img)
 

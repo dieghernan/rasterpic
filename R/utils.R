@@ -42,8 +42,9 @@ rpic_read <- function(img, crs = NA) {
   if ("png" %in% tools::file_ext(img)) {
     pngfile <- png::readPNG(img) * 255
 
+
     # Give transparency if available
-    if (dim(pngfile)[3] == 4) {
+    if (all(dim(pngfile)[3] == 4, !is.na(dim(pngfile)[3]))) {
       nrow <- dim(pngfile)[1]
 
       for (i in seq_len(nrow)) {

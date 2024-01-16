@@ -63,7 +63,8 @@ Reference System (e.g. when \code{x} is a \code{SpatExtent}, \code{sfg} \code{bb
 vector of coordinates). See \strong{Details}}
 }
 \value{
-A \code{SpatRaster} object. See \code{\link[terra:rast]{terra::rast()}}.
+A \code{SpatRaster} object with \code{\link[terra:RGB]{terra::has.RGB()}} \code{TRUE}.
+See \code{\link[terra:rast]{terra::rast()}}.
 }
 \description{
 Geotags an image based on the coordinates of a given spatial object.
@@ -76,6 +77,16 @@ optimal results do not use geographic coordinates (longitude/latitude).
 \code{"EPSG:4326"}, or a PROJ-string format such as \code{"+proj=utm +zone=12"}. It can
 be also retrieved as \code{sf::st_crs(25830)$wkt} or using
 \code{\link[tidyterra:pull_crs]{tidyterra::pull_crs()}}. See \strong{Value} and \strong{Notes} on \code{\link[terra:crs]{terra::crs()}}.
+}
+\note{
+It is expected that \code{img} has 3 or 4 channels (in case of transparent
+images):
+\itemize{
+\item If less channels are detected then \code{\link[terra:RGB]{terra::has.RGB()}} would be \code{FALSE}
+and the output would have 1 or 2 channels/layers.
+\item If more than 4 channels are detected then \code{\link[terra:RGB]{terra::has.RGB()}} would be
+\code{TRUE} and the output would have the first 3 channels/layers.
+}
 }
 \examples{
 \donttest{

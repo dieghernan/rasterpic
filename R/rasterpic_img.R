@@ -44,8 +44,18 @@
 #'   Reference System (e.g. when `x` is a `SpatExtent`, `sfg` `bbox` or a
 #'   vector of coordinates). See **Details**
 #'
-#' @return A `SpatRaster` object. See [terra::rast()].
+#' @return A `SpatRaster` object with [terra::has.RGB()] `TRUE`.
+#' See [terra::rast()].
 #'
+#' @note
+#'
+#' It is expected that `img` has 3 or 4 channels (in case of transparent
+#' images):
+#'
+#'   * If less channels are detected then [terra::has.RGB()] would be `FALSE`
+#'     and the output would have 1 or 2 channels/layers.
+#'   * If more than 4 channels are detected then [terra::has.RGB()] would be
+#'     `TRUE` and the output would have the first 3 channels/layers.
 #' @details
 #'
 #' The function preserves the Coordinate Reference System of the `x` object. For
@@ -131,6 +141,17 @@ rasterpic_img <- function(x, img, halign = .5, valign = .5, expand = 0,
   # B. Read img file----
   rast <- rpic_read(img, crs)
 
+  # Throw a warning if nlyrs not correct
+  if (terra::nlyr(rast) < 3) {
+    warning("img has ", terra::nlyr(rast), " not 3 or 4")
+  }
+
+  if (terra::nlyr(rast) > 4) {
+    message("img has ", terra::nlyr(rast), ", selecting layers 1 to 3")
+
+    rast <- terra::subset(rast, seq(1, 3))
+  }
+
   # C. Geo-tagging the png----
   ## 1. Creates an expanded bbox----
   innermarg <- min(
@@ -196,6 +217,11 @@ rasterpic_img <- function(x, img, halign = .5, valign = .5, expand = 0,
     }
   }
 
-  terra::RGB(new_rast) <- c(1, 2, 3)
+  if (terra::nlyr(new_rast) %in% c(3, 4)) {
+    terra::RGB(new_rast) <- c(1, 2, 3)
+  } else {
+    message("Result does not have a RGB property: Missing channels")
+  }
+
   return(new_rast)
 }
