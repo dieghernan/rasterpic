@@ -28,7 +28,7 @@ i.e. \code{c(xmin, ymin, xmax, ymax)}).
 }}
 
 \item{img}{An image to be geotagged. It can be a local file or an online
-file (e.g. "https://i.imgur.com/6yHmlwT.jpeg"). The following image
+file (e.g. \code{"https://i.imgur.com/6yHmlwT.jpeg"}). The following image
 extensions are accepted:
 \itemize{
 \item \code{png}
@@ -64,7 +64,7 @@ vector of coordinates). See \strong{Details}}
 }
 \value{
 A \code{SpatRaster} object (see \code{\link[terra:rast]{terra::rast()}}) where each layer
-correspond to a color channel of the \code{img} file.
+corresponds to a color channel of the \code{img} file.
 \itemize{
 \item If the \code{img} has at least 3 channels (e.g. layers), the result would have
 an additional property setting the layers 1 to 3 as the Red, Green and Blue
@@ -159,5 +159,6 @@ plot(ex_rgb)
 }
 }
 \seealso{
-\code{\link[sf:st_crs]{sf::st_crs()}}, \code{\link[sf:st_bbox]{sf::st_bbox()}}, \code{\link[terra:crs]{terra::crs()}}, \code{\link[terra:RGB]{terra::RGB()}}.
+\code{\link[sf:st_crs]{sf::st_crs()}}, \code{\link[sf:st_bbox]{sf::st_bbox()}}, \code{\link[terra:crs]{terra::crs()}},
+\code{\link[terra:ext]{terra::ext()}}, \code{\link[terra:RGB]{terra::RGB()}}.
 }

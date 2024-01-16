@@ -12,7 +12,7 @@
 #'     i.e. `c(xmin, ymin, xmax, ymax)`).
 #'
 #' @param img An image to be geotagged. It can be a local file or an online
-#'   file (e.g. "https://i.imgur.com/6yHmlwT.jpeg"). The following image
+#'   file (e.g. `"https://i.imgur.com/6yHmlwT.jpeg"`). The following image
 #'   extensions are accepted:
 #'   * `png`
 #'   * `jpeg/jpg`
@@ -45,7 +45,7 @@
 #'   vector of coordinates). See **Details**
 #'
 #' @return A `SpatRaster` object (see [terra::rast()]) where each layer
-#' correspond to a color channel of the `img` file.
+#' corresponds to a color channel of the `img` file.
 #'
 #' * If the `img` has at least 3 channels (e.g. layers), the result would have
 #'   an additional property setting the layers 1 to 3 as the Red, Green and Blue
@@ -63,7 +63,8 @@
 #' be also retrieved as `sf::st_crs(25830)$wkt` or using
 #' [tidyterra::pull_crs()]. See **Value** and **Notes** on [terra::crs()].
 #'
-#' @seealso [sf::st_crs()], [sf::st_bbox()], [terra::crs()], [terra::RGB()].
+#' @seealso [sf::st_crs()], [sf::st_bbox()], [terra::crs()],
+#' [terra::ext()], [terra::RGB()].
 #'
 #' @export
 #'
