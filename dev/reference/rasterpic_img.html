@@ -96,7 +96,7 @@ i.e. <code>c(xmin, ymin, xmax, ymax)</code>).</p></li>
 
 <dt>img</dt>
 <dd><p>An image to be geotagged. It can be a local file or an online
-file (e.g. "https://i.imgur.com/6yHmlwT.jpeg"). The following image
+file (e.g. <code>"https://i.imgur.com/6yHmlwT.jpeg"</code>). The following image
 extensions are accepted:</p><ul><li><p><code>png</code></p></li>
 <li><p><code>jpeg/jpg</code></p></li>
 <li><p><code>tiff/tif</code></p></li>
@@ -148,7 +148,7 @@ vector of coordinates). See <strong>Details</strong></p></dd>
     
 
 <p>A <code>SpatRaster</code> object (see <code><a href="https://rdrr.io/pkg/terra/man/rast.html" class="external-link">terra::rast()</a></code>) where each layer
-correspond to a color channel of the <code>img</code> file.</p><ul><li><p>If the <code>img</code> has at least 3 channels (e.g. layers), the result would have
+corresponds to a color channel of the <code>img</code> file.</p><ul><li><p>If the <code>img</code> has at least 3 channels (e.g. layers), the result would have
 an additional property setting the layers 1 to 3 as the Red, Green and Blue
 channels. See <code><a href="https://rdrr.io/pkg/terra/man/RGB.html" class="external-link">terra::RGB()</a></code>.</p></li>
 <li><p>If the <code>img</code> already has a definition or RGB values (this may be the case
@@ -165,7 +165,8 @@ be also retrieved as <code>sf::st_crs(25830)$wkt</code> or using
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">sf::st_crs()</a></code>, <code><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">sf::st_bbox()</a></code>, <code><a href="https://rdrr.io/pkg/terra/man/crs.html" class="external-link">terra::crs()</a></code>, <code><a href="https://rdrr.io/pkg/terra/man/RGB.html" class="external-link">terra::RGB()</a></code>.</p></div>
+    <div class="dont-index"><p><code><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">sf::st_crs()</a></code>, <code><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">sf::st_bbox()</a></code>, <code><a href="https://rdrr.io/pkg/terra/man/crs.html" class="external-link">terra::crs()</a></code>,
+<code><a href="https://rdrr.io/pkg/terra/man/ext.html" class="external-link">terra::ext()</a></code>, <code><a href="https://rdrr.io/pkg/terra/man/RGB.html" class="external-link">terra::RGB()</a></code>.</p></div>
     </div>
 
     <div class="section level2">
