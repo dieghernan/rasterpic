@@ -96,3 +96,16 @@ other_tile_crop <- terra::crop(other_tile, uk_img)
 plot_tiles(other_tile_crop)
 plot_tiles(uk_img, add = TRUE)
 ```
+
+## Session info
+
+<details>
+  <summary>Details</summary>
+  
+```{r session, echo=FALSE}
+if (!require("sessioninfo")) {
+  install.packages("sessioninfo")
+}
+sessioninfo::session_info()
+```
+</details>
