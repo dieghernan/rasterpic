@@ -63,11 +63,43 @@ test_that("Check how it works with 6 layer file", {
   x2 <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
-  expect_snapshot(r_new <- rasterpic_img(x2, tmp_tiff))
 
+  r_new <- rasterpic_img(x2, tmp_tiff)
 
   expect_s4_class(r_new, "SpatRaster")
   expect_true(terra::crs(r_new) == terra::crs(x2))
   expect_true(terra::has.RGB(r_new))
-  expect_identical(terra::nlyr(r_new), 3)
+  expect_identical(terra::nlyr(r_new), terra::nlyr(r_8))
+})
+
+
+test_that("Check how it works with tif with RGB", {
+  # PNG
+  img <- system.file("img/UK_flag.png", package = "rasterpic")
+  x <- sf::st_read(system.file("gpkg/UK.gpkg", package = "rasterpic"),
+    quiet = TRUE
+  )
+
+  r <- rasterpic_img(x, img)
+
+  terra::RGB(r) <- c(3, 1, 2)
+  expect_true(all(terra::RGB(r) == c(3, 1, 2)))
+  tmp_tiff <- tempfile(fileext = ".tiff")
+  terra::writeRaster(r, tmp_tiff)
+  rr <- terra::rast(tmp_tiff)
+  # The tiff has RGB colors already
+
+  expect_true(terra::has.RGB(rr))
+
+  x2 <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
+    quiet = TRUE
+  )
+
+  r_new <- rasterpic_img(x2, tmp_tiff)
+
+  expect_s4_class(r_new, "SpatRaster")
+  expect_true(terra::crs(r_new) == terra::crs(x2))
+  expect_true(terra::has.RGB(r_new))
+  expect_identical(terra::nlyr(r_new), terra::nlyr(rr))
+  expect_true(all(terra::RGB(r_new) == terra::RGB(rr)))
 })

@@ -63,8 +63,15 @@ Reference System (e.g. when \code{x} is a \code{SpatExtent}, \code{sfg} \code{bb
 vector of coordinates). See \strong{Details}}
 }
 \value{
-A \code{SpatRaster} object with \code{\link[terra:RGB]{terra::has.RGB()}} \code{TRUE}.
-See \code{\link[terra:rast]{terra::rast()}}.
+A \code{SpatRaster} object (see \code{\link[terra:rast]{terra::rast()}}) where each layer
+correspond to a color channel of the \code{img} file.
+\itemize{
+\item If the \code{img} has at least 3 channels (e.g. layers), the result would have
+an additional property setting the layers 1 to 3 as the Red, Green and Blue
+channels. See \code{\link[terra:RGB]{terra::RGB()}}.
+\item If the \code{img} already has a definition or RGB values (this may be the case
+for \code{tiff/tif} files) the result would keep that channel definition.
+}
 }
 \description{
 Geotags an image based on the coordinates of a given spatial object.
@@ -78,16 +85,6 @@ optimal results do not use geographic coordinates (longitude/latitude).
 be also retrieved as \code{sf::st_crs(25830)$wkt} or using
 \code{\link[tidyterra:pull_crs]{tidyterra::pull_crs()}}. See \strong{Value} and \strong{Notes} on \code{\link[terra:crs]{terra::crs()}}.
 }
-\note{
-It is expected that \code{img} has 3 or 4 channels (in case of transparent
-images):
-\itemize{
-\item If less channels are detected then \code{\link[terra:RGB]{terra::has.RGB()}} would be \code{FALSE}
-and the output would have 1 or 2 channels/layers.
-\item If more than 4 channels are detected then \code{\link[terra:RGB]{terra::has.RGB()}} would be
-\code{TRUE} and the output would have the first 3 channels/layers.
-}
-}
 \examples{
 \donttest{
 library(sf)
@@ -100,48 +97,67 @@ img <- system.file("img/vertical.png", package = "rasterpic")
 # Default config
 ex1 <- rasterpic_img(x, img)
 
-class(ex1)
+ex1
 
-plotRGB(ex1)
+plot(ex1)
 plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
 
 # Expand
 ex2 <- rasterpic_img(x, img, expand = 0.5)
 
-plotRGB(ex2)
+plot(ex2)
 plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
 
 # Align
 ex3 <- rasterpic_img(x, img, halign = 0)
 
-plotRGB(ex3)
+plot(ex3)
 plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
 
 # Crop
 ex4 <- rasterpic_img(x, img, crop = TRUE)
 
-plotRGB(ex4)
+plot(ex4)
 plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
 
 # Mask
 ex5 <- rasterpic_img(x, img, mask = TRUE)
 
-plotRGB(ex5)
+plot(ex5)
 plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
 
 # Mask inverse
 ex6 <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
 
-plotRGB(ex6)
+plot(ex6)
 plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
 
 # Combine Mask inverse and crop
 ex7 <- rasterpic_img(x, img, crop = TRUE, mask = TRUE, inverse = TRUE)
 
-plotRGB(ex7)
+plot(ex7)
 plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
+
+# RGB channels ------
+ex_rgb <- ex1
+has.RGB(ex_rgb)
+RGB(ex_rgb)
+
+# Modify RGB channels
+RGB(ex_rgb) <- c(2, 3, 1)
+RGB(ex_rgb)
+
+plot(ex_rgb)
+
+# Remove RGB channels
+RGB(ex_rgb) <- NULL
+has.RGB(ex_rgb)
+RGB(ex_rgb)
+
+# Note the difference with terra::plot
+plot(ex_rgb)
 }
 }
 \seealso{
-\code{\link[sf:st_crs]{sf::st_crs()}}, \code{\link[sf:st_bbox]{sf::st_bbox()}}, \code{\link[terra:crs]{terra::crs()}}.
+\code{\link[sf:st_crs]{sf::st_crs()}}, \code{\link[sf:st_bbox]{sf::st_bbox()}}, \code{\link[terra:crs]{terra::crs()}}, \code{\link[terra:RGB]{terra::RGB()}}.
 }

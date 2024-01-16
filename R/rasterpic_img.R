@@ -44,18 +44,15 @@
 #'   Reference System (e.g. when `x` is a `SpatExtent`, `sfg` `bbox` or a
 #'   vector of coordinates). See **Details**
 #'
-#' @return A `SpatRaster` object with [terra::has.RGB()] `TRUE`.
-#' See [terra::rast()].
+#' @return A `SpatRaster` object (see [terra::rast()]) where each layer
+#' correspond to a color channel of the `img` file.
 #'
-#' @note
+#' * If the `img` has at least 3 channels (e.g. layers), the result would have
+#'   an additional property setting the layers 1 to 3 as the Red, Green and Blue
+#'   channels. See [terra::RGB()].
+#' * If the `img` already has a definition or RGB values (this may be the case
+#'    for `tiff/tif` files) the result would keep that channel definition.
 #'
-#' It is expected that `img` has 3 or 4 channels (in case of transparent
-#' images):
-#'
-#'   * If less channels are detected then [terra::has.RGB()] would be `FALSE`
-#'     and the output would have 1 or 2 channels/layers.
-#'   * If more than 4 channels are detected then [terra::has.RGB()] would be
-#'     `TRUE` and the output would have the first 3 channels/layers.
 #' @details
 #'
 #' The function preserves the Coordinate Reference System of the `x` object. For
@@ -66,7 +63,7 @@
 #' be also retrieved as `sf::st_crs(25830)$wkt` or using
 #' [tidyterra::pull_crs()]. See **Value** and **Notes** on [terra::crs()].
 #'
-#' @seealso [sf::st_crs()], [sf::st_bbox()], [terra::crs()].
+#' @seealso [sf::st_crs()], [sf::st_bbox()], [terra::crs()], [terra::RGB()].
 #'
 #' @export
 #'
@@ -82,46 +79,65 @@
 #' # Default config
 #' ex1 <- rasterpic_img(x, img)
 #'
-#' class(ex1)
+#' ex1
 #'
-#' plotRGB(ex1)
+#' plot(ex1)
 #' plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
 #'
 #' # Expand
 #' ex2 <- rasterpic_img(x, img, expand = 0.5)
 #'
-#' plotRGB(ex2)
+#' plot(ex2)
 #' plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
 #'
 #' # Align
 #' ex3 <- rasterpic_img(x, img, halign = 0)
 #'
-#' plotRGB(ex3)
+#' plot(ex3)
 #' plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
 #'
 #' # Crop
 #' ex4 <- rasterpic_img(x, img, crop = TRUE)
 #'
-#' plotRGB(ex4)
+#' plot(ex4)
 #' plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
 #'
 #' # Mask
 #' ex5 <- rasterpic_img(x, img, mask = TRUE)
 #'
-#' plotRGB(ex5)
+#' plot(ex5)
 #' plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
 #'
 #' # Mask inverse
 #' ex6 <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
 #'
-#' plotRGB(ex6)
+#' plot(ex6)
 #' plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
 #'
 #' # Combine Mask inverse and crop
 #' ex7 <- rasterpic_img(x, img, crop = TRUE, mask = TRUE, inverse = TRUE)
 #'
-#' plotRGB(ex7)
+#' plot(ex7)
 #' plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
+#'
+#' # RGB channels ------
+#' ex_rgb <- ex1
+#' has.RGB(ex_rgb)
+#' RGB(ex_rgb)
+#'
+#' # Modify RGB channels
+#' RGB(ex_rgb) <- c(2, 3, 1)
+#' RGB(ex_rgb)
+#'
+#' plot(ex_rgb)
+#'
+#' # Remove RGB channels
+#' RGB(ex_rgb) <- NULL
+#' has.RGB(ex_rgb)
+#' RGB(ex_rgb)
+#'
+#' # Note the difference with terra::plot
+#' plot(ex_rgb)
 #' }
 rasterpic_img <- function(x, img, halign = .5, valign = .5, expand = 0,
                           crop = FALSE, mask = FALSE, inverse = FALSE, crs) {
@@ -143,13 +159,10 @@ rasterpic_img <- function(x, img, halign = .5, valign = .5, expand = 0,
 
   # Throw a warning if nlyrs not correct
   if (terra::nlyr(rast) < 3) {
-    warning("img has ", terra::nlyr(rast), " not 3 or 4")
-  }
-
-  if (terra::nlyr(rast) > 4) {
-    message("img has ", terra::nlyr(rast), ", selecting layers 1 to 3")
-
-    rast <- terra::subset(rast, seq(1, 3))
+    warning(
+      "img has ", terra::nlyr(rast), " not 3 or 4. ",
+      "Result does not have a RGB property."
+    )
   }
 
   # C. Geo-tagging the png----
@@ -217,10 +230,11 @@ rasterpic_img <- function(x, img, halign = .5, valign = .5, expand = 0,
     }
   }
 
-  if (terra::nlyr(new_rast) %in% c(3, 4)) {
-    terra::RGB(new_rast) <- c(1, 2, 3)
-  } else {
-    message("Result does not have a RGB property: Missing channels")
+  # Assign RGB if at least 3 layers and not already RGB
+  if (terra::nlyr(new_rast) >= 3) {
+    if (!terra::has.RGB(new_rast)) {
+      terra::RGB(new_rast) <- c(1, 2, 3)
+    }
   }
 
   return(new_rast)

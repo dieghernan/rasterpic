@@ -1,12 +1,12 @@
 # rasterpic (development version)
 
--   Update docs and tests.
 -   Ensure `SpatVector`s always have `crs`.
--   Handling of `img` with unexpected number of channels (layers). There are
-    likely to be corner cases:
-    -   If the image has less than 3 channels the raster output does not have
-        the property RGB (`terra::has.RGB()` is `FALSE`).
-    -   If the image has more than 4 channels only channels 1 to 3 are provided.
+-   If the image has less than 3 channels the raster output does not have the
+    property RGB (`terra::has.RGB()` is `FALSE`). This is expected to be a
+    corner case.
+-   If the image file (i.e. `tiff`) already has a RGB definition, keep that in
+    the output.
+-   Update docs and tests.
 
 # rasterpic 0.2.3
 
