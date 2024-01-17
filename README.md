@@ -85,7 +85,7 @@ uk_flag
 #> source(s)   : memory
 #> colors RGB  : 1, 2, 3 
 #> names       : lyr.1, lyr.2, lyr.3 
-#> min values  :     0,    13,    34 
+#> min values  :     0,    14,    35 
 #> max values  :   255,   255,   255
 
 # Plot it!
