@@ -1,4 +1,4 @@
-# rasterpic (development version)
+# rasterpic 0.2.4
 
 -   Ensure `SpatVector`s always have `crs`.
 -   If the image has less than 3 channels the raster output does not have the

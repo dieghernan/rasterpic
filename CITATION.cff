@@ -8,7 +8,7 @@ message: 'To cite package "rasterpic" in publications use:'
 type: software
 license: MIT
 title: 'rasterpic: Create a Spatial Raster from Plain Images'
-version: 0.2.3.9000
+version: 0.2.4
 doi: 10.5281/zenodo.5910095
 abstract: Create a spatial raster, as the ones provided by 'terra', from regular pictures.
 authors:
@@ -25,7 +25,7 @@ preferred-citation:
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
   year: '2024'
-  version: 0.2.3.9000
+  version: 0.2.4
   doi: 10.5281/zenodo.5910095
   url: https://dieghernan.github.io/rasterpic/
   abstract: Create a spatial raster, as the ones provided by terra, from regular pictures.

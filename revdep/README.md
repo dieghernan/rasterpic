@@ -1,36 +1,36 @@
 # Platform
 
-|field    |value                                      |
-|:--------|:------------------------------------------|
-|version  |R version 4.3.1 (2023-06-16 ucrt)          |
-|os       |Windows 11 x64 (build 22621)               |
-|system   |x86_64, mingw32                            |
-|ui       |RStudio                                    |
-|language |(EN)                                       |
-|collate  |Spanish_Spain.utf8                         |
-|ctype    |Spanish_Spain.utf8                         |
-|tz       |Europe/Madrid                              |
-|date     |2023-09-08                                 |
-|rstudio  |2023.06.1+524 Mountain Hydrangea (desktop) |
-|pandoc   |2.19.2 @ C:\PROGRA~1\Pandoc\pandoc.exe     |
+|field    |value                                  |
+|:--------|:--------------------------------------|
+|version  |R version 4.3.2 (2023-10-31 ucrt)      |
+|os       |Windows 11 x64 (build 22621)           |
+|system   |x86_64, mingw32                        |
+|ui       |RStudio                                |
+|language |(EN)                                   |
+|collate  |Spanish_Spain.utf8                     |
+|ctype    |Spanish_Spain.utf8                     |
+|tz       |Europe/Madrid                          |
+|date     |2024-01-18                             |
+|rstudio  |2023.12.0+369 Ocean Storm (desktop)    |
+|pandoc   |2.19.2 @ C:\PROGRA~1\Pandoc\pandoc.exe |
 
 # Dependencies
 
 |package   |old    |new    |Δ  |
 |:---------|:------|:------|:--|
-|rasterpic |0.2.2  |0.2.3  |*  |
+|rasterpic |0.2.3  |0.2.4  |*  |
 |classInt  |0.4-10 |0.4-10 |   |
-|DBI       |1.1.3  |1.1.3  |   |
-|e1071     |1.7-13 |1.7-13 |   |
+|DBI       |1.2.1  |1.2.1  |   |
+|e1071     |1.7-14 |1.7-14 |   |
 |magrittr  |2.0.3  |2.0.3  |   |
 |png       |0.1-8  |0.1-8  |   |
 |proxy     |0.4-27 |0.4-27 |   |
-|Rcpp      |1.0.11 |1.0.11 |   |
-|s2        |1.1.4  |1.1.4  |   |
-|sf        |1.0-14 |1.0-14 |   |
-|terra     |1.7-46 |1.7-46 |   |
-|units     |0.8-3  |0.8-3  |   |
-|wk        |0.8.0  |0.8.0  |   |
+|Rcpp      |1.0.12 |1.0.12 |   |
+|s2        |1.1.6  |1.1.6  |   |
+|sf        |1.0-15 |1.0-15 |   |
+|terra     |1.7-65 |1.7-65 |   |
+|units     |0.8-5  |0.8-5  |   |
+|wk        |0.9.1  |0.9.1  |   |
 
 # Revdeps
 
