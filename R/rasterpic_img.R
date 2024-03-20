@@ -48,7 +48,7 @@
 #'   a vector of coordinates. See **Details**, **CRS** section.
 #'
 #' @return A `SpatRaster` object (see [terra::rast()]) where each layer
-#' corresponds to a color channel of `img`:#'
+#' corresponds to a color channel of `img`:
 #' * If `img` has at least 3 channels (e.g. layers), the result would have
 #'   an additional property setting the layers 1 to 3 as the Red, Green and Blue
 #'   channels.

@@ -68,7 +68,7 @@ a vector of coordinates. See \strong{Details}, \strong{CRS} section.}
 }
 \value{
 A \code{SpatRaster} object (see \code{\link[terra:rast]{terra::rast()}}) where each layer
-corresponds to a color channel of \code{img}:#'
+corresponds to a color channel of \code{img}:
 \itemize{
 \item If \code{img} has at least 3 channels (e.g. layers), the result would have
 an additional property setting the layers 1 to 3 as the Red, Green and Blue
