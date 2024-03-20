@@ -1,3 +1,7 @@
+# rasterpic (development version)
+
+-   Update documentation.
+
 # rasterpic 0.2.4
 
 -   Ensure `SpatVector`s always have `crs`.
@@ -23,7 +27,7 @@
 
 # rasterpic 0.2.1
 
--   Add **tidyterra** to 'Suggests'
+-   Add **tidyterra** to "Suggests".
 
 # rasterpic 0.2.0
 
@@ -34,7 +38,7 @@
 -   Now `img` parameter on `rasterpic_img()` accepts online images.
 -   Add an [article](https://dieghernan.github.io/rasterpic/articles/plots.html)
     to the pkgdown site.
--   Fix CRAN errors.
+-   Fix **CRAN** errors.
 
 # rasterpic 0.1.0
 

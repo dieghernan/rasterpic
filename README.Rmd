@@ -39,11 +39,11 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 <!-- badges: end -->
 
 **rasterpic** is a tiny package with one single goal: to transform an image into
-a spatial raster.
+a `SpatRaster` object (see `?terra::SpatRaster`).
 
 ## Installation
 
-Install `rasterpic` from
+Install **rasterpic** from
 [**CRAN**](https://CRAN.R-project.org/package=rasterpic):
 
 ```{r, eval=FALSE}
@@ -71,14 +71,13 @@ install.packages("rasterpic", repos = c(
 
 This package allows you to create cool maps by using a wide variety of objects:
 
--   Spatial object of the **sf** package: `sf`, `sfc`, `sfg`or `bbox`.
-
--   Spatial objects of the **terra** package: `SpatRaster`, `SpatVector`,
-    `SpatExtent`.
-
+-   Spatial object created with the **sf** package: `sf`, `sfc`, `sfg` or
+    `bbox`.
+-   Spatial objects created with the **terra** package: `SpatRaster`,
+    `SpatVector`, `SpatExtent`.
 -   A vector of coordinates with the form `c(xmin, ymin, xmax, yman)`
 
-An example using a `sf` object:
+An example using an `sf` object:
 
 ```{r example-basic}
 library(rasterpic)
@@ -88,6 +87,9 @@ library(terra)
 # The flag of the United Kingdom
 img <- system.file("img/UK_flag.png", package = "rasterpic")
 uk <- read_sf(system.file("gpkg/UK.gpkg", package = "rasterpic"))
+
+
+class(uk)
 
 # Rasterize!
 uk_flag <- rasterpic_img(uk, img)

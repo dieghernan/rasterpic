@@ -1,5 +1,5 @@
 # -----------------------------------------------------------
-# CITATION file created with {cffr} R package, v0.5.0
+# CITATION file created with {cffr} R package, v1.0.0
 # See also: https://docs.ropensci.org/cffr/
 # -----------------------------------------------------------
  
@@ -8,7 +8,7 @@ message: 'To cite package "rasterpic" in publications use:'
 type: software
 license: MIT
 title: 'rasterpic: Create a Spatial Raster from Plain Images'
-version: 0.2.4
+version: 0.2.4.9000
 doi: 10.5281/zenodo.5910095
 abstract: Create a spatial raster, as the ones provided by 'terra', from regular pictures.
 authors:
@@ -25,7 +25,7 @@ preferred-citation:
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
   year: '2024'
-  version: 0.2.4
+  version: 0.2.4.9000
   doi: 10.5281/zenodo.5910095
   url: https://dieghernan.github.io/rasterpic/
   abstract: Create a spatial raster, as the ones provided by terra, from regular pictures.
@@ -59,11 +59,10 @@ references:
   url: https://www.R-project.org/
   authors:
   - name: R Core Team
-  location:
-    name: Vienna, Austria
-  year: '2024'
   institution:
     name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2024'
   version: '>= 3.6.0'
 - type: software
   title: png
@@ -137,6 +136,10 @@ references:
   - family-names: Dunnington
     given-names: Dewey
     orcid: https://orcid.org/0000-0002-9415-4582
+  - family-names: Brand
+    given-names: Teun
+    name-particle: van den
+    orcid: https://orcid.org/0000-0002-9335-7468
   year: '2024'
 - type: software
   title: knitr

@@ -22,11 +22,11 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 <!-- badges: end -->
 
 **rasterpic** is a tiny package with one single goal: to transform an
-image into a spatial raster.
+image into a `SpatRaster` object (see `?terra::SpatRaster`).
 
 ## Installation
 
-Install `rasterpic` from
+Install **rasterpic** from
 [**CRAN**](https://CRAN.R-project.org/package=rasterpic):
 
 ``` r
@@ -55,14 +55,13 @@ install.packages("rasterpic", repos = c(
 This package allows you to create cool maps by using a wide variety of
 objects:
 
-- Spatial object of the **sf** package: `sf`, `sfc`, `sfg`or `bbox`.
-
-- Spatial objects of the **terra** package: `SpatRaster`, `SpatVector`,
-  `SpatExtent`.
-
+- Spatial object created with the **sf** package: `sf`, `sfc`, `sfg` or
+  `bbox`.
+- Spatial objects created with the **terra** package: `SpatRaster`,
+  `SpatVector`, `SpatExtent`.
 - A vector of coordinates with the form `c(xmin, ymin, xmax, yman)`
 
-An example using a `sf` object:
+An example using an `sf` object:
 
 ``` r
 library(rasterpic)
@@ -72,6 +71,10 @@ library(terra)
 # The flag of the United Kingdom
 img <- system.file("img/UK_flag.png", package = "rasterpic")
 uk <- read_sf(system.file("gpkg/UK.gpkg", package = "rasterpic"))
+
+
+class(uk)
+#> [1] "sf"         "tbl_df"     "tbl"        "data.frame"
 
 # Rasterize!
 uk_flag <- rasterpic_img(uk, img)
@@ -135,7 +138,7 @@ A BibTeX entry for LaTeX users is:
       title = {{rasterpic}: Create a Spatial Raster from Plain Images},
       author = {Diego Hernangómez},
       year = {2024},
-      version = {0.2.4},
+      version = {0.2.4.9000},
       doi = {10.5281/zenodo.5910095},
       url = {https://dieghernan.github.io/rasterpic/},
       abstract = {Create a spatial raster, as the ones provided by terra, from regular pictures.},

@@ -88,7 +88,13 @@ rpic_input <- function(x, crs) {
 
     crs <- terra::crs(x)
     box <- c(terra::xmin(x), terra::ymin(x), terra::xmax(x), terra::ymax(x))
-  } else if (inherits(x, "sfg")) {
+    # Output object is a list
+    result <- list(x = x, box = box, crs = crs)
+    return(result)
+  }
+
+  # Case of no CRS
+  if (inherits(x, "sfg")) {
     x <- terra::vect(x)
     box <- c(terra::xmin(x), terra::ymin(x), terra::xmax(x), terra::ymax(x))
   } else if (inherits(x, "SpatExtent")) {
@@ -102,7 +108,7 @@ rpic_input <- function(x, crs) {
     stop("Don't know how to extract a bounding box from 'x'")
   }
 
-  if (missing(crs)) {
+  if (any(is.null(crs), is.na(crs))) {
     message("'crs' is NA.")
     crs <- NA
   }

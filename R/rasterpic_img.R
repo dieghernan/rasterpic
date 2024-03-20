@@ -1,13 +1,15 @@
-#' Convert an image to a geo-tagged raster
+#' Convert an image to a geo-tagged `SpatRaster`
 #'
 #' @description
+#'
 #' Geotags an image based on the coordinates of a given spatial object.
 #'
-#' @param x It could be
-#'   * A `sf`, `sfc`, `sfg` or bounding box (see [sf::st_bbox()]) object
-#'     (from the \CRANpkg{sf} package).
-#'   * A `SpatRaster`, `SpatVector` or `SpatExtent` object (from the
-#'     \CRANpkg{terra} package).
+#' @param x **R** object that may be:
+#'   * An object created with \CRANpkg{sf} of class [`sf`][sf::st_sf],
+#'     [`sfc`][sf::st_sfc], `sfg` or [`bbox`][sf::st_bbox]).
+#'   * An object created with \CRANpkg{terra} of class
+#'     [`SpatRaster`][terra::rast], [`SpatVector`][terra::vect] or
+#'     [`SpatExtent`][terra::ext].
 #'   * A numeric vector of length 4 with the extent to be used for geotagging (
 #'     i.e. `c(xmin, ymin, xmax, ymax)`).
 #'
@@ -18,53 +20,81 @@
 #'   * `jpeg/jpg`
 #'   * `tiff/tif`
 #'
-#' @param halign Horizontal alignment of `img` with respect to the `x` object.
-#'  It should be a value between `0` (`x` is aligned on the left edge of the
-#'  raster) and `1` (`x` is on the right edge of the raster).
-#'
-#' @param valign Vertical alignment of `img` with respect to the `x` object.
-#'  It should be a value between `0` (`x` is aligned on the bottom edge of the
-#'  raster) and `1` (`x` is on the top edge of the raster).
+#' @param halign,valign Horizontal and vertical alignment of `img` with respect
+#'  to `x`. It should be a value between `0` and `1`:
+#'  - `halign = 0, valign = 0` assumes that `x` should be in the bottom left
+#'     corner of the `SpatRaster`.
+#'  - `halign = 1, valign = 1` assumes that `x` should be in the top right
+#'     corner of the `SpatRaster`.
+#'  - The default `halign = .5, valign = .5` assumes that `x` is the center
+#'    of `img`.
+#'  See `vignette("rasterpic", package = "rasterpic")` for examples.
 #'
 #' @param expand An expansion factor of the bounding box of `x`. `0` means that
 #'  no expansion is added, `1` means that the bounding box is expanded to double
-#'  the original size.
+#'  the original size. See **Details**.
 #'
 #' @param crop Logical. Should the raster be cropped to the (expanded) bounding
-#'  box of `x`?
+#'  box of `x`? See **Details**.
 #'
-#' @param mask Logical. Should the raster be masked to `x`? See [terra::mask()]
-#'  for details. This option is only valid if `x` is a `sf/sfc` object.
+#' @param mask Logical, applicable only if `x` is a `sf`,  `sfc` or `SpatVector`
+#'   object. Should the raster be [masked][terra::mask] to `x`? See **Details**.
 #'
 #' @param inverse Logical. It affects only if `mask = TRUE`. If `TRUE`, areas on
 #'   the raster that do not overlap with `x` are masked.
 #'
 #' @param crs Character string describing a coordinate reference system.
-#'   This parameter would only affect if `x` does not present a Coordinate
-#'   Reference System (e.g. when `x` is a `SpatExtent`, `sfg` `bbox` or a
-#'   vector of coordinates). See **Details**
+#'   This parameter would only affect if `x` is a `SpatExtent`, `sfg`, `bbox` or
+#'   a vector of coordinates. See **Details**, **CRS** section.
 #'
 #' @return A `SpatRaster` object (see [terra::rast()]) where each layer
-#' corresponds to a color channel of the `img` file.
-#'
-#' * If the `img` has at least 3 channels (e.g. layers), the result would have
+#' corresponds to a color channel of `img`:#'
+#' * If `img` has at least 3 channels (e.g. layers), the result would have
 #'   an additional property setting the layers 1 to 3 as the Red, Green and Blue
-#'   channels. See [terra::RGB()].
-#' * If the `img` already has a definition or RGB values (this may be the case
-#'    for `tiff/tif` files) the result would keep that channel definition.
+#'   channels.
+#' * If `img` already has a definition or RGB values (this may be the case for
+#'   `tiff/tif` files) the result would keep that channel definition.
 #'
 #' @details
 #'
-#' The function preserves the Coordinate Reference System of the `x` object. For
-#' optimal results do not use geographic coordinates (longitude/latitude).
+#'  `vignette("rasterpic", package = "rasterpic")` explains with examples the
+#'  effect of parameters `halign`, `valign`, `expand`, `crop` and `mask`.
+#'
+#' ## CRS
+#'
+#' The function preserves the Coordinate Reference System of `x` if applicable.
+#' For optimal results **do not use** geographic coordinates
+#' (longitude/latitude).
 #'
 #' `crs` can be in a WKT format, as a "authority:number" code such as
 #' `"EPSG:4326"`, or a PROJ-string format such as `"+proj=utm +zone=12"`. It can
-#' be also retrieved as `sf::st_crs(25830)$wkt` or using
-#' [tidyterra::pull_crs()]. See **Value** and **Notes** on [terra::crs()].
+#' be also retrieved with:
+#' - [`sf::st_crs(25830)$wkt`][sf::st_crs].
+#' - [terra::crs()].
+#' - [tidyterra::pull_crs()].
 #'
-#' @seealso [sf::st_crs()], [sf::st_bbox()], [terra::crs()],
-#' [terra::ext()], [terra::RGB()].
+#'  See **Value** and **Notes** on [terra::crs()].
+#'
+#'
+#' @seealso
+#'
+#' From \CRANpkg{sf}:
+#' - [sf::st_crs()].
+#' - [sf::st_bbox()].
+#' - `vignette("sf1", package = "sf")` to understand how \CRANpkg{sf} organizes
+#'   **R** objects.
+#'
+#' From \CRANpkg{terra}:
+#' - [terra::vect()], [terra::rast()] and [terra::ext()].
+#' - [terra::mask()].
+#' - [terra::crs()].
+#' - [terra::RGB()].
+#'
+#' For plotting:
+#' - [terra::plot()] and [terra::plotRGB()].
+#' - With \CRANpkg{ggplot2} use \CRANpkg{tidyterra}:
+#'   - [tidyterra::autoplot()].
+#'   - [tidyterra::geom_spatraster_rgb()].
 #'
 #' @export
 #'
@@ -72,6 +102,9 @@
 #' \donttest{
 #' library(sf)
 #' library(terra)
+#' library(ggplot2)
+#' library(tidyterra)
+#'
 #'
 #' x_path <- system.file("gpkg/UK.gpkg", package = "rasterpic")
 #' x <- st_read(x_path, quiet = TRUE)
@@ -82,46 +115,54 @@
 #'
 #' ex1
 #'
-#' plot(ex1)
-#' plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
+#' autoplot(ex1) +
+#'   geom_sf(data = x, fill = NA, color = "white", linewidth = .5)
+#'
 #'
 #' # Expand
 #' ex2 <- rasterpic_img(x, img, expand = 0.5)
 #'
-#' plot(ex2)
-#' plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
+#' autoplot(ex2) +
+#'   geom_sf(data = x, fill = NA, color = "white", linewidth = .5)
+#'
 #'
 #' # Align
 #' ex3 <- rasterpic_img(x, img, halign = 0)
 #'
-#' plot(ex3)
-#' plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
+#' autoplot(ex3) +
+#'   geom_sf(data = x, fill = NA, color = "white", linewidth = .5)
+#' labs(title = "Align")
 #'
 #' # Crop
 #' ex4 <- rasterpic_img(x, img, crop = TRUE)
 #'
-#' plot(ex4)
-#' plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
+#' autoplot(ex4) +
+#'   geom_sf(data = x, fill = NA, color = "white", linewidth = .5) +
+#'   labs(title = "Crop")
 #'
 #' # Mask
 #' ex5 <- rasterpic_img(x, img, mask = TRUE)
 #'
-#' plot(ex5)
-#' plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
+#' autoplot(ex5) +
+#'   geom_sf(data = x, fill = NA, color = "white", linewidth = .5) +
+#'   labs(title = "Mask")
 #'
 #' # Mask inverse
 #' ex6 <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
 #'
-#' plot(ex6)
-#' plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
+#' autoplot(ex6) +
+#'   geom_sf(data = x, fill = NA, color = "white", linewidth = .5) +
+#'   labs(title = "Mask Inverse")
 #'
 #' # Combine Mask inverse and crop
 #' ex7 <- rasterpic_img(x, img, crop = TRUE, mask = TRUE, inverse = TRUE)
 #'
-#' plot(ex7)
-#' plot(x$geom, add = TRUE, col = NA, border = "white", lwd = 2)
+#' autoplot(ex7) +
+#'   geom_sf(data = x, fill = NA, color = "white", linewidth = .5) +
+#'   labs(title = "Combine")
 #'
 #' # RGB channels ------
+#' plot(ex1)
 #' ex_rgb <- ex1
 #' has.RGB(ex_rgb)
 #' RGB(ex_rgb)
@@ -141,7 +182,8 @@
 #' plot(ex_rgb)
 #' }
 rasterpic_img <- function(x, img, halign = .5, valign = .5, expand = 0,
-                          crop = FALSE, mask = FALSE, inverse = FALSE, crs) {
+                          crop = FALSE, mask = FALSE, inverse = FALSE,
+                          crs = NULL) {
   # Initial validations
   if (halign < 0 || halign > 1) stop("'halign' should be between 0 and 1")
   if (valign < 0 || valign > 1) stop("'valign' should be between 0 and 1")

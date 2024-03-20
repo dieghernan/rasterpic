@@ -20,7 +20,7 @@ packages.
 ## Base plots
 
 The most straightforward option is to use the base `plot()` methods provided by
-the package **terra** (`terra::plotRGB()`)
+the package **terra** (`terra::plotRGB()`):
 
 ```{r setup}
 library(rasterpic)
@@ -44,7 +44,7 @@ plotRGB(uk_img)
 
 ## With ggplot2 + tidyterra
 
-**tidyterra** provides full support for **terra** rasters:
+**tidyterra** provides full support for **terra** `SpatRaster` objects:
 
 ```{r}
 library(ggplot2)
@@ -68,7 +68,7 @@ tm_shape(uk_img) +
 
 ## With mapsf
 
-**mapsf**, the replacement of **cartography**, also provides this functionality:
+**mapsf** also provides this functionality:
 
 ```{r}
 library(mapsf)
@@ -84,7 +84,7 @@ mf_inset_off()
 
 **maptiles** is a interesting package that provides the ability of downloading
 map tiles from different providers. It also has a specific function for plotting
-**terra** rasters:
+**terra** `SpatRaster` objects:
 
 ```{r}
 library(maptiles)
@@ -100,12 +100,14 @@ plot_tiles(uk_img, add = TRUE)
 ## Session info
 
 <details>
-  <summary>Details</summary>
-  
+
+<summary>Details</summary>
+
 ```{r session, echo=FALSE}
 if (!require("sessioninfo")) {
   install.packages("sessioninfo")
 }
 sessioninfo::session_info()
 ```
+
 </details>
