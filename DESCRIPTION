@@ -1,11 +1,12 @@
 Package: rasterpic
-Title: Create a Spatial Raster from Plain Images
+Title: Convert Digital Images into 'SpatRaster' Objects
 Version: 0.2.4.9000
 Authors@R: 
     person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-8457-4658"))
-Description: Create a spatial raster, as the ones provided by 'terra',
-    from regular pictures.
+Description: Generate 'SpatRaster' objects, as defined by the 'terra'
+    package, from digital images, using a specified spatial object as a
+    geographical reference.
 License: MIT + file LICENSE
 URL: https://dieghernan.github.io/rasterpic/,
     https://github.com/dieghernan/rasterpic

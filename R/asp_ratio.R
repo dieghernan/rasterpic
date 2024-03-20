@@ -11,12 +11,13 @@
 #' @export
 #' @keywords internal
 #' @examples
-#'
+#' \donttest{
 #' library(terra)
 #'
 #' x <- rast(system.file("tiff/elev.tiff", package = "rasterpic"))
 #' plot(x)
 #' asp_ratio(x)
+#' }
 asp_ratio <- function(x) {
   if (inherits(x, "SpatRaster")) {
     ratio <- terra::ncol(x) / terra::nrow(x)

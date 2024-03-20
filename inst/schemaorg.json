@@ -14,9 +14,9 @@
         "familyName": "Hernangómez",
         "givenName": "Diego"
       },
-      "description": "Create a spatial raster, as the ones provided by 'terra', from regular pictures.",
+      "description": "Generate 'SpatRaster' objects, as defined by the 'terra' package, from digital images, using a specified spatial object as a geographical reference.",
       "license": "https://spdx.org/licenses/MIT",
-      "name": "rasterpic: Create a Spatial Raster from Plain Images",
+      "name": "rasterpic: Convert Digital Images into 'SpatRaster' Objects",
       "programmingLanguage": {
         "type": "ComputerLanguage",
         "name": "R",
@@ -28,7 +28,7 @@
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "runtimePlatform": "R version 4.3.3 (2024-02-29)",
+      "runtimePlatform": "R version 4.3.3 (2024-02-29 ucrt)",
       "version": "0.2.4.9000"
     },
     {
@@ -39,7 +39,7 @@
         "familyName": "Hernangómez",
         "givenName": "Diego"
       },
-      "name": "{rasterpic}: Create a Spatial Raster from Plain Images"
+      "name": "{rasterpic}: Convert Digital Images into SpatRaster Objects"
     }
   ]
 }

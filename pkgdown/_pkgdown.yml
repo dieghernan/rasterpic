@@ -1,24 +1,4 @@
-url: 'https://dieghernan.github.io/rasterpic'
-
-navbar:
-  structure:
-    left:
-      - intro
-      - reference
-      - articles
-      - posts
-      - news
-    right:
-      - search
-      - github
-  components:
-    posts:
-      text: Blog
-      menu:
-        - text: 'Beautiful Maps with R (IV): Fun with flags revisited'
-          href: 'https://dieghernan.github.io/202201_maps-flags/'
-        - text: 'Quick Brazil'
-          href: 'https://twitter.com/dhernangomez/status/1486666356544225281?s=21'
+url: https://dieghernan.github.io/rasterpic
 
 template:
   package: gitdevr
@@ -32,21 +12,46 @@ repo:
 
 authors:
   Diego Hernangómez:
-    href: 'https://dieghernan.github.io/'
+    href: https://dieghernan.github.io/
+
+home:
+  title: rasterpic | Convert Digital Images into SpatRaster Objects
+  description: >
+    Generate SpatRaster objects from digital images, using a specified spatial
+    object as a geographical reference.
+
+navbar:
+  structure:
+    left:
+    - intro
+    - reference
+    - articles
+    - posts
+    - news
+    right:
+    - search
+    - github
+  components:
+    posts:
+      text: Blog
+      menu:
+      - text: 'Beautiful Maps with R (IV): Fun with flags revisited'
+        href: https://dieghernan.github.io/202201_maps-flags/
+      - text: Quick Brazil
+        href: https://twitter.com/dhernangomez/status/1486666356544225281?s=21
+
 reference:
-  - title: Functions
-    contents:
-      - rasterpic_img
-  - title: Plotting
-    desc: >
-      Functions from other packages from plotting `SpatRasters`.
-    contents:
-      - 'terra::plotRGB()'
-      - 'tidyterra::geom_spatraster_rgb()'
-      - 'tmap::tm_rgb()'
-      - 'mapsf::mf_raster()'
-      - 'maptiles::plot_tiles()'
-  - title: About the package
-    contents:
-      - rasterpic-package
+- title: Functions
+  contents: rasterpic_img
+- title: Plotting
+  desc: >
+    Functions from other packages from plotting `SpatRasters`.
+  contents:
+  - terra::plotRGB()
+  - tidyterra::geom_spatraster_rgb()
+  - tmap::tm_rgb()
+  - mapsf::mf_raster()
+  - maptiles::plot_tiles()
+- title: About the package
+  contents: rasterpic-package
 

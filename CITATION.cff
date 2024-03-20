@@ -7,10 +7,11 @@ cff-version: 1.2.0
 message: 'To cite package "rasterpic" in publications use:'
 type: software
 license: MIT
-title: 'rasterpic: Create a Spatial Raster from Plain Images'
+title: 'rasterpic: Convert Digital Images into ''SpatRaster'' Objects'
 version: 0.2.4.9000
 doi: 10.5281/zenodo.5910095
-abstract: Create a spatial raster, as the ones provided by 'terra', from regular pictures.
+abstract: Generate 'SpatRaster' objects, as defined by the 'terra' package, from digital
+  images, using a specified spatial object as a geographical reference.
 authors:
 - family-names: Hernangómez
   given-names: Diego
@@ -18,7 +19,7 @@ authors:
   orcid: https://orcid.org/0000-0001-8457-4658
 preferred-citation:
   type: manual
-  title: 'rasterpic: Create a Spatial Raster from Plain Images'
+  title: 'rasterpic: Convert Digital Images into SpatRaster Objects'
   authors:
   - family-names: Hernangómez
     given-names: Diego
@@ -28,7 +29,8 @@ preferred-citation:
   version: 0.2.4.9000
   doi: 10.5281/zenodo.5910095
   url: https://dieghernan.github.io/rasterpic/
-  abstract: Create a spatial raster, as the ones provided by terra, from regular pictures.
+  abstract: Generate SpatRaster objects, as defined by the terra package, from digital
+    images, using a specified spatial object as a geographical reference.
 repository: https://CRAN.R-project.org/package=rasterpic
 repository-code: https://github.com/dieghernan/rasterpic
 url: https://dieghernan.github.io/rasterpic/

@@ -1,6 +1,7 @@
 # rasterpic (development version)
 
 -   Update documentation.
+-   Title and Description of the package are more specific.
 
 # rasterpic 0.2.4
 

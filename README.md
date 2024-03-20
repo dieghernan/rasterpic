@@ -126,8 +126,8 @@ autoplot(uk_flag2) +
 ## Citation
 
 <p>
-Hernangómez D (2024). <em>rasterpic: Create a Spatial Raster from Plain
-Images</em>.
+Hernangómez D (2024). <em>rasterpic: Convert Digital Images into
+SpatRaster Objects</em>.
 <a href="https://doi.org/10.5281/zenodo.5910095">doi:10.5281/zenodo.5910095</a>,
 <a href="https://dieghernan.github.io/rasterpic/">https://dieghernan.github.io/rasterpic/</a>.
 </p>
@@ -135,11 +135,11 @@ Images</em>.
 A BibTeX entry for LaTeX users is:
 
     @Manual{R-rasterpic,
-      title = {{rasterpic}: Create a Spatial Raster from Plain Images},
+      title = {{rasterpic}: Convert Digital Images into SpatRaster Objects},
       author = {Diego Hernangómez},
       year = {2024},
       version = {0.2.4.9000},
       doi = {10.5281/zenodo.5910095},
       url = {https://dieghernan.github.io/rasterpic/},
-      abstract = {Create a spatial raster, as the ones provided by terra, from regular pictures.},
+      abstract = {Generate SpatRaster objects, as defined by the terra package, from digital images, using a specified spatial object as a geographical reference.},
     }
