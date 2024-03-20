@@ -93,7 +93,7 @@
 #' For plotting:
 #' - [terra::plot()] and [terra::plotRGB()].
 #' - With \CRANpkg{ggplot2} use \CRANpkg{tidyterra}:
-#'   - [tidyterra::autoplot()].
+#'   - [tidyterra::autoplot.SpatRaster()].
 #'   - [tidyterra::geom_spatraster_rgb()].
 #'
 #' @export

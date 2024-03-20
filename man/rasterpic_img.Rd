@@ -207,7 +207,7 @@ For plotting:
 \item \code{\link[terra:plot]{terra::plot()}} and \code{\link[terra:plotRGB]{terra::plotRGB()}}.
 \item With \CRANpkg{ggplot2} use \CRANpkg{tidyterra}:
 \itemize{
-\item \code{\link[tidyterra:reexports]{tidyterra::autoplot()}}.
+\item \code{\link[tidyterra:autoplot.Spat]{tidyterra::autoplot.SpatRaster()}}.
 \item \code{\link[tidyterra:geom_spatraster_rgb]{tidyterra::geom_spatraster_rgb()}}.
 }
 }
