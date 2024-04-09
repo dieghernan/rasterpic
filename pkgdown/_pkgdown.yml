@@ -45,7 +45,7 @@ reference:
   contents: rasterpic_img
 - title: Plotting
   desc: >
-    Functions from other packages from plotting `SpatRasters`.
+    Functions from other packages from plotting `SpatRaster` objects.
   contents:
   - terra::plotRGB()
   - tidyterra::geom_spatraster_rgb()

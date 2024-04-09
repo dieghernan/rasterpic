@@ -15,7 +15,7 @@
 
 # rasterpic 0.2.3
 
--   Now `asp_ratio` is an internal function.
+-   Now `asp_ratio()` is an internal function.
 -   Improve docs and tests.
 
 # rasterpic 0.2.2

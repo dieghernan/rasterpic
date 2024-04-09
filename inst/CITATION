@@ -7,7 +7,7 @@ title <- gsub("'", "", meta$Title, fixed = TRUE)
 bibentry(
   "Manual",
   header = paste0("To cite '", meta$Package, "' in publications use:"),
-  title = paste0("{", meta$Package, "}: ", title),
+  title = "{rasterpic}: Convert Digital Images into {SpatRaster} Objects",
   author = person("Diego", "Hernangómez"),
   year = year,
   version = meta$Version,
