@@ -39,7 +39,7 @@
         "familyName": "Hernangómez",
         "givenName": "Diego"
       },
-      "name": "{rasterpic}: Convert Digital Images into SpatRaster Objects"
+      "name": "{rasterpic}: Convert Digital Images into {SpatRaster} Objects"
     }
   ]
 }

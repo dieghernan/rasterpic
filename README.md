@@ -135,7 +135,7 @@ SpatRaster Objects</em>.
 A BibTeX entry for LaTeX users is:
 
     @Manual{R-rasterpic,
-      title = {{rasterpic}: Convert Digital Images into SpatRaster Objects},
+      title = {{rasterpic}: Convert Digital Images into {SpatRaster} Objects},
       author = {Diego Hernangómez},
       year = {2024},
       version = {0.2.4.9000},
