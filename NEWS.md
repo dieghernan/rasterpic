@@ -1,4 +1,4 @@
-# rasterpic (development version)
+# rasterpic 0.2.5
 
 -   Update documentation.
 -   Title and Description of the package are more specific.
