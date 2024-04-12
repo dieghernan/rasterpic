@@ -32,9 +32,9 @@ i.e. \code{c(xmin, ymin, xmax, ymax)}).
 file (e.g. \code{"https://i.imgur.com/6yHmlwT.jpeg"}). The following image
 extensions are accepted:
 \itemize{
-\item \code{png}
-\item \code{jpeg/jpg}
-\item \code{tiff/tif}
+\item \code{png}.
+\item \code{jpeg/jpg}.
+\item \code{tiff/tif}.
 }}
 
 \item{halign, valign}{Horizontal and vertical alignment of \code{img} with respect
@@ -64,11 +64,11 @@ the raster that do not overlap with \code{x} are masked.}
 
 \item{crs}{Character string describing a coordinate reference system.
 This parameter would only affect if \code{x} is a \code{SpatExtent}, \code{sfg}, \code{bbox} or
-a vector of coordinates. See \strong{Details}, \strong{CRS} section.}
+a vector of coordinates. See \strong{CRS} section.}
 }
 \value{
-A \code{SpatRaster} object (see \code{\link[terra:rast]{terra::rast()}}) where each layer
-corresponds to a color channel of \code{img}:
+A \code{SpatRaster} object (see \code{\link[terra:rast]{terra::rast()}}) where each layer corresponds to
+a color channel of \code{img}:
 \itemize{
 \item If \code{img} has at least 3 channels (e.g. layers), the result would have
 an additional property setting the layers 1 to 3 as the Red, Green and Blue
@@ -89,7 +89,7 @@ The function preserves the Coordinate Reference System of \code{x} if applicable
 For optimal results \strong{do not use} geographic coordinates
 (longitude/latitude).
 
-\code{crs} can be in a WKT format, as a "authority:number" code such as
+\code{crs} can be in a WKT format, as a \code{"authority:number"} code such as
 \code{"EPSG:4326"}, or a PROJ-string format such as \code{"+proj=utm +zone=12"}. It can
 be also retrieved with:
 \itemize{

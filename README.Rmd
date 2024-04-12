@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
   tidy = "styler",
   dev = "ragg_png",
   fig.path = "man/figures/README-",
-  dpi = 90,
+  dpi = 150,
   out.width = "100%"
 )
 ```
@@ -53,7 +53,7 @@ install.packages("rasterpic")
 You can install the developing version of **rasterpic** with:
 
 ```{r, eval=FALSE}
-devtools::install_github("dieghernan/rasterpic")
+remotes::install_github("dieghernan/rasterpic")
 ```
 
 Alternatively, you can install **rasterpic** using the

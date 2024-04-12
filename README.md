@@ -36,7 +36,7 @@ install.packages("rasterpic")
 You can install the developing version of **rasterpic** with:
 
 ``` r
-devtools::install_github("dieghernan/rasterpic")
+remotes::install_github("dieghernan/rasterpic")
 ```
 
 Alternatively, you can install **rasterpic** using the

@@ -16,9 +16,9 @@
 #' @param img An image to be geotagged. It can be a local file or an online
 #'   file (e.g. `"https://i.imgur.com/6yHmlwT.jpeg"`). The following image
 #'   extensions are accepted:
-#'   * `png`
-#'   * `jpeg/jpg`
-#'   * `tiff/tif`
+#'   * `png`.
+#'   * `jpeg/jpg`.
+#'   * `tiff/tif`.
 #'
 #' @param halign,valign Horizontal and vertical alignment of `img` with respect
 #'  to `x`. It should be a value between `0` and `1`:
@@ -45,19 +45,20 @@
 #'
 #' @param crs Character string describing a coordinate reference system.
 #'   This parameter would only affect if `x` is a `SpatExtent`, `sfg`, `bbox` or
-#'   a vector of coordinates. See **Details**, **CRS** section.
+#'   a vector of coordinates. See **CRS** section.
 #'
-#' @return A `SpatRaster` object (see [terra::rast()]) where each layer
-#' corresponds to a color channel of `img`:
-#' * If `img` has at least 3 channels (e.g. layers), the result would have
+#' @return
+#' A `SpatRaster` object (see [terra::rast()]) where each layer corresponds to
+#' a color channel of `img`:
+#' - If `img` has at least 3 channels (e.g. layers), the result would have
 #'   an additional property setting the layers 1 to 3 as the Red, Green and Blue
 #'   channels.
-#' * If `img` already has a definition or RGB values (this may be the case for
+#' - If `img` already has a definition or RGB values (this may be the case for
 #'   `tiff/tif` files) the result would keep that channel definition.
 #'
 #' @details
 #'
-#'  `vignette("rasterpic", package = "rasterpic")` explains with examples the
+#' `vignette("rasterpic", package = "rasterpic")` explains with examples the
 #'  effect of parameters `halign`, `valign`, `expand`, `crop` and `mask`.
 #'
 #' ## CRS
@@ -66,7 +67,7 @@
 #' For optimal results **do not use** geographic coordinates
 #' (longitude/latitude).
 #'
-#' `crs` can be in a WKT format, as a "authority:number" code such as
+#' `crs` can be in a WKT format, as a `"authority:number"` code such as
 #' `"EPSG:4326"`, or a PROJ-string format such as `"+proj=utm +zone=12"`. It can
 #' be also retrieved with:
 #' - [`sf::st_crs(25830)$wkt`][sf::st_crs].
@@ -74,7 +75,6 @@
 #' - [tidyterra::pull_crs()].
 #'
 #'  See **Value** and **Notes** on [terra::crs()].
-#'
 #'
 #' @seealso
 #'

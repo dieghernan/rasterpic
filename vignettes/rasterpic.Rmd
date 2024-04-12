@@ -57,7 +57,6 @@ With this option the image is zoomed out of the spatial object:
 ```{r}
 expand <- rasterpic_img(x, img, expand = 1)
 
-
 autoplot(expand) +
   geom_sf(data = x)
 ```
@@ -92,7 +91,7 @@ autoplot(maskinverse)
 -   Spatial object of the **sf** package: `sf`, `sfc`, `sfg` or `bbox`.
 -   Spatial objects of the **terra** package: `SpatRaster`, `SpatVector`,
     `SpatExtent`.
--   A vector of coordinates with the form `c(xmin, ymin, xmax, yman)`
+-   A vector of coordinates with the form `c(xmin, ymin, xmax, yman)`.
 
 ## Image formats admitted
 

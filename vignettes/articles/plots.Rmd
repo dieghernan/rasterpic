@@ -14,8 +14,8 @@ knitr::opts_chunk$set(
 )
 ```
 
-This article shows how to plot the results of `rasterpic_img()` with several
-packages.
+This article shows how to plot the `SpatRaster` produced by `rasterpic_img()`
+with several packages.
 
 ## Base plots
 
@@ -95,6 +95,16 @@ other_tile_crop <- terra::crop(other_tile, uk_img)
 
 plot_tiles(other_tile_crop)
 plot_tiles(uk_img, add = TRUE)
+```
+
+## References
+
+```{r refs, echo=FALSE, results='asis'}
+cits <- c(
+  citation("tmap")[1], citation("mapsf")[1], citation("tidyterra")[1],
+  citation("terra")[1], citation("ggplot2")[1]
+)
+print(cits, style = "html")
 ```
 
 ## Session info
