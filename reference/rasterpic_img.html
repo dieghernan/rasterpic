@@ -98,9 +98,9 @@ i.e. <code>c(xmin, ymin, xmax, ymax)</code>).</p></li>
 <dt>img</dt>
 <dd><p>An image to be geotagged. It can be a local file or an online
 file (e.g. <code>"https://i.imgur.com/6yHmlwT.jpeg"</code>). The following image
-extensions are accepted:</p><ul><li><p><code>png</code></p></li>
-<li><p><code>jpeg/jpg</code></p></li>
-<li><p><code>tiff/tif</code></p></li>
+extensions are accepted:</p><ul><li><p><code>png</code>.</p></li>
+<li><p><code>jpeg/jpg</code>.</p></li>
+<li><p><code>tiff/tif</code>.</p></li>
 </ul></dd>
 
 
@@ -140,15 +140,15 @@ the raster that do not overlap with <code>x</code> are masked.</p></dd>
 <dt>crs</dt>
 <dd><p>Character string describing a coordinate reference system.
 This parameter would only affect if <code>x</code> is a <code>SpatExtent</code>, <code>sfg</code>, <code>bbox</code> or
-a vector of coordinates. See <strong>Details</strong>, <strong>CRS</strong> section.</p></dd>
+a vector of coordinates. See <strong>CRS</strong> section.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A <code>SpatRaster</code> object (see <code><a href="https://rspatial.github.io/terra/reference/rast.html" class="external-link">terra::rast()</a></code>) where each layer
-corresponds to a color channel of <code>img</code>:</p><ul><li><p>If <code>img</code> has at least 3 channels (e.g. layers), the result would have
+<p>A <code>SpatRaster</code> object (see <code><a href="https://rspatial.github.io/terra/reference/rast.html" class="external-link">terra::rast()</a></code>) where each layer corresponds to
+a color channel of <code>img</code>:</p><ul><li><p>If <code>img</code> has at least 3 channels (e.g. layers), the result would have
 an additional property setting the layers 1 to 3 as the Red, Green and Blue
 channels.</p></li>
 <li><p>If <code>img</code> already has a definition or RGB values (this may be the case for
@@ -164,7 +164,7 @@ effect of parameters <code>halign</code>, <code>valign</code>, <code>expand</cod
 <p>The function preserves the Coordinate Reference System of <code>x</code> if applicable.
 For optimal results <strong>do not use</strong> geographic coordinates
 (longitude/latitude).</p>
-<p><code>crs</code> can be in a WKT format, as a "authority:number" code such as
+<p><code>crs</code> can be in a WKT format, as a <code>"authority:number"</code> code such as
 <code>"EPSG:4326"</code>, or a PROJ-string format such as <code>"+proj=utm +zone=12"</code>. It can
 be also retrieved with:</p><ul><li><p><code><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">sf::st_crs(25830)$wkt</a></code>.</p></li>
 <li><p><code><a href="https://rspatial.github.io/terra/reference/crs.html" class="external-link">terra::crs()</a></code>.</p></li>
