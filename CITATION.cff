@@ -8,7 +8,7 @@ message: 'To cite package "rasterpic" in publications use:'
 type: software
 license: MIT
 title: 'rasterpic: Convert Digital Images into ''SpatRaster'' Objects'
-version: 0.2.4.9000
+version: 0.2.5
 doi: 10.5281/zenodo.5910095
 abstract: Generate 'SpatRaster' objects, as defined by the 'terra' package, from digital
   images, using a specified spatial object as a geographical reference.
@@ -26,7 +26,7 @@ preferred-citation:
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
   year: '2024'
-  version: 0.2.4.9000
+  version: 0.2.5
   doi: 10.5281/zenodo.5910095
   url: https://dieghernan.github.io/rasterpic/
   abstract: Generate SpatRaster objects, as defined by the terra package, from digital

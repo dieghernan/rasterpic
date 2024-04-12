@@ -10,6 +10,7 @@ status](https://www.r-pkg.org/badges/version/rasterpic)](https://CRAN.R-project.
 [![CRAN
 results](https://badges.cranchecks.info/worst/rasterpic.svg)](https://cran.r-project.org/web/checks/check_results_rasterpic.html)
 [![R-CMD-check](https://github.com/dieghernan/rasterpic/actions/workflows/check-full.yaml/badge.svg)](https://github.com/dieghernan/rasterpic/actions/workflows/check-full.yaml)
+[![R-hub](https://github.com/dieghernan/rasterpic/actions/workflows/rhub.yaml/badge.svg)](https://github.com/dieghernan/rasterpic/actions/workflows/rhub.yaml)
 [![codecov](https://codecov.io/gh/dieghernan/rasterpic/branch/main/graph/badge.svg?token=jSZ4RIsj91)](https://app.codecov.io/gh/dieghernan/rasterpic)
 [![r-universe](https://dieghernan.r-universe.dev/badges/rasterpic)](https://dieghernan.r-universe.dev/rasterpic)
 [![CodeFactor](https://www.codefactor.io/repository/github/dieghernan/rasterpic/badge)](https://www.codefactor.io/repository/github/dieghernan/rasterpic)
@@ -138,7 +139,7 @@ A BibTeX entry for LaTeX users is:
       title = {{rasterpic}: Convert Digital Images into {SpatRaster} Objects},
       author = {Diego Hernangómez},
       year = {2024},
-      version = {0.2.4.9000},
+      version = {0.2.5},
       doi = {10.5281/zenodo.5910095},
       url = {https://dieghernan.github.io/rasterpic/},
       abstract = {Generate SpatRaster objects, as defined by the terra package, from digital images, using a specified spatial object as a geographical reference.},
