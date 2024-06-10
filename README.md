@@ -76,6 +76,9 @@ uk <- read_sf(system.file("gpkg/UK.gpkg", package = "rasterpic"))
 
 class(uk)
 #> [1] "sf"         "tbl_df"     "tbl"        "data.frame"
+```
+
+``` r
 
 # Rasterize!
 uk_flag <- rasterpic_img(uk, img)
@@ -91,6 +94,9 @@ uk_flag
 #> names       : lyr.1, lyr.2, lyr.3 
 #> min values  :     0,    14,    35 
 #> max values  :   255,   255,   255
+```
+
+``` r
 
 # Plot it!
 # Using ggplot2 + tidyterra
