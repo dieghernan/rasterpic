@@ -14,11 +14,11 @@ results](https://badges.cranchecks.info/worst/rasterpic.svg)](https://cran.r-pro
 [![codecov](https://codecov.io/gh/dieghernan/rasterpic/branch/main/graph/badge.svg?token=jSZ4RIsj91)](https://app.codecov.io/gh/dieghernan/rasterpic)
 [![r-universe](https://dieghernan.r-universe.dev/badges/rasterpic)](https://dieghernan.r-universe.dev/rasterpic)
 [![CodeFactor](https://www.codefactor.io/repository/github/dieghernan/rasterpic/badge)](https://www.codefactor.io/repository/github/dieghernan/rasterpic)
-[![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.5910095-blue)](https://doi.org/10.5281/zenodo.5910095)
+[![DOI](https://img.shields.io/badge/DOI-10.32614/CRAN.package.rasterpic-blue)](https://doi.org/10.32614/CRAN.package.rasterpic)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![status](https://tinyverse.netlify.com/badge/rasterpic)](https://CRAN.R-project.org/package=rasterpic)
+[![status](https://tinyverse.netlify.app/status/rasterpic)](https://CRAN.R-project.org/package=rasterpic)
 
 <!-- badges: end -->
 
@@ -135,7 +135,7 @@ autoplot(uk_flag2) +
 <p>
 Hernangómez D (2024). <em>rasterpic: Convert Digital Images into
 SpatRaster Objects</em>.
-<a href="https://doi.org/10.5281/zenodo.5910095">doi:10.5281/zenodo.5910095</a>,
+<a href="https://doi.org/10.32614/CRAN.package.rasterpic">doi:10.32614/CRAN.package.rasterpic</a>,
 <a href="https://dieghernan.github.io/rasterpic/">https://dieghernan.github.io/rasterpic/</a>.
 </p>
 
@@ -143,10 +143,10 @@ A BibTeX entry for LaTeX users is:
 
     @Manual{R-rasterpic,
       title = {{rasterpic}: Convert Digital Images into {SpatRaster} Objects},
+      doi = {10.32614/CRAN.package.rasterpic},
       author = {Diego Hernangómez},
       year = {2024},
       version = {0.2.5},
-      doi = {10.5281/zenodo.5910095},
       url = {https://dieghernan.github.io/rasterpic/},
       abstract = {Generate SpatRaster objects, as defined by the terra package, from digital images, using a specified spatial object as a geographical reference.},
     }
