@@ -1,18 +1,18 @@
 year <- format(Sys.time(), "%Y")
 abs <- trimws(gsub("\\s+", " ", meta$Description))
 abs <- gsub("'", "", abs)
-doi <- "10.5281/zenodo.5910095"
-title <- gsub("'", "", meta$Title, fixed = TRUE)
+pkg <- meta$Package
+doi <- paste0("10.32614/CRAN.package.", pkg)
 
 bibentry(
   "Manual",
-  header = paste0("To cite '", meta$Package, "' in publications use:"),
+  header = paste0("To cite '", pkg, "' in publications use:"),
   title = "{rasterpic}: Convert Digital Images into {SpatRaster} Objects",
-  author = person("Diego", "Hernangómez"),
+  doi = doi,
+  author = c(person("Diego", "Hernangómez")),
   year = year,
   version = meta$Version,
-  doi = doi,
   url = unlist(strsplit(meta$URL, ","))[1],
   abstract = abs,
-  key = "R-rasterpic"
+  key = paste0("R-", pkg)
 )
