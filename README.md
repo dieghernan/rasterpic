@@ -1,4 +1,3 @@
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # rasterpic <img src="man/figures/logo.png" align="right" height="139"/>
@@ -19,6 +18,7 @@ results](https://badges.cranchecks.info/worst/rasterpic.svg)](https://cran.r-pro
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![status](https://tinyverse.netlify.app/status/rasterpic)](https://CRAN.R-project.org/package=rasterpic)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdieghernan%2Frasterpic.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fdieghernan%2Frasterpic?ref=badge_shield)
 
 <!-- badges: end -->
 
@@ -144,3 +144,7 @@ A BibTeX entry for LaTeX users is:
       url = {https://dieghernan.github.io/rasterpic/},
       abstract = {Generate SpatRaster objects, as defined by the terra package, from digital images, using a specified spatial object as a geographical reference.},
     }
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdieghernan%2Frasterpic.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fdieghernan%2Frasterpic?ref=badge_large)
