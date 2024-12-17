@@ -62,10 +62,12 @@ Alternatively, you can install **rasterpic** using the
 
 ```{r, eval=FALSE}
 # Install rasterpic in R:
-install.packages("rasterpic", repos = c(
-  "https://dieghernan.r-universe.dev",
-  "https://cloud.r-project.org"
-))
+install.packages("rasterpic",
+  repos = c(
+    "https://dieghernan.r-universe.dev",
+    "https://cloud.r-project.org"
+  )
+)
 ```
 
 ## Example

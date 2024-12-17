@@ -32,5 +32,5 @@ asp_ratio <- function(x) {
   }
 
   ratio <- as.double(ratio)
-  return(ratio)
+  ratio
 }

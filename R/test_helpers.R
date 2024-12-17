@@ -9,5 +9,5 @@ testhelp_load_rast <- function(path) {
 
   x <- terra::rast(tmp)
 
-  return(x)
+  x
 }

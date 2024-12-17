@@ -4,7 +4,7 @@ rpic_crop <- function(crop, box_marg, new_rast) {
     new_rast <- terra::crop(new_rast, crop_extent)
   }
 
-  return(new_rast)
+  new_rast
 }
 
 rpic_read <- function(img, crs = NA) {
@@ -20,10 +20,10 @@ rpic_read <- function(img, crs = NA) {
         mode = "wb"
       ),
       warning = function(x) {
-        return(TRUE)
+        TRUE
       },
       error = function(x) {
-        return(TRUE)
+        TRUE
       }
     )
 
@@ -116,5 +116,5 @@ rpic_input <- function(x, crs) {
   # Output object is a list
   result <- list(x = x, box = box, crs = crs)
 
-  return(result)
+  result
 }
