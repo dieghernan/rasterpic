@@ -146,3 +146,49 @@ A BibTeX entry for LaTeX users is:
       url = {https://dieghernan.github.io/rasterpic/},
       abstract = {Generate SpatRaster objects, as defined by the terra package, from digital images, using a specified spatial object as a geographical reference.},
     }
+
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+All contributions to this project are gratefully acknowledged using the
+[`allcontributors` package](https://github.com/ropensci/allcontributors)
+following the [all-contributors](https://allcontributors.org)
+specification. Contributions of any kind are welcome!
+
+### Code
+
+<table>
+<tr>
+<td align="center">
+<a href="https://github.com/dieghernan">
+<img src="https://avatars.githubusercontent.com/u/25656809?v=4" width="100px;" alt=""/>
+</a><br>
+<a href="https://github.com/dieghernan/rasterpic/commits?author=dieghernan">dieghernan</a>
+</td>
+<td align="center">
+<a href="https://github.com/ImgBotApp">
+<img src="https://avatars.githubusercontent.com/u/31427850?v=4" width="100px;" alt=""/>
+</a><br>
+<a href="https://github.com/dieghernan/rasterpic/commits?author=ImgBotApp">ImgBotApp</a>
+</td>
+</tr>
+</table>
+
+### Issues
+
+<table>
+<tr>
+<td align="center">
+<a href="https://github.com/rhijmans">
+<img src="https://avatars.githubusercontent.com/u/11481397?u=c7520bbc8ee90abe741324e8c6a2f2051932dea3&v=4" width="100px;" alt=""/>
+</a><br>
+<a href="https://github.com/dieghernan/rasterpic/issues?q=is%3Aissue+author%3Arhijmans">rhijmans</a>
+</td>
+</tr>
+</table>
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
