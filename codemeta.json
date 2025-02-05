@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.4.2 (2024-10-31)",
+  "runtimePlatform": "R version 4.4.2 (2024-10-31 ucrt)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -160,7 +160,7 @@
     "SystemRequirements": null
   },
   "keywords": ["cran", "jpeg", "jpg", "maps", "png", "r", "r-package", "r-stats", "raster", "rstats", "sf", "terra", "tif", "tiff", "cran-r"],
-  "fileSize": "1157.549KB",
+  "fileSize": "1157.013KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
