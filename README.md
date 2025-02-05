@@ -90,9 +90,9 @@ uk_flag
 #> coord. ref. : WGS 84 / Pseudo-Mercator (EPSG:3857) 
 #> source(s)   : memory
 #> colors RGB  : 1, 2, 3 
-#> names       : lyr.1, lyr.2, lyr.3 
-#> min values  :     0,    14,    35 
-#> max values  :   255,   255,   255
+#> names       :   r,   g,   b 
+#> min values  :   0,  14,  35 
+#> max values  : 255, 255, 255
 
 # Plot it!
 # Using ggplot2 + tidyterra
@@ -142,7 +142,7 @@ A BibTeX entry for LaTeX users is:
       doi = {10.32614/CRAN.package.rasterpic},
       author = {Diego Hernangómez},
       year = {2025},
-      version = {0.2.6},
+      version = {0.2.6.9000},
       url = {https://dieghernan.github.io/rasterpic/},
       abstract = {Generate SpatRaster objects, as defined by the terra package, from digital images, using a specified spatial object as a geographical reference.},
     }

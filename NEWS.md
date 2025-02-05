@@ -1,3 +1,10 @@
+# rasterpic (development version)
+
+-   When the output has 3 or more layers, the first three are renamed as
+    `"r", "g", "b"`. In cases with 4 layers or more the fourth layer is renames
+    as `"alpha"`. This allows compatibility with **tmap** `>= 4.0` avoiding
+    error `! [subset] you cannot select a layer with a name that is not unique`.
+
 # rasterpic 0.2.6
 
 -   Update documentation.

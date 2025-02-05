@@ -278,7 +278,15 @@ rasterpic_img <- function(x, img, halign = .5, valign = .5, expand = 0,
     if (!terra::has.RGB(new_rast)) {
       terra::RGB(new_rast) <- c(1, 2, 3)
     }
+
+    # Rename RGB channels
+    nms <- names(new_rast)
+    nms[c(1, 2, 3)] <- c("r", "g", "b")
+
+    if (length(nms) >= 4) nms[4] <- "alpha"
+    names(new_rast) <- nms
   }
+
 
   return(new_rast)
 }
