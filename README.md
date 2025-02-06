@@ -160,11 +160,11 @@ specification. Contributions of any kind are welcome!
 
 ### Code
 
-<table>
+<table class="table allctb-table">
 <tr>
 <td align="center">
 <a href="https://github.com/dieghernan">
-<img src="https://avatars.githubusercontent.com/u/25656809?v=4" width="100px;" class="ctb_avatar" alt=""/>
+<img src="https://avatars.githubusercontent.com/u/25656809?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/dieghernan/rasterpic/commits?author=dieghernan">dieghernan</a>
 </td>
@@ -173,11 +173,11 @@ specification. Contributions of any kind are welcome!
 
 ### Issues
 
-<table>
+<table class="table allctb-table">
 <tr>
 <td align="center">
 <a href="https://github.com/rhijmans">
-<img src="https://avatars.githubusercontent.com/u/11481397?u=c7520bbc8ee90abe741324e8c6a2f2051932dea3&v=4" width="100px;" class="ctb_avatar" alt=""/>
+<img src="https://avatars.githubusercontent.com/u/11481397?u=c7520bbc8ee90abe741324e8c6a2f2051932dea3&v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/dieghernan/rasterpic/issues?q=is%3Aissue+author%3Arhijmans">rhijmans</a>
 </td>
