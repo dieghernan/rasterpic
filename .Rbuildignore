@@ -26,3 +26,5 @@
 ^Rplots\.pdf$
 ^codecov\.yml$
 ^docs$
+^_pkgdown\.yaml$
+^_pkgdown\.yml$
