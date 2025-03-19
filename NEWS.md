@@ -1,4 +1,4 @@
-# rasterpic (development version)
+# rasterpic 0.3.0
 
 -   When the output has 3 or more layers, the first three are renamed as
     `"r", "g", "b"`. In cases with 4 layers or more the fourth layer is renames

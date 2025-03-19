@@ -37,7 +37,8 @@ install.packages("rasterpic")
 You can install the developing version of **rasterpic** with:
 
 ``` r
-remotes::install_github("dieghernan/rasterpic")
+# install.packages("pak")
+pak::pak("dieghernan/rasterpic")
 ```
 
 Alternatively, you can install **rasterpic** using the
@@ -142,7 +143,7 @@ A BibTeX entry for LaTeX users is:
       doi = {10.32614/CRAN.package.rasterpic},
       author = {Diego Hernangómez},
       year = {2025},
-      version = {0.2.6.9000},
+      version = {0.3.0},
       url = {https://dieghernan.github.io/rasterpic/},
       abstract = {Generate SpatRaster objects, as defined by the terra package, from digital images, using a specified spatial object as a geographical reference.},
     }

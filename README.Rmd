@@ -54,7 +54,8 @@ install.packages("rasterpic")
 You can install the developing version of **rasterpic** with:
 
 ```{r, eval=FALSE}
-remotes::install_github("dieghernan/rasterpic")
+# install.packages("pak")
+pak::pak("dieghernan/rasterpic")
 ```
 
 Alternatively, you can install **rasterpic** using the
@@ -141,51 +142,38 @@ toBibtex(citation("rasterpic"))
 
 ## Contributors
 
-
-
-
-
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+
 <!-- prettier-ignore-start -->
+
 <!-- markdownlint-disable -->
 
-All contributions to this project are gratefully acknowledged using the [`allcontributors` package](https://github.com/ropensci/allcontributors) following the [allcontributors](https://allcontributors.org) specification. Contributions of any kind are welcome!
+All contributions to this project are gratefully acknowledged using the
+[`allcontributors` package](https://github.com/ropensci/allcontributors)
+following the [allcontributors](https://allcontributors.org) specification.
+Contributions of any kind are welcome!
 
 ### Code
 
-<table class="table allctb-table" >
-
-<tr>
-<td align="center">
-<a href="https://github.com/dieghernan">
-<img src="https://avatars.githubusercontent.com/u/25656809?v=4" width="100px;" class="allctb-avatar" alt=""/>
-</a><br>
-<a href="https://github.com/dieghernan/rasterpic/commits?author=dieghernan">dieghernan</a>
-</td>
-</tr>
-
-</table>
-
++------------------------------------------------------------------------------+
+| [![](https://avatars.githubusercontent.com/u/25656809?v=4){alt=""}           |
+| ](https://github.com/dieghernan)\                                            |
+| [di                                                                          |
+| eghernan](https://github.com/dieghernan/rasterpic/commits?author=dieghernan) |
++------------------------------------------------------------------------------+
 
 ### Issues
 
-<table class="table allctb-table" >
-
-<tr>
-<td align="center">
-<a href="https://github.com/rhijmans">
-<img src="https://avatars.githubusercontent.com/u/11481397?u=c7520bbc8ee90abe741324e8c6a2f2051932dea3&v=4" width="100px;" class="allctb-avatar" alt=""/>
-</a><br>
-<a href="https://github.com/dieghernan/rasterpic/issues?q=is%3Aissue+author%3Arhijmans">rhijmans</a>
-</td>
-</tr>
-
-</table>
++------------------------------------------------------------------------------+
+| [![](https://avatars.githubuserco                                            |
+| ntent.com/u/11481397?u=c7520bbc8ee90abe741324e8c6a2f2051932dea3&v=4){alt=""} |
+| ](https://github.com/rhijmans)\                                              |
+| [rhijmans](ht                                                                |
+| tps://github.com/dieghernan/rasterpic/issues?q=is%3Aissue+author%3Arhijmans) |
++------------------------------------------------------------------------------+
 
 <!-- markdownlint-enable -->
+
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-
-
-
-
