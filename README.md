@@ -85,7 +85,7 @@ uk_flag <- rasterpic_img(uk, img)
 
 uk_flag
 #> class       : SpatRaster 
-#> dimensions  : 400, 800, 3  (nrow, ncol, nlyr)
+#> size        : 400, 800, 3  (nrow, ncol, nlyr)
 #> resolution  : 5398.319, 5398.319  (x, y)
 #> extent      : -2542183, 1776472, 6430573, 8589900  (xmin, xmax, ymin, ymax)
 #> coord. ref. : WGS 84 / Pseudo-Mercator (EPSG:3857) 
