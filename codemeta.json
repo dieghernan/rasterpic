@@ -179,7 +179,7 @@
       "sameAs": "https://doi.org/10.32614/CRAN.package.rasterpic"
     }
   ],
-  "releaseNotes": "https://github.com/dieghernan/rasterpic/blob/master/NEWS.md",
+  "releaseNotes": "https://github.com/dieghernan/rasterpic/blob/main/NEWS.md",
   "readme": "https://github.com/dieghernan/rasterpic/blob/main/README.md",
   "contIntegration": ["https://github.com/dieghernan/rasterpic/actions/workflows/check-full.yaml", "https://github.com/dieghernan/rasterpic/actions/workflows/rhub.yaml", "https://app.codecov.io/gh/dieghernan/rasterpic"],
   "developmentStatus": "https://www.repostatus.org/#active"
