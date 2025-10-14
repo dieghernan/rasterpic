@@ -83,7 +83,6 @@ values(img) <- newf_m
 nrow(img)
 
 
-
 # New logo
 ragg::agg_png("data-raw/logo_alpha.png",
   width = ncol(img), height = nrow(img),
