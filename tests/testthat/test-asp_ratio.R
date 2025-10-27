@@ -6,7 +6,8 @@ test_that("asp_ratio for raster", {
 })
 
 test_that("asp_ratio for sf/sfc/bbox", {
-  x <- sf::st_read(system.file("gpkg/UK.gpkg", package = "rasterpic"),
+  x <- sf::st_read(
+    system.file("gpkg/UK.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
   expect_s3_class(x, "sf")

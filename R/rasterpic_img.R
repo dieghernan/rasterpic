@@ -181,12 +181,24 @@
 #' # Note the difference with terra::plot
 #' plot(ex_rgb)
 #' }
-rasterpic_img <- function(x, img, halign = .5, valign = .5, expand = 0,
-                          crop = FALSE, mask = FALSE, inverse = FALSE,
-                          crs = NULL) {
+rasterpic_img <- function(
+  x,
+  img,
+  halign = .5,
+  valign = .5,
+  expand = 0,
+  crop = FALSE,
+  mask = FALSE,
+  inverse = FALSE,
+  crs = NULL
+) {
   # Initial validations
-  if (halign < 0 || halign > 1) stop("'halign' should be between 0 and 1")
-  if (valign < 0 || valign > 1) stop("'valign' should be between 0 and 1")
+  if (halign < 0 || halign > 1) {
+    stop("'halign' should be between 0 and 1")
+  }
+  if (valign < 0 || valign > 1) {
+    stop("'valign' should be between 0 and 1")
+  }
 
   # A. Extract values from x: crs and initial extent----
 
@@ -203,7 +215,9 @@ rasterpic_img <- function(x, img, halign = .5, valign = .5, expand = 0,
   # Throw a warning if nlyrs not correct
   if (terra::nlyr(rast) < 3) {
     warning(
-      "img has ", terra::nlyr(rast), " not 3 or 4. ",
+      "img has ",
+      terra::nlyr(rast),
+      " not 3 or 4. ",
       "Result does not have a RGB property."
     )
   }
@@ -213,7 +227,8 @@ rasterpic_img <- function(x, img, halign = .5, valign = .5, expand = 0,
   innermarg <- min(
     (box[3] - box[1]),
     (box[4] - box[2])
-  ) * expand
+  ) *
+    expand
 
   box_marg <- box + c(rep(-innermarg, 2), rep(innermarg, 2))
 
@@ -265,9 +280,7 @@ rasterpic_img <- function(x, img, halign = .5, valign = .5, expand = 0,
       # Ensure CRS in the SpatVector
       terra::crs(x) <- crs
 
-      new_rast <- terra::mask(new_rast, x,
-        inverse = inverse
-      )
+      new_rast <- terra::mask(new_rast, x, inverse = inverse)
     } else {
       message("'mask' only available when 'x' is an 'sf/sfc/SpatVector' object")
     }
@@ -283,10 +296,11 @@ rasterpic_img <- function(x, img, halign = .5, valign = .5, expand = 0,
     nms <- names(new_rast)
     nms[c(1, 2, 3)] <- c("r", "g", "b")
 
-    if (length(nms) >= 4) nms[4] <- "alpha"
+    if (length(nms) >= 4) {
+      nms[4] <- "alpha"
+    }
     names(new_rast) <- nms
   }
-
 
   return(new_rast)
 }

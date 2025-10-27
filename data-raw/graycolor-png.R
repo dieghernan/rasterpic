@@ -3,7 +3,9 @@ library(ggplot2)
 library(terra)
 library(giscoR)
 x <- gisco_get_nuts(
-  country = "Austria", nuts_level = 0, resolution = 60,
+  country = "Austria",
+  nuts_level = 0,
+  resolution = 60,
   epsg = 3035
 )
 

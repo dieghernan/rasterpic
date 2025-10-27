@@ -1,10 +1,10 @@
 test_that("Check how it works with single layers files", {
   # PNG
   img <- system.file("grays/grays.png", package = "rasterpic")
-  x <- sf::st_read(system.file("gpkg/UK.gpkg", package = "rasterpic"),
+  x <- sf::st_read(
+    system.file("gpkg/UK.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
-
 
   expect_snapshot(raster <- rasterpic_img(x, img))
 
@@ -18,7 +18,8 @@ test_that("Check how it works with single layers files", {
 test_that("Check how it works with 2 layer file", {
   # PNG
   img <- system.file("img/UK_flag.png", package = "rasterpic")
-  x <- sf::st_read(system.file("gpkg/UK.gpkg", package = "rasterpic"),
+  x <- sf::st_read(
+    system.file("gpkg/UK.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
 
@@ -32,11 +33,11 @@ test_that("Check how it works with 2 layer file", {
   expect_equal(terra::nlyr(r_12), 2)
   terra::writeRaster(r_12, tmp_tiff)
 
-  x2 <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
+  x2 <- sf::st_read(
+    system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
   expect_snapshot(r_new <- rasterpic_img(x2, tmp_tiff))
-
 
   expect_s4_class(r_new, "SpatRaster")
   expect_true(terra::crs(r_new) == terra::crs(x2))
@@ -48,7 +49,8 @@ test_that("Check how it works with 2 layer file", {
 test_that("Check how it works with 6 layer file", {
   # PNG
   img <- system.file("img/transparent.png", package = "rasterpic")
-  x <- sf::st_read(system.file("gpkg/UK.gpkg", package = "rasterpic"),
+  x <- sf::st_read(
+    system.file("gpkg/UK.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
 
@@ -61,7 +63,8 @@ test_that("Check how it works with 6 layer file", {
   expect_equal(terra::nlyr(r_8), 8)
   terra::writeRaster(r_8, tmp_tiff)
 
-  x2 <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
+  x2 <- sf::st_read(
+    system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
 
@@ -77,7 +80,8 @@ test_that("Check how it works with 6 layer file", {
 test_that("Check how it works with tif with RGB", {
   # PNG
   img <- system.file("img/UK_flag.png", package = "rasterpic")
-  x <- sf::st_read(system.file("gpkg/UK.gpkg", package = "rasterpic"),
+  x <- sf::st_read(
+    system.file("gpkg/UK.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
 
@@ -92,7 +96,8 @@ test_that("Check how it works with tif with RGB", {
 
   expect_true(terra::has.RGB(rr))
 
-  x2 <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
+  x2 <- sf::st_read(
+    system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
 

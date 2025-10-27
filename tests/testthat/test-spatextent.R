@@ -1,6 +1,7 @@
 test_that("Test SpatExtent", {
   img <- system.file("img/UK_flag.png", package = "rasterpic")
-  x <- sf::st_read(system.file("gpkg/UK.gpkg", package = "rasterpic"),
+  x <- sf::st_read(
+    system.file("gpkg/UK.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
 
@@ -25,7 +26,8 @@ test_that("Test SpatExtent", {
 
 test_that("Test SpatExtent with projs", {
   img <- system.file("img/UK_flag.png", package = "rasterpic")
-  x <- sf::st_read(system.file("gpkg/UK.gpkg", package = "rasterpic"),
+  x <- sf::st_read(
+    system.file("gpkg/UK.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
 

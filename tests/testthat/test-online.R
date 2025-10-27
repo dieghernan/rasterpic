@@ -4,7 +4,8 @@ test_that("Test error online", {
   skip_if_offline()
 
   img <- "http://this_is_an_error_url.fake"
-  x <- sf::st_read(system.file("gpkg/UK.gpkg", package = "rasterpic"),
+  x <- sf::st_read(
+    system.file("gpkg/UK.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
 
@@ -17,7 +18,8 @@ test_that("Test image online", {
   skip_if_offline()
 
   img <- "https://i.imgur.com/6yHmlwT.jpeg"
-  x <- sf::st_read(system.file("gpkg/UK.gpkg", package = "rasterpic"),
+  x <- sf::st_read(
+    system.file("gpkg/UK.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
 

@@ -1,6 +1,7 @@
 test_that("Expand factor", {
   img <- system.file("img/UK_flag.png", package = "rasterpic")
-  x <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
+  x <- sf::st_read(
+    system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
 

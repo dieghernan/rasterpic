@@ -5,7 +5,9 @@ library(giscoR)
 library(sf)
 
 UK <- gisco_get_nuts(
-  country = "UK", nuts_level = 0, resolution = 10,
+  country = "UK",
+  nuts_level = 0,
+  resolution = 10,
   epsg = 3857
 )
 

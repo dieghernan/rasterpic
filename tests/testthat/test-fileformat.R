@@ -1,6 +1,7 @@
 test_that("Test all image formats with UK", {
   img <- system.file("img/UK_flag.png", package = "rasterpic")
-  x <- sf::st_read(system.file("gpkg/UK.gpkg", package = "rasterpic"),
+  x <- sf::st_read(
+    system.file("gpkg/UK.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
 
@@ -17,7 +18,8 @@ test_that("Test all image formats with UK", {
   expect_true(terra::xmin(raster) < sf::st_bbox(x)[1])
   expect_true(terra::xmax(raster) > sf::st_bbox(x)[3])
 
-  otherformats <- list.files(system.file("img", package = "rasterpic"),
+  otherformats <- list.files(
+    system.file("img", package = "rasterpic"),
     pattern = "^UK_flag",
     full.names = TRUE
   )
@@ -35,7 +37,8 @@ test_that("Test all image formats with UK", {
 
 test_that("Test all image formats with AT vertical", {
   img <- system.file("img/vertical.png", package = "rasterpic")
-  x <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
+  x <- sf::st_read(
+    system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
 
@@ -52,7 +55,8 @@ test_that("Test all image formats with AT vertical", {
   expect_true(terra::xmin(raster) == sf::st_bbox(x)[1])
   expect_true(terra::xmax(raster) == sf::st_bbox(x)[3])
 
-  otherformats <- list.files(system.file("img", package = "rasterpic"),
+  otherformats <- list.files(
+    system.file("img", package = "rasterpic"),
     pattern = "^vertical",
     full.names = TRUE
   )
@@ -87,7 +91,8 @@ test_that("Test all image formats with a raster", {
   expect_true(terra::xmin(raster) == terra::xmin(x))
   expect_true(terra::xmax(raster) == terra::xmax(x))
 
-  otherformats <- list.files(system.file("img", package = "rasterpic"),
+  otherformats <- list.files(
+    system.file("img", package = "rasterpic"),
     pattern = "^vertical",
     full.names = TRUE
   )
@@ -104,7 +109,8 @@ test_that("Test all image formats with a raster", {
 
 test_that("Test all image formats with sfc vertical", {
   img <- system.file("img/vertical.png", package = "rasterpic")
-  x <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
+  x <- sf::st_read(
+    system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
 
@@ -124,7 +130,8 @@ test_that("Test all image formats with sfc vertical", {
   expect_true(terra::xmin(raster) == sf::st_bbox(x)[1])
   expect_true(terra::xmax(raster) == sf::st_bbox(x)[3])
 
-  otherformats <- list.files(system.file("img", package = "rasterpic"),
+  otherformats <- list.files(
+    system.file("img", package = "rasterpic"),
     pattern = "^vertical",
     full.names = TRUE
   )
@@ -143,7 +150,8 @@ test_that("Test all image formats with SpatExtent", {
   skip_on_cran()
 
   img <- system.file("img/vertical.png", package = "rasterpic")
-  x <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
+  x <- sf::st_read(
+    system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
 
@@ -161,7 +169,8 @@ test_that("Test all image formats with SpatExtent", {
   expect_true(terra::xmin(raster) == sf::st_bbox(x)[1])
   expect_true(terra::xmax(raster) == sf::st_bbox(x)[3])
 
-  otherformats <- list.files(system.file("img", package = "rasterpic"),
+  otherformats <- list.files(
+    system.file("img", package = "rasterpic"),
     pattern = "^vertical",
     full.names = TRUE
   )
@@ -178,7 +187,8 @@ test_that("Test all image formats with SpatExtent", {
 test_that("Test transparent", {
   img <- system.file("img/transparent.png", package = "rasterpic")
 
-  x <- sf::st_read(system.file("gpkg/UK.gpkg", package = "rasterpic"),
+  x <- sf::st_read(
+    system.file("gpkg/UK.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
 

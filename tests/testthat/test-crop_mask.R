@@ -1,6 +1,7 @@
 test_that("Test crop", {
   img <- system.file("img/UK_flag.png", package = "rasterpic")
-  x <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
+  x <- sf::st_read(
+    system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
 
@@ -23,7 +24,8 @@ test_that("Test crop", {
 
 test_that("Test mask", {
   img <- system.file("img/UK_flag.png", package = "rasterpic")
-  x <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
+  x <- sf::st_read(
+    system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
 
@@ -32,7 +34,6 @@ test_that("Test mask", {
   png_dim <- png::readPNG(img)
 
   expect_true(asp_ratio(raster) == dim(png_dim)[2] / dim(png_dim)[1])
-
 
   # Same y coords
   expect_true(terra::ymin(raster) == sf::st_bbox(x)[2])
@@ -51,7 +52,6 @@ test_that("Test mask", {
   raster_inv <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
 
   expect_true(asp_ratio(raster_inv) == dim(png_dim)[2] / dim(png_dim)[1])
-
 
   # Same y coords
   expect_true(terra::ymin(raster_inv) == sf::st_bbox(x)[2])
@@ -69,7 +69,8 @@ test_that("Test mask", {
 
 test_that("Test crop SpatVector", {
   img <- system.file("img/UK_flag.png", package = "rasterpic")
-  x <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
+  x <- sf::st_read(
+    system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
 
@@ -80,7 +81,6 @@ test_that("Test crop SpatVector", {
 
   png_dim <- png::readPNG(img)
   expect_false(asp_ratio(x0) == dim(png_dim)[2] / dim(png_dim)[1])
-
 
   # Bboxes
   bbox_x <- as.double(sf::st_bbox(x))
@@ -96,7 +96,8 @@ test_that("Test crop SpatVector", {
 
 test_that("Test mask SpatVector", {
   img <- system.file("img/UK_flag.png", package = "rasterpic")
-  x <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
+  x <- sf::st_read(
+    system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
 
@@ -108,7 +109,6 @@ test_that("Test mask SpatVector", {
   png_dim <- png::readPNG(img)
 
   expect_true(asp_ratio(raster) == dim(png_dim)[2] / dim(png_dim)[1])
-
 
   # Same y coords
   expect_true(terra::ymin(raster) == sf::st_bbox(x)[2])
@@ -127,7 +127,6 @@ test_that("Test mask SpatVector", {
   raster_inv <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
 
   expect_true(asp_ratio(raster_inv) == dim(png_dim)[2] / dim(png_dim)[1])
-
 
   # Same y coords
   expect_true(terra::ymin(raster_inv) == sf::st_bbox(x)[2])
@@ -146,7 +145,8 @@ test_that("Test mask SpatVector", {
 
 test_that("Test crop sfg", {
   img <- system.file("img/UK_flag.png", package = "rasterpic")
-  x <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
+  x <- sf::st_read(
+    system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
 
@@ -167,7 +167,6 @@ test_that("Test crop sfg", {
   png_dim <- png::readPNG(img)
   expect_false(asp_ratio(x0) == dim(png_dim)[2] / dim(png_dim)[1])
 
-
   # Bboxes
   bbox_x <- as.double(sf::st_bbox(x))
   bbox_x0 <- as.vector(terra::ext(x0))
@@ -182,7 +181,8 @@ test_that("Test crop sfg", {
 
 test_that("Test mask sfg", {
   img <- system.file("img/UK_flag.png", package = "rasterpic")
-  x <- sf::st_read(system.file("gpkg/austria.gpkg", package = "rasterpic"),
+  x <- sf::st_read(
+    system.file("gpkg/austria.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
 
@@ -204,7 +204,6 @@ test_that("Test mask sfg", {
 
   expect_true(asp_ratio(raster) == dim(png_dim)[2] / dim(png_dim)[1])
 
-
   # Same y coords
   expect_true(terra::ymin(raster) == sf::st_bbox(x)[2])
   expect_true(terra::ymax(raster) == sf::st_bbox(x)[4])
@@ -220,15 +219,11 @@ test_that("Test mask sfg", {
 
   # Inverse
   expect_message(
-    raster_inv <- rasterpic_img(x,
-      img,
-      mask = TRUE, inverse = TRUE
-    ),
+    raster_inv <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE),
     "'crs' is NA"
   )
 
   expect_true(asp_ratio(raster_inv) == dim(png_dim)[2] / dim(png_dim)[1])
-
 
   # Same y coords
   expect_true(terra::ymin(raster_inv) == sf::st_bbox(x)[2])

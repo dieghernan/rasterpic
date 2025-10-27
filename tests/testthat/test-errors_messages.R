@@ -8,7 +8,8 @@ test_that("Error on bad x formatting", {
 })
 
 test_that("Error on bad img formatting", {
-  x <- sf::st_read(system.file("gpkg/UK.gpkg", package = "rasterpic"),
+  x <- sf::st_read(
+    system.file("gpkg/UK.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
   img <- "nofile"
@@ -16,7 +17,6 @@ test_that("Error on bad img formatting", {
     rasterpic_img(x, img),
     error = TRUE
   )
-
 
   img2 <- system.file("gpkg/UK.gpkg", package = "rasterpic")
 
@@ -51,7 +51,8 @@ test_that("Error on invalid parameters", {
 })
 
 test_that("Message in lonlat sf", {
-  x <- sf::st_read(system.file("gpkg/UK.gpkg", package = "rasterpic"),
+  x <- sf::st_read(
+    system.file("gpkg/UK.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
   x <- sf::st_transform(x, 4326)
@@ -91,7 +92,6 @@ test_that("Message in mask raster", {
     "'mask' only available when 'x' is an 'sf/sfc/SpatVector' object"
   )
 
-
   expect_true(terra::ext(res1) == terra::ext(res2))
   expect_true(terra::crs(res1) == terra::crs(res2))
   v1 <- terra::values(res1)
@@ -114,7 +114,6 @@ test_that("Message in mask raster with SpatExtent", {
     res2 <- rasterpic_img(extent, img, mask = TRUE, crs = crs),
     "'mask' only available when 'x' is an 'sf/sfc/SpatVector' object"
   )
-
 
   expect_true(terra::ext(res1) == terra::ext(res2))
   expect_true(terra::crs(res1) == terra::crs(res2))

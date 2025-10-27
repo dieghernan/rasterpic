@@ -15,10 +15,7 @@ rpic_read <- function(img, crs = NA) {
 
     # nocov start
     err_dwnload <- tryCatch(
-      download.file(img, tmp,
-        quiet = TRUE,
-        mode = "wb"
-      ),
+      download.file(img, tmp, quiet = TRUE, mode = "wb"),
       warning = function(x) {
         TRUE
       },
@@ -37,11 +34,12 @@ rpic_read <- function(img, crs = NA) {
     img <- tmp
   }
 
-  if (!file.exists(img)) stop("'img' file not found", call. = FALSE)
+  if (!file.exists(img)) {
+    stop("'img' file not found", call. = FALSE)
+  }
   # pngs
   if ("png" %in% tools::file_ext(img)) {
     pngfile <- png::readPNG(img) * 255
-
 
     # Give transparency if available
     if (all(dim(pngfile)[3] == 4, !is.na(dim(pngfile)[3]))) {

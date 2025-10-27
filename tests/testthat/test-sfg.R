@@ -1,6 +1,7 @@
 test_that("Test sfg", {
   img <- system.file("img/UK_flag.png", package = "rasterpic")
-  x <- sf::st_read(system.file("gpkg/UK.gpkg", package = "rasterpic"),
+  x <- sf::st_read(
+    system.file("gpkg/UK.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
 
@@ -31,7 +32,8 @@ test_that("Test sfg", {
 
 test_that("Test sfg with projs", {
   img <- system.file("img/UK_flag.png", package = "rasterpic")
-  x <- sf::st_read(system.file("gpkg/UK.gpkg", package = "rasterpic"),
+  x <- sf::st_read(
+    system.file("gpkg/UK.gpkg", package = "rasterpic"),
     quiet = TRUE
   )
 
@@ -49,7 +51,6 @@ test_that("Test sfg with projs", {
 
   raster <- rasterpic_img(x, img, crs = crs_wkt_sf)
   expect_false(terra::crs(raster) == "")
-
 
   png_dim <- png::readPNG(img)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
