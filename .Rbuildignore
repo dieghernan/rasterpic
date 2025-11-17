@@ -28,3 +28,5 @@
 ^docs$
 ^_pkgdown\.yaml$
 ^_pkgdown\.yml$
+^[.]?air[.]toml$
+^\.vscode$
