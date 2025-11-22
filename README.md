@@ -130,6 +130,7 @@ autoplot(uk_flag2) +
 ## Citation
 
 <p>
+
 Hernangómez D (2025). <em>rasterpic: Convert Digital Images into
 SpatRaster Objects</em>.
 <a href="https://doi.org/10.32614/CRAN.package.rasterpic">doi:10.32614/CRAN.package.rasterpic</a>,

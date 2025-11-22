@@ -22,20 +22,15 @@ home:
     object as a geographical reference.
 
 navbar:
-  structure:
-    left:
-    - intro
-    - reference
-    - articles
-    - posts
-    - news
-    right:
-    - search
-    - github
   components:
-    posts:
-      text: Blog
+    articles:
+      text: Articles
       menu:
+      - text: 'Tutorials'
+      - text: 'Plotting terra rasters'
+        href: articles/plots.html
+      - text: '---'
+      - text: Blog
       - text: 'Beautiful Maps with R (IV): Fun with flags revisited'
         href: https://dieghernan.github.io/202201_maps-flags/
       - text: Quick Brazil
@@ -55,4 +50,10 @@ reference:
   - maptiles::plot_tiles()
 - title: About the package
   contents: rasterpic-package
+
+articles:
+- title: Plots
+  navbar: Plots
+  contents:
+  - articles/plots
 

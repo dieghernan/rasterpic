@@ -31,8 +31,13 @@ jobs:
 
       - name: Install Air
         uses: posit-dev/setup-air@v1
+<<<<<<< HEAD
       
       - name: Check
+=======
+
+      - name: Format with Air
+>>>>>>> 911fbf9 (Update docs)
         run: air format .
 
       - name: Update docs

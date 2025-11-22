@@ -1,13 +1,12 @@
 CMD
-CRS
 CodeFactor
-DOI
 Geotags
 ORCID
 PROJ
 SpatRaster
 WKT
 codecov
+doi
 geo
 geotagged
 geotagging
@@ -15,7 +14,6 @@ ggplot
 mapsf
 maptiles
 pkgdown
-rasters
 terra
 tidyterra
 tmap

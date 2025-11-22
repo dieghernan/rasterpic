@@ -57,13 +57,13 @@ rpic_read <- function(img, crs = NA) {
 
     terra::crs(rast) <- crs
 
-    return(rast)
+    rast
   } else if (tools::file_ext(img) %in% c("jpg", "jpeg", "tif", "tiff")) {
     # jpg/jpeg and tif/tiff
 
     rast <- suppressWarnings(terra::rast(img))
     terra::crs(rast) <- crs
-    return(rast)
+    rast
   } else {
     stop("'img' only accepts 'png', 'jpg' or 'jpeg' files", call. = FALSE)
   }

@@ -8,7 +8,6 @@
 ^revdep$
 ^codemeta\.json$
 ^CITATION\.cff$
-^tests/testthat/_snaps$
 ^CRAN-SUBMISSION$
 ^.github$
 ^pkgdown$
