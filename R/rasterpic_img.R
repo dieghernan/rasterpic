@@ -302,9 +302,5 @@ rasterpic_img <- function(
     names(new_rast) <- nms
   }
 
-<<<<<<< HEAD
-  return(new_rast)
-=======
   new_rast
->>>>>>> 911fbf9 (Update docs)
 }

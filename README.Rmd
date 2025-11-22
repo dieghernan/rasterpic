@@ -139,7 +139,4 @@ A BibTeX entry for LaTeX users is:
 ```{r echo=FALSE, comment=''}
 toBibtex(citation("rasterpic"))
 ```
-<<<<<<< HEAD
 
-=======
->>>>>>> 911fbf9 (Update docs)
