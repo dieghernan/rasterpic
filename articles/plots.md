@@ -186,7 +186,7 @@ Details
     #>  maptiles     * 0.10.0    2025-05-07 [1] RSPM
     #>  pillar         1.11.1    2025-09-17 [1] RSPM
     #>  pkgconfig      2.0.3     2019-09-22 [1] RSPM
-    #>  pkgdown        2.2.0     2025-11-06 [1] RSPM
+    #>  pkgdown        2.2.0     2025-11-06 [1] any (@2.2.0)
     #>  png            0.1-8     2022-11-29 [1] RSPM
     #>  proxy          0.4-27    2022-06-09 [1] RSPM
     #>  purrr          1.2.0     2025-11-04 [1] RSPM
