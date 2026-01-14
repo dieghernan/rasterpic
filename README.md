@@ -104,7 +104,7 @@ autoplot(uk_flag) +
   geom_sf(data = uk, color = alpha("blue", 0.5))
 ```
 
-<img src="man/figures/README-example-basic-1.png" width="100%" />
+<img src="man/figures/README-example-basic-1.png" alt="" width="100%" />
 
 We can also play with other parameters, as well as modifying the
 alignment of the image with respect to the object:
@@ -117,7 +117,7 @@ autoplot(uk_flag2) +
   geom_sf(data = uk, fill = NA)
 ```
 
-<img src="man/figures/README-align-crop-mask-1.png" width="100%" />
+<img src="man/figures/README-align-crop-mask-1.png" alt="" width="100%" />
 
 ## Image formats admitted
 
@@ -130,7 +130,7 @@ autoplot(uk_flag2) +
 ## Citation
 
 <p>
-Hernangómez D (2025). <em>rasterpic: Convert Digital Images into
+Hernangómez D (2026). <em>rasterpic: Convert Digital Images into
 SpatRaster Objects</em>.
 <a href="https://doi.org/10.32614/CRAN.package.rasterpic">doi:10.32614/CRAN.package.rasterpic</a>,
 <a href="https://dieghernan.github.io/rasterpic/">https://dieghernan.github.io/rasterpic/</a>.
@@ -142,7 +142,7 @@ A BibTeX entry for LaTeX users is:
       title = {{rasterpic}: Convert Digital Images into {SpatRaster} Objects},
       doi = {10.32614/CRAN.package.rasterpic},
       author = {Diego Hernangómez},
-      year = {2025},
+      year = {2026},
       version = {0.3.0},
       url = {https://dieghernan.github.io/rasterpic/},
       abstract = {Generate SpatRaster objects, as defined by the terra package, from digital images, using a specified spatial object as a geographical reference.},
