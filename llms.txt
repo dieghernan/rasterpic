@@ -153,8 +153,8 @@ Functions from other packages from plotting `SpatRaster` objects.
   [`opt_tm_rgb()`](https://r-tmap.github.io/tmap/reference/tm_rgb.html)
   : Map layer: rgb images (from tmap)
 
-- [`mf_raster()`](https:/riatelab.github.io/mapsf/man/mf_raster.html) :
-  Plot a raster (from mapsf)
+- [`mf_raster()`](https://riatelab.github.io/mapsf/reference/mf_raster.html)
+  : Plot a raster (from mapsf)
 
 - [`plot_tiles()`](https://rdrr.io/pkg/maptiles/man/plot_tiles.html) :
   Plot map tiles (from maptiles)

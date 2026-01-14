@@ -26,7 +26,7 @@ The aspect ratio
 ``` r
 # \donttest{
 library(terra)
-#> terra 1.8.80
+#> terra 1.8.93
 
 x <- rast(system.file("tiff/elev.tiff", package = "rasterpic"))
 plot(x)

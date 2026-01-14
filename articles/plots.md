@@ -104,7 +104,7 @@ Tennekes M (2018). “tmap: Thematic Maps in R.” *Journal of Statistical
 Software*, **84**(6), 1–39.
 [doi:10.18637/jss.v084.i06](https://doi.org/10.18637/jss.v084.i06).
 
-Giraud T (2025). *mapsf: Thematic Cartography*.
+Giraud T (2026). *mapsf: Thematic Cartography*.
 [doi:10.32614/CRAN.package.mapsf](https://doi.org/10.32614/CRAN.package.mapsf).
 
 Hernangómez D (2023). “Using the tidyverse with terra objects: the
@@ -113,8 +113,8 @@ ISSN 2475-9066,
 [doi:10.21105/joss.05751](https://doi.org/10.21105/joss.05751),
 <https://doi.org/10.21105/joss.05751>.
 
-Hijmans R (2025). *terra: Spatial Data Analysis*. R package version
-1.8-80, <https://rspatial.org/>.
+Hijmans R (2026). *terra: Spatial Data Analysis*. R package version
+1.8-93, <https://rspatial.org/>.
 
 Wickham H (2016). *ggplot2: Elegant Graphics for Data Analysis*.
 Springer-Verlag New York. ISBN 978-3-319-24277-4,
@@ -134,7 +134,7 @@ Details
     #>  collate  English_United States.utf8
     #>  ctype    English_United States.utf8
     #>  tz       UTC
-    #>  date     2025-11-22
+    #>  date     2026-01-14
     #>  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)
     #>  quarto   NA
     #> 
@@ -152,12 +152,12 @@ Details
     #>  cols4all       0.10      2025-10-27 [1] RSPM
     #>  crosstalk      1.2.2     2025-08-26 [1] RSPM
     #>  curl           7.0.0     2025-08-19 [1] RSPM
-    #>  data.table     1.17.8    2025-07-10 [1] RSPM
+    #>  data.table     1.18.0    2025-12-24 [1] RSPM
     #>  DBI            1.2.3     2024-06-02 [1] RSPM
     #>  desc           1.4.3     2023-12-10 [1] RSPM
     #>  digest         0.6.39    2025-11-19 [1] RSPM
     #>  dplyr          1.1.4     2023-11-17 [1] RSPM
-    #>  e1071          1.7-16    2024-09-16 [1] RSPM
+    #>  e1071          1.7-17    2025-12-18 [1] RSPM
     #>  evaluate       1.0.5     2025-08-27 [1] RSPM
     #>  farver         2.1.2     2024-05-13 [1] RSPM
     #>  fastmap        1.2.0     2024-05-15 [1] RSPM
@@ -166,53 +166,53 @@ Details
     #>  ggplot2      * 4.0.1     2025-11-14 [1] RSPM
     #>  glue           1.8.0     2024-09-30 [1] RSPM
     #>  gtable         0.3.6     2024-10-25 [1] RSPM
-    #>  htmltools      0.5.8.1   2024-04-04 [1] RSPM
+    #>  htmltools      0.5.9     2025-12-04 [1] RSPM
     #>  htmlwidgets    1.6.4     2023-12-06 [1] RSPM
     #>  jquerylib      0.1.4     2021-04-26 [1] RSPM
     #>  jsonlite       2.0.0     2025-03-27 [1] RSPM
     #>  KernSmooth     2.23-26   2025-01-01 [3] CRAN (R 4.5.2)
-    #>  knitr          1.50      2025-03-16 [1] RSPM
+    #>  knitr          1.51      2025-12-20 [1] RSPM
     #>  lattice        0.22-7    2025-04-02 [3] CRAN (R 4.5.2)
     #>  leafem         0.2.5     2025-08-28 [1] RSPM
     #>  leaflegend     1.2.1     2024-05-09 [1] RSPM
     #>  leaflet        2.2.3     2025-09-04 [1] RSPM
     #>  leafsync       0.1.0     2019-03-05 [1] RSPM
-    #>  lifecycle      1.0.4     2023-11-07 [1] RSPM
+    #>  lifecycle      1.0.5     2026-01-08 [1] RSPM
     #>  logger         0.4.1     2025-09-11 [1] RSPM
-    #>  lwgeom         0.2-14    2024-02-21 [1] RSPM
+    #>  lwgeom         0.2-15    2026-01-12 [1] RSPM
     #>  magrittr       2.0.4     2025-09-12 [1] RSPM
-    #>  maplegend      0.3.0     2025-06-30 [1] RSPM
-    #>  mapsf        * 1.0.0     2025-07-01 [1] RSPM
-    #>  maptiles     * 0.10.0    2025-05-07 [1] RSPM
+    #>  maplegend      0.5.0     2026-01-10 [1] RSPM
+    #>  mapsf        * 1.1.0     2026-01-10 [1] RSPM
+    #>  maptiles     * 0.11.0    2025-12-12 [1] RSPM
+    #>  otel           0.2.0     2025-08-29 [1] RSPM
     #>  pillar         1.11.1    2025-09-17 [1] RSPM
     #>  pkgconfig      2.0.3     2019-09-22 [1] RSPM
-    #>  pkgdown        2.2.0     2025-11-06 [1] any (@2.2.0)
+    #>  pkgdown        2.2.0     2025-11-06 [1] RSPM
     #>  png            0.1-8     2022-11-29 [1] RSPM
-    #>  proxy          0.4-27    2022-06-09 [1] RSPM
-    #>  purrr          1.2.0     2025-11-04 [1] RSPM
+    #>  proxy          0.4-29    2025-12-29 [1] RSPM
+    #>  purrr          1.2.1     2026-01-09 [1] RSPM
     #>  R6             2.6.1     2025-02-15 [1] RSPM
     #>  ragg           1.5.0     2025-09-02 [1] RSPM
     #>  raster         3.6-32    2025-03-28 [1] RSPM
-    #>  rasterpic    * 0.3.0     2025-11-22 [1] local
+    #>  rasterpic    * 0.3.0     2026-01-14 [1] local
     #>  RColorBrewer   1.1-3     2022-04-03 [1] RSPM
-    #>  Rcpp           1.1.0     2025-07-02 [1] RSPM
-    #>  rlang          1.1.6     2025-04-11 [1] RSPM
+    #>  Rcpp           1.1.1     2026-01-10 [1] RSPM
+    #>  rlang          1.1.7     2026-01-09 [1] RSPM
     #>  rmarkdown      2.30      2025-09-28 [1] RSPM
     #>  s2             1.1.9     2025-05-23 [1] RSPM
     #>  S7             0.2.1     2025-11-14 [1] RSPM
     #>  sass           0.4.10    2025-04-11 [1] RSPM
     #>  scales         1.4.0     2025-04-24 [1] RSPM
-    #>  sessioninfo  * 1.2.3     2025-02-05 [1] any (@1.2.3)
-    #>  sf             1.0-22    2025-11-10 [1] RSPM
-    #>  slippymath     0.3.1     2019-06-28 [1] RSPM
+    #>  sessioninfo  * 1.2.3     2025-02-05 [1] RSPM
+    #>  sf             1.0-24    2026-01-13 [1] RSPM
     #>  sp             2.2-0     2025-02-01 [1] RSPM
     #>  spacesXYZ      1.6-0     2025-06-06 [1] RSPM
-    #>  stars          0.6-8     2025-02-01 [1] RSPM
+    #>  stars          0.7-0     2025-12-14 [1] RSPM
     #>  systemfonts    1.3.1     2025-10-01 [1] RSPM
-    #>  terra        * 1.8-80    2025-11-05 [1] RSPM
+    #>  terra        * 1.8-93    2026-01-12 [1] RSPM
     #>  textshaping    1.0.4     2025-10-10 [1] RSPM
-    #>  tibble         3.3.0     2025-06-08 [1] RSPM
-    #>  tidyr          1.3.1     2024-01-24 [1] RSPM
+    #>  tibble         3.3.1     2026-01-11 [1] RSPM
+    #>  tidyr          1.3.2     2025-12-19 [1] RSPM
     #>  tidyselect     1.2.1     2024-03-11 [1] RSPM
     #>  tidyterra    * 0.7.2     2025-04-14 [1] RSPM
     #>  tmap         * 4.2       2025-09-10 [1] RSPM
@@ -220,10 +220,10 @@ Details
     #>  units          1.0-0     2025-10-09 [1] RSPM
     #>  vctrs          0.6.5     2023-12-01 [1] RSPM
     #>  withr          3.0.2     2024-10-28 [1] RSPM
-    #>  wk             0.9.4     2024-10-11 [1] RSPM
-    #>  xfun           0.54      2025-10-30 [1] RSPM
+    #>  wk             0.9.5     2025-12-18 [1] RSPM
+    #>  xfun           0.55      2025-12-16 [1] RSPM
     #>  XML            3.99-0.20 2025-11-08 [1] RSPM
-    #>  yaml           2.3.10    2024-07-26 [1] RSPM
+    #>  yaml           2.3.12    2025-12-10 [1] RSPM
     #> 
     #>  [1] D:/a/_temp/Library
     #>  [2] C:/R/site-library
