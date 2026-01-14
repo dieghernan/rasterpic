@@ -39,6 +39,8 @@ navbar:
 reference:
 - title: Functions
   contents: rasterpic_img
+- title: About the package
+  contents: rasterpic-package
 - title: Plotting
   desc: >
     Functions from other packages from plotting `SpatRaster` objects.
@@ -48,8 +50,6 @@ reference:
   - tmap::tm_rgb()
   - mapsf::mf_raster()
   - maptiles::plot_tiles()
-- title: About the package
-  contents: rasterpic-package
 
 articles:
 - title: Plots

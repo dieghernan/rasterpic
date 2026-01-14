@@ -1,7 +1,11 @@
+# rasterpic (development version)
+
+-   Remove **png** package from dependencies.
+
 # rasterpic 0.3.0
 
 -   When the output has 3 or more layers, the first three are renamed as
-    `"r", "g", "b"`. In cases with 4 layers or more the fourth layer is renames
+    `"r", "g", "b"`. In cases with 4 layers or more the fourth layer is renamed
     as `"alpha"`. This allows compatibility with **tmap** `>= 4.0` avoiding
     error `! [subset] you cannot select a layer with a name that is not unique`.
 

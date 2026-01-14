@@ -9,7 +9,7 @@ test_that("Test error online", {
     quiet = TRUE
   )
 
-  expect_error(rasterpic_img(x, img))
+  expect_snapshot(rasterpic_img(x, img), error = TRUE)
 })
 
 test_that("Test image online", {

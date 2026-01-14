@@ -7,7 +7,7 @@ test_that("Test all image formats with UK", {
 
   raster <- rasterpic_img(x, img)
   expect_true(terra::has.RGB(raster))
-  png_dim <- png::readPNG(img)
+  png_dim <- terra::rast(img, noflip = TRUE)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
   # Same y coords
@@ -45,7 +45,7 @@ test_that("Test all image formats with AT vertical", {
   raster <- rasterpic_img(x, img)
   expect_true(terra::has.RGB(raster))
 
-  png_dim <- png::readPNG(img)
+  png_dim <- terra::rast(img, noflip = TRUE)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
   # Different y coords
   expect_true(terra::ymin(raster) < sf::st_bbox(x)[2])
@@ -81,7 +81,7 @@ test_that("Test all image formats with a raster", {
 
   raster <- rasterpic_img(x, img)
   expect_true(terra::has.RGB(raster))
-  png_dim <- png::readPNG(img)
+  png_dim <- terra::rast(img, noflip = TRUE)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
   # Different y coords
   expect_true(terra::ymin(raster) < terra::ymin(x))
@@ -120,7 +120,7 @@ test_that("Test all image formats with sfc vertical", {
   raster <- rasterpic_img(x, img)
   expect_true(terra::has.RGB(raster))
 
-  png_dim <- png::readPNG(img)
+  png_dim <- terra::rast(img, noflip = TRUE)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
   # Different y coords
   expect_true(terra::ymin(raster) < sf::st_bbox(x)[2])
@@ -159,7 +159,7 @@ test_that("Test all image formats with SpatExtent", {
   expect_s4_class(x, "SpatExtent")
 
   raster <- rasterpic_img(x, img, crs = "epsg:3035")
-  png_dim <- png::readPNG(img)
+  png_dim <- terra::rast(img, noflip = TRUE)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
   # Different y coords
   expect_true(terra::ymin(raster) < sf::st_bbox(x)[2])
@@ -198,7 +198,7 @@ test_that("Test transparent", {
 
   expect_true(terra::has.RGB(raster))
 
-  png_dim <- png::readPNG(img)
+  png_dim <- terra::rast(img, noflip = TRUE)
 
   expect_true(dim(png_dim)[3] == 4)
   expect_true(terra::nlyr(raster) == 4)

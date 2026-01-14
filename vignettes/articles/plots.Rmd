@@ -56,7 +56,7 @@ ggplot() +
 
 ## With tmap
 
-**tmap** can be also used to create great maps:
+**tmap** can also be used to create great maps:
 
 ```{r tmap, fig.alt="Example: plot with tmap package"}
 library(tmap)
@@ -82,8 +82,8 @@ mf_inset_off()
 
 ## With maptiles
 
-**maptiles** is a interesting package that provides the ability of downloading
-map tiles from different providers. It also has a specific function for plotting
+**maptiles** is an interesting package that provides the ability to download map
+tiles from different providers. It also has a specific function for plotting
 **terra** `SpatRaster` objects:
 
 ```{r maptiles, fig.alt="Example: plot with maptiles package"}

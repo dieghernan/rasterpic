@@ -6,12 +6,12 @@
 #'
 #' @param x **R** object that may be:
 #'   * An object created with \CRANpkg{sf} of class [`sf`][sf::st_sf],
-#'     [`sfc`][sf::st_sfc], `sfg` or [`bbox`][sf::st_bbox]).
+#'     [`sfc`][sf::st_sfc], [`sfg`][sf::st] or [`bbox`][sf::st_bbox]).
 #'   * An object created with \CRANpkg{terra} of class
 #'     [`SpatRaster`][terra::rast], [`SpatVector`][terra::vect] or
 #'     [`SpatExtent`][terra::ext].
-#'   * A numeric vector of length 4 with the extent to be used for geotagging (
-#'     i.e. `c(xmin, ymin, xmax, ymax)`).
+#'   * A numeric vector of length 4 with the extent to be used for geotagging
+#'     (i.e. `c(xmin, ymin, xmax, ymax)`).
 #'
 #' @param img An image to be geotagged. It can be a local file or an online
 #'   file (e.g. `"https://i.imgur.com/6yHmlwT.jpeg"`). The following image
@@ -21,7 +21,7 @@
 #'   * `tiff/tif`.
 #'
 #' @param halign,valign Horizontal and vertical alignment of `img` with respect
-#'  to `x`. It should be a value between `0` and `1`:
+#'  to `x`. They should be values between `0` and `1`:
 #'  - `halign = 0, valign = 0` assumes that `x` should be in the bottom left
 #'     corner of the `SpatRaster`.
 #'  - `halign = 1, valign = 1` assumes that `x` should be in the top right
@@ -37,28 +37,31 @@
 #' @param crop Logical. Should the raster be cropped to the (expanded) bounding
 #'  box of `x`? See **Details**.
 #'
-#' @param mask Logical, applicable only if `x` is a `sf`,  `sfc` or `SpatVector`
+#' @param mask Logical, applicable only if `x` is a `sf`, `sfc` or `SpatVector`
 #'   object. Should the raster be [masked][terra::mask] to `x`? See **Details**.
 #'
-#' @param inverse Logical. It affects only if `mask = TRUE`. If `TRUE`, areas on
-#'   the raster that do not overlap with `x` are masked.
+#' @param inverse Logical. It only affects when `mask = TRUE`. If `TRUE`, areas
+#'   on the raster that do not overlap with `x` are masked.
 #'
 #' @param crs Character string describing a coordinate reference system.
-#'   This parameter would only affect if `x` is a `SpatExtent`, `sfg`, `bbox` or
+#'   This parameter only affects when `x` is a `SpatExtent`, `sfg`, `bbox` or
 #'   a vector of coordinates. See **CRS** section.
 #'
 #' @return
 #' A `SpatRaster` object (see [terra::rast()]) where each layer corresponds to
 #' a color channel of `img`:
-#' - If `img` has at least 3 channels (e.g. layers), the result would have
+#' - If `img` has at least 3 channels (e.g. layers), the result will have
 #'   an additional property setting the layers 1 to 3 as the Red, Green and Blue
-#'   channels.
+#'   channels with names `"r" "g" "b"` and `alpha` (if applicable).
 #' - If `img` already has a definition or RGB values (this may be the case for
-#'   `tiff/tif` files) the result would keep that channel definition.
+#'   `tiff/tif` files) the result will keep that channel definition.
+#'
+#' The resulting `SpatRaster` will have an RGB specification as explained in
+#' `terra::RGB()`.
 #'
 #' @details
 #'
-#' `vignette("rasterpic", package = "rasterpic")` explains with examples the
+#' `vignette("rasterpic", package = "rasterpic")` explains, with examples, the
 #'  effect of parameters `halign`, `valign`, `expand`, `crop` and `mask`.
 #'
 #' ## CRS
@@ -69,7 +72,7 @@
 #'
 #' `crs` can be in a WKT format, as a `"authority:number"` code such as
 #' `"EPSG:4326"`, or a PROJ-string format such as `"+proj=utm +zone=12"`. It can
-#' be also retrieved with:
+#' also be retrieved with:
 #' - [`sf::st_crs(25830)$wkt`][sf::st_crs].
 #' - [terra::crs()].
 #' - [tidyterra::pull_crs()].
@@ -95,9 +98,13 @@
 #' - With \CRANpkg{ggplot2} use \CRANpkg{tidyterra}:
 #'   - [tidyterra::autoplot.SpatRaster()].
 #'   - [tidyterra::geom_spatraster_rgb()].
+#' - Other packages:
+#'   - \CRANpkg{tmap}.
+#'   - \CRANpkg{mapsf}.
+#'   - \CRANpkg{maptiles}.
 #'
 #' @export
-#'
+#' @encoding UTF-8
 #' @examples
 #' \donttest{
 #' library(sf)

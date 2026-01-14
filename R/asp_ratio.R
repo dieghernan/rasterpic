@@ -1,14 +1,15 @@
 #' Compute aspect ratio of an object
 #'
 #' @description
-#' Helper function. Ratio is computed as width/height (or col/rows).
+#' Helper function. Ratio is computed as width/height (or cols/rows).
 #'
 #' @param x A `SpatRaster` object, an `sf/sfc` object or a numeric vector of
 #'   length 4 with coordinates c(`xmin`, `ymin`, `xmax`, `ymax`), as created by
 #'   [sf::st_bbox()].
 #'
-#' @return The aspect ratio
+#' @return The aspect ratio.
 #' @export
+#' @encoding UTF-8
 #' @keywords internal
 #' @examples
 #' \donttest{

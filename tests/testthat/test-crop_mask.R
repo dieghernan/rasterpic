@@ -7,7 +7,7 @@ test_that("Test crop", {
 
   x0 <- rasterpic_img(x, img, expand = 0, crop = TRUE)
 
-  png_dim <- png::readPNG(img)
+  png_dim <- terra::rast(img, noflip = TRUE)
   expect_false(asp_ratio(x0) == dim(png_dim)[2] / dim(png_dim)[1])
 
   # Bboxes
@@ -31,7 +31,7 @@ test_that("Test mask", {
 
   raster <- rasterpic_img(x, img, mask = TRUE)
 
-  png_dim <- png::readPNG(img)
+  png_dim <- terra::rast(img, noflip = TRUE)
 
   expect_true(asp_ratio(raster) == dim(png_dim)[2] / dim(png_dim)[1])
 
@@ -79,7 +79,7 @@ test_that("Test crop SpatVector", {
 
   x0 <- rasterpic_img(x, img, expand = 0, crop = TRUE)
 
-  png_dim <- png::readPNG(img)
+  png_dim <- terra::rast(img, noflip = TRUE)
   expect_false(asp_ratio(x0) == dim(png_dim)[2] / dim(png_dim)[1])
 
   # Bboxes
@@ -106,7 +106,7 @@ test_that("Test mask SpatVector", {
 
   raster <- rasterpic_img(x, img, mask = TRUE)
 
-  png_dim <- png::readPNG(img)
+  png_dim <- terra::rast(img, noflip = TRUE)
 
   expect_true(asp_ratio(raster) == dim(png_dim)[2] / dim(png_dim)[1])
 
@@ -164,7 +164,7 @@ test_that("Test crop sfg", {
 
   x0 <- rasterpic_img(x, img, expand = 0, crop = TRUE, crs = crs_wkt_sf)
 
-  png_dim <- png::readPNG(img)
+  png_dim <- terra::rast(img, noflip = TRUE)
   expect_false(asp_ratio(x0) == dim(png_dim)[2] / dim(png_dim)[1])
 
   # Bboxes
@@ -200,7 +200,7 @@ test_that("Test mask sfg", {
 
   raster <- rasterpic_img(x, img, mask = TRUE, crs = crs_wkt_sf)
 
-  png_dim <- png::readPNG(img)
+  png_dim <- terra::rast(img, noflip = TRUE)
 
   expect_true(asp_ratio(raster) == dim(png_dim)[2] / dim(png_dim)[1])
 

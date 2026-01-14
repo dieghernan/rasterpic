@@ -7,7 +7,7 @@ test_that("Test horizontal alignments", {
 
   # Left
   raster_x0 <- rasterpic_img(x, img, halign = 0)
-  png_dim <- png::readPNG(img)
+  png_dim <- terra::rast(img, noflip = TRUE)
   expect_equal(asp_ratio(raster_x0), dim(png_dim)[2] / dim(png_dim)[1])
 
   # Same coords
@@ -20,7 +20,7 @@ test_that("Test horizontal alignments", {
 
   # Right
   raster_x1 <- rasterpic_img(x, img, halign = 1)
-  png_dim <- png::readPNG(img)
+  png_dim <- terra::rast(img, noflip = TRUE)
   expect_equal(asp_ratio(raster_x1), dim(png_dim)[2] / dim(png_dim)[1])
 
   # Same coords
@@ -42,7 +42,7 @@ test_that("Test vertical alignments", {
 
   # Bottom
   raster_y0 <- rasterpic_img(x, img, valign = 0)
-  png_dim <- png::readPNG(img)
+  png_dim <- terra::rast(img, noflip = TRUE)
   expect_equal(asp_ratio(raster_y0), dim(png_dim)[2] / dim(png_dim)[1])
 
   # Same coords
