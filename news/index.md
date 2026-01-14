@@ -1,7 +1,9 @@
 # Changelog
 
-## rasterpic (development version)
+## rasterpic 0.3.1
 
+- New logo.
+- Minimum **R** version required is now 4.1.0.
 - Minor internal and documentation improvements.
 
 ## rasterpic 0.3.0
