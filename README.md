@@ -22,7 +22,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 
 <!-- badges: end -->
 
-**rasterpic** is a tiny package with one single goal: to transform an
+**rasterpic** is a tiny package with a single goal: to transform an
 image into a `SpatRaster` object (see `?terra::SpatRaster`).
 
 ## Installation
@@ -56,14 +56,14 @@ install.packages("rasterpic",
 
 ## Example
 
-This package allows you to create cool maps by using a wide variety of
+This package allows you to create custom maps by using a wide variety of
 objects:
 
 - Spatial object created with the **sf** package: `sf`, `sfc`, `sfg` or
   `bbox`.
 - Spatial objects created with the **terra** package: `SpatRaster`,
   `SpatVector`, `SpatExtent`.
-- A vector of coordinates with the form `c(xmin, ymin, xmax, yman)`
+- A vector of coordinates with the form `c(xmin, ymin, xmax, ymax)`
 
 An example using an `sf` object:
 
@@ -80,7 +80,7 @@ uk <- read_sf(system.file("gpkg/UK.gpkg", package = "rasterpic"))
 class(uk)
 #> [1] "sf"         "tbl_df"     "tbl"        "data.frame"
 
-# Rasterize!
+# Rasterize the image!
 uk_flag <- rasterpic_img(uk, img)
 
 uk_flag
@@ -106,8 +106,8 @@ autoplot(uk_flag) +
 
 <img src="man/figures/README-example-basic-1.png" alt="" width="100%" />
 
-We can also play with other parameters, as well as modifying the
-alignment of the image with respect to the object:
+We can also adjust other parameters, as well as modifying the alignment
+of the image with respect to the object:
 
 ``` r
 # Align, crop and mask
@@ -119,7 +119,7 @@ autoplot(uk_flag2) +
 
 <img src="man/figures/README-align-crop-mask-1.png" alt="" width="100%" />
 
-## Image formats admitted
+## Supported image formats
 
 **rasterpic** can parse the following image formats:
 
@@ -130,6 +130,7 @@ autoplot(uk_flag2) +
 ## Citation
 
 <p>
+
 Hernangómez D (2026). <em>rasterpic: Convert Digital Images into
 SpatRaster Objects</em>.
 <a href="https://doi.org/10.32614/CRAN.package.rasterpic">doi:10.32614/CRAN.package.rasterpic</a>,
@@ -143,7 +144,7 @@ A BibTeX entry for LaTeX users is:
       doi = {10.32614/CRAN.package.rasterpic},
       author = {Diego Hernangómez},
       year = {2026},
-      version = {0.3.0},
+      version = {0.3.0.9000},
       url = {https://dieghernan.github.io/rasterpic/},
       abstract = {Generate SpatRaster objects, as defined by the terra package, from digital images, using a specified spatial object as a geographical reference.},
     }

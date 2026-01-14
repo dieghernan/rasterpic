@@ -1,6 +1,6 @@
 # rasterpic (development version)
 
--   Remove **png** package from dependencies.
+-   Minor internal and documentation improvements.
 
 # rasterpic 0.3.0
 
@@ -11,51 +11,52 @@
 
 # rasterpic 0.2.6
 
--   Update documentation.
+-   Updated documentation.
 
 # rasterpic 0.2.5
 
--   Update documentation.
--   Title and Description of the package are more specific.
+-   Updated documentation.
+-   `DESCRIPTION` file: Made Title and Description of the package more specific.
 
 # rasterpic 0.2.4
 
--   Ensure `SpatVector`s always have `crs`.
--   If the image has less than 3 channels the raster output does not have the
-    property RGB (`terra::has.RGB()` is `FALSE`). This is expected to be a
+-   Ensured that `SpatVector`s always have `crs`.
+-   If the image has fewer than 3 channels, the raster output does not have the
+    RGB property (`terra::has.RGB()` is `FALSE`). This is expected to be a
     corner case.
--   If the image file (i.e. `tiff`) already has a RGB definition, keep that in
-    the output.
--   Update docs and tests.
+-   If the image file (e.g., `tiff`) already has an RGB definition, preserve it
+    in the output.
+-   Updated docs and tests.
 
 # rasterpic 0.2.3
 
--   Now `asp_ratio()` is an internal function.
--   Improve docs and tests.
+-   Made `asp_ratio()` an internal function.
+-   Improved docs and tests.
 
 # rasterpic 0.2.2
 
--   Remove unused dependencies
--   Improve docs.
--   Fix typos on messages.
--   Declares output as RGB raster with `terra::RGB()`.
--   Add **ggplot2** to "Suggests".
+-   Removed unused dependencies.
+-   Improved docs.
+-   Fixed typos in messages.
+-   Declared output as RGB raster with `terra::RGB()`.
+-   Added **ggplot2** to "Suggests".
 
 # rasterpic 0.2.1
 
--   Add **tidyterra** to "Suggests".
+-   Added **tidyterra** to "Suggests".
 
 # rasterpic 0.2.0
 
--   Add support for:
+-   Added support for:
     -   **terra**: `SpatVector`, `SpatExtent`.
     -   **sf**: `sfg`, `sf::st_bbox()`.
-    -   Numeric vectors `c(xmin, ymin, xmax, ymax).`
--   Now `img` parameter on `rasterpic_img()` accepts online images.
--   Add an [article](https://dieghernan.github.io/rasterpic/articles/plots.html)
-    to the pkgdown site.
--   Fix **CRAN** errors.
+    -   Numeric vectors `c(xmin, ymin, xmax, ymax)`.
+-   The `img` parameter in `rasterpic_img()` now accepts online images.
+-   Added an
+    [article](https://dieghernan.github.io/rasterpic/articles/plots.html) to the
+    pkgdown site.
+-   Fixed **CRAN** errors.
 
 # rasterpic 0.1.0
 
--   Initial release
+-   Initial release.

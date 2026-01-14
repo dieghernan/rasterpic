@@ -79,6 +79,7 @@ test_that("Check how it works with 6 layer file", {
 
 test_that("Check how it works with tif with RGB", {
   # PNG
+  skip_on_cran()
   img <- system.file("img/UK_flag.png", package = "rasterpic")
   x <- sf::st_read(
     system.file("gpkg/UK.gpkg", package = "rasterpic"),

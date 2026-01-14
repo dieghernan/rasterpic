@@ -199,6 +199,7 @@ test_that("Test transparent", {
   expect_true(terra::has.RGB(raster))
 
   png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- terra::colorize(png_dim, to = "rgb", alpha = TRUE)
 
   expect_true(dim(png_dim)[3] == 4)
   expect_true(terra::nlyr(raster) == 4)

@@ -19,7 +19,7 @@ rpic_read <- function(img, crs = NA) {
         TRUE
       },
       error = function(x) {
-        TRUE
+        TRUE # nocov
       }
     )
 
@@ -28,7 +28,7 @@ rpic_read <- function(img, crs = NA) {
       stop("Cannot reach img on url ", img, call. = FALSE)
     }
 
-    # If everything is well, rename img
+    # If everything is ok, rename img
     img <- tmp
   }
 
@@ -40,11 +40,35 @@ rpic_read <- function(img, crs = NA) {
     stop("'img' only accepts 'png', 'jpg' or 'jpeg' files", call. = FALSE)
   }
 
-  rast <- terra::rast(img, noflip = TRUE)
-  if (all(terra::nlyr(rast) == 1)) {
-    rast <- terra::colorize(rast, to = "rgb", alpha = TRUE)
+  # pngs
+  if ("png" %in% tools::file_ext(img)) {
+    pngfile <- png::readPNG(img) * 255
+
+    # Give transparency if available
+    if (all(dim(pngfile)[3] == 4, !is.na(dim(pngfile)[3]))) {
+      nrow <- dim(pngfile)[1]
+
+      for (i in seq_len(nrow)) {
+        row <- pngfile[i, , ]
+        alpha <- row[, 4] == 0
+        row[alpha, ] <- NA
+        pngfile[i, , ] <- row
+      }
+    }
+
+    rast <- terra::rast(pngfile)
+
+    terra::crs(rast) <- crs
+
+    rast
+  } else if (tools::file_ext(img) %in% c("jpg", "jpeg", "tif", "tiff")) {
+    # jpg/jpeg and tif/tiff
+
+    rast <- terra::rast(img, noflip = TRUE)
+    terra::crs(rast) <- crs
+    rast
   }
-  terra::crs(rast) <- crs
+
   rast
 }
 
