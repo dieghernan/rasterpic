@@ -8,7 +8,7 @@ message: 'To cite package "rasterpic" in publications use:'
 type: software
 license: MIT
 title: 'rasterpic: Convert Digital Images into ''SpatRaster'' Objects'
-version: 0.3.0.9000
+version: 0.3.1
 doi: 10.32614/CRAN.package.rasterpic
 identifiers:
 - type: doi
@@ -30,7 +30,7 @@ preferred-citation:
     orcid: https://orcid.org/0000-0001-8457-4658
   doi: 10.32614/CRAN.package.rasterpic
   year: '2026'
-  version: 0.3.0.9000
+  version: 0.3.1
   url: https://dieghernan.github.io/rasterpic/
   abstract: Generate SpatRaster objects, as defined by the terra package, from digital
     images, using a specified spatial object as a geographical reference.
@@ -69,7 +69,7 @@ references:
     name: R Foundation for Statistical Computing
     address: Vienna, Austria
   year: '2026'
-  version: '>= 3.6.0'
+  version: '>= 4.1.0'
 - type: software
   title: png
   abstract: 'png: Read and write PNG images'
@@ -109,7 +109,7 @@ references:
     orcid: https://orcid.org/0000-0001-5872-2872
   year: '2026'
   doi: 10.32614/CRAN.package.terra
-  version: '>= 1.4-22'
+  version: '>= 1.8-21'
 - type: software
   title: ggplot2
   abstract: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
