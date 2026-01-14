@@ -1,6 +1,6 @@
 # Compute aspect ratio of an object
 
-Helper function. Ratio is computed as width/height (or col/rows).
+Helper function. Ratio is computed as width/height (or cols/rows).
 
 ## Usage
 
@@ -19,7 +19,7 @@ asp_ratio(x)
 
 ## Value
 
-The aspect ratio
+The aspect ratio.
 
 ## Examples
 

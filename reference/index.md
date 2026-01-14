@@ -7,6 +7,12 @@
 
   Convert an image to a geo-tagged `SpatRaster`
 
+## About the package
+
+- [`rasterpic`](https://dieghernan.github.io/rasterpic/reference/rasterpic-package.md)
+  [`rasterpic-package`](https://dieghernan.github.io/rasterpic/reference/rasterpic-package.md)
+  : rasterpic: Convert Digital Images into 'SpatRaster' Objects
+
 ## Plotting
 
 Functions from other packages from plotting `SpatRaster` objects.
@@ -29,9 +35,3 @@ Functions from other packages from plotting `SpatRaster` objects.
 
 - [`plot_tiles()`](https://rdrr.io/pkg/maptiles/man/plot_tiles.html) :
   Plot map tiles (from maptiles)
-
-## About the package
-
-- [`rasterpic`](https://dieghernan.github.io/rasterpic/reference/rasterpic-package.md)
-  [`rasterpic-package`](https://dieghernan.github.io/rasterpic/reference/rasterpic-package.md)
-  : rasterpic: Convert Digital Images into 'SpatRaster' Objects

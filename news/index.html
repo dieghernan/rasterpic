@@ -9,7 +9,7 @@
       <img src="../apple-touch-icon.png" alt="rasterpic logo" height="34" width="34" class="d-inline-block me-1">
       rasterpic</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,59 +44,63 @@
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="development version" id="rasterpic-development-version">rasterpic (development version)<a class="anchor" aria-label="anchor" href="#rasterpic-development-version"></a></h2>
+<ul><li>Minor internal and documentation improvements.</li>
+</ul></div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.0" id="rasterpic-030">rasterpic 0.3.0<a class="anchor" aria-label="anchor" href="#rasterpic-030"></a></h2><p class="text-muted">CRAN release: 2025-03-19</p>
-<ul><li>When the output has 3 or more layers, the first three are renamed as <code>"r", "g", "b"</code>. In cases with 4 layers or more the fourth layer is renames as <code>"alpha"</code>. This allows compatibility with <strong>tmap</strong> <code>&gt;= 4.0</code> avoiding error <code>! [subset] you cannot select a layer with a name that is not unique</code>.</li>
+<ul><li>When the output has 3 or more layers, the first three are renamed as <code>"r", "g", "b"</code>. In cases with 4 layers or more the fourth layer is renamed as <code>"alpha"</code>. This allows compatibility with <strong>tmap</strong> <code>&gt;= 4.0</code> avoiding error <code>! [subset] you cannot select a layer with a name that is not unique</code>.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.6" id="rasterpic-026">rasterpic 0.2.6<a class="anchor" aria-label="anchor" href="#rasterpic-026"></a></h2><p class="text-muted">CRAN release: 2024-12-17</p>
-<ul><li>Update documentation.</li>
+<ul><li>Updated documentation.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.5" id="rasterpic-025">rasterpic 0.2.5<a class="anchor" aria-label="anchor" href="#rasterpic-025"></a></h2><p class="text-muted">CRAN release: 2024-04-12</p>
-<ul><li>Update documentation.</li>
-<li>Title and Description of the package are more specific.</li>
+<ul><li>Updated documentation.</li>
+<li>
+<code>DESCRIPTION</code> file: Made Title and Description of the package more specific.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.4" id="rasterpic-024">rasterpic 0.2.4<a class="anchor" aria-label="anchor" href="#rasterpic-024"></a></h2><p class="text-muted">CRAN release: 2024-01-18</p>
-<ul><li>Ensure <code>SpatVector</code>s always have <code>crs</code>.</li>
-<li>If the image has less than 3 channels the raster output does not have the property RGB (<code><a href="https://rspatial.github.io/terra/reference/RGB.html" class="external-link">terra::has.RGB()</a></code> is <code>FALSE</code>). This is expected to be a corner case.</li>
-<li>If the image file (i.e. <code>tiff</code>) already has a RGB definition, keep that in the output.</li>
-<li>Update docs and tests.</li>
+<ul><li>Ensured that <code>SpatVector</code>s always have <code>crs</code>.</li>
+<li>If the image has fewer than 3 channels, the raster output does not have the RGB property (<code><a href="https://rspatial.github.io/terra/reference/RGB.html" class="external-link">terra::has.RGB()</a></code> is <code>FALSE</code>). This is expected to be a corner case.</li>
+<li>If the image file (e.g., <code>tiff</code>) already has an RGB definition, preserve it in the output.</li>
+<li>Updated docs and tests.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.3" id="rasterpic-023">rasterpic 0.2.3<a class="anchor" aria-label="anchor" href="#rasterpic-023"></a></h2><p class="text-muted">CRAN release: 2023-09-08</p>
-<ul><li>Now <code><a href="../reference/asp_ratio.html">asp_ratio()</a></code> is an internal function.</li>
-<li>Improve docs and tests.</li>
+<ul><li>Made <code><a href="../reference/asp_ratio.html">asp_ratio()</a></code> an internal function.</li>
+<li>Improved docs and tests.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.2" id="rasterpic-022">rasterpic 0.2.2<a class="anchor" aria-label="anchor" href="#rasterpic-022"></a></h2><p class="text-muted">CRAN release: 2023-04-18</p>
-<ul><li>Remove unused dependencies</li>
-<li>Improve docs.</li>
-<li>Fix typos on messages.</li>
-<li>Declares output as RGB raster with <code><a href="https://rspatial.github.io/terra/reference/RGB.html" class="external-link">terra::RGB()</a></code>.</li>
-<li>Add <strong>ggplot2</strong> to “Suggests”.</li>
+<ul><li>Removed unused dependencies.</li>
+<li>Improved docs.</li>
+<li>Fixed typos in messages.</li>
+<li>Declared output as RGB raster with <code><a href="https://rspatial.github.io/terra/reference/RGB.html" class="external-link">terra::RGB()</a></code>.</li>
+<li>Added <strong>ggplot2</strong> to “Suggests”.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.1" id="rasterpic-021">rasterpic 0.2.1<a class="anchor" aria-label="anchor" href="#rasterpic-021"></a></h2><p class="text-muted">CRAN release: 2022-06-10</p>
-<ul><li>Add <strong>tidyterra</strong> to “Suggests”.</li>
+<ul><li>Added <strong>tidyterra</strong> to “Suggests”.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.0" id="rasterpic-020">rasterpic 0.2.0<a class="anchor" aria-label="anchor" href="#rasterpic-020"></a></h2><p class="text-muted">CRAN release: 2022-02-18</p>
-<ul><li>Add support for:
+<ul><li>Added support for:
 <ul><li>
 <strong>terra</strong>: <code>SpatVector</code>, <code>SpatExtent</code>.</li>
 <li>
 <strong>sf</strong>: <code>sfg</code>, <code><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">sf::st_bbox()</a></code>.</li>
-<li>Numeric vectors <code>c(xmin, ymin, xmax, ymax).</code>
-</li>
+<li>Numeric vectors <code>c(xmin, ymin, xmax, ymax)</code>.</li>
 </ul></li>
-<li>Now <code>img</code> parameter on <code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> accepts online images.</li>
-<li>Add an <a href="https://dieghernan.github.io/rasterpic/articles/plots.html">article</a> to the pkgdown site.</li>
-<li>Fix <strong>CRAN</strong> errors.</li>
+<li>The <code>img</code> parameter in <code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> now accepts online images.</li>
+<li>Added an <a href="https://dieghernan.github.io/rasterpic/articles/plots.html">article</a> to the pkgdown site.</li>
+<li>Fixed <strong>CRAN</strong> errors.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="rasterpic-010">rasterpic 0.1.0<a class="anchor" aria-label="anchor" href="#rasterpic-010"></a></h2><p class="text-muted">CRAN release: 2022-01-27</p>
-<ul><li>Initial release</li>
+<ul><li>Initial release.</li>
 </ul></div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>

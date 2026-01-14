@@ -9,7 +9,7 @@
       <img src="../apple-touch-icon.png" alt="rasterpic logo" height="34" width="34" class="d-inline-block me-1">
       rasterpic</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,12 +69,12 @@
 
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
 <dd><p><strong>R</strong> object that may be:</p><ul><li><p>An object created with <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> of class <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code>,
-<code><a href="https://r-spatial.github.io/sf/reference/sfc.html" class="external-link">sfc</a></code>, <code>sfg</code> or <code><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">bbox</a></code>).</p></li>
+<code><a href="https://r-spatial.github.io/sf/reference/sfc.html" class="external-link">sfc</a></code>, <code><a href="https://r-spatial.github.io/sf/reference/st.html" class="external-link">sfg</a></code> or <code><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">bbox</a></code>).</p></li>
 <li><p>An object created with <a href="https://CRAN.R-project.org/package=terra" class="external-link"><span class="pkg">terra</span></a> of class
 <code><a href="https://rspatial.github.io/terra/reference/rast.html" class="external-link">SpatRaster</a></code>, <code><a href="https://rspatial.github.io/terra/reference/vect.html" class="external-link">SpatVector</a></code> or
 <code><a href="https://rspatial.github.io/terra/reference/ext.html" class="external-link">SpatExtent</a></code>.</p></li>
-<li><p>A numeric vector of length 4 with the extent to be used for geotagging (
-i.e. <code>c(xmin, ymin, xmax, ymax)</code>).</p></li>
+<li><p>A numeric vector of length 4 with the extent to be used for geotagging
+(i.e. <code>c(xmin, ymin, xmax, ymax)</code>).</p></li>
 </ul></dd>
 
 
@@ -89,7 +89,7 @@ extensions are accepted:</p><ul><li><p><code>png</code>.</p></li>
 
 <dt id="arg-halign-valign">halign, valign<a class="anchor" aria-label="anchor" href="#arg-halign-valign"></a></dt>
 <dd><p>Horizontal and vertical alignment of <code>img</code> with respect
-to <code>x</code>. It should be a value between <code>0</code> and <code>1</code>:</p><ul><li><p><code>halign = 0, valign = 0</code> assumes that <code>x</code> should be in the bottom left
+to <code>x</code>. They should be values between <code>0</code> and <code>1</code>:</p><ul><li><p><code>halign = 0, valign = 0</code> assumes that <code>x</code> should be in the bottom left
 corner of the <code>SpatRaster</code>.</p></li>
 <li><p><code>halign = 1, valign = 1</code> assumes that <code>x</code> should be in the top right
 corner of the <code>SpatRaster</code>.</p></li>
@@ -111,33 +111,35 @@ box of <code>x</code>? See <strong>Details</strong>.</p></dd>
 
 
 <dt id="arg-mask">mask<a class="anchor" aria-label="anchor" href="#arg-mask"></a></dt>
-<dd><p>Logical, applicable only if <code>x</code> is a <code>sf</code>,  <code>sfc</code> or <code>SpatVector</code>
+<dd><p>Logical, applicable only if <code>x</code> is a <code>sf</code>, <code>sfc</code> or <code>SpatVector</code>
 object. Should the raster be <a href="https://rspatial.github.io/terra/reference/mask.html" class="external-link">masked</a> to <code>x</code>? See <strong>Details</strong>.</p></dd>
 
 
 <dt id="arg-inverse">inverse<a class="anchor" aria-label="anchor" href="#arg-inverse"></a></dt>
-<dd><p>Logical. It affects only if <code>mask = TRUE</code>. If <code>TRUE</code>, areas on
-the raster that do not overlap with <code>x</code> are masked.</p></dd>
+<dd><p>Logical. It only affects when <code>mask = TRUE</code>. If <code>TRUE</code>, areas
+on the raster that do not overlap with <code>x</code> are masked.</p></dd>
 
 
 <dt id="arg-crs">crs<a class="anchor" aria-label="anchor" href="#arg-crs"></a></dt>
 <dd><p>Character string describing a coordinate reference system.
-This parameter would only affect if <code>x</code> is a <code>SpatExtent</code>, <code>sfg</code>, <code>bbox</code> or
+This parameter only affects when <code>x</code> is a <code>SpatExtent</code>, <code>sfg</code>, <code>bbox</code> or
 a vector of coordinates. See <strong>CRS</strong> section.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>A <code>SpatRaster</code> object (see <code><a href="https://rspatial.github.io/terra/reference/rast.html" class="external-link">terra::rast()</a></code>) where each layer corresponds to
-a color channel of <code>img</code>:</p><ul><li><p>If <code>img</code> has at least 3 channels (e.g. layers), the result would have
+a color channel of <code>img</code>:</p><ul><li><p>If <code>img</code> has at least 3 channels (e.g. layers), the result will have
 an additional property setting the layers 1 to 3 as the Red, Green and Blue
-channels.</p></li>
+channels with names <code>"r" "g" "b"</code> and <code>alpha</code> (if applicable).</p></li>
 <li><p>If <code>img</code> already has a definition or RGB values (this may be the case for
-<code>tiff/tif</code> files) the result would keep that channel definition.</p></li>
-</ul></div>
+<code>tiff/tif</code> files) the result will keep that channel definition.</p></li>
+</ul><p>The resulting <code>SpatRaster</code> will have an RGB specification as explained in
+<code><a href="https://rspatial.github.io/terra/reference/RGB.html" class="external-link">terra::RGB()</a></code>.</p>
+    </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p><code><a href="../articles/rasterpic.html">vignette("rasterpic", package = "rasterpic")</a></code> explains with examples the
+    <p><code><a href="../articles/rasterpic.html">vignette("rasterpic", package = "rasterpic")</a></code> explains, with examples, the
 effect of parameters <code>halign</code>, <code>valign</code>, <code>expand</code>, <code>crop</code> and <code>mask</code>.</p><div class="section">
 <h3 id="crs">CRS<a class="anchor" aria-label="anchor" href="#crs"></a></h3>
 
@@ -147,7 +149,7 @@ For optimal results <strong>do not use</strong> geographic coordinates
 (longitude/latitude).</p>
 <p><code>crs</code> can be in a WKT format, as a <code>"authority:number"</code> code such as
 <code>"EPSG:4326"</code>, or a PROJ-string format such as <code>"+proj=utm +zone=12"</code>. It can
-be also retrieved with:</p><ul><li><p><code><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">sf::st_crs(25830)$wkt</a></code>.</p></li>
+also be retrieved with:</p><ul><li><p><code><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">sf::st_crs(25830)$wkt</a></code>.</p></li>
 <li><p><code><a href="https://rspatial.github.io/terra/reference/crs.html" class="external-link">terra::crs()</a></code>.</p></li>
 <li><p><code><a href="https://dieghernan.github.io/tidyterra/reference/pull_crs.html" class="external-link">tidyterra::pull_crs()</a></code>.</p></li>
 </ul><p>See <strong>Value</strong> and <strong>Notes</strong> on <code><a href="https://rspatial.github.io/terra/reference/crs.html" class="external-link">terra::crs()</a></code>.</p>
@@ -167,6 +169,10 @@ be also retrieved with:</p><ul><li><p><code><a href="https://r-spatial.github.io
 </ul><p>For plotting:</p><ul><li><p><code><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">terra::plot()</a></code> and <code><a href="https://rspatial.github.io/terra/reference/plotRGB.html" class="external-link">terra::plotRGB()</a></code>.</p></li>
 <li><p>With <a href="https://CRAN.R-project.org/package=ggplot2" class="external-link"><span class="pkg">ggplot2</span></a> use <a href="https://CRAN.R-project.org/package=tidyterra" class="external-link"><span class="pkg">tidyterra</span></a>:</p><ul><li><p><code><a href="https://dieghernan.github.io/tidyterra/reference/autoplot.Spat.html" class="external-link">tidyterra::autoplot.SpatRaster()</a></code>.</p></li>
 <li><p><code><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">tidyterra::geom_spatraster_rgb()</a></code>.</p></li>
+</ul></li>
+<li><p>Other packages:</p><ul><li><p><a href="https://CRAN.R-project.org/package=tmap" class="external-link"><span class="pkg">tmap</span></a>.</p></li>
+<li><p><a href="https://CRAN.R-project.org/package=mapsf" class="external-link"><span class="pkg">mapsf</span></a>.</p></li>
+<li><p><a href="https://CRAN.R-project.org/package=maptiles" class="external-link"><span class="pkg">maptiles</span></a>.</p></li>
 </ul></li>
 </ul></div>
     </div>

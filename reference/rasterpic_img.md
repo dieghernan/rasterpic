@@ -26,7 +26,8 @@ rasterpic_img(
 
   - An object created with [sf](https://CRAN.R-project.org/package=sf)
     of class [`sf`](https://r-spatial.github.io/sf/reference/sf.html),
-    [`sfc`](https://r-spatial.github.io/sf/reference/sfc.html), `sfg` or
+    [`sfc`](https://r-spatial.github.io/sf/reference/sfc.html),
+    [`sfg`](https://r-spatial.github.io/sf/reference/st.html) or
     [`bbox`](https://r-spatial.github.io/sf/reference/st_bbox.html)).
 
   - An object created with
@@ -37,7 +38,7 @@ rasterpic_img(
     [`SpatExtent`](https://rspatial.github.io/terra/reference/ext.html).
 
   - A numeric vector of length 4 with the extent to be used for
-    geotagging ( i.e. `c(xmin, ymin, xmax, ymax)`).
+    geotagging (i.e. `c(xmin, ymin, xmax, ymax)`).
 
 - img:
 
@@ -53,8 +54,8 @@ rasterpic_img(
 
 - halign, valign:
 
-  Horizontal and vertical alignment of `img` with respect to `x`. It
-  should be a value between `0` and `1`:
+  Horizontal and vertical alignment of `img` with respect to `x`. They
+  should be values between `0` and `1`:
 
   - `halign = 0, valign = 0` assumes that `x` should be in the bottom
     left corner of the `SpatRaster`.
@@ -87,14 +88,14 @@ rasterpic_img(
 
 - inverse:
 
-  Logical. It affects only if `mask = TRUE`. If `TRUE`, areas on the
+  Logical. It only affects when `mask = TRUE`. If `TRUE`, areas on the
   raster that do not overlap with `x` are masked.
 
 - crs:
 
   Character string describing a coordinate reference system. This
-  parameter would only affect if `x` is a `SpatExtent`, `sfg`, `bbox` or
-  a vector of coordinates. See **CRS** section.
+  parameter only affects when `x` is a `SpatExtent`, `sfg`, `bbox` or a
+  vector of coordinates. See **CRS** section.
 
 ## Value
 
@@ -102,17 +103,21 @@ A `SpatRaster` object (see
 [`terra::rast()`](https://rspatial.github.io/terra/reference/rast.html))
 where each layer corresponds to a color channel of `img`:
 
-- If `img` has at least 3 channels (e.g. layers), the result would have
+- If `img` has at least 3 channels (e.g. layers), the result will have
   an additional property setting the layers 1 to 3 as the Red, Green and
-  Blue channels.
+  Blue channels with names `"r" "g" "b"` and `alpha` (if applicable).
 
 - If `img` already has a definition or RGB values (this may be the case
-  for `tiff/tif` files) the result would keep that channel definition.
+  for `tiff/tif` files) the result will keep that channel definition.
+
+The resulting `SpatRaster` will have an RGB specification as explained
+in
+[`terra::RGB()`](https://rspatial.github.io/terra/reference/RGB.html).
 
 ## Details
 
 [`vignette("rasterpic", package = "rasterpic")`](https://dieghernan.github.io/rasterpic/articles/rasterpic.md)
-explains with examples the effect of parameters `halign`, `valign`,
+explains, with examples, the effect of parameters `halign`, `valign`,
 `expand`, `crop` and `mask`.
 
 ### CRS
@@ -123,7 +128,7 @@ applicable. For optimal results **do not use** geographic coordinates
 
 `crs` can be in a WKT format, as a `"authority:number"` code such as
 `"EPSG:4326"`, or a PROJ-string format such as `"+proj=utm +zone=12"`.
-It can be also retrieved with:
+It can also be retrieved with:
 
 - [`sf::st_crs(25830)$wkt`](https://r-spatial.github.io/sf/reference/st_crs.html).
 
@@ -171,6 +176,14 @@ For plotting:
   - [`tidyterra::autoplot.SpatRaster()`](https://dieghernan.github.io/tidyterra/reference/autoplot.Spat.html).
 
   - [`tidyterra::geom_spatraster_rgb()`](https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html).
+
+- Other packages:
+
+  - [tmap](https://CRAN.R-project.org/package=tmap).
+
+  - [mapsf](https://CRAN.R-project.org/package=mapsf).
+
+  - [maptiles](https://CRAN.R-project.org/package=maptiles).
 
 ## Examples
 
