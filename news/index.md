@@ -2,6 +2,8 @@
 
 ## rasterpic 0.3.1
 
+CRAN release: 2026-01-14
+
 - New logo.
 - Minimum **R** version required is now 4.1.0.
 - Minor internal and documentation improvements.
