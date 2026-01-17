@@ -134,7 +134,7 @@ Details
     #>  collate  English_United States.utf8
     #>  ctype    English_United States.utf8
     #>  tz       UTC
-    #>  date     2026-01-16
+    #>  date     2026-01-17
     #>  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)
     #>  quarto   NA
     #> 
@@ -194,7 +194,7 @@ Details
     #>  R6             2.6.1     2025-02-15 [1] RSPM
     #>  ragg           1.5.0     2025-09-02 [1] RSPM
     #>  raster         3.6-32    2025-03-28 [1] RSPM
-    #>  rasterpic    * 0.3.1     2026-01-16 [1] local
+    #>  rasterpic    * 0.3.1     2026-01-17 [1] local
     #>  RColorBrewer   1.1-3     2022-04-03 [1] RSPM
     #>  Rcpp           1.1.1     2026-01-10 [1] RSPM
     #>  rlang          1.1.7     2026-01-09 [1] RSPM
@@ -218,7 +218,7 @@ Details
     #>  tmap         * 4.2       2025-09-10 [1] RSPM
     #>  tmaptools      3.3       2025-07-24 [1] RSPM
     #>  units          1.0-0     2025-10-09 [1] RSPM
-    #>  vctrs          0.6.5     2023-12-01 [1] RSPM
+    #>  vctrs          0.7.0     2026-01-16 [1] RSPM
     #>  withr          3.0.2     2024-10-28 [1] RSPM
     #>  wk             0.9.5     2025-12-18 [1] RSPM
     #>  xfun           0.55      2025-12-16 [1] RSPM
