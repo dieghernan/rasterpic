@@ -134,7 +134,7 @@ Details
     #>  collate  English_United States.utf8
     #>  ctype    English_United States.utf8
     #>  tz       UTC
-    #>  date     2026-01-20
+    #>  date     2026-01-27
     #>  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)
     #>  quarto   NA
     #> 
@@ -142,7 +142,7 @@ Details
     #>  package      * version   date (UTC) lib source
     #>  abind          1.4-8     2024-09-12 [1] RSPM
     #>  base64enc      0.1-3     2015-07-28 [1] RSPM
-    #>  bslib          0.9.0     2025-01-30 [1] RSPM
+    #>  bslib          0.10.0    2026-01-26 [1] RSPM
     #>  cachem         1.1.0     2024-05-16 [1] RSPM
     #>  class          7.3-23    2025-01-01 [3] CRAN (R 4.5.2)
     #>  classInt       0.4-11    2025-01-08 [1] RSPM
@@ -194,7 +194,7 @@ Details
     #>  R6             2.6.1     2025-02-15 [1] RSPM
     #>  ragg           1.5.0     2025-09-02 [1] RSPM
     #>  raster         3.6-32    2025-03-28 [1] RSPM
-    #>  rasterpic    * 0.3.1     2026-01-20 [1] local
+    #>  rasterpic    * 0.3.1     2026-01-27 [1] local
     #>  RColorBrewer   1.1-3     2022-04-03 [1] RSPM
     #>  Rcpp           1.1.1     2026-01-10 [1] RSPM
     #>  rlang          1.1.7     2026-01-09 [1] RSPM
@@ -214,11 +214,11 @@ Details
     #>  tibble         3.3.1     2026-01-11 [1] RSPM
     #>  tidyr          1.3.2     2025-12-19 [1] RSPM
     #>  tidyselect     1.2.1     2024-03-11 [1] RSPM
-    #>  tidyterra    * 0.7.2     2025-04-14 [1] RSPM
+    #>  tidyterra    * 1.0.0     2026-01-23 [1] RSPM
     #>  tmap         * 4.2       2025-09-10 [1] RSPM
     #>  tmaptools      3.3       2025-07-24 [1] RSPM
     #>  units          1.0-0     2025-10-09 [1] RSPM
-    #>  vctrs          0.7.0     2026-01-16 [1] RSPM
+    #>  vctrs          0.7.1     2026-01-23 [1] RSPM
     #>  withr          3.0.2     2024-10-28 [1] RSPM
     #>  wk             0.9.5     2025-12-18 [1] RSPM
     #>  xfun           0.56      2026-01-18 [1] RSPM
