@@ -13,19 +13,6 @@ Install **rasterpic** from
 install.packages("rasterpic")
 ```
 
-Alternatively, you can install **rasterpic** using the
-[r-universe](https://dieghernan.r-universe.dev/rasterpic):
-
-``` r
-# Install rasterpic in R:
-install.packages("rasterpic",
-  repos = c(
-    "https://dieghernan.r-universe.dev",
-    "https://cloud.r-project.org"
-  )
-)
-```
-
 ## Example
 
 This package allows you to create custom maps by using a wide variety of
