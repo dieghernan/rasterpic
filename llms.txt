@@ -169,5 +169,5 @@ Functions from other packages from plotting `SpatRaster` objects.
 
 ### Plots
 
-- [Plotting terra
+- [Plotting \*\*terra\*\*
   rasters](https://dieghernan.github.io/rasterpic/articles/plots.md):

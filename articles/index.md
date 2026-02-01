@@ -2,5 +2,5 @@
 
 ### Plots
 
-- [Plotting terra
+- [Plotting \*\*terra\*\*
   rasters](https://dieghernan.github.io/rasterpic/articles/plots.md):
