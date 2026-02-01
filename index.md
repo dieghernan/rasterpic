@@ -13,13 +13,6 @@ Install **rasterpic** from
 install.packages("rasterpic")
 ```
 
-You can install the developing version of **rasterpic** with:
-
-``` r
-# install.packages("pak")
-pak::pak("dieghernan/rasterpic")
-```
-
 Alternatively, you can install **rasterpic** using the
 [r-universe](https://dieghernan.r-universe.dev/rasterpic):
 
