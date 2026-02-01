@@ -53,7 +53,7 @@ install.packages("rasterpic")
 ```
 :::
 
-::: pkgdown-dev
+::: pkgdown-devel
 You can install the developing version of **rasterpic** with:
 
 ```{r, eval=FALSE}

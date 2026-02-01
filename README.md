@@ -38,7 +38,7 @@ install.packages("rasterpic")
 
 </div>
 
-<div class="pkgdown-dev">
+<div class="pkgdown-devel">
 
 You can install the developing version of **rasterpic** with:
 
