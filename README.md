@@ -27,7 +27,7 @@ image into a `SpatRaster` object (see `?terra::SpatRaster`).
 
 ## Installation
 
-<div class=".pkgdown-release">
+<div class="pkgdown-release">
 
 Install **rasterpic** from
 [**CRAN**](https://CRAN.R-project.org/package=rasterpic):
@@ -38,7 +38,7 @@ install.packages("rasterpic")
 
 </div>
 
-<div class=".pkgdown-dev">
+<div class="pkgdown-dev">
 
 You can install the developing version of **rasterpic** with:
 
