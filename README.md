@@ -47,8 +47,6 @@ You can install the developing version of **rasterpic** with:
 pak::pak("dieghernan/rasterpic")
 ```
 
-</div>
-
 Alternatively, you can install **rasterpic** using the
 [r-universe](https://dieghernan.r-universe.dev/rasterpic):
 
@@ -61,6 +59,8 @@ install.packages("rasterpic",
   )
 )
 ```
+
+</div>
 
 ## Example
 
