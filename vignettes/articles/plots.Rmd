@@ -1,5 +1,5 @@
 ---
-title: "Plotting terra rasters"
+title: "Plotting **terra** rasters"
 ---
 
 ```{r, include = FALSE}
