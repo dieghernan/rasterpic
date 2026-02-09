@@ -30,7 +30,7 @@ navbar:
       text: Articles
       menu:
       - text: Articles
-      - text: "Plotting **terra** rasters"
+      - text: Plotting terra rasters
         href: articles/plots.html
       - text: "---"
       - text: Blog

@@ -1,5 +1,6 @@
 ---
-title: "Plotting **terra** rasters"
+title: "Plotting terra rasters"
+description: Several ways to produce raster maps in R
 ---
 
 ```{r, include = FALSE}
