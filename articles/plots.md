@@ -1,4 +1,4 @@
-# Plotting \*\*terra\*\* rasters
+# Plotting terra rasters
 
 This article shows how to plot the `SpatRaster` produced by
 [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/reference/rasterpic_img.md)
@@ -134,7 +134,7 @@ Details
     #>  collate  English_United States.utf8
     #>  ctype    English_United States.utf8
     #>  tz       UTC
-    #>  date     2026-02-07
+    #>  date     2026-02-09
     #>  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)
     #>  quarto   NA
     #> 
@@ -194,7 +194,7 @@ Details
     #>  R6             2.6.1     2025-02-15 [1] RSPM
     #>  ragg           1.5.0     2025-09-02 [1] RSPM
     #>  raster         3.6-32    2025-03-28 [1] RSPM
-    #>  rasterpic    * 0.3.1     2026-02-07 [1] local
+    #>  rasterpic    * 0.3.1     2026-02-09 [1] local
     #>  RColorBrewer   1.1-3     2022-04-03 [1] RSPM
     #>  Rcpp           1.1.1     2026-01-10 [1] RSPM
     #>  rlang          1.1.7     2026-01-09 [1] RSPM
