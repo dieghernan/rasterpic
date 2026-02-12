@@ -81,7 +81,9 @@ Create impressive maps:
 
 ```{r}
 #| label: fig-mask
-#| fig-cap: Example of masked image
+#| fig-cap: 
+#|   - Example of masked image
+#|   - Example of inverse masked image
 mask <- rasterpic_img(x, img, crop = TRUE, mask = TRUE)
 
 autoplot(mask)
