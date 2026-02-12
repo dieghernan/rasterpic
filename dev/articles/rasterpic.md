@@ -88,7 +88,7 @@ Figure 4: Example of masked image
 
 ![](rasterpic_files/figure-html/fig-mask-2.png)
 
-Figure 5: Example of masked image
+Figure 5: Example of inverse masked image
 
 ## Supported objects for geotagging
 
