@@ -1,7 +1,8 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# rasterpic <img src="man/figures/logo.png" align="right" height="139"/>
+<!-- README.md is generated from README.qmd. Please edit that file -->
+
+# rasterpic <a href="https://dieghernan.github.io/rasterpic/"><img src="man/figures/logo.png" alt="rasterpic website" align="right" height="139"/></a>
 
 <!-- badges: start -->
 
@@ -27,12 +28,21 @@ image into a `SpatRaster` object (see `?terra::SpatRaster`).
 
 ## Installation
 
+<div class="pkgdown-release">
+
 Install **rasterpic** from
 [**CRAN**](https://CRAN.R-project.org/package=rasterpic):
 
 ``` r
 install.packages("rasterpic")
 ```
+
+</div>
+
+<div class="pkgdown-devel">
+
+Check the docs of the developing version in
+<https://dieghernan.github.io/rasterpic/dev/>.
 
 You can install the developing version of **rasterpic** with:
 
@@ -53,6 +63,8 @@ install.packages("rasterpic",
   )
 )
 ```
+
+</div>
 
 ## Example
 
@@ -104,7 +116,8 @@ autoplot(uk_flag) +
   geom_sf(data = uk, color = alpha("blue", 0.5))
 ```
 
-<img src="man/figures/README-example-basic-1.png" alt="" width="100%" />
+<img src="man/figures/README-example-basic-1.png" style="width:100.0%"
+alt="Example of use of rasterpic with the UK flag" />
 
 We can also adjust other parameters, as well as modifying the alignment
 of the image with respect to the object:
@@ -117,7 +130,8 @@ autoplot(uk_flag2) +
   geom_sf(data = uk, fill = NA)
 ```
 
-<img src="man/figures/README-align-crop-mask-1.png" alt="" width="100%" />
+<img src="man/figures/README-align-crop-mask-1.png" style="width:100.0%"
+alt="Example of use of rasterpic with the UK flag cropping to the shape" />
 
 ## Supported image formats
 

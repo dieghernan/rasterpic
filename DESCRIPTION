@@ -20,11 +20,12 @@ Imports:
 Suggests: 
     ggplot2,
     knitr,
-    rmarkdown,
+    quarto,
     testthat (>= 3.0.0),
     tidyterra
 VignetteBuilder: 
-    knitr
+    knitr,
+    quarto
 Config/Needs/check: curl
 Config/Needs/coverage: curl
 Config/Needs/website: dieghernan/gitdevr, tmap, mapsf, maptiles, devtools,

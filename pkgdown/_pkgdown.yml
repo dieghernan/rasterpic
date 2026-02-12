@@ -5,11 +5,14 @@ template:
   package: gitdevr
   opengraph:
     twitter:
-      creator: '@dhernangomez'
+      creator: "@dhernangomez"
       card: summary_large_image
 
+development:
+  mode: auto
+
 repo:
-  branch: main
+  branch: release
 
 authors:
   Diego Hernangómez:
@@ -26,15 +29,15 @@ navbar:
     articles:
       text: Articles
       menu:
-      - text: 'Tutorials'
-      - text: 'Plotting terra rasters'
+      - text: Articles
+      - text: Plotting terra rasters
         href: articles/plots.html
-      - text: '---'
+      - text: "---"
       - text: Blog
-      - text: 'Beautiful Maps with R (IV): Fun with flags revisited'
+      - text: "Beautiful Maps with R (IV): Fun with flags revisited"
         href: https://dieghernan.github.io/202201_maps-flags/
       - text: Quick Brazil
-        href: https://twitter.com/dhernangomez/status/1486666356544225281?s=21
+        href: https://x.com/dhernangomez/status/1486666356544225281
 
 reference:
 - title: Functions
@@ -56,4 +59,3 @@ articles:
   navbar: Plots
   contents:
   - articles/plots
-

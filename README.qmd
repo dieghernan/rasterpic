@@ -1,24 +1,22 @@
 ---
-output: github_document
+format: gfm
+default-image-extension: ''
+knitr:
+  opts_chunk:
+    collapse: true
+    comment: "#>"
+    warning: false
+    message: false
+    dpi: 150
+    fig.path: "man/figures/README-"
+    tidy: "styler"
+    dev: "ragg_png"
+    out.width: "100%"
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- README.md is generated from README.qmd. Please edit that file -->
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  warning = FALSE,
-  message = FALSE,
-  tidy = "styler",
-  dev = "ragg_png",
-  fig.path = "man/figures/README-",
-  dpi = 150,
-  out.width = "100%"
-)
-```
-
-# rasterpic <img src="man/figures/logo.png" align="right" height="139"/>
+# rasterpic <a href="https://dieghernan.github.io/rasterpic/"><img src="man/figures/logo.png" alt="rasterpic website" align="right" height="139"/></a>
 
 <!-- badges: start -->
 
@@ -44,16 +42,24 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 
 ## Installation
 
+::: pkgdown-release
 Install **rasterpic** from
 [**CRAN**](https://CRAN.R-project.org/package=rasterpic):
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
 install.packages("rasterpic")
 ```
+:::
+
+::: pkgdown-devel
+Check the docs of the developing version in
+<https://dieghernan.github.io/rasterpic/dev/>.
 
 You can install the developing version of **rasterpic** with:
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
 # install.packages("pak")
 pak::pak("dieghernan/rasterpic")
 ```
@@ -61,7 +67,8 @@ pak::pak("dieghernan/rasterpic")
 Alternatively, you can install **rasterpic** using the
 [r-universe](https://dieghernan.r-universe.dev/rasterpic):
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
 # Install rasterpic in R:
 install.packages("rasterpic",
   repos = c(
@@ -70,6 +77,7 @@ install.packages("rasterpic",
   )
 )
 ```
+:::
 
 ## Example
 
@@ -84,7 +92,9 @@ objects:
 
 An example using an `sf` object:
 
-```{r example-basic}
+```{r}
+#| label: example-basic
+#| fig-cap: Example of use of rasterpic with the UK flag
 library(rasterpic)
 library(sf)
 library(terra)
@@ -113,7 +123,10 @@ autoplot(uk_flag) +
 We can also adjust other parameters, as well as modifying the alignment of the
 image with respect to the object:
 
-```{r align-crop-mask}
+```{r}
+#| label: align-crop-mask
+#| fig-cap: Example of use of rasterpic with the UK flag cropping to the shape
+
 # Align, crop and mask
 uk_flag2 <- rasterpic_img(uk, img, halign = 0.2, crop = TRUE, mask = TRUE)
 
@@ -131,12 +144,16 @@ autoplot(uk_flag2) +
 
 ## Citation
 
-```{r echo=FALSE, results='asis'}
+```{r}
+#| echo: false
+#| results: asis
 print(citation("rasterpic"), style = "html")
 ```
 
 A BibTeX entry for LaTeX users is:
 
-```{r echo=FALSE, comment=''}
+```{r}
+#| echo: false
+#| comment: ''
 toBibtex(citation("rasterpic"))
 ```
