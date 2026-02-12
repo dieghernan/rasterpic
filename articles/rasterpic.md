@@ -29,7 +29,9 @@ autoplot(default) +
   geom_sf(data = x)
 ```
 
-![](rasterpic_files/figure-html/setup-1.png)
+![](rasterpic_files/figure-html/fig-setup-1.png)
+
+Figure 1: Raster map geolocated with the coordinates of Austria
 
 ## Options
 
@@ -47,7 +49,9 @@ autoplot(expand) +
   geom_sf(data = x)
 ```
 
-![](rasterpic_files/figure-html/unnamed-chunk-2-1.png)
+![](rasterpic_files/figure-html/fig-expand-1.png)
+
+Figure 2: Example of expansion of image
 
 ### Alignment
 
@@ -60,7 +64,9 @@ autoplot(bottom) +
   geom_sf(data = x)
 ```
 
-![](rasterpic_files/figure-html/unnamed-chunk-3-1.png)
+![](rasterpic_files/figure-html/fig-bottom-1.png)
+
+Figure 3: Example of alignment of image
 
 ### Crop and mask
 
@@ -70,18 +76,19 @@ Create impressive maps:
 mask <- rasterpic_img(x, img, crop = TRUE, mask = TRUE)
 
 autoplot(mask)
-```
-
-![](rasterpic_files/figure-html/unnamed-chunk-4-1.png)
-
-``` r
 
 maskinverse <- rasterpic_img(x, img, crop = TRUE, mask = TRUE, inverse = TRUE)
 
 autoplot(maskinverse)
 ```
 
-![](rasterpic_files/figure-html/unnamed-chunk-4-2.png)
+![](rasterpic_files/figure-html/fig-mask-1.png)
+
+Figure 4: Example of masked image
+
+![](rasterpic_files/figure-html/fig-mask-2.png)
+
+Figure 5: Example of inverse masked image
 
 ## Supported objects for geotagging
 

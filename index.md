@@ -63,7 +63,8 @@ autoplot(uk_flag) +
   geom_sf(data = uk, color = alpha("blue", 0.5))
 ```
 
-![](reference/figures/README-example-basic-1.png)
+![Example of use of rasterpic with the UK
+flag](reference/figures/README-example-basic-1.png)
 
 We can also adjust other parameters, as well as modifying the alignment
 of the image with respect to the object:
@@ -76,7 +77,8 @@ autoplot(uk_flag2) +
   geom_sf(data = uk, fill = NA)
 ```
 
-![](reference/figures/README-align-crop-mask-1.png)
+![Example of use of rasterpic with the UK flag cropping to the
+shape](reference/figures/README-align-crop-mask-1.png)
 
 ## Supported image formats
 

@@ -9,7 +9,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/dieghernan/rasterpic/blob/main/inst/CITATION)
+[`inst/CITATION`](https://github.com/dieghernan/rasterpic/blob/release/inst/CITATION)
 
 Hernangómez D (2026). *rasterpic: Convert Digital Images into SpatRaster
 Objects*.
