@@ -1,3 +1,7 @@
+# rasterpic (development version)
+
+-   Migrate vignettes to Quarto.
+
 # rasterpic 0.3.1
 
 -   New logo.

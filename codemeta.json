@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/dieghernan/rasterpic",
   "issueTracker": "https://github.com/dieghernan/rasterpic/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.3.1",
+  "version": "0.3.1.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -75,15 +75,15 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "rmarkdown",
-      "name": "rmarkdown",
+      "identifier": "quarto",
+      "name": "quarto",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
+      "sameAs": "https://CRAN.R-project.org/package=quarto"
     },
     {
       "@type": "SoftwareApplication",
@@ -159,7 +159,7 @@
     "SystemRequirements": null
   },
   "keywords": ["cran", "jpeg", "jpg", "maps", "png", "r", "r-package", "r-stats", "raster", "rstats", "sf", "terra", "tif", "tiff", "cran-r"],
-  "fileSize": "1169.988KB",
+  "fileSize": "1169.854KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

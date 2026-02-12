@@ -1,7 +1,8 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# rasterpic <img src="man/figures/logo.png" align="right" height="139"/>
+<!-- README.md is generated from README.qmd. Please edit that file -->
+
+# rasterpic <a href="https://dieghernan.github.io/rasterpic/"><img src="man/figures/logo.png" alt="rasterpic website" align="right" height="139"/></a>
 
 <!-- badges: start -->
 
@@ -39,6 +40,9 @@ install.packages("rasterpic")
 </div>
 
 <div class="pkgdown-devel">
+
+Check the docs of the developing version in
+<https://dieghernan.github.io/rasterpic/dev/>.
 
 You can install the developing version of **rasterpic** with:
 
@@ -112,7 +116,8 @@ autoplot(uk_flag) +
   geom_sf(data = uk, color = alpha("blue", 0.5))
 ```
 
-<img src="man/figures/README-example-basic-1.png" alt="" width="100%" />
+<img src="man/figures/README-example-basic-1.png" style="width:100.0%"
+alt="Example of use of rasterpic with the UK flag" />
 
 We can also adjust other parameters, as well as modifying the alignment
 of the image with respect to the object:
@@ -125,7 +130,8 @@ autoplot(uk_flag2) +
   geom_sf(data = uk, fill = NA)
 ```
 
-<img src="man/figures/README-align-crop-mask-1.png" alt="" width="100%" />
+<img src="man/figures/README-align-crop-mask-1.png" style="width:100.0%"
+alt="Example of use of rasterpic with the UK flag cropping to the shape" />
 
 ## Supported image formats
 
@@ -138,6 +144,7 @@ autoplot(uk_flag2) +
 ## Citation
 
 <p>
+
 Hernangómez D (2026). <em>rasterpic: Convert Digital Images into
 SpatRaster Objects</em>.
 <a href="https://doi.org/10.32614/CRAN.package.rasterpic">doi:10.32614/CRAN.package.rasterpic</a>,
@@ -151,7 +158,7 @@ A BibTeX entry for LaTeX users is:
       doi = {10.32614/CRAN.package.rasterpic},
       author = {Diego Hernangómez},
       year = {2026},
-      version = {0.3.1},
+      version = {0.3.1.9000},
       url = {https://dieghernan.github.io/rasterpic/},
       abstract = {Generate SpatRaster objects, as defined by the terra package, from digital images, using a specified spatial object as a geographical reference.},
     }

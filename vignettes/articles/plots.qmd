@@ -1,19 +1,17 @@
 ---
 title: "Plotting terra rasters"
-description: Several ways to produce raster maps in R
+description: Several ways to create maps with raster objects in R
+knitr:
+  opts_chunk:
+    collapse: true
+    comment: "#>"
+    warning: false
+    message: false
+    dpi: 300
+    tidy: "styler"
+    dev: "ragg_png"
+    out.width: "100%"
 ---
-
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  warning = FALSE,
-  message = FALSE,
-  dev = "ragg_png",
-  dpi = 300,
-  out.width = "100%"
-)
-```
 
 This article shows how to plot the `SpatRaster` produced by `rasterpic_img()`
 with several packages.
@@ -23,7 +21,9 @@ with several packages.
 The most straightforward option is to use the base `plot()` methods provided by
 the package **terra** (`terra::plotRGB()`):
 
-```{r setup, fig.alt="Example: plot with terra package"}
+```{r}
+#| label: fig-terra
+#| fig-cap: 'Plot with terra package'
 library(rasterpic)
 library(terra)
 
@@ -47,7 +47,9 @@ plotRGB(uk_img)
 
 **tidyterra** provides full support for **terra** `SpatRaster` objects:
 
-```{r tterra, fig.alt="Example: plot with tidyterra package"}
+```{r}
+#| label: fig-tterra
+#| fig-cap: 'Plot with tidyterra package'
 library(ggplot2)
 library(tidyterra)
 
@@ -59,7 +61,9 @@ ggplot() +
 
 **tmap** can also be used to create great maps:
 
-```{r tmap, fig.alt="Example: plot with tmap package"}
+```{r}
+#| label: fig-tmap
+#| fig-cap: 'Plot with tmap package'
 library(tmap)
 
 tm_shape(uk_img) +
@@ -71,11 +75,14 @@ tm_shape(uk_img) +
 
 **mapsf** also provides this functionality:
 
-```{r mapsf, fig.alt="Example: plot with mapsf package"}
+```{r}
+#| label: fig-mapsf
+#| fig-cap: 'Plot with mapsf package'
 library(mapsf)
 
 mf_raster(uk_img)
 mf_scale()
+
 mf_inset_on(x = "worldmap", pos = "topright")
 mf_worldmap(uk)
 mf_inset_off()
@@ -87,7 +94,9 @@ mf_inset_off()
 tiles from different providers. It also has a specific function for plotting
 **terra** `SpatRaster` objects:
 
-```{r maptiles, fig.alt="Example: plot with maptiles package"}
+```{r}
+#| label: fig-maptiles
+#| fig-cap: 'Plot with maptiles package'
 library(maptiles)
 
 other_tile <- get_tiles(uk, crop = TRUE, zoom = 6)
@@ -100,25 +109,13 @@ plot_tiles(uk_img, add = TRUE)
 
 ## References
 
-```{r refs, echo=FALSE, results='asis'}
+```{r}
+#| label: refs
+#| echo: false
+#| results: asis
 cits <- c(
   citation("tmap")[1], citation("mapsf")[1], citation("tidyterra")[1],
   citation("terra")[1], citation("ggplot2")[1]
 )
 print(cits, style = "html")
 ```
-
-## Session info
-
-<details>
-
-<summary>Details</summary>
-
-```{r session, echo=FALSE}
-if (!require("sessioninfo")) {
-  install.packages("sessioninfo")
-}
-sessioninfo::session_info()
-```
-
-</details>

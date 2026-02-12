@@ -191,8 +191,8 @@
 rasterpic_img <- function(
   x,
   img,
-  halign = .5,
-  valign = .5,
+  halign = 0.5,
+  valign = 0.5,
   expand = 0,
   crop = FALSE,
   mask = FALSE,

@@ -8,11 +8,11 @@ template:
       creator: "@dhernangomez"
       card: summary_large_image
 
-repo:
-  branch: main
-
 development:
   mode: auto
+
+repo:
+  branch: main
 
 authors:
   Diego Hernangómez:

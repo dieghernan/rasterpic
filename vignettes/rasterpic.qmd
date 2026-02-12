@@ -1,21 +1,18 @@
 ---
 title: "Get Started"
-output: rmarkdown::html_vignette
+description: Introduction to the rasterpic package.
 vignette: >
   %\VignetteIndexEntry{Get Started}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{quarto::html}
   %\VignetteEncoding{UTF-8}
+knitr:
+  opts_chunk:
+    collapse: true
+    comment: "#>"
+    warning: false
+    message: false
+    out.width: "100%"
 ---
-
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  message = FALSE,
-  warning = FALSE,
-  out.width = "100%"
-)
-```
 
 Starting with **rasterpic** is very easy! You just need an image (`png`,
 `jpeg/jpg` or `tif/tiff`) and a spatial object from the **sf** or the **terra**
@@ -25,7 +22,9 @@ package to start using it.
 
 Here we use the shape of Austria as an example:
 
-```{r setup}
+```{r}
+#| label: fig-setup
+#| fig-cap: Raster map geolocated with the coordinates of Austria
 library(sf)
 library(terra)
 library(rasterpic)
@@ -55,6 +54,8 @@ The function provides several options for expansion, alignment, and cropping.
 With this option, the image is expanded beyond the spatial object:
 
 ```{r}
+#| label: fig-expand
+#| fig-cap: Example of expansion of image
 expand <- rasterpic_img(x, img, expand = 1)
 
 autoplot(expand) +
@@ -66,6 +67,8 @@ autoplot(expand) +
 Decide where to align the image:
 
 ```{r}
+#| label: fig-bottom
+#| fig-cap: Example of alignment of image
 bottom <- rasterpic_img(x, img, valign = 0)
 
 autoplot(bottom) +
@@ -77,6 +80,8 @@ autoplot(bottom) +
 Create impressive maps:
 
 ```{r}
+#| label: fig-mask
+#| fig-cap: Example of masked image
 mask <- rasterpic_img(x, img, crop = TRUE, mask = TRUE)
 
 autoplot(mask)
