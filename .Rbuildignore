@@ -40,3 +40,4 @@
 ^README_files$
 ^README\.html$
 ^vignettes/*_files$
+^\.quarto$
