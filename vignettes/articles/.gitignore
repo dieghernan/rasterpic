@@ -2,3 +2,5 @@
 *.R
 *_files
 /.quarto/
+_quarto.yaml
+_quarto.yml

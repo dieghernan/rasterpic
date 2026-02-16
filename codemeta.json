@@ -159,7 +159,7 @@
     "SystemRequirements": null
   },
   "keywords": ["cran", "jpeg", "jpg", "maps", "png", "r", "r-package", "r-stats", "raster", "rstats", "sf", "terra", "tif", "tiff", "cran-r"],
-  "fileSize": "1169.902KB",
+  "fileSize": "1169.74KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -180,6 +180,6 @@
   ],
   "releaseNotes": "https://github.com/dieghernan/rasterpic/blob/main/NEWS.md",
   "readme": "https://github.com/dieghernan/rasterpic/blob/main/README.md",
-  "contIntegration": ["https://github.com/dieghernan/rasterpic/actions/workflows/check-full.yaml", "https://github.com/dieghernan/rasterpic/actions/workflows/rhub.yaml", "https://app.codecov.io/gh/dieghernan/rasterpic"],
+  "contIntegration": ["https://github.com/dieghernan/rasterpic/actions/workflows/check-full.yml", "https://app.codecov.io/gh/dieghernan/rasterpic"],
   "developmentStatus": "https://www.repostatus.org/#active"
 }
