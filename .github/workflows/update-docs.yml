@@ -28,9 +28,9 @@ jobs:
       with:
         extra-packages: |
           local::.
-          any::cli
           any::rcmdcheck
           dieghernan/pkgdev
+          dieghernan/gitdevr
 
     - name: Install optipng
       run: |
