@@ -11,7 +11,8 @@
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
 <link rel="icon" sizes="any" href="../favicon.ico">
 <link rel="manifest" href="../site.webmanifest">
-<script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- katex math --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script><script src="../katex-auto.js"></script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Inter-0.4.10/font.css" rel="stylesheet">
 <link href="../deps/Inter_Tight-0.4.10/font.css" rel="stylesheet">
@@ -36,7 +37,7 @@
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="rasterpic logo" height="34" width="34" class="d-inline-block me-1">rasterpic</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.3.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.4.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -86,7 +87,7 @@
 
 
 
-      <small class="dont-index">Source: <a href="https://github.com/dieghernan/rasterpic/blob/release/vignettes/rasterpic.qmd" class="external-link"><code>vignettes/rasterpic.qmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/dieghernan/rasterpic/blob/main/vignettes/rasterpic.qmd" class="external-link"><code>vignettes/rasterpic.qmd</code></a></small>
       <div class="d-none name"><code></code></div>
     </div>
 
@@ -95,7 +96,7 @@
 
 
 
-    <p>Starting with <strong>rasterpic</strong> is very easy! You just need an image (<code>png</code>, <code>jpeg/jpg</code> or <code>tif/tiff</code>) and a spatial object from the <strong>sf</strong> or the <strong>terra</strong> package to start using it.</p>
+    <p>Getting started with <strong>rasterpic</strong> is easy: you need an image (<code>png</code>, <code>jpeg/jpg</code>, or <code>tif/tiff</code>) and a spatial object from the <strong>sf</strong> or <strong>terra</strong> package to begin.</p>
 <section class="level2"><h2 id="basic-usage">Basic usage<a class="anchor" aria-label="anchor" href="#basic-usage"></a>
 </h2>
 <p>Here we use the shape of Austria as an example:</p>
@@ -135,7 +136,7 @@ Figure 1: Raster map geolocated with the coordinates of Austria
 <p>The function provides several options for expansion, alignment, and cropping.</p>
 <section class="level3"><h3 id="expand">Expand<a class="anchor" aria-label="anchor" href="#expand"></a>
 </h3>
-<p>With this option, the image is expanded beyond the spatial object:</p>
+<p>With this option, the raster extent is expanded beyond the spatial object:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">expand</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rasterpic_img.html">rasterpic_img</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">img</span>, expand <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
@@ -155,7 +156,7 @@ Figure 2: Example of expansion of image
 </div>
 </section><section class="level3"><h3 id="alignment">Alignment<a class="anchor" aria-label="anchor" href="#alignment"></a>
 </h3>
-<p>Decide where to align the image:</p>
+<p>Choose the alignment of the image within the spatial extent:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bottom</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rasterpic_img.html">rasterpic_img</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">img</span>, valign <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
@@ -175,7 +176,7 @@ Figure 3: Example of alignment of image
 </div>
 </section><section class="level3"><h3 id="crop-and-mask">Crop and mask<a class="anchor" aria-label="anchor" href="#crop-and-mask"></a>
 </h3>
-<p>Create impressive maps:</p>
+<p>Crop and mask the image:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mask</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rasterpic_img.html">rasterpic_img</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">img</span>, crop <span class="op">=</span> <span class="cn">TRUE</span>, mask <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -206,12 +207,12 @@ Figure 5: Example of inverse masked image
 </div>
 </div>
 </div>
-</section></section><section class="level2"><h2 id="supported-objects-for-geotagging">Supported objects for geotagging<a class="anchor" aria-label="anchor" href="#supported-objects-for-geotagging"></a>
+</section></section><section class="level2"><h2 id="supported-spatial-objects-for-geotagging">Supported spatial objects for geotagging<a class="anchor" aria-label="anchor" href="#supported-spatial-objects-for-geotagging"></a>
 </h2>
 <ul>
-<li>Spatial objects of the <strong>sf</strong> package: <code>sf</code>, <code>sfc</code>, <code>sfg</code> or <code>bbox</code>.</li>
+<li>Spatial objects of the <strong>sf</strong> package: <code>sf</code>, <code>sfc</code>, <code>sfg</code>, or <code>bbox</code>.</li>
 <li>Spatial objects of the <strong>terra</strong> package: <code>SpatRaster</code>, <code>SpatVector</code>, <code>SpatExtent</code>.</li>
-<li>A vector of coordinates with the form <code>c(xmin, ymin, xmax, ymax)</code>.</li>
+<li>A numeric coordinate vector of the form <code>c(xmin, ymin, xmax, ymax)</code>.</li>
 </ul></section><section class="level2"><h2 id="supported-image-formats">Supported image formats<a class="anchor" aria-label="anchor" href="#supported-image-formats"></a>
 </h2>
 <p><strong>rasterpic</strong> can parse the following image formats:</p>

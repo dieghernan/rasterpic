@@ -1,8 +1,8 @@
 # Get Started
 
-Starting with **rasterpic** is very easy! You just need an image (`png`,
-`jpeg/jpg` or `tif/tiff`) and a spatial object from the **sf** or the
-**terra** package to start using it.
+Getting started with **rasterpic** is easy: you need an image (`png`,
+`jpeg/jpg`, or `tif/tiff`) and a spatial object from the **sf** or
+**terra** package to begin.
 
 ## Basic usage
 
@@ -40,7 +40,8 @@ cropping.
 
 ### Expand
 
-With this option, the image is expanded beyond the spatial object:
+With this option, the raster extent is expanded beyond the spatial
+object:
 
 ``` r
 expand <- rasterpic_img(x, img, expand = 1)
@@ -55,7 +56,7 @@ Figure 2: Example of expansion of image
 
 ### Alignment
 
-Decide where to align the image:
+Choose the alignment of the image within the spatial extent:
 
 ``` r
 bottom <- rasterpic_img(x, img, valign = 0)
@@ -70,7 +71,7 @@ Figure 3: Example of alignment of image
 
 ### Crop and mask
 
-Create impressive maps:
+Crop and mask the image:
 
 ``` r
 mask <- rasterpic_img(x, img, crop = TRUE, mask = TRUE)
@@ -90,12 +91,12 @@ Figure 4: Example of masked image
 
 Figure 5: Example of inverse masked image
 
-## Supported objects for geotagging
+## Supported spatial objects for geotagging
 
-- Spatial objects of the **sf** package: `sf`, `sfc`, `sfg` or `bbox`.
+- Spatial objects of the **sf** package: `sf`, `sfc`, `sfg`, or `bbox`.
 - Spatial objects of the **terra** package: `SpatRaster`, `SpatVector`,
   `SpatExtent`.
-- A vector of coordinates with the form `c(xmin, ymin, xmax, ymax)`.
+- A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 
 ## Supported image formats
 

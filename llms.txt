@@ -15,14 +15,14 @@ install.packages("rasterpic")
 
 ## Example
 
-This package allows you to create custom maps by using a wide variety of
-objects:
+This package allows you to create custom maps using a wide variety of
+spatial objects:
 
-- Spatial object created with the **sf** package: `sf`, `sfc`, `sfg` or
-  `bbox`.
+- Spatial objects created with the **sf** package: `sf`, `sfc`, `sfg`,
+  or `bbox`.
 - Spatial objects created with the **terra** package: `SpatRaster`,
   `SpatVector`, `SpatExtent`.
-- A vector of coordinates with the form `c(xmin, ymin, xmax, ymax)`
+- A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 
 An example using an `sf` object:
 
@@ -103,7 +103,7 @@ A BibTeX entry for LaTeX users is:
   doi = {10.32614/CRAN.package.rasterpic},
   author = {Diego Hernangómez},
   year = {2026},
-  version = {0.3.1},
+  version = {0.4.0},
   url = {https://dieghernan.github.io/rasterpic/},
   abstract = {Generate SpatRaster objects, as defined by the terra package, from digital images, using a specified spatial object as a geographical reference.},
 }

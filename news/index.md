@@ -1,5 +1,9 @@
 # Changelog
 
+## rasterpic 0.4.0
+
+- Migrate vignettes to Quarto.
+
 ## rasterpic 0.3.1
 
 CRAN release: 2026-01-14
