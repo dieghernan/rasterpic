@@ -158,7 +158,7 @@ A BibTeX entry for LaTeX users is:
       doi = {10.32614/CRAN.package.rasterpic},
       author = {Diego Hernangómez},
       year = {2026},
-      version = {0.3.1.9000},
+      version = {0.4.0},
       url = {https://dieghernan.github.io/rasterpic/},
       abstract = {Generate SpatRaster objects, as defined by the terra package, from digital images, using a specified spatial object as a geographical reference.},
     }

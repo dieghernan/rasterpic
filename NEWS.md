@@ -1,4 +1,4 @@
-# rasterpic (development version)
+# rasterpic 0.4.0
 
 -   Migrate vignettes to Quarto.
 

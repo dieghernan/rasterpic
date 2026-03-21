@@ -1,6 +1,6 @@
 Package: rasterpic
 Title: Convert Digital Images into 'SpatRaster' Objects
-Version: 0.3.1.9000
+Version: 0.4.0
 Authors@R: 
     person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-8457-4658"))
