@@ -20,15 +20,13 @@
 #'   * `jpeg/jpg`.
 #'   * `tiff/tif`.
 #'
-#' @param halign,valign Horizontal and vertical alignment of `img` with respect
-#'  to `x`. They should be values between `0` and `1`:
-#'  - `halign = 0, valign = 0` assumes that `x` should be in the bottom left
-#'     corner of the `SpatRaster`.
-#'  - `halign = 1, valign = 1` assumes that `x` should be in the top right
-#'     corner of the `SpatRaster`.
-#'  - The default `halign = .5, valign = .5` assumes that `x` is the center
-#'    of `img`.
-#'  See `vignette("rasterpic", package = "rasterpic")` for examples.
+#' @param halign Numeric between `0` and `1` giving horizontal alignment of
+#'   `img` relative to `x`. `0` aligns `x` with the left edge, `1` aligns with
+#'   the right edge, and `0.5` centers horizontally.
+#' @param valign Numeric between `0` and `1` giving vertical alignment of `img`
+#'   relative to `x`. `0` aligns `x` with the bottom edge, `1` aligns with the
+#'   top edge, and `0.5` centers vertically.
+#' @seealso `vignette("rasterpic", package = "rasterpic")` for examples.
 #'
 #' @param expand An expansion factor of the bounding box of `x`. `0` means that
 #'  no expansion is added, `1` means that the bounding box is expanded to double
@@ -201,10 +199,10 @@ rasterpic_img <- function(
 ) {
   # Initial validations
   if (halign < 0 || halign > 1) {
-    stop("'halign' should be between 0 and 1")
+    stop("'halign' should be between 0 and 1.")
   }
   if (valign < 0 || valign > 1) {
-    stop("'valign' should be between 0 and 1")
+    stop("'valign' should be between 0 and 1.")
   }
 
   # A. Extract values from x: crs and initial extent----
@@ -219,7 +217,7 @@ rasterpic_img <- function(
   # B. Read img file----
   rast <- rpic_read(img, crs)
 
-  # Throw a warning if nlyrs not correct
+  # Throw a warning if layers not correct
   if (terra::nlyr(rast) < 3) {
     warning(
       "img has ",
@@ -229,7 +227,7 @@ rasterpic_img <- function(
     )
   }
 
-  # C. Geo-tagging the png----
+  # C. Geo-tagging the image----
   ## 1. Creates an expanded bbox----
   innermarg <- min(
     (box[3] - box[1]),
@@ -240,7 +238,7 @@ rasterpic_img <- function(
   box_marg <- box + c(rep(-innermarg, 2), rep(innermarg, 2))
 
   ## 2. Adjust extent----
-  # ratio w/h raster
+  # ratio w/h of raster
 
   ratio_raster <- asp_ratio(rast)
   ratio_x <- asp_ratio(box_marg)
@@ -253,7 +251,7 @@ rasterpic_img <- function(
 
   # Placement of the raster and the sf
   if (ratio_x <= ratio_raster) {
-    # On this cases, adjust the width
+    # In this case, adjust the width
     new_h <- h
     y_init <- box_marg[2]
 
@@ -261,7 +259,7 @@ rasterpic_img <- function(
     # Handles alignment
     x_init <- box_marg[1] - halign * (new_w - w)
   } else {
-    # On this cases, adjust the height
+    # In this case, adjust the height
     new_w <- w
     x_init <- box_marg[1]
 

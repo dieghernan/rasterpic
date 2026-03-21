@@ -8,7 +8,7 @@ rpic_crop <- function(crop, box_marg, new_rast) {
 }
 
 rpic_read <- function(img, crs = NA) {
-  # Try to check if it is a local image or http
+  # Check if img is a URL, download it if needed
   if (grepl("^http:|^https:", img)) {
     # Try to download
     tmp <- tempfile(fileext = paste0(".", tools::file_ext(img)))
@@ -25,7 +25,7 @@ rpic_read <- function(img, crs = NA) {
 
     # On error
     if (err_dwnload) {
-      stop("Cannot reach img on url ", img, call. = FALSE)
+      stop(sprintf("Cannot reach img on url '%s'.", img), call. = FALSE)
     }
 
     # If everything is ok, rename img
@@ -33,14 +33,14 @@ rpic_read <- function(img, crs = NA) {
   }
 
   if (!file.exists(img)) {
-    stop("'img' file not found", call. = FALSE)
+    stop("'img' file not found.", call. = FALSE)
   }
 
   if (!tools::file_ext(img) %in% c("jpg", "jpeg", "tif", "tiff", "png")) {
-    stop("'img' only accepts 'png', 'jpg' or 'jpeg' files", call. = FALSE)
+    stop("'img' only accepts 'png', 'jpg' or 'jpeg' files.", call. = FALSE)
   }
 
-  # pngs
+  # png files
   if ("png" %in% tools::file_ext(img)) {
     pngfile <- png::readPNG(img) * 255
 
@@ -74,7 +74,7 @@ rpic_read <- function(img, crs = NA) {
 
 
 rpic_input <- function(x, crs) {
-  # Convert sf to SpatVector
+  # Convert sf/sfc to SpatVector for consistent handling
   if (any(inherits(x, "sf"), inherits(x, "sfc"))) {
     x <- terra::vect(x)
   }
@@ -106,7 +106,7 @@ rpic_input <- function(x, crs) {
   } else if (all(is.numeric(x), length(x) == 4)) {
     box <- c(x[1], x[2], x[3], x[4])
   } else {
-    stop("Don't know how to extract a bounding box from 'x'")
+    stop("Don't know how to extract a bounding box from 'x'.")
   }
 
   if (any(is.null(crs), is.na(crs))) {
@@ -114,8 +114,5 @@ rpic_input <- function(x, crs) {
     crs <- NA
   }
 
-  # Output object is a list
-  result <- list(x = x, box = box, crs = crs)
-
-  result
+  list(x = x, box = box, crs = crs)
 }

@@ -3,12 +3,12 @@
 \encoding{UTF-8}
 \name{asp_ratio}
 \alias{asp_ratio}
-\title{Compute aspect ratio of an object}
+\title{Compute aspect ratio for spatial input}
 \usage{
 asp_ratio(x)
 }
 \arguments{
-\item{x}{A \code{SpatRaster} object, an \code{sf/sfc} object or a numeric vector of
+\item{x}{A \code{SpatRaster} object, an \code{sf}/\code{sfc} object, or a numeric vector of
 length 4 with coordinates c(\code{xmin}, \code{ymin}, \code{xmax}, \code{ymax}), as created by
 \code{\link[sf:st_bbox]{sf::st_bbox()}}.}
 }
@@ -16,7 +16,7 @@ length 4 with coordinates c(\code{xmin}, \code{ymin}, \code{xmax}, \code{ymax}),
 The aspect ratio.
 }
 \description{
-Helper function. Ratio is computed as width/height (or cols/rows).
+Helper function. Ratio is computed as width / height (or cols / rows).
 }
 \examples{
 \donttest{

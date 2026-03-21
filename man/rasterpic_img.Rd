@@ -38,17 +38,13 @@ extensions are accepted:
 \item \code{tiff/tif}.
 }}
 
-\item{halign, valign}{Horizontal and vertical alignment of \code{img} with respect
-to \code{x}. They should be values between \code{0} and \code{1}:
-\itemize{
-\item \verb{halign = 0, valign = 0} assumes that \code{x} should be in the bottom left
-corner of the \code{SpatRaster}.
-\item \verb{halign = 1, valign = 1} assumes that \code{x} should be in the top right
-corner of the \code{SpatRaster}.
-\item The default \verb{halign = .5, valign = .5} assumes that \code{x} is the center
-of \code{img}.
-See \code{vignette("rasterpic", package = "rasterpic")} for examples.
-}}
+\item{halign}{Numeric between \code{0} and \code{1} giving horizontal alignment of
+\code{img} relative to \code{x}. \code{0} aligns \code{x} with the left edge, \code{1} aligns with
+the right edge, and \code{0.5} centers horizontally.}
+
+\item{valign}{Numeric between \code{0} and \code{1} giving vertical alignment of \code{img}
+relative to \code{x}. \code{0} aligns \code{x} with the bottom edge, \code{1} aligns with the
+top edge, and \code{0.5} centers vertically.}
 
 \item{expand}{An expansion factor of the bounding box of \code{x}. \code{0} means that
 no expansion is added, \code{1} means that the bounding box is expanded to double
@@ -190,6 +186,8 @@ plot(ex_rgb)
 }
 }
 \seealso{
+\code{vignette("rasterpic", package = "rasterpic")} for examples.
+
 From \CRANpkg{sf}:
 \itemize{
 \item \code{\link[sf:st_crs]{sf::st_crs()}}.
