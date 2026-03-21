@@ -21,7 +21,8 @@ Alternatively, you can install **rasterpic** using the
 
 ``` r
 # Install rasterpic in R:
-install.packages("rasterpic",
+install.packages(
+  "rasterpic",
   repos = c(
     "https://dieghernan.r-universe.dev",
     "https://cloud.r-project.org"
@@ -31,14 +32,14 @@ install.packages("rasterpic",
 
 ## Example
 
-This package allows you to create custom maps by using a wide variety of
-objects:
+This package allows you to create custom maps using a wide variety of
+spatial objects:
 
-- Spatial object created with the **sf** package: `sf`, `sfc`, `sfg` or
-  `bbox`.
+- Spatial objects created with the **sf** package: `sf`, `sfc`, `sfg`,
+  or `bbox`.
 - Spatial objects created with the **terra** package: `SpatRaster`,
   `SpatVector`, `SpatExtent`.
-- A vector of coordinates with the form `c(xmin, ymin, xmax, ymax)`
+- A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 
 An example using an `sf` object:
 

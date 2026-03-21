@@ -91,16 +91,16 @@ extensions are accepted:</p><ul><li><p><code>png</code>.</p></li>
 </ul></dd>
 
 
-<dt id="arg-halign-valign">halign, valign<a class="anchor" aria-label="anchor" href="#arg-halign-valign"></a></dt>
-<dd><p>Horizontal and vertical alignment of <code>img</code> with respect
-to <code>x</code>. They should be values between <code>0</code> and <code>1</code>:</p><ul><li><p><code>halign = 0, valign = 0</code> assumes that <code>x</code> should be in the bottom left
-corner of the <code>SpatRaster</code>.</p></li>
-<li><p><code>halign = 1, valign = 1</code> assumes that <code>x</code> should be in the top right
-corner of the <code>SpatRaster</code>.</p></li>
-<li><p>The default <code>halign = .5, valign = .5</code> assumes that <code>x</code> is the center
-of <code>img</code>.
-See <code><a href="../articles/rasterpic.html">vignette("rasterpic", package = "rasterpic")</a></code> for examples.</p></li>
-</ul></dd>
+<dt id="arg-halign">halign<a class="anchor" aria-label="anchor" href="#arg-halign"></a></dt>
+<dd><p>Numeric between <code>0</code> and <code>1</code> giving horizontal alignment of
+<code>img</code> relative to <code>x</code>. <code>0</code> aligns <code>x</code> with the left edge, <code>1</code> aligns with
+the right edge, and <code>0.5</code> centers horizontally.</p></dd>
+
+
+<dt id="arg-valign">valign<a class="anchor" aria-label="anchor" href="#arg-valign"></a></dt>
+<dd><p>Numeric between <code>0</code> and <code>1</code> giving vertical alignment of <code>img</code>
+relative to <code>x</code>. <code>0</code> aligns <code>x</code> with the bottom edge, <code>1</code> aligns with the
+top edge, and <code>0.5</code> centers vertically.</p></dd>
 
 
 <dt id="arg-expand">expand<a class="anchor" aria-label="anchor" href="#arg-expand"></a></dt>
@@ -162,7 +162,8 @@ also be retrieved with:</p><ul><li><p><code><a href="https://r-spatial.github.io
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p>From <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a>:</p><ul><li><p><code><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">sf::st_crs()</a></code>.</p></li>
+    <div class="dont-index"><p><code><a href="../articles/rasterpic.html">vignette("rasterpic", package = "rasterpic")</a></code> for examples.</p>
+<p>From <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a>:</p><ul><li><p><code><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">sf::st_crs()</a></code>.</p></li>
 <li><p><code><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">sf::st_bbox()</a></code>.</p></li>
 <li><p><code><a href="https://r-spatial.github.io/sf/articles/sf1.html" class="external-link">vignette("sf1", package = "sf")</a></code> to understand how <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> organizes
 <strong>R</strong> objects.</p></li>

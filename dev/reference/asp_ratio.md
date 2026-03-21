@@ -1,6 +1,6 @@
-# Compute aspect ratio of an object
+# Compute aspect ratio for spatial input
 
-Helper function. Ratio is computed as width/height (or cols/rows).
+Helper function. Ratio is computed as width / height (or cols / rows).
 
 ## Usage
 
@@ -12,7 +12,7 @@ asp_ratio(x)
 
 - x:
 
-  A `SpatRaster` object, an `sf/sfc` object or a numeric vector of
+  A `SpatRaster` object, an `sf`/`sfc` object, or a numeric vector of
   length 4 with coordinates c(`xmin`, `ymin`, `xmax`, `ymax`), as
   created by
   [`sf::st_bbox()`](https://r-spatial.github.io/sf/reference/st_bbox.html).
@@ -26,7 +26,7 @@ The aspect ratio.
 ``` r
 # \donttest{
 library(terra)
-#> terra 1.8.93
+#> terra 1.9.1
 
 x <- rast(system.file("tiff/elev.tiff", package = "rasterpic"))
 plot(x)

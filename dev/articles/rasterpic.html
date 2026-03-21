@@ -97,7 +97,7 @@
 
 
 
-    <p>Starting with <strong>rasterpic</strong> is very easy! You just need an image (<code>png</code>, <code>jpeg/jpg</code> or <code>tif/tiff</code>) and a spatial object from the <strong>sf</strong> or the <strong>terra</strong> package to start using it.</p>
+    <p>Getting started with <strong>rasterpic</strong> is easy: you need an image (<code>png</code>, <code>jpeg/jpg</code>, or <code>tif/tiff</code>) and a spatial object from the <strong>sf</strong> or <strong>terra</strong> package to begin.</p>
 <section class="level2"><h2 id="basic-usage">Basic usage<a class="anchor" aria-label="anchor" href="#basic-usage"></a>
 </h2>
 <p>Here we use the shape of Austria as an example:</p>
@@ -137,7 +137,7 @@ Figure 1: Raster map geolocated with the coordinates of Austria
 <p>The function provides several options for expansion, alignment, and cropping.</p>
 <section class="level3"><h3 id="expand">Expand<a class="anchor" aria-label="anchor" href="#expand"></a>
 </h3>
-<p>With this option, the image is expanded beyond the spatial object:</p>
+<p>With this option, the raster extent is expanded beyond the spatial object:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">expand</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rasterpic_img.html">rasterpic_img</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">img</span>, expand <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
@@ -157,7 +157,7 @@ Figure 2: Example of expansion of image
 </div>
 </section><section class="level3"><h3 id="alignment">Alignment<a class="anchor" aria-label="anchor" href="#alignment"></a>
 </h3>
-<p>Decide where to align the image:</p>
+<p>Choose the alignment of the image within the spatial extent:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bottom</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rasterpic_img.html">rasterpic_img</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">img</span>, valign <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
@@ -177,7 +177,7 @@ Figure 3: Example of alignment of image
 </div>
 </section><section class="level3"><h3 id="crop-and-mask">Crop and mask<a class="anchor" aria-label="anchor" href="#crop-and-mask"></a>
 </h3>
-<p>Create impressive maps:</p>
+<p>Crop and mask the image:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mask</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rasterpic_img.html">rasterpic_img</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">img</span>, crop <span class="op">=</span> <span class="cn">TRUE</span>, mask <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -208,12 +208,12 @@ Figure 5: Example of inverse masked image
 </div>
 </div>
 </div>
-</section></section><section class="level2"><h2 id="supported-objects-for-geotagging">Supported objects for geotagging<a class="anchor" aria-label="anchor" href="#supported-objects-for-geotagging"></a>
+</section></section><section class="level2"><h2 id="supported-spatial-objects-for-geotagging">Supported spatial objects for geotagging<a class="anchor" aria-label="anchor" href="#supported-spatial-objects-for-geotagging"></a>
 </h2>
 <ul>
-<li>Spatial objects of the <strong>sf</strong> package: <code>sf</code>, <code>sfc</code>, <code>sfg</code> or <code>bbox</code>.</li>
+<li>Spatial objects of the <strong>sf</strong> package: <code>sf</code>, <code>sfc</code>, <code>sfg</code>, or <code>bbox</code>.</li>
 <li>Spatial objects of the <strong>terra</strong> package: <code>SpatRaster</code>, <code>SpatVector</code>, <code>SpatExtent</code>.</li>
-<li>A vector of coordinates with the form <code>c(xmin, ymin, xmax, ymax)</code>.</li>
+<li>A numeric coordinate vector of the form <code>c(xmin, ymin, xmax, ymax)</code>.</li>
 </ul></section><section class="level2"><h2 id="supported-image-formats">Supported image formats<a class="anchor" aria-label="anchor" href="#supported-image-formats"></a>
 </h2>
 <p><strong>rasterpic</strong> can parse the following image formats:</p>

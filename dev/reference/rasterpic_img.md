@@ -52,21 +52,17 @@ rasterpic_img(
 
   - `tiff/tif`.
 
-- halign, valign:
+- halign:
 
-  Horizontal and vertical alignment of `img` with respect to `x`. They
-  should be values between `0` and `1`:
+  Numeric between `0` and `1` giving horizontal alignment of `img`
+  relative to `x`. `0` aligns `x` with the left edge, `1` aligns with
+  the right edge, and `0.5` centers horizontally.
 
-  - `halign = 0, valign = 0` assumes that `x` should be in the bottom
-    left corner of the `SpatRaster`.
+- valign:
 
-  - `halign = 1, valign = 1` assumes that `x` should be in the top right
-    corner of the `SpatRaster`.
-
-  - The default `halign = .5, valign = .5` assumes that `x` is the
-    center of `img`. See
-    [`vignette("rasterpic", package = "rasterpic")`](https://dieghernan.github.io/rasterpic/dev/articles/rasterpic.md)
-    for examples.
+  Numeric between `0` and `1` giving vertical alignment of `img`
+  relative to `x`. `0` aligns `x` with the bottom edge, `1` aligns with
+  the top edge, and `0.5` centers vertically.
 
 - expand:
 
@@ -140,6 +136,9 @@ See **Value** and **Notes** on
 [`terra::crs()`](https://rspatial.github.io/terra/reference/crs.html).
 
 ## See also
+
+[`vignette("rasterpic", package = "rasterpic")`](https://dieghernan.github.io/rasterpic/dev/articles/rasterpic.md)
+for examples.
 
 From [sf](https://CRAN.R-project.org/package=sf):
 
