@@ -20,8 +20,8 @@ rasterpic_img(
 \arguments{
 \item{x}{\strong{R} object that may be:
 \itemize{
-\item An object created with \CRANpkg{sf} of class \code{\link[sf:sf]{sf}},
-\code{\link[sf:sfc]{sfc}}, \code{\link[sf:st]{sfg}} or \code{\link[sf:st_bbox]{bbox}}).
+\item An object created with \CRANpkg{sf} of class \code{\link[sf:st_sf]{sf}},
+\code{\link[sf:st_sfc]{sfc}}, \code{\link[sf:st]{sfg}} or \code{\link[sf:st_bbox]{bbox}}).
 \item An object created with \CRANpkg{terra} of class
 \code{\link[terra:rast]{SpatRaster}}, \code{\link[terra:vect]{SpatVector}} or
 \code{\link[terra:ext]{SpatExtent}}.
@@ -209,7 +209,7 @@ For plotting:
 \item \code{\link[terra:plot]{terra::plot()}} and \code{\link[terra:plotRGB]{terra::plotRGB()}}.
 \item With \CRANpkg{ggplot2} use \CRANpkg{tidyterra}:
 \itemize{
-\item \code{\link[tidyterra:autoplot.Spat]{tidyterra::autoplot.SpatRaster()}}.
+\item \code{\link[tidyterra:autoplot.SpatRaster]{tidyterra::autoplot.SpatRaster()}}.
 \item \code{\link[tidyterra:geom_spatraster_rgb]{tidyterra::geom_spatraster_rgb()}}.
 }
 \item Other packages:
