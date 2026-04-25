@@ -92,7 +92,7 @@ shape](reference/figures/README-align-crop-mask-1.png)
 
 Hernangómez D (2026). *rasterpic: Convert Digital Images into SpatRaster
 Objects*.
-[doi:10.32614/CRAN.package.rasterpic](https://doi.org/10.32614/CRAN.package.rasterpic),
+[doi:10.32614/CRAN.package.rasterpic](https://doi.org/10.32614/CRAN.package.rasterpic).
 <https://dieghernan.github.io/rasterpic/>.
 
 A BibTeX entry for LaTeX users is:
