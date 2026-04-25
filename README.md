@@ -147,7 +147,7 @@ alt="Example of use of rasterpic with the UK flag cropping to the shape" />
 
 Hernangómez D (2026). <em>rasterpic: Convert Digital Images into
 SpatRaster Objects</em>.
-<a href="https://doi.org/10.32614/CRAN.package.rasterpic">doi:10.32614/CRAN.package.rasterpic</a>,
+<a href="https://doi.org/10.32614/CRAN.package.rasterpic">doi:10.32614/CRAN.package.rasterpic</a>.
 <a href="https://dieghernan.github.io/rasterpic/">https://dieghernan.github.io/rasterpic/</a>.
 </p>
 
