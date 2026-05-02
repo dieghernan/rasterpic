@@ -12,6 +12,7 @@ provided by the package **terra**
 ([`terra::plotRGB()`](https://rspatial.github.io/terra/reference/plotRGB.html)):
 
 ``` r
+
 library(rasterpic)
 library(terra)
 
@@ -40,6 +41,7 @@ Figure 1: Plot with terra package
 **tidyterra** provides full support for **terra** `SpatRaster` objects:
 
 ``` r
+
 library(ggplot2)
 library(tidyterra)
 
@@ -56,6 +58,7 @@ Figure 2: Plot with tidyterra package
 **tmap** can also be used to create great maps:
 
 ``` r
+
 library(tmap)
 
 tm_shape(uk_img) +
@@ -72,6 +75,7 @@ Figure 3: Plot with tmap package
 **mapsf** also provides this functionality:
 
 ``` r
+
 library(mapsf)
 
 mf_raster(uk_img)
@@ -93,6 +97,7 @@ download map tiles from different providers. It also has a specific
 function for plotting **terra** `SpatRaster` objects:
 
 ``` r
+
 library(maptiles)
 
 other_tile <- get_tiles(uk, crop = TRUE, zoom = 6)

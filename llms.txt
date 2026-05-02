@@ -10,6 +10,7 @@ Install **rasterpic** from
 [**CRAN**](https://CRAN.R-project.org/package=rasterpic):
 
 ``` r
+
 install.packages("rasterpic")
 ```
 
@@ -27,6 +28,7 @@ spatial objects:
 An example using an `sf` object:
 
 ``` r
+
 library(rasterpic)
 library(sf)
 library(terra)
@@ -70,6 +72,7 @@ We can also adjust other parameters, as well as modifying the alignment
 of the image with respect to the object:
 
 ``` r
+
 # Align, crop and mask
 uk_flag2 <- rasterpic_img(uk, img, halign = 0.2, crop = TRUE, mask = TRUE)
 

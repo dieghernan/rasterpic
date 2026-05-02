@@ -9,6 +9,7 @@ Getting started with **rasterpic** is easy: you need an image (`png`,
 Here we use the shape of Austria as an example:
 
 ``` r
+
 library(sf)
 library(terra)
 library(rasterpic)
@@ -44,6 +45,7 @@ With this option, the raster extent is expanded beyond the spatial
 object:
 
 ``` r
+
 expand <- rasterpic_img(x, img, expand = 1)
 
 autoplot(expand) +
@@ -59,6 +61,7 @@ Figure 2: Example of expansion of image
 Choose the alignment of the image within the spatial extent:
 
 ``` r
+
 bottom <- rasterpic_img(x, img, valign = 0)
 
 autoplot(bottom) +
@@ -74,6 +77,7 @@ Figure 3: Example of alignment of image
 Crop and mask the image:
 
 ``` r
+
 mask <- rasterpic_img(x, img, crop = TRUE, mask = TRUE)
 
 autoplot(mask)
