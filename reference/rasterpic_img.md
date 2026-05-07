@@ -208,16 +208,16 @@ img <- system.file("img/vertical.png", package = "rasterpic")
 ex1 <- rasterpic_img(x, img)
 
 ex1
-#> class       : SpatRaster 
+#> class       : SpatRaster
 #> size        : 333, 250, 3  (nrow, ncol, nlyr)
 #> resolution  : 6484.467, 6484.467  (x, y)
 #> extent      : -1193414, 427703.2, 6430573, 8589900  (xmin, xmax, ymin, ymax)
-#> coord. ref. : WGS 84 / Pseudo-Mercator (EPSG:3857) 
+#> coord. ref. : WGS 84 / Pseudo-Mercator (EPSG:3857)
 #> source(s)   : memory
-#> colors RGB  : 1, 2, 3 
-#> names       :   r,   g,   b 
-#> min values  :  15,   8,   4 
-#> max values  : 254, 255, 254 
+#> colors rgb  : 1, 2, 3
+#> names       :   r,   g,   b
+#> min values  :  15,   8,   4
+#> max values  : 254, 255, 254
 
 autoplot(ex1) +
   geom_sf(data = x, fill = NA, color = "white", linewidth = .5)
