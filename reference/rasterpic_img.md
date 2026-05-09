@@ -220,7 +220,7 @@ ex1
 #> max values  : 254, 255, 254
 
 autoplot(ex1) +
-  geom_sf(data = x, fill = NA, color = "white", linewidth = .5)
+  geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5)
 
 
 
@@ -228,7 +228,7 @@ autoplot(ex1) +
 ex2 <- rasterpic_img(x, img, expand = 0.5)
 
 autoplot(ex2) +
-  geom_sf(data = x, fill = NA, color = "white", linewidth = .5)
+  geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5)
 
 
 
@@ -236,7 +236,7 @@ autoplot(ex2) +
 ex3 <- rasterpic_img(x, img, halign = 0)
 
 autoplot(ex3) +
-  geom_sf(data = x, fill = NA, color = "white", linewidth = .5)
+  geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5)
 
 labs(title = "Align")
 #> <ggplot2::labels> List of 1
@@ -246,7 +246,7 @@ labs(title = "Align")
 ex4 <- rasterpic_img(x, img, crop = TRUE)
 
 autoplot(ex4) +
-  geom_sf(data = x, fill = NA, color = "white", linewidth = .5) +
+  geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5) +
   labs(title = "Crop")
 
 
@@ -254,7 +254,7 @@ autoplot(ex4) +
 ex5 <- rasterpic_img(x, img, mask = TRUE)
 
 autoplot(ex5) +
-  geom_sf(data = x, fill = NA, color = "white", linewidth = .5) +
+  geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5) +
   labs(title = "Mask")
 
 
@@ -262,7 +262,7 @@ autoplot(ex5) +
 ex6 <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
 
 autoplot(ex6) +
-  geom_sf(data = x, fill = NA, color = "white", linewidth = .5) +
+  geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5) +
   labs(title = "Mask Inverse")
 
 
@@ -270,36 +270,8 @@ autoplot(ex6) +
 ex7 <- rasterpic_img(x, img, crop = TRUE, mask = TRUE, inverse = TRUE)
 
 autoplot(ex7) +
-  geom_sf(data = x, fill = NA, color = "white", linewidth = .5) +
+  geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5) +
   labs(title = "Combine")
-
-
-# RGB channels ------
-plot(ex1)
-
-ex_rgb <- ex1
-has.RGB(ex_rgb)
-#> [1] TRUE
-RGB(ex_rgb)
-#> [1] 1 2 3
-
-# Modify RGB channels
-RGB(ex_rgb) <- c(2, 3, 1)
-RGB(ex_rgb)
-#> [1] 2 3 1
-
-plot(ex_rgb)
-
-
-# Remove RGB channels
-RGB(ex_rgb) <- NULL
-has.RGB(ex_rgb)
-#> [1] FALSE
-RGB(ex_rgb)
-#> NULL
-
-# Note the difference with terra::plot
-plot(ex_rgb)
 
 # }
 ```

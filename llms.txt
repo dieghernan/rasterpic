@@ -45,15 +45,15 @@ class(uk)
 uk_flag <- rasterpic_img(uk, img)
 
 uk_flag
-#> class       : SpatRaster 
+#> class       : SpatRaster
 #> size        : 400, 800, 3  (nrow, ncol, nlyr)
 #> resolution  : 5398.319, 5398.319  (x, y)
 #> extent      : -2542183, 1776472, 6430573, 8589900  (xmin, xmax, ymin, ymax)
-#> coord. ref. : WGS 84 / Pseudo-Mercator (EPSG:3857) 
+#> coord. ref. : WGS 84 / Pseudo-Mercator (EPSG:3857)
 #> source(s)   : memory
-#> colors RGB  : 1, 2, 3 
-#> names       :   r,   g,   b 
-#> min values  :   0,  14,  35 
+#> colors rgb  : 1, 2, 3
+#> names       :   r,   g,   b
+#> min values  :   0,  14,  35
 #> max values  : 255, 255, 255
 
 # Plot it!
