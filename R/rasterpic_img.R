@@ -121,70 +121,50 @@
 #' ex1
 #'
 #' autoplot(ex1) +
-#'   geom_sf(data = x, fill = NA, color = "white", linewidth = .5)
+#'   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5)
 #'
 #'
 #' # Expand
 #' ex2 <- rasterpic_img(x, img, expand = 0.5)
 #'
 #' autoplot(ex2) +
-#'   geom_sf(data = x, fill = NA, color = "white", linewidth = .5)
+#'   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5)
 #'
 #'
 #' # Align
 #' ex3 <- rasterpic_img(x, img, halign = 0)
 #'
 #' autoplot(ex3) +
-#'   geom_sf(data = x, fill = NA, color = "white", linewidth = .5)
+#'   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5)
 #' labs(title = "Align")
 #'
 #' # Crop
 #' ex4 <- rasterpic_img(x, img, crop = TRUE)
 #'
 #' autoplot(ex4) +
-#'   geom_sf(data = x, fill = NA, color = "white", linewidth = .5) +
+#'   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5) +
 #'   labs(title = "Crop")
 #'
 #' # Mask
 #' ex5 <- rasterpic_img(x, img, mask = TRUE)
 #'
 #' autoplot(ex5) +
-#'   geom_sf(data = x, fill = NA, color = "white", linewidth = .5) +
+#'   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5) +
 #'   labs(title = "Mask")
 #'
 #' # Mask inverse
 #' ex6 <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
 #'
 #' autoplot(ex6) +
-#'   geom_sf(data = x, fill = NA, color = "white", linewidth = .5) +
+#'   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5) +
 #'   labs(title = "Mask Inverse")
 #'
 #' # Combine Mask inverse and crop
 #' ex7 <- rasterpic_img(x, img, crop = TRUE, mask = TRUE, inverse = TRUE)
 #'
 #' autoplot(ex7) +
-#'   geom_sf(data = x, fill = NA, color = "white", linewidth = .5) +
+#'   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5) +
 #'   labs(title = "Combine")
-#'
-#' # RGB channels ------
-#' plot(ex1)
-#' ex_rgb <- ex1
-#' has.RGB(ex_rgb)
-#' RGB(ex_rgb)
-#'
-#' # Modify RGB channels
-#' RGB(ex_rgb) <- c(2, 3, 1)
-#' RGB(ex_rgb)
-#'
-#' plot(ex_rgb)
-#'
-#' # Remove RGB channels
-#' RGB(ex_rgb) <- NULL
-#' has.RGB(ex_rgb)
-#' RGB(ex_rgb)
-#'
-#' # Note the difference with terra::plot
-#' plot(ex_rgb)
 #' }
 rasterpic_img <- function(
   x,
@@ -229,11 +209,7 @@ rasterpic_img <- function(
 
   # C. Geo-tagging the image----
   ## 1. Creates an expanded bbox----
-  innermarg <- min(
-    (box[3] - box[1]),
-    (box[4] - box[2])
-  ) *
-    expand
+  innermarg <- min((box[3] - box[1]), (box[4] - box[2])) * expand
 
   box_marg <- box + c(rep(-innermarg, 2), rep(innermarg, 2))
 

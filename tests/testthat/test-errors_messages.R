@@ -1,10 +1,7 @@
 test_that("Error on bad x formatting", {
   x <- 1
   img <- system.file("img/UK_flag.png", package = "rasterpic")
-  expect_snapshot(
-    rasterpic_img(x, img),
-    error = TRUE
-  )
+  expect_snapshot(rasterpic_img(x, img), error = TRUE)
 })
 
 test_that("Error on bad img formatting", {
@@ -13,41 +10,23 @@ test_that("Error on bad img formatting", {
     quiet = TRUE
   )
   img <- "nofile"
-  expect_snapshot(
-    rasterpic_img(x, img),
-    error = TRUE
-  )
+  expect_snapshot(rasterpic_img(x, img), error = TRUE)
 
   img2 <- system.file("gpkg/UK.gpkg", package = "rasterpic")
 
-  expect_snapshot(
-    rasterpic_img(x, img2),
-    error = TRUE
-  )
+  expect_snapshot(rasterpic_img(x, img2), error = TRUE)
 })
 
 test_that("Error on invalid parameters", {
   x <- 1
   img <- system.file("img/UK_flag.png", package = "rasterpic")
-  expect_snapshot(
-    rasterpic_img(x, img, valign = 1.2),
-    error = TRUE
-  )
+  expect_snapshot(rasterpic_img(x, img, valign = 1.2), error = TRUE)
 
-  expect_snapshot(
-    rasterpic_img(x, img, valign = -1.2),
-    error = TRUE
-  )
+  expect_snapshot(rasterpic_img(x, img, valign = -1.2), error = TRUE)
 
-  expect_snapshot(
-    rasterpic_img(x, img, halign = 1.2),
-    error = TRUE
-  )
+  expect_snapshot(rasterpic_img(x, img, halign = 1.2), error = TRUE)
 
-  expect_snapshot(
-    rasterpic_img(x, img, halign = -1.2),
-    error = TRUE
-  )
+  expect_snapshot(rasterpic_img(x, img, halign = -1.2), error = TRUE)
 })
 
 test_that("Message in lonlat sf", {

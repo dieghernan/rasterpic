@@ -84,11 +84,11 @@ install.packages(
 This package allows you to create custom maps using a wide variety of spatial
 objects:
 
--   Spatial objects created with the **sf** package: `sf`, `sfc`, `sfg`, or
-    `bbox`.
--   Spatial objects created with the **terra** package: `SpatRaster`,
-    `SpatVector`, `SpatExtent`.
--   A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
+- Spatial objects created with the **sf** package: `sf`, `sfc`, `sfg`, or
+  `bbox`.
+- Spatial objects created with the **terra** package: `SpatRaster`,
+  `SpatVector`, `SpatExtent`.
+- A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 
 An example using an `sf` object:
 
@@ -138,9 +138,9 @@ autoplot(uk_flag2) +
 
 **rasterpic** can parse the following image formats:
 
--   `png` files.
--   `jpg/jpeg` files.
--   `tif/tiff` files.
+- `png` files.
+- `jpg/jpeg` files.
+- `tif/tiff` files.
 
 ## Citation
 

@@ -21,22 +21,14 @@ test_that("Expand factor", {
   expect_true(bbox_x[3] < bbox_x0[2])
 
   bbox_x_5 <- unname(as.vector(terra::ext(x_5)))
-  expect_true(
-    all(
-      c(
-        bbox_x[c(1, 3)] > bbox_x_5[c(1, 3)],
-        bbox_x[c(2, 4)] < bbox_x_5[c(2, 4)]
-      )
-    )
-  )
+  expect_true(all(c(
+    bbox_x[c(1, 3)] > bbox_x_5[c(1, 3)],
+    bbox_x[c(2, 4)] < bbox_x_5[c(2, 4)]
+  )))
 
   bbox_x1 <- unname(as.vector(terra::ext(x1)))
-  expect_true(
-    all(
-      c(
-        bbox_x_5[c(1, 3)] > bbox_x1[c(1, 3)],
-        bbox_x_5[c(2, 4)] < bbox_x1[c(2, 4)]
-      )
-    )
-  )
+  expect_true(all(c(
+    bbox_x_5[c(1, 3)] > bbox_x1[c(1, 3)],
+    bbox_x_5[c(2, 4)] < bbox_x1[c(2, 4)]
+  )))
 })

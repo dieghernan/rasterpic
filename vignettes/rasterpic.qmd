@@ -95,15 +95,15 @@ autoplot(maskinverse)
 
 ## Supported spatial objects for geotagging
 
--   Spatial objects of the **sf** package: `sf`, `sfc`, `sfg`, or `bbox`.
--   Spatial objects of the **terra** package: `SpatRaster`, `SpatVector`,
-    `SpatExtent`.
--   A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
+- Spatial objects of the **sf** package: `sf`, `sfc`, `sfg`, or `bbox`.
+- Spatial objects of the **terra** package: `SpatRaster`, `SpatVector`,
+  `SpatExtent`.
+- A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 
 ## Supported image formats
 
 **rasterpic** can parse the following image formats:
 
--   `png` files.
--   `jpg/jpeg` files.
--   `tif/tiff` files.
+- `png` files.
+- `jpg/jpeg` files.
+- `tif/tiff` files.
