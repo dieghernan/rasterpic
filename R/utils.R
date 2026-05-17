@@ -72,46 +72,15 @@ rpic_read <- function(img, crs = NA) {
   rast
 }
 
-rpic_input <- function(x, crs) {
-  # Convert `sf`/`sfc` to `SpatVector` for consistent handling.
-  if (any(inherits(x, "sf"), inherits(x, "sfc"))) {
-    x <- terra::vect(x)
-  }
+rpic_input_spat <- function(x) {
+  box <- c(terra::xmin(x), terra::ymin(x), terra::xmax(x), terra::ymax(x))
+  list(x = x, box = box, crs = terra::crs(x))
+}
 
-  if (any(inherits(x, "SpatRaster"), inherits(x, "SpatVector"))) {
-    if (terra::is.lonlat(x)) {
-      message(
-        "Warning: x has geographic coordinates. ",
-        "Assuming planar coordinates."
-      )
-    }
-
-    crs <- terra::crs(x)
-    box <- c(terra::xmin(x), terra::ymin(x), terra::xmax(x), terra::ymax(x))
-    # Return extracted spatial input, bounding box and CRS.
-    result <- list(x = x, box = box, crs = crs)
-    return(result)
-  }
-
-  # Handle inputs that may not carry a CRS.
-  if (inherits(x, "sfg")) {
-    x <- terra::vect(x)
-    box <- c(terra::xmin(x), terra::ymin(x), terra::xmax(x), terra::ymax(x))
-  } else if (inherits(x, "SpatExtent")) {
-    box <- c(terra::xmin(x), terra::ymin(x), terra::xmax(x), terra::ymax(x))
-  } else if (all(inherits(x, "bbox"), length(x) == 4)) {
-    box <- c(x["xmin"], x["ymin"], x["xmax"], x["ymax"])
-    box <- unname(box)
-  } else if (all(is.numeric(x), length(x) == 4)) {
-    box <- c(x[1], x[2], x[3], x[4])
-  } else {
-    stop("Don't know how to extract a bounding box from 'x'.")
-  }
-
+rpic_crs <- function(crs) {
   if (any(is.null(crs), is.na(crs))) {
-    message("'crs' is NA.")
-    crs <- NA
+    return("")
   }
 
-  list(x = x, box = box, crs = crs)
+  crs
 }

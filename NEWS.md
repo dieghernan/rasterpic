@@ -1,11 +1,17 @@
+# rasterpic (development version)
+
+- `rasterpic_img()` is now an S3 generic, with methods for the supported
+  input classes.
+- `rasterpic_img()` gains support for `stars` objects.
+
 # rasterpic 0.4.0
 
-- Migrate vignettes to Quarto.
+- Migrated vignettes to Quarto.
 
 # rasterpic 0.3.1
 
-- New logo.
-- Minimum **R** version required is now 4.1.0.
+- New logo
+- The minimum required **R** version is now 4.1.0.
 - Minor internal and documentation improvements.
 
 # rasterpic 0.3.0
@@ -57,7 +63,7 @@
   - **terra**: `SpatVector`, `SpatExtent`.
   - **sf**: `sfg`, `sf::st_bbox()`.
   - Numeric vectors `c(xmin, ymin, xmax, ymax)`.
-- The `img` parameter in `rasterpic_img()` now accepts online images.
+- The `img` parameter in `rasterpic_img()` now accepts image URLs.
 - Added an [article](https://dieghernan.github.io/rasterpic/articles/plots.html)
   to the pkgdown site.
 - Fixed **CRAN** errors.

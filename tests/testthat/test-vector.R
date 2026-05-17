@@ -54,11 +54,6 @@ test_that("Test vector with projs", {
   expect_true(terra::xmin(raster) < x[1])
   expect_true(terra::xmax(raster) > x[3])
 
-  # On mask message
-  expect_message(mask <- rasterpic_img(x, img, crs = crs_wkt_sf, mask = TRUE))
-
-  expect_true(terra::ext(raster) == terra::ext(mask))
-
   # On crop ok
   crop <- rasterpic_img(x, img, crs = crs_wkt_sf, crop = TRUE)
   expect_false(terra::ext(raster) == terra::ext(crop))

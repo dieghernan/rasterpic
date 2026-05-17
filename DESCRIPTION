@@ -1,12 +1,14 @@
 Package: rasterpic
 Title: Convert Digital Images to 'SpatRaster' Objects
-Version: 0.4.0
+Version: 0.4.0.9000
 Authors@R: 
     person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-8457-4658"))
 Description: Create 'SpatRaster' objects, as defined by the 'terra'
     package, from digital images using a specified spatial object as a
-    geographic reference.
+    geographic reference. Supported inputs include objects from the 'sf',
+    'terra' and 'stars' packages. The main function is an S3 generic,
+    allowing methods for additional spatial classes.
 License: MIT + file LICENSE
 URL: https://dieghernan.github.io/rasterpic/,
     https://github.com/dieghernan/rasterpic
@@ -18,9 +20,11 @@ Imports:
     sf (>= 1.0.0),
     terra (>= 1.8-21)
 Suggests: 
+    doclisting,
     ggplot2,
     knitr,
     quarto,
+    stars,
     testthat (>= 3.0.0),
     tidyterra
 VignetteBuilder: 
@@ -35,4 +39,4 @@ Config/testthat/edition: 3
 Config/testthat/parallel: true
 Encoding: UTF-8
 X-schema.org-keywords: cran, jpeg, jpg, maps, png, r, r-package, r-stats,
-    raster, rstats, sf, terra, tif, tiff, cran-r
+    raster, rstats, sf, stars, terra, tif, tiff, cran-r

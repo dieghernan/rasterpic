@@ -21,8 +21,10 @@ authors:
 home:
   title: rasterpic | Convert digital images to SpatRaster objects
   description: >
-    Create SpatRaster objects from digital images using a specified spatial
-    object as a geographic reference.
+    Create **terra** `SpatRaster` objects from digital images using spatial
+    input classes from **sf**, **terra** or **stars**, or numeric coordinate
+    vectors, as geographic references. Image files and image URLs are
+    supported.
 
 navbar:
   components:
@@ -30,7 +32,7 @@ navbar:
       text: Articles
       menu:
       - text: Articles
-      - text: Plotting terra rasters
+      - text: Plotting SpatRaster objects
         href: articles/plots.html
       - text: "---"
       - text: Blog
@@ -40,11 +42,11 @@ navbar:
         href: https://x.com/dhernangomez/status/1486666356544225281
 
 reference:
-- title: Main function
+- title: Core geotagging
   contents: rasterpic_img
-- title: Package
+- title: Package metadata
   contents: rasterpic-package
-- title: Plotting
+- title: Plotting helpers
   desc: >
     Functions from other packages for plotting `SpatRaster` objects.
   contents:

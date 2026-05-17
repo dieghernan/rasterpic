@@ -13,10 +13,10 @@ length 4 with coordinates \code{c(xmin, ymin, xmax, ymax)}, as created by
 \code{\link[sf:st_bbox]{sf::st_bbox()}}.}
 }
 \value{
-The aspect ratio.
+A numeric scalar giving the aspect ratio.
 }
 \description{
-Helper function. The ratio is computed as width / height (or cols / rows).
+Computes the aspect ratio as width / height, or columns / rows.
 }
 \examples{
 \donttest{

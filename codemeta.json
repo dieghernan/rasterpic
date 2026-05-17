@@ -2,13 +2,13 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "rasterpic",
-  "description": "Create 'SpatRaster' objects, as defined by the 'terra' package, from digital images using a specified spatial object as a geographic reference.",
+  "description": "Create 'SpatRaster' objects, as defined by the 'terra' package, from digital images using a specified spatial object as a geographic reference. Supported inputs include objects from the 'sf', 'terra' and 'stars' packages. The main function is an S3 generic, allowing methods for additional spatial classes.",
   "name": "rasterpic: Convert Digital Images to 'SpatRaster' Objects",
   "relatedLink": ["https://dieghernan.github.io/rasterpic/", "https://CRAN.R-project.org/package=rasterpic"],
   "codeRepository": "https://github.com/dieghernan/rasterpic",
   "issueTracker": "https://github.com/dieghernan/rasterpic/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.4.0",
+  "version": "0.4.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -51,6 +51,18 @@
   "softwareSuggestions": [
     {
       "@type": "SoftwareApplication",
+      "identifier": "doclisting",
+      "name": "doclisting",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=doclisting"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "ggplot2",
       "name": "ggplot2",
       "provider": {
@@ -84,6 +96,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=quarto"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "stars",
+      "name": "stars",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=stars"
     },
     {
       "@type": "SoftwareApplication",
@@ -158,8 +182,8 @@
     },
     "SystemRequirements": null
   },
-  "keywords": ["cran", "jpeg", "jpg", "maps", "png", "r", "r-package", "r-stats", "raster", "rstats", "sf", "terra", "tif", "tiff", "cran-r"],
-  "fileSize": "1168.215KB",
+  "keywords": ["cran", "jpeg", "jpg", "maps", "png", "r", "r-package", "r-stats", "raster", "rstats", "sf", "stars", "terra", "tif", "tiff", "cran-r"],
+  "fileSize": "1178.376KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

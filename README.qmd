@@ -81,13 +81,16 @@ install.packages(
 
 ## Example
 
-This package allows you to create custom maps using a wide variety of spatial
-objects:
+You can create custom maps with several spatial input classes:
 
-- Spatial objects created with the **sf** package: `sf`, `sfc`, `sfg` or `bbox`.
-- Spatial objects created with the **terra** package: `SpatRaster`, `SpatVector`
-  and `SpatExtent`.
+- **sf** classes: `sf`, `sfc`, `sfg` or `bbox`.
+- **terra** classes: `SpatRaster`, `SpatVector` and `SpatExtent`.
+- **stars** classes: `stars`.
 - A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
+
+The main function, `rasterpic_img()`, is an S3 generic. The methods for
+extent-like inputs use the object extent, and vector methods can also mask the
+image to the object shape.
 
 An example using an `sf` object:
 
@@ -135,9 +138,9 @@ autoplot(uk_flag2) +
 
 **rasterpic** can parse the following image formats:
 
-- `png` files.
-- `jpg/jpeg` files.
-- `tif/tiff` files.
+- `png` files
+- `jpeg/jpg` files
+- `tiff/tif` files
 
 ## Citation
 
