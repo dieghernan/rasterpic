@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>rasterpic | Convert Digital Images into SpatRaster Objects • rasterpic</title>
+<title>rasterpic | Convert digital images to SpatRaster objects • rasterpic</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
 <link rel="icon" type="”image/svg+xml”" href="favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -13,17 +13,17 @@
 <link rel="manifest" href="site.webmanifest">
 <!-- katex math --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script><script src="katex-auto.js"></script><script src="lightswitch.js"></script><script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/Inter-0.4.10/font.css" rel="stylesheet">
+<link href="deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/Inter-0.4.10/font.css" rel="stylesheet">
 <link href="deps/Inter_Tight-0.4.10/font.css" rel="stylesheet">
 <link href="deps/Fira_Code-0.4.10/font.css" rel="stylesheet">
 <link href="deps/Roboto-0.4.10/font.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="rasterpic | Convert Digital Images into SpatRaster Objects">
-<meta name="description" content="Generate SpatRaster objects from digital images, using a specified spatial object as a geographical reference.
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="rasterpic | Convert digital images to SpatRaster objects">
+<meta name="description" content="Create SpatRaster objects from digital images using a specified spatial object as a geographic reference. The main function is extensible through S3 methods.
 ">
-<meta property="og:description" content="Generate SpatRaster objects from digital images, using a specified spatial object as a geographical reference.
+<meta property="og:description" content="Create SpatRaster objects from digital images using a specified spatial object as a geographic reference. The main function is extensible through S3 methods.
 ">
 <meta property="og:image" content="https://dieghernan.github.io/rasterpic/logo.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -40,7 +40,7 @@
 
     <a class="navbar-brand me-2" href="index.html"><img src="apple-touch-icon.png" alt="rasterpic logo" height="34" width="34" class="d-inline-block me-1">rasterpic</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.3.1.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.4.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,7 +58,7 @@
     <li><a class="dropdown-item" href="articles/plots.html">Plotting terra rasters</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Blog</h6></li>
-    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/202201_maps-flags/">Beautiful Maps with R (IV): Fun with flags revisited</a></li>
+    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/202201_maps-flags/">Beautiful maps with R (IV): Fun with flags revisited</a></li>
     <li><a class="external-link dropdown-item" href="https://x.com/dhernangomez/status/1486666356544225281">Quick Brazil</a></li>
   </ul>
 </li>
@@ -93,20 +93,20 @@
 <!-- badges: start -->
 
 <!-- badges: end -->
-<p><strong>rasterpic</strong> is a tiny package with a single goal: to transform an image into a <code>SpatRaster</code> object (see <code><a href="https://rspatial.github.io/terra/reference/SpatRaster-class.html" class="external-link">?terra::SpatRaster</a></code>).</p>
+<p><strong>rasterpic</strong> is a tiny package with a single goal: to transform an image into a <strong>terra</strong> <code>SpatRaster</code> object (see <code><a href="https://rspatial.github.io/terra/reference/SpatRaster-class.html" class="external-link">?terra::SpatRaster</a></code>).</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 
 <div class="pkgdown-devel">
-<p>Check the docs of the developing version in <a href="https://dieghernan.github.io/rasterpic/dev/" class="uri">https://dieghernan.github.io/rasterpic/dev/</a>.</p>
-<p>You can install the developing version of <strong>rasterpic</strong> with:</p>
+<p>Check the documentation for the development version at <a href="https://dieghernan.github.io/rasterpic/dev/" class="uri">https://dieghernan.github.io/rasterpic/dev/</a>.</p>
+<p>You can install the development version of <strong>rasterpic</strong> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"dieghernan/rasterpic"</span><span class="op">)</span></span></code></pre></div>
 <p>Alternatively, you can install <strong>rasterpic</strong> using the <a href="https://dieghernan.r-universe.dev/rasterpic" class="external-link">r-universe</a>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Install rasterpic in R:</span></span>
+<code class="sourceCode R"><span><span class="co"># Install rasterpic in R.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span></span>
 <span>  <span class="st">"rasterpic"</span>,</span>
 <span>  repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -121,55 +121,54 @@
 </h2>
 <p>This package allows you to create custom maps using a wide variety of spatial objects:</p>
 <ul>
-<li>Spatial objects created with the <strong>sf</strong> package: <code>sf</code>, <code>sfc</code>, <code>sfg</code>, or <code>bbox</code>.</li>
-<li>Spatial objects created with the <strong>terra</strong> package: <code>SpatRaster</code>, <code>SpatVector</code>, <code>SpatExtent</code>.</li>
+<li>Spatial objects created with the <strong>sf</strong> package: <code>sf</code>, <code>sfc</code>, <code>sfg</code> or <code>bbox</code>.</li>
+<li>Spatial objects created with the <strong>terra</strong> package: <code>SpatRaster</code>, <code>SpatVector</code> and <code>SpatExtent</code>.</li>
 <li>A numeric coordinate vector of the form <code>c(xmin, ymin, xmax, ymax)</code>.</li>
 </ul>
+<p>The main function, <code><a href="reference/rasterpic_img.html">rasterpic_img()</a></code>, is an S3 generic, so other packages can provide methods for additional spatial classes.</p>
 <p>An example using an <code>sf</code> object:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/rasterpic/">rasterpic</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># The flag of the United Kingdom</span></span>
+<span><span class="co"># Use the flag of the United Kingdom.</span></span>
 <span><span class="va">img</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"img/UK_flag.png"</span>, package <span class="op">=</span> <span class="st">"rasterpic"</span><span class="op">)</span></span>
 <span><span class="va">uk</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">read_sf</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"gpkg/UK.gpkg"</span>, package <span class="op">=</span> <span class="st">"rasterpic"</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">uk</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "sf"         "tbl_df"     "tbl"        "data.frame"</span></span>
 <span></span>
-<span><span class="co"># Rasterize the image!</span></span>
+<span><span class="co"># Rasterize the image.</span></span>
 <span><span class="va">uk_flag</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/rasterpic_img.html">rasterpic_img</a></span><span class="op">(</span><span class="va">uk</span>, <span class="va">img</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">uk_flag</span></span>
-<span><span class="co">#&gt; class       : SpatRaster </span></span>
+<span><span class="co">#&gt; class       : SpatRaster</span></span>
 <span><span class="co">#&gt; size        : 400, 800, 3  (nrow, ncol, nlyr)</span></span>
 <span><span class="co">#&gt; resolution  : 5398.319, 5398.319  (x, y)</span></span>
 <span><span class="co">#&gt; extent      : -2542183, 1776472, 6430573, 8589900  (xmin, xmax, ymin, ymax)</span></span>
-<span><span class="co">#&gt; coord. ref. : WGS 84 / Pseudo-Mercator (EPSG:3857) </span></span>
+<span><span class="co">#&gt; coord. ref. : WGS 84 / Pseudo-Mercator (EPSG:3857)</span></span>
 <span><span class="co">#&gt; source(s)   : memory</span></span>
-<span><span class="co">#&gt; colors RGB  : 1, 2, 3 </span></span>
-<span><span class="co">#&gt; names       :   r,   g,   b </span></span>
-<span><span class="co">#&gt; min values  :   0,  14,  35 </span></span>
+<span><span class="co">#&gt; colors rgb  : 1, 2, 3</span></span>
+<span><span class="co">#&gt; names       :   r,   g,   b</span></span>
+<span><span class="co">#&gt; min values  :   0,  14,  35</span></span>
 <span><span class="co">#&gt; max values  : 255, 255, 255</span></span>
 <span></span>
-<span><span class="co"># Plot it!</span></span>
-<span><span class="co"># Using ggplot2 + tidyterra</span></span>
+<span><span class="co"># Plot with ggplot2 and tidyterra.</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/tidyterra/" class="external-link">tidyterra</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">uk_flag</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">uk</span>, color <span class="op">=</span> <span class="fu"><a href="https://scales.r-lib.org/reference/alpha.html" class="external-link">alpha</a></span><span class="op">(</span><span class="st">"blue"</span>, <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-example-basic-1.png" style="width:100.0%" alt="Example of use of rasterpic with the UK flag"></p>
-<p>We can also adjust other parameters, as well as modifying the alignment of the image with respect to the object:</p>
+<p><img src="reference/figures/README-example-basic-1.png" style="width:100.0%" alt="Example using rasterpic with the UK flag"></p>
+<p>We can also adjust other parameters and modify the alignment of the image with respect to the object:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Align, crop and mask</span></span>
+<code class="sourceCode R"><span><span class="co"># Align, crop and mask.</span></span>
 <span><span class="va">uk_flag2</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/rasterpic_img.html">rasterpic_img</a></span><span class="op">(</span><span class="va">uk</span>, <span class="va">img</span>, halign <span class="op">=</span> <span class="fl">0.2</span>, crop <span class="op">=</span> <span class="cn">TRUE</span>, mask <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">uk_flag2</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">uk</span>, fill <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-align-crop-mask-1.png" style="width:100.0%" alt="Example of use of rasterpic with the UK flag cropping to the shape"></p>
+<p><img src="reference/figures/README-align-crop-mask-1.png" style="width:100.0%" alt="Example using rasterpic with the UK flag cropped to the shape"></p>
 </div>
 <div class="section level2">
 <h2 id="supported-image-formats">Supported image formats<a class="anchor" aria-label="anchor" href="#supported-image-formats"></a>
@@ -188,17 +187,17 @@
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>
-Hernangómez D (2026). <em>rasterpic: Convert Digital Images into SpatRaster Objects</em>. <a href="https://doi.org/10.32614/CRAN.package.rasterpic" class="external-link">doi:10.32614/CRAN.package.rasterpic</a>, <a href="https://dieghernan.github.io/rasterpic/">https://dieghernan.github.io/rasterpic/</a>.
+Hernangómez D (2026). <em>rasterpic: Convert Digital Images to SpatRaster Objects</em>. <a href="https://doi.org/10.32614/CRAN.package.rasterpic" class="external-link">doi:10.32614/CRAN.package.rasterpic</a>. <a href="https://dieghernan.github.io/rasterpic/">https://dieghernan.github.io/rasterpic/</a>.
 </p>
 <p>A BibTeX entry for LaTeX users is:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="sc">@</span>Manual{R<span class="sc">-</span>rasterpic,</span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  title <span class="ot">=</span> {{rasterpic}<span class="sc">:</span> Convert Digital Images into {SpatRaster} Objects},</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  title <span class="ot">=</span> {{rasterpic}<span class="sc">:</span> Convert Digital Images to {SpatRaster} Objects},</span>
 <span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  doi <span class="ot">=</span> {<span class="fl">10.32614</span><span class="sc">/</span>CRAN.package.rasterpic},</span>
 <span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>  author <span class="ot">=</span> {Diego Hernangómez},</span>
 <span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>  year <span class="ot">=</span> {<span class="dv">2026</span>},</span>
-<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">0</span>.<span class="dv">3</span>.<span class="fl">1.9000</span>},</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">0</span>.<span class="dv">4</span>.<span class="fl">0.9000</span>},</span>
 <span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>  url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>dieghernan.github.io<span class="sc">/</span>rasterpic<span class="sc">/</span>},</span>
-<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>  abstract <span class="ot">=</span> {Generate SpatRaster objects, as defined by the terra package, from digital images, using a specified spatial object as a geographical reference.},</span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>  abstract <span class="ot">=</span> {Create SpatRaster objects, as defined by the terra package, from digital images using a specified spatial object as a geographic reference. The main <span class="cf">function</span> is an S3 generic, allowing methods <span class="cf">for</span> additional spatial classes.},</span>
 <span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 </div>

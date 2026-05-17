@@ -11,17 +11,17 @@
 Source:
 [`inst/CITATION`](https://github.com/dieghernan/rasterpic/blob/main/inst/CITATION)
 
-Hernangómez D (2026). *rasterpic: Convert Digital Images into SpatRaster
+Hernangómez D (2026). *rasterpic: Convert Digital Images to SpatRaster
 Objects*.
-[doi:10.32614/CRAN.package.rasterpic](https://doi.org/10.32614/CRAN.package.rasterpic),
+[doi:10.32614/CRAN.package.rasterpic](https://doi.org/10.32614/CRAN.package.rasterpic).
 <https://dieghernan.github.io/rasterpic/>.
 
     @Manual{R-rasterpic,
-      title = {{rasterpic}: Convert Digital Images into {SpatRaster} Objects},
+      title = {{rasterpic}: Convert Digital Images to {SpatRaster} Objects},
       doi = {10.32614/CRAN.package.rasterpic},
       author = {Diego Hernangómez},
       year = {2026},
-      version = {0.3.1.9000},
+      version = {0.4.0.9000},
       url = {https://dieghernan.github.io/rasterpic/},
-      abstract = {Generate SpatRaster objects, as defined by the terra package, from digital images, using a specified spatial object as a geographical reference.},
+      abstract = {Create SpatRaster objects, as defined by the terra package, from digital images using a specified spatial object as a geographic reference. The main function is an S3 generic, allowing methods for additional spatial classes.},
     }

@@ -1,8 +1,9 @@
-# rasterpic: Convert Digital Images into 'SpatRaster' Objects
+# rasterpic: Convert Digital Images to 'SpatRaster' Objects
 
-Generate 'SpatRaster' objects, as defined by the 'terra' package, from
-digital images, using a specified spatial object as a geographical
-reference.
+Create 'SpatRaster' objects, as defined by the 'terra' package, from
+digital images using a specified spatial object as a geographic
+reference. The main function is an S3 generic, allowing methods for
+additional spatial classes.
 
 ## See also
 
@@ -18,3 +19,8 @@ Useful links:
 
 **Maintainer**: Diego Hernangómez <diego.hernangomezherrero@gmail.com>
 ([ORCID](https://orcid.org/0000-0001-8457-4658)) \[copyright holder\]
+
+Authors:
+
+- Diego Hernangómez <diego.hernangomezherrero@gmail.com>
+  ([ORCID](https://orcid.org/0000-0001-8457-4658)) \[copyright holder\]

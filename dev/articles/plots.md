@@ -8,14 +8,15 @@ with several packages.
 
 The most straightforward option is to use the base
 [`plot()`](https://rspatial.github.io/terra/reference/plot.html) methods
-provided by the package **terra**
+provided by the **terra** package
 ([`terra::plotRGB()`](https://rspatial.github.io/terra/reference/plotRGB.html)):
 
 ``` r
+
 library(rasterpic)
 library(terra)
 
-# The flag of the United Kingdom
+# Use the flag of the United Kingdom.
 img <- system.file("img/UK_flag.png",
   package = "rasterpic"
 )
@@ -33,13 +34,15 @@ plotRGB(uk_img)
 
 ![](plots_files/figure-html/fig-terra-1.png)
 
-Figure 1: Plot with terra package
+Figure 1: Plot with the **terra** package
 
 ## With ggplot2 + tidyterra
 
-**tidyterra** provides full support for **terra** `SpatRaster` objects:
+The **tidyterra** package provides full support for **terra**
+`SpatRaster` objects:
 
 ``` r
+
 library(ggplot2)
 library(tidyterra)
 
@@ -49,13 +52,14 @@ ggplot() +
 
 ![](plots_files/figure-html/fig-tterra-1.png)
 
-Figure 2: Plot with tidyterra package
+Figure 2: Plot with the **tidyterra** package
 
 ## With tmap
 
-**tmap** can also be used to create great maps:
+The **tmap** package can also be used to create maps:
 
 ``` r
+
 library(tmap)
 
 tm_shape(uk_img) +
@@ -65,13 +69,14 @@ tm_shape(uk_img) +
 
 ![](plots_files/figure-html/fig-tmap-1.png)
 
-Figure 3: Plot with tmap package
+Figure 3: Plot with the **tmap** package
 
 ## With mapsf
 
-**mapsf** also provides this functionality:
+The **mapsf** package also provides this functionality:
 
 ``` r
+
 library(mapsf)
 
 mf_raster(uk_img)
@@ -84,15 +89,16 @@ mf_inset_off()
 
 ![](plots_files/figure-html/fig-mapsf-1.png)
 
-Figure 4: Plot with mapsf package
+Figure 4: Plot with the **mapsf** package
 
 ## With maptiles
 
-**maptiles** is an interesting package that provides the ability to
-download map tiles from different providers. It also has a specific
-function for plotting **terra** `SpatRaster` objects:
+The **maptiles** package can download map tiles from different
+providers. It also has a specific function for plotting **terra**
+`SpatRaster` objects:
 
 ``` r
+
 library(maptiles)
 
 other_tile <- get_tiles(uk, crop = TRUE, zoom = 6)
@@ -105,7 +111,7 @@ plot_tiles(uk_img, add = TRUE)
 
 ![](plots_files/figure-html/fig-maptiles-1.png)
 
-Figure 5: Plot with maptiles package
+Figure 5: Plot with the **maptiles** package
 
 ## References
 
@@ -118,13 +124,13 @@ Giraud T (2026). *mapsf: Thematic Cartography*.
 
 Hernangómez D (2023). “Using the tidyverse with terra objects: the
 tidyterra package.” *Journal of Open Source Software*, **8**(91), 5751.
-ISSN 2475-9066,
-[doi:10.21105/joss.05751](https://doi.org/10.21105/joss.05751),
+ISSN 2475-9066.
+[doi:10.21105/joss.05751](https://doi.org/10.21105/joss.05751).
 <https://doi.org/10.21105/joss.05751>.
 
 Hijmans R, Brown A, Barbosa M (2026). *terra: Spatial Data Analysis*. R
-package version 1.9-1, <https://rspatial.org/>.
+package version 1.9-27, <https://rspatial.org/>.
 
 Wickham H (2016). *ggplot2: Elegant Graphics for Data Analysis*.
-Springer-Verlag New York. ISBN 978-3-319-24277-4,
+Springer-Verlag New York. ISBN 978-3-319-24277-4.
 <https://ggplot2.tidyverse.org>.

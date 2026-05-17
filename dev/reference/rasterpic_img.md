@@ -1,6 +1,25 @@
-# Convert an image to a geo-tagged `SpatRaster`
+# Convert an image to a geotagged `SpatRaster`
 
 Geotags an image based on the coordinates of a given spatial object.
+
+`rasterpic_img()` is an S3 generic. **rasterpic** provides methods for
+the following classes:
+
+- `bbox`
+
+- `numeric`
+
+- `sf`
+
+- `sfc`
+
+- `sfg`
+
+- `SpatExtent`
+
+- `SpatRaster`
+
+- `SpatVector`
 
 ## Usage
 
@@ -14,7 +33,8 @@ rasterpic_img(
   crop = FALSE,
   mask = FALSE,
   inverse = FALSE,
-  crs = NULL
+  crs = NULL,
+  ...
 )
 ```
 
@@ -22,23 +42,7 @@ rasterpic_img(
 
 - x:
 
-  **R** object that may be:
-
-  - An object created with [sf](https://CRAN.R-project.org/package=sf)
-    of class [`sf`](https://r-spatial.github.io/sf/reference/sf.html),
-    [`sfc`](https://r-spatial.github.io/sf/reference/sfc.html),
-    [`sfg`](https://r-spatial.github.io/sf/reference/st.html) or
-    [`bbox`](https://r-spatial.github.io/sf/reference/st_bbox.html)).
-
-  - An object created with
-    [terra](https://CRAN.R-project.org/package=terra) of class
-    [`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html),
-    [`SpatVector`](https://rspatial.github.io/terra/reference/vect.html)
-    or
-    [`SpatExtent`](https://rspatial.github.io/terra/reference/ext.html).
-
-  - A numeric vector of length 4 with the extent to be used for
-    geotagging (i.e. `c(xmin, ymin, xmax, ymax)`).
+  An **R** object (see **S3 methods**).
 
 - img:
 
@@ -48,21 +52,21 @@ rasterpic_img(
 
   - `png`.
 
-  - `jpeg/jpg`.
+  - `jpeg`/`jpg`.
 
-  - `tiff/tif`.
+  - `tiff`/`tif`.
 
 - halign:
 
-  Numeric between `0` and `1` giving horizontal alignment of `img`
+  Numeric between `0` and `1` giving the horizontal alignment of `img`
   relative to `x`. `0` aligns `x` with the left edge, `1` aligns with
-  the right edge, and `0.5` centers horizontally.
+  the right edge and `0.5` centers it horizontally.
 
 - valign:
 
-  Numeric between `0` and `1` giving vertical alignment of `img`
+  Numeric between `0` and `1` giving the vertical alignment of `img`
   relative to `x`. `0` aligns `x` with the bottom edge, `1` aligns with
-  the top edge, and `0.5` centers vertically.
+  the top edge and `0.5` centers it vertically.
 
 - expand:
 
@@ -77,21 +81,25 @@ rasterpic_img(
 
 - mask:
 
-  Logical, applicable only if `x` is a `sf`, `sfc` or `SpatVector`
+  Logical, applicable only if `x` is an `sf`, `sfc` or `SpatVector`
   object. Should the raster be
   [masked](https://rspatial.github.io/terra/reference/mask.html) to `x`?
   See **Details**.
 
 - inverse:
 
-  Logical. It only affects when `mask = TRUE`. If `TRUE`, areas on the
-  raster that do not overlap with `x` are masked.
+  Logical. This only has an effect when `mask = TRUE`. If `TRUE`, areas
+  of the raster that do not overlap with `x` are masked.
 
 - crs:
 
-  Character string describing a coordinate reference system. This
-  parameter only affects when `x` is a `SpatExtent`, `sfg`, `bbox` or a
-  vector of coordinates. See **CRS** section.
+  Character string describing a CRS. This parameter only applies when
+  `x` is a `SpatExtent`, `sfg`, `bbox` or a vector of coordinates. See
+  **CRS** section.
+
+- ...:
+
+  Further arguments passed to methods.
 
 ## Value
 
@@ -100,11 +108,12 @@ A `SpatRaster` object (see
 where each layer corresponds to a color channel of `img`:
 
 - If `img` has at least 3 channels (e.g. layers), the result will have
-  an additional property setting the layers 1 to 3 as the Red, Green and
-  Blue channels with names `"r" "g" "b"` and `alpha` (if applicable).
+  an additional property setting layers 1 to 3 as the red, green and
+  blue channels with names `"r"`, `"g"` and `"b"` and `alpha` if
+  applicable.
 
-- If `img` already has a definition or RGB values (this may be the case
-  for `tiff/tif` files) the result will keep that channel definition.
+- If `img` already has a definition of RGB values (this may be the case
+  for `tiff`/`tif` files) the result will keep that channel definition.
 
 The resulting `SpatRaster` will have an RGB specification as explained
 in
@@ -116,15 +125,42 @@ in
 explains, with examples, the effect of parameters `halign`, `valign`,
 `expand`, `crop` and `mask`.
 
+### S3 methods
+
+`rasterpic_img()` is an S3 generic. **rasterpic** provides methods for
+the following classes:
+
+- `bbox`, see
+  [`bbox`](https://r-spatial.github.io/sf/reference/st_bbox.html).
+
+- `numeric`. This must be a numeric vector of length 4 with the extent
+  to be used for geotagging (i.e. `c(xmin, ymin, xmax, ymax)`).
+
+- `sf`, see [`sf`](https://r-spatial.github.io/sf/reference/sf.html).
+
+- `sfc`, see [`sfc`](https://r-spatial.github.io/sf/reference/sfc.html).
+
+- `sfg`, see [`sfg`](https://r-spatial.github.io/sf/reference/st.html).
+
+- `SpatExtent`, see
+  [`SpatExtent`](https://rspatial.github.io/terra/reference/ext.html).
+
+- `SpatRaster`, see
+  [`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html).
+
+- `SpatVector`, see
+  [`SpatVector`](https://rspatial.github.io/terra/reference/vect.html).
+
+Other packages can provide methods for additional spatial classes.
+
 ### CRS
 
-The function preserves the Coordinate Reference System of `x` if
-applicable. For optimal results **do not use** geographic coordinates
-(longitude/latitude).
+This function preserves the CRS of `x` when applicable. For optimal
+results **do not use** geographic coordinates (longitude/latitude).
 
 `crs` can be in a WKT format, as a `"authority:number"` code such as
-`"EPSG:4326"`, or a PROJ-string format such as `"+proj=utm +zone=12"`.
-It can also be retrieved with:
+`"EPSG:4326"` or a PROJ-string format such as `"+proj=utm +zone=12"`. It
+can also be retrieved with:
 
 - [`sf::st_crs(25830)$wkt`](https://r-spatial.github.io/sf/reference/st_crs.html).
 
@@ -132,7 +168,7 @@ It can also be retrieved with:
 
 - [`tidyterra::pull_crs()`](https://dieghernan.github.io/tidyterra/reference/pull_crs.html).
 
-See **Value** and **Notes** on
+See **Value** and **Notes** in
 [`terra::crs()`](https://rspatial.github.io/terra/reference/crs.html).
 
 ## See also
@@ -169,7 +205,7 @@ For plotting:
   and
   [`terra::plotRGB()`](https://rspatial.github.io/terra/reference/plotRGB.html).
 
-- With [ggplot2](https://CRAN.R-project.org/package=ggplot2) use
+- With [ggplot2](https://CRAN.R-project.org/package=ggplot2), use
   [tidyterra](https://CRAN.R-project.org/package=tidyterra):
 
   - [`tidyterra::autoplot.SpatRaster()`](https://dieghernan.github.io/tidyterra/reference/autoplot.Spat.html).
@@ -199,44 +235,41 @@ library(tidyterra)
 #> 
 #>     filter
 
-
 x_path <- system.file("gpkg/UK.gpkg", package = "rasterpic")
 x <- st_read(x_path, quiet = TRUE)
 img <- system.file("img/vertical.png", package = "rasterpic")
 
-# Default config
+# Default configuration
 ex1 <- rasterpic_img(x, img)
 
 ex1
-#> class       : SpatRaster 
+#> class       : SpatRaster
 #> size        : 333, 250, 3  (nrow, ncol, nlyr)
 #> resolution  : 6484.467, 6484.467  (x, y)
 #> extent      : -1193414, 427703.2, 6430573, 8589900  (xmin, xmax, ymin, ymax)
-#> coord. ref. : WGS 84 / Pseudo-Mercator (EPSG:3857) 
+#> coord. ref. : WGS 84 / Pseudo-Mercator (EPSG:3857)
 #> source(s)   : memory
-#> colors RGB  : 1, 2, 3 
-#> names       :   r,   g,   b 
-#> min values  :  15,   8,   4 
-#> max values  : 254, 255, 254 
+#> colors rgb  : 1, 2, 3
+#> names       :   r,   g,   b
+#> min values  :  15,   8,   4
+#> max values  : 254, 255, 254
 
 autoplot(ex1) +
-  geom_sf(data = x, fill = NA, color = "white", linewidth = .5)
-
+  geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5)
 
 
 # Expand
 ex2 <- rasterpic_img(x, img, expand = 0.5)
 
 autoplot(ex2) +
-  geom_sf(data = x, fill = NA, color = "white", linewidth = .5)
-
+  geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5)
 
 
 # Align
 ex3 <- rasterpic_img(x, img, halign = 0)
 
 autoplot(ex3) +
-  geom_sf(data = x, fill = NA, color = "white", linewidth = .5)
+  geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5)
 
 labs(title = "Align")
 #> <ggplot2::labels> List of 1
@@ -246,7 +279,7 @@ labs(title = "Align")
 ex4 <- rasterpic_img(x, img, crop = TRUE)
 
 autoplot(ex4) +
-  geom_sf(data = x, fill = NA, color = "white", linewidth = .5) +
+  geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5) +
   labs(title = "Crop")
 
 
@@ -254,52 +287,24 @@ autoplot(ex4) +
 ex5 <- rasterpic_img(x, img, mask = TRUE)
 
 autoplot(ex5) +
-  geom_sf(data = x, fill = NA, color = "white", linewidth = .5) +
+  geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5) +
   labs(title = "Mask")
 
 
-# Mask inverse
+# Inverse mask
 ex6 <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
 
 autoplot(ex6) +
-  geom_sf(data = x, fill = NA, color = "white", linewidth = .5) +
+  geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5) +
   labs(title = "Mask Inverse")
 
 
-# Combine Mask inverse and crop
+# Combine inverse masking and cropping
 ex7 <- rasterpic_img(x, img, crop = TRUE, mask = TRUE, inverse = TRUE)
 
 autoplot(ex7) +
-  geom_sf(data = x, fill = NA, color = "white", linewidth = .5) +
+  geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5) +
   labs(title = "Combine")
-
-
-# RGB channels ------
-plot(ex1)
-
-ex_rgb <- ex1
-has.RGB(ex_rgb)
-#> [1] TRUE
-RGB(ex_rgb)
-#> [1] 1 2 3
-
-# Modify RGB channels
-RGB(ex_rgb) <- c(2, 3, 1)
-RGB(ex_rgb)
-#> [1] 2 3 1
-
-plot(ex_rgb)
-
-
-# Remove RGB channels
-RGB(ex_rgb) <- NULL
-has.RGB(ex_rgb)
-#> [1] FALSE
-RGB(ex_rgb)
-#> NULL
-
-# Note the difference with terra::plot
-plot(ex_rgb)
 
 # }
 ```
