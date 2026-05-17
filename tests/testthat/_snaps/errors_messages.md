@@ -3,7 +3,7 @@
     Code
       rasterpic_img(x, img)
     Condition
-      Error in `rpic_input()`:
+      Error in `rpic_input.numeric()`:
       ! Don't know how to extract a bounding box from 'x'.
 
 # Error on bad img formatting
@@ -27,7 +27,7 @@
     Code
       rasterpic_img(x, img, valign = 1.2)
     Condition
-      Error in `rasterpic_img()`:
+      Error in `rasterpic_img_impl()`:
       ! 'valign' should be between 0 and 1.
 
 ---
@@ -35,7 +35,7 @@
     Code
       rasterpic_img(x, img, valign = -1.2)
     Condition
-      Error in `rasterpic_img()`:
+      Error in `rasterpic_img_impl()`:
       ! 'valign' should be between 0 and 1.
 
 ---
@@ -43,7 +43,7 @@
     Code
       rasterpic_img(x, img, halign = 1.2)
     Condition
-      Error in `rasterpic_img()`:
+      Error in `rasterpic_img_impl()`:
       ! 'halign' should be between 0 and 1.
 
 ---
@@ -51,6 +51,6 @@
     Code
       rasterpic_img(x, img, halign = -1.2)
     Condition
-      Error in `rasterpic_img()`:
+      Error in `rasterpic_img_impl()`:
       ! 'halign' should be between 0 and 1.
 

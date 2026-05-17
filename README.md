@@ -77,6 +77,9 @@ spatial objects:
   `SpatVector` and `SpatExtent`.
 - A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 
+The main function, `rasterpic_img()`, is an S3 generic, so other
+packages can provide methods for additional spatial classes.
+
 An example using an `sf` object:
 
 ``` r
@@ -156,7 +159,7 @@ A BibTeX entry for LaTeX users is:
       doi = {10.32614/CRAN.package.rasterpic},
       author = {Diego Hernangómez},
       year = {2026},
-      version = {0.4.0},
+      version = {0.4.0.9000},
       url = {https://dieghernan.github.io/rasterpic/},
-      abstract = {Create SpatRaster objects, as defined by the terra package, from digital images using a specified spatial object as a geographic reference.},
+      abstract = {Create SpatRaster objects, as defined by the terra package, from digital images using a specified spatial object as a geographic reference. The main function is an S3 generic, allowing methods for additional spatial classes.},
     }

@@ -1,3 +1,8 @@
+# rasterpic (development version)
+
+- `rasterpic_img()` is now an S3 generic, with methods for the supported input
+  classes.
+
 # rasterpic 0.4.0
 
 - Migrate vignettes to Quarto.

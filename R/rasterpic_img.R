@@ -4,14 +4,18 @@
 #'
 #' Geotags an image based on the coordinates of a given spatial object.
 #'
-#' @param x An **R** object that may be:
-#'   - An object created with \CRANpkg{sf} of class [`sf`][sf::st_sf],
-#'     [`sfc`][sf::st_sfc], [`sfg`][sf::st] or [`bbox`][sf::st_bbox].
-#'   - An object created with \CRANpkg{terra} of class
-#'     [`SpatRaster`][terra::rast], [`SpatVector`][terra::vect] or
-#'     [`SpatExtent`][terra::ext].
-#'   - A numeric vector of length 4 with the extent to be used for geotagging
-#'     (i.e. `c(xmin, ymin, xmax, ymax)`).
+#' `rasterpic_img()` is an S3 generic. **rasterpic** provides methods for the
+#' following classes:
+#' - `bbox`
+#' - `numeric`
+#' - `sf`
+#' - `sfc`
+#' - `sfg`
+#' - `SpatExtent`
+#' - `SpatRaster`
+#' - `SpatVector`
+#'
+#' @param x An **R** object (see **S3 methods**).
 #'
 #' @param img An image to be geotagged. It can be a local file or an online
 #'   file (e.g. `"https://i.imgur.com/6yHmlwT.jpeg"`). The following image
@@ -46,6 +50,8 @@
 #'   This parameter only applies when `x` is a `SpatExtent`, `sfg`, `bbox` or
 #'   a vector of coordinates. See **CRS** section.
 #'
+#' @param ... Further arguments passed to methods.
+#'
 #' @return
 #' A `SpatRaster` object (see [terra::rast()]) where each layer corresponds to
 #' a color channel of `img`:
@@ -62,6 +68,23 @@
 #'
 #' `vignette("rasterpic", package = "rasterpic")` explains, with examples, the
 #'   effect of parameters `halign`, `valign`, `expand`, `crop` and `mask`.
+#'
+#' ## S3 methods
+#'
+#' `rasterpic_img()` is an S3 generic. **rasterpic** provides methods for the
+#' following classes:
+#'
+#' - `bbox`, see [`bbox`][sf::st_bbox].
+#' - `numeric`. This must be a numeric vector of length 4 with the extent to be
+#'   used for geotagging (i.e. `c(xmin, ymin, xmax, ymax)`).
+#' - `sf`, see [`sf`][sf::st_sf].
+#' - `sfc`, see [`sfc`][sf::st_sfc].
+#' - `sfg`, see [`sfg`][sf::st].
+#' - `SpatExtent`, see [`SpatExtent`][terra::ext].
+#' - `SpatRaster`, see [`SpatRaster`][terra::rast].
+#' - `SpatVector`, see [`SpatVector`][terra::vect].
+#'
+#' Other packages can provide methods for additional spatial classes.
 #'
 #' ## CRS
 #'
@@ -173,7 +196,74 @@ rasterpic_img <- function(
   crop = FALSE,
   mask = FALSE,
   inverse = FALSE,
-  crs = NULL
+  crs = NULL,
+  ...
+) {
+  UseMethod("rasterpic_img")
+}
+
+#' @export
+rasterpic_img.default <- function(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  mask = FALSE,
+  inverse = FALSE,
+  crs = NULL,
+  ...
+) {
+  rasterpic_img_impl(
+    x = x,
+    img = img,
+    halign = halign,
+    valign = valign,
+    expand = expand,
+    crop = crop,
+    mask = mask,
+    inverse = inverse,
+    crs = crs,
+    ...
+  )
+}
+
+#' @export
+rasterpic_img.sf <- rasterpic_img.default
+
+#' @export
+rasterpic_img.sfc <- rasterpic_img.default
+
+#' @export
+rasterpic_img.sfg <- rasterpic_img.default
+
+#' @export
+rasterpic_img.bbox <- rasterpic_img.default
+
+#' @export
+rasterpic_img.numeric <- rasterpic_img.default
+
+#' @export
+rasterpic_img.SpatRaster <- rasterpic_img.default
+
+#' @export
+rasterpic_img.SpatVector <- rasterpic_img.default
+
+#' @export
+rasterpic_img.SpatExtent <- rasterpic_img.default
+
+rasterpic_img_impl <- function(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  mask = FALSE,
+  inverse = FALSE,
+  crs = NULL,
+  ...
 ) {
   # Validate alignment inputs.
   if (halign < 0 || halign > 1) {

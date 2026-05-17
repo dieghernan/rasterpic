@@ -101,6 +101,9 @@ autoplot(maskinverse)
   `SpatExtent`.
 - A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 
+`rasterpic_img()` is an S3 generic, so other packages can provide methods for
+additional spatial classes.
+
 ## Supported image formats
 
 **rasterpic** can parse the following image formats:

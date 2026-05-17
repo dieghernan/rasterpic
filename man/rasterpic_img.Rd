@@ -14,20 +14,12 @@ rasterpic_img(
   crop = FALSE,
   mask = FALSE,
   inverse = FALSE,
-  crs = NULL
+  crs = NULL,
+  ...
 )
 }
 \arguments{
-\item{x}{An \strong{R} object that may be:
-\itemize{
-\item An object created with \CRANpkg{sf} of class \code{\link[sf:st_sf]{sf}},
-\code{\link[sf:st_sfc]{sfc}}, \code{\link[sf:st]{sfg}} or \code{\link[sf:st_bbox]{bbox}}.
-\item An object created with \CRANpkg{terra} of class
-\code{\link[terra:rast]{SpatRaster}}, \code{\link[terra:vect]{SpatVector}} or
-\code{\link[terra:ext]{SpatExtent}}.
-\item A numeric vector of length 4 with the extent to be used for geotagging
-(i.e. \code{c(xmin, ymin, xmax, ymax)}).
-}}
+\item{x}{An \strong{R} object (see \strong{S3 methods}).}
 
 \item{img}{An image to be geotagged. It can be a local file or an online
 file (e.g. \code{"https://i.imgur.com/6yHmlwT.jpeg"}). The following image
@@ -63,6 +55,8 @@ See \strong{Details}.}
 \item{crs}{Character string describing a CRS.
 This parameter only applies when \code{x} is a \code{SpatExtent}, \code{sfg}, \code{bbox} or
 a vector of coordinates. See \strong{CRS} section.}
+
+\item{...}{Further arguments passed to methods.}
 }
 \value{
 A \code{SpatRaster} object (see \code{\link[terra:rast]{terra::rast()}}) where each layer corresponds to
@@ -80,10 +74,42 @@ The resulting \code{SpatRaster} will have an RGB specification as explained in
 }
 \description{
 Geotags an image based on the coordinates of a given spatial object.
+
+\code{rasterpic_img()} is an S3 generic. \strong{rasterpic} provides methods for the
+following classes:
+\itemize{
+\item \code{bbox}
+\item \code{numeric}
+\item \code{sf}
+\item \code{sfc}
+\item \code{sfg}
+\item \code{SpatExtent}
+\item \code{SpatRaster}
+\item \code{SpatVector}
+}
 }
 \details{
 \code{vignette("rasterpic", package = "rasterpic")} explains, with examples, the
 effect of parameters \code{halign}, \code{valign}, \code{expand}, \code{crop} and \code{mask}.
+\subsection{S3 methods}{
+
+\code{rasterpic_img()} is an S3 generic. \strong{rasterpic} provides methods for the
+following classes:
+\itemize{
+\item \code{bbox}, see \code{\link[sf:st_bbox]{bbox}}.
+\item \code{numeric}. This must be a numeric vector of length 4 with the extent to be
+used for geotagging (i.e. \code{c(xmin, ymin, xmax, ymax)}).
+\item \code{sf}, see \code{\link[sf:st_sf]{sf}}.
+\item \code{sfc}, see \code{\link[sf:st_sfc]{sfc}}.
+\item \code{sfg}, see \code{\link[sf:st]{sfg}}.
+\item \code{SpatExtent}, see \code{\link[terra:ext]{SpatExtent}}.
+\item \code{SpatRaster}, see \code{\link[terra:rast]{SpatRaster}}.
+\item \code{SpatVector}, see \code{\link[terra:vect]{SpatVector}}.
+}
+
+Other packages can provide methods for additional spatial classes.
+}
+
 \subsection{CRS}{
 
 This function preserves the CRS of \code{x} when applicable.

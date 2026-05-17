@@ -89,6 +89,9 @@ objects:
   and `SpatExtent`.
 - A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 
+The main function, `rasterpic_img()`, is an S3 generic, so other packages can
+provide methods for additional spatial classes.
+
 An example using an `sf` object:
 
 ```{r}
