@@ -6,8 +6,9 @@ Authors@R:
            comment = c(ORCID = "0000-0001-8457-4658"))
 Description: Create 'SpatRaster' objects, as defined by the 'terra'
     package, from digital images using a specified spatial object as a
-    geographic reference. The main function is an S3 generic, allowing
-    methods for additional spatial classes.
+    geographic reference. Supported inputs include objects from the 'sf',
+    'terra' and 'stars' packages. The main function is an S3 generic,
+    allowing methods for additional spatial classes.
 License: MIT + file LICENSE
 URL: https://dieghernan.github.io/rasterpic/,
     https://github.com/dieghernan/rasterpic
@@ -17,6 +18,7 @@ Depends:
 Imports: 
     png,
     sf (>= 1.0.0),
+    stars,
     terra (>= 1.8-21)
 Suggests: 
     doclisting,
@@ -37,4 +39,4 @@ Config/testthat/edition: 3
 Config/testthat/parallel: true
 Encoding: UTF-8
 X-schema.org-keywords: cran, jpeg, jpg, maps, png, r, r-package, r-stats,
-    raster, rstats, sf, terra, tif, tiff, cran-r
+    raster, rstats, sf, stars, terra, tif, tiff, cran-r

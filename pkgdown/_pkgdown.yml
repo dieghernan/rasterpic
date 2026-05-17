@@ -22,8 +22,8 @@ home:
   title: rasterpic | Convert digital images to SpatRaster objects
   description: >
     Create SpatRaster objects from digital images using a specified spatial
-    object as a geographic reference. The main function is extensible through
-    S3 methods.
+    object from **sf**, **terra** or **stars** as a geographic reference. The
+    main function is extensible through S3 methods.
 
 navbar:
   components:

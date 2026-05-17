@@ -8,9 +8,10 @@ test_that("Test bbox", {
   x <- sf::st_bbox(x)
   expect_s3_class(x, "bbox")
 
-  expect_message(raster <- rasterpic_img(x, img), "'crs' is NA")
+  expect_silent(raster <- rasterpic_img(x, img))
 
-  expect_true(terra::crs(raster) == "")
+  v <- terra::vect(sf::st_as_sfc(x))
+  expect_identical(terra::crs(raster), terra::crs(v))
 
   png_dim <- terra::rast(img, noflip = TRUE)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
@@ -34,8 +35,13 @@ test_that("Test bbox with projs", {
   x_a <- sf::st_transform(x, 25830)
   crs_wkt_sf <- sf::st_crs(x_a)$wkt
 
+  sf::st_crs(x) <- NA
   x <- sf::st_bbox(x)
   expect_s3_class(x, "bbox")
+
+  # NULL crs
+  raster_null <- rasterpic_img(x, img)
+  expect_true(terra::crs(raster_null) == "")
 
   raster <- rasterpic_img(x, img, crs = crs_wkt_sf)
   expect_false(terra::crs(raster) == "")
@@ -50,11 +56,6 @@ test_that("Test bbox with projs", {
   # Different x coords
   expect_true(terra::xmin(raster) < x[1])
   expect_true(terra::xmax(raster) > x[3])
-
-  # On mask message
-  expect_snapshot(mask <- rasterpic_img(x, img, crs = crs_wkt_sf, mask = TRUE))
-
-  expect_true(terra::ext(raster) == terra::ext(mask))
 
   # On crop ok
   crop <- rasterpic_img(x, img, crs = crs_wkt_sf, crop = TRUE)

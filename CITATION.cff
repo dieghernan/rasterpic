@@ -14,8 +14,9 @@ identifiers:
 - type: doi
   value: 10.32614/CRAN.package.rasterpic
 abstract: Create 'SpatRaster' objects, as defined by the 'terra' package, from digital
-  images using a specified spatial object as a geographic reference. The main function
-  is an S3 generic, allowing methods for additional spatial classes.
+  images using a specified spatial object as a geographic reference. Supported inputs
+  include objects from the 'sf', 'terra' and 'stars' packages. The main function is
+  an S3 generic, allowing methods for additional spatial classes.
 authors:
 - family-names: Hernangómez
   given-names: Diego
@@ -34,8 +35,9 @@ preferred-citation:
   version: 0.4.0.9000
   url: https://dieghernan.github.io/rasterpic/
   abstract: Create SpatRaster objects, as defined by the terra package, from digital
-    images using a specified spatial object as a geographic reference. The main function
-    is an S3 generic, allowing methods for additional spatial classes.
+    images using a specified spatial object as a geographic reference. Supported inputs
+    include objects from the sf, terra and stars packages. The main function is an
+    S3 generic, allowing methods for additional spatial classes.
 repository: https://CRAN.R-project.org/package=rasterpic
 repository-code: https://github.com/dieghernan/rasterpic
 url: https://dieghernan.github.io/rasterpic/
@@ -56,6 +58,7 @@ keywords:
 - raster
 - rstats
 - sf
+- stars
 - terra
 - tif
 - tiff
@@ -102,6 +105,19 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.sf
   version: '>= 1.0.0'
+- type: software
+  title: stars
+  abstract: 'stars: Spatiotemporal Arrays, Raster and Vector Data Cubes'
+  notes: Imports
+  url: https://r-spatial.github.io/stars/
+  repository: https://CRAN.R-project.org/package=stars
+  authors:
+  - family-names: Pebesma
+    given-names: Edzer
+    email: edzer.pebesma@uni-muenster.de
+    orcid: https://orcid.org/0000-0001-8049-7069
+  year: '2026'
+  doi: 10.32614/CRAN.package.stars
 - type: software
   title: terra
   abstract: 'terra: Spatial Data Analysis'

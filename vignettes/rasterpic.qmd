@@ -14,9 +14,9 @@ knitr:
     out.width: "100%"
 ---
 
-Getting started with **rasterpic** is easy: you need an image (`png`, `jpeg/jpg`
-or `tif/tiff`) and a spatial object from the **sf** or **terra** package to
-begin.
+Getting started with **rasterpic** is easy: you need an image (`png`,
+`jpeg/jpg` or `tif/tiff`) and a spatial object from the **sf**, **terra** or
+**stars** packages to begin.
 
 ## Basic usage
 
@@ -99,10 +99,11 @@ autoplot(maskinverse)
 - Spatial objects of the **sf** package: `sf`, `sfc`, `sfg` or `bbox`.
 - Spatial objects of the **terra** package: `SpatRaster`, `SpatVector` and
   `SpatExtent`.
+- Spatial objects of the **stars** package: `stars`.
 - A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 
-`rasterpic_img()` is an S3 generic, so other packages can provide methods for
-additional spatial classes.
+`rasterpic_img()` is an S3 generic. The methods for extent-like inputs use the
+object extent, and vector methods can also mask the image to the object shape.
 
 ## Supported image formats
 

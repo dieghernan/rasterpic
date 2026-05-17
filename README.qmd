@@ -84,13 +84,16 @@ install.packages(
 This package allows you to create custom maps using a wide variety of spatial
 objects:
 
-- Spatial objects created with the **sf** package: `sf`, `sfc`, `sfg` or `bbox`.
+- Spatial objects created with the **sf** package: `sf`, `sfc`, `sfg` or
+  `bbox`.
 - Spatial objects created with the **terra** package: `SpatRaster`, `SpatVector`
   and `SpatExtent`.
+- Spatial objects created with the **stars** package: `stars`.
 - A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 
-The main function, `rasterpic_img()`, is an S3 generic, so other packages can
-provide methods for additional spatial classes.
+The main function, `rasterpic_img()`, is an S3 generic. The methods for
+extent-like inputs use the object extent, and vector methods can also mask the
+image to the object shape.
 
 An example using an `sf` object:
 

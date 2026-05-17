@@ -75,10 +75,12 @@ spatial objects:
   `bbox`.
 - Spatial objects created with the **terra** package: `SpatRaster`,
   `SpatVector` and `SpatExtent`.
+- Spatial objects created with the **stars** package: `stars`.
 - A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 
-The main function, `rasterpic_img()`, is an S3 generic, so other
-packages can provide methods for additional spatial classes.
+The main function, `rasterpic_img()`, is an S3 generic. The methods for
+extent-like inputs use the object extent, and vector methods can also
+mask the image to the object shape.
 
 An example using an `sf` object:
 
@@ -161,5 +163,5 @@ A BibTeX entry for LaTeX users is:
       year = {2026},
       version = {0.4.0.9000},
       url = {https://dieghernan.github.io/rasterpic/},
-      abstract = {Create SpatRaster objects, as defined by the terra package, from digital images using a specified spatial object as a geographic reference. The main function is an S3 generic, allowing methods for additional spatial classes.},
+      abstract = {Create SpatRaster objects, as defined by the terra package, from digital images using a specified spatial object as a geographic reference. Supported inputs include objects from the sf, terra and stars packages. The main function is an S3 generic, allowing methods for additional spatial classes.},
     }

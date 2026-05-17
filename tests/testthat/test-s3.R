@@ -10,12 +10,23 @@ test_that("rasterpic_img is an S3 generic", {
   expect_identical(rasterpic_img(x, NULL), "dispatched")
 })
 
+test_that("rasterpic_img errors", {
+  x <- "a"
+
+  expect_snapshot(error = TRUE, rasterpic_img(x, NULL))
+
+  class(x) <- c("foo", "bar")
+
+  expect_snapshot(error = TRUE, rasterpic_img(x, NULL))
+})
+
 test_that("rasterpic_img registers supported input methods", {
   methods <- c(
     "default",
     "sf",
     "sfc",
     "sfg",
+    "stars",
     "bbox",
     "numeric",
     "SpatRaster",
@@ -25,23 +36,5 @@ test_that("rasterpic_img registers supported input methods", {
 
   for (method in methods) {
     expect_true(is.function(getS3method("rasterpic_img", method)))
-  }
-})
-
-test_that("rpic_input registers supported input methods", {
-  methods <- c(
-    "default",
-    "sf",
-    "sfc",
-    "sfg",
-    "bbox",
-    "numeric",
-    "SpatRaster",
-    "SpatVector",
-    "SpatExtent"
-  )
-
-  for (method in methods) {
-    expect_true(is.function(getS3method("rpic_input", method)))
   }
 })

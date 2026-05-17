@@ -3,7 +3,7 @@
     Code
       rasterpic_img(x, img)
     Condition
-      Error in `rpic_input.numeric()`:
+      Error in `rasterpic_img.numeric()`:
       ! Don't know how to extract a bounding box from 'x'.
 
 # Error on bad img formatting

@@ -3,6 +3,15 @@
 \encoding{UTF-8}
 \name{rasterpic_img}
 \alias{rasterpic_img}
+\alias{rasterpic_img.sf}
+\alias{rasterpic_img.sfc}
+\alias{rasterpic_img.sfg}
+\alias{rasterpic_img.stars}
+\alias{rasterpic_img.bbox}
+\alias{rasterpic_img.numeric}
+\alias{rasterpic_img.SpatRaster}
+\alias{rasterpic_img.SpatVector}
+\alias{rasterpic_img.SpatExtent}
 \title{Convert an image to a geotagged \code{SpatRaster}}
 \usage{
 rasterpic_img(
@@ -12,10 +21,109 @@ rasterpic_img(
   valign = 0.5,
   expand = 0,
   crop = FALSE,
+  ...
+)
+
+\method{rasterpic_img}{sf}(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  ...,
+  mask = FALSE,
+  inverse = FALSE
+)
+
+\method{rasterpic_img}{sfc}(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  ...,
+  mask = FALSE,
+  inverse = FALSE
+)
+
+\method{rasterpic_img}{sfg}(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  ...,
   mask = FALSE,
   inverse = FALSE,
-  crs = NULL,
+  crs = NULL
+)
+
+\method{rasterpic_img}{stars}(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
   ...
+)
+
+\method{rasterpic_img}{bbox}(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  ...,
+  crs = NULL
+)
+
+\method{rasterpic_img}{numeric}(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  ...,
+  crs = NULL
+)
+
+\method{rasterpic_img}{SpatRaster}(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  ...
+)
+
+\method{rasterpic_img}{SpatVector}(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  ...,
+  mask = FALSE,
+  inverse = FALSE
+)
+
+\method{rasterpic_img}{SpatExtent}(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  ...,
+  crs = NULL
 )
 }
 \arguments{
@@ -45,18 +153,17 @@ double the original size. See \strong{Details}.}
 \item{crop}{Logical. Should the raster be cropped to the (expanded) bounding
 box of \code{x}? See \strong{Details}.}
 
-\item{mask}{Logical, applicable only if \code{x} is an \code{sf}, \code{sfc} or
-\code{SpatVector} object. Should the raster be \link[terra:mask]{masked} to \code{x}?
-See \strong{Details}.}
+\item{...}{Further arguments passed to methods.}
+
+\item{mask}{Logical, available for vector methods. Should the raster be
+\link[terra:mask]{masked} to \code{x}? See \strong{Details}.}
 
 \item{inverse}{Logical. This only has an effect when \code{mask = TRUE}. If
 \code{TRUE}, areas of the raster that do not overlap with \code{x} are masked.}
 
-\item{crs}{Character string describing a CRS.
-This parameter only applies when \code{x} is a \code{SpatExtent}, \code{sfg}, \code{bbox} or
-a vector of coordinates. See \strong{CRS} section.}
-
-\item{...}{Further arguments passed to methods.}
+\item{crs}{Character string describing a CRS. This parameter only applies
+when \code{x} is a \code{SpatExtent}, \code{sfg}, \code{bbox} or a numeric coordinate vector.
+See \strong{CRS} section.}
 }
 \value{
 A \code{SpatRaster} object (see \code{\link[terra:rast]{terra::rast()}}) where each layer corresponds to
@@ -75,14 +182,15 @@ The resulting \code{SpatRaster} will have an RGB specification as explained in
 \description{
 Geotags an image based on the coordinates of a given spatial object.
 
-\code{rasterpic_img()} is an S3 generic. \strong{rasterpic} provides methods for the
-following classes:
+\code{rasterpic_img()} is an S3 generic. \CRANpkg{rasterpic} provides methods for
+the following classes:
 \itemize{
 \item \code{bbox}
 \item \code{numeric}
 \item \code{sf}
 \item \code{sfc}
 \item \code{sfg}
+\item \code{stars}
 \item \code{SpatExtent}
 \item \code{SpatRaster}
 \item \code{SpatVector}
@@ -93,8 +201,7 @@ following classes:
 effect of parameters \code{halign}, \code{valign}, \code{expand}, \code{crop} and \code{mask}.
 \subsection{S3 methods}{
 
-\code{rasterpic_img()} is an S3 generic. \strong{rasterpic} provides methods for the
-following classes:
+\CRANpkg{rasterpic} provides methods for the following classes:
 \itemize{
 \item \code{bbox}, see \code{\link[sf:st_bbox]{bbox}}.
 \item \code{numeric}. This must be a numeric vector of length 4 with the extent to be
@@ -102,12 +209,16 @@ used for geotagging (i.e. \code{c(xmin, ymin, xmax, ymax)}).
 \item \code{sf}, see \code{\link[sf:st_sf]{sf}}.
 \item \code{sfc}, see \code{\link[sf:st_sfc]{sfc}}.
 \item \code{sfg}, see \code{\link[sf:st]{sfg}}.
+\item \code{stars}, see \code{\link[stars:st_as_stars]{stars}}.
 \item \code{SpatExtent}, see \code{\link[terra:ext]{SpatExtent}}.
 \item \code{SpatRaster}, see \code{\link[terra:rast]{SpatRaster}}.
 \item \code{SpatVector}, see \code{\link[terra:vect]{SpatVector}}.
 }
 
 Other packages can provide methods for additional spatial classes.
+
+Methods for extent-like inputs use the object extent. Methods for vector
+inputs can also mask the image to the object shape.
 }
 
 \subsection{CRS}{
@@ -198,6 +309,11 @@ From \CRANpkg{sf}:
 \item \code{\link[sf:st_bbox]{sf::st_bbox()}}.
 \item \code{vignette("sf1", package = "sf")} to understand how \CRANpkg{sf} organizes
 \strong{R} objects.
+}
+
+From \CRANpkg{stars}:
+\itemize{
+\item \code{\link[stars:st_as_stars]{stars::st_as_stars()}}.
 }
 
 From \CRANpkg{terra}:

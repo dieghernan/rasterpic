@@ -72,78 +72,16 @@ rpic_read <- function(img, crs = NA) {
   rast
 }
 
-rpic_input <- function(x, crs = NULL) {
-  UseMethod("rpic_input")
-}
-
-#' @export
-rpic_input.default <- function(x, crs = NULL) {
-  stop("Don't know how to extract a bounding box from 'x'.")
-}
-
-#' @export
-rpic_input.sf <- function(x, crs = NULL) {
-  rpic_input(terra::vect(x), crs = crs)
-}
-
-#' @export
-rpic_input.sfc <- rpic_input.sf
-
-#' @export
-rpic_input.SpatRaster <- function(x, crs = NULL) {
-  rpic_input_spat(x)
-}
-
-#' @export
-rpic_input.SpatVector <- function(x, crs = NULL) {
-  rpic_input_spat(x)
-}
-
-#' @export
-rpic_input.sfg <- function(x, crs = NULL) {
-  x <- terra::vect(x)
-  box <- c(terra::xmin(x), terra::ymin(x), terra::xmax(x), terra::ymax(x))
-  rpic_input_box(x = x, box = box, crs = crs)
-}
-
-#' @export
-rpic_input.SpatExtent <- function(x, crs = NULL) {
-  box <- c(terra::xmin(x), terra::ymin(x), terra::xmax(x), terra::ymax(x))
-  rpic_input_box(x = x, box = box, crs = crs)
-}
-
-#' @export
-rpic_input.bbox <- function(x, crs = NULL) {
-  box <- c(x["xmin"], x["ymin"], x["xmax"], x["ymax"])
-  rpic_input_box(x = x, box = unname(box), crs = crs)
-}
-
-#' @export
-rpic_input.numeric <- function(x, crs = NULL) {
-  if (length(x) != 4) {
-    stop("Don't know how to extract a bounding box from 'x'.")
-  }
-
-  rpic_input_box(x = x, box = x, crs = crs)
-}
 
 rpic_input_spat <- function(x) {
-  if (terra::is.lonlat(x)) {
-    message(
-      "Warning: x has geographic coordinates. ",
-      "Assuming planar coordinates."
-    )
-  }
-
   box <- c(terra::xmin(x), terra::ymin(x), terra::xmax(x), terra::ymax(x))
   list(x = x, box = box, crs = terra::crs(x))
 }
 
-rpic_input_box <- function(x, box, crs) {
+rpic_crs <- function(crs) {
   if (any(is.null(crs), is.na(crs))) {
-    message("'crs' is NA.")
-    crs <- NA
+    return("")
   }
 
-  list(x = x, box = box, crs = crs)
+  crs
 }

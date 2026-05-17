@@ -2,7 +2,7 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "rasterpic",
-  "description": "Create 'SpatRaster' objects, as defined by the 'terra' package, from digital images using a specified spatial object as a geographic reference. The main function is an S3 generic, allowing methods for additional spatial classes.",
+  "description": "Create 'SpatRaster' objects, as defined by the 'terra' package, from digital images using a specified spatial object as a geographic reference. Supported inputs include objects from the 'sf', 'terra' and 'stars' packages. The main function is an S3 generic, allowing methods for additional spatial classes.",
   "name": "rasterpic: Convert Digital Images to 'SpatRaster' Objects",
   "relatedLink": ["https://dieghernan.github.io/rasterpic/", "https://CRAN.R-project.org/package=rasterpic"],
   "codeRepository": "https://github.com/dieghernan/rasterpic",
@@ -157,6 +157,18 @@
     },
     "4": {
       "@type": "SoftwareApplication",
+      "identifier": "stars",
+      "name": "stars",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=stars"
+    },
+    "5": {
+      "@type": "SoftwareApplication",
       "identifier": "terra",
       "name": "terra",
       "version": ">= 1.8-21",
@@ -170,8 +182,8 @@
     },
     "SystemRequirements": null
   },
-  "keywords": ["cran", "jpeg", "jpg", "maps", "png", "r", "r-package", "r-stats", "raster", "rstats", "sf", "terra", "tif", "tiff", "cran-r"],
-  "fileSize": "1172.928KB",
+  "keywords": ["cran", "jpeg", "jpg", "maps", "png", "r", "r-package", "r-stats", "raster", "rstats", "sf", "stars", "terra", "tif", "tiff", "cran-r"],
+  "fileSize": "1178.966KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

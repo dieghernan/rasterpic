@@ -4,17 +4,19 @@
 #'
 #' Geotags an image based on the coordinates of a given spatial object.
 #'
-#' `rasterpic_img()` is an S3 generic. **rasterpic** provides methods for the
-#' following classes:
+#' `rasterpic_img()` is an S3 generic. \CRANpkg{rasterpic} provides methods for
+#' the following classes:
 #' - `bbox`
 #' - `numeric`
 #' - `sf`
 #' - `sfc`
 #' - `sfg`
+#' - `stars`
 #' - `SpatExtent`
 #' - `SpatRaster`
 #' - `SpatVector`
 #'
+#' @rdname rasterpic_img
 #' @param x An **R** object (see **S3 methods**).
 #'
 #' @param img An image to be geotagged. It can be a local file or an online
@@ -39,16 +41,15 @@
 #' @param crop Logical. Should the raster be cropped to the (expanded) bounding
 #'   box of `x`? See **Details**.
 #'
-#' @param mask Logical, applicable only if `x` is an `sf`, `sfc` or
-#'   `SpatVector` object. Should the raster be [masked][terra::mask] to `x`?
-#'   See **Details**.
+#' @param mask Logical, available for vector methods. Should the raster be
+#'   [masked][terra::mask] to `x`? See **Details**.
 #'
 #' @param inverse Logical. This only has an effect when `mask = TRUE`. If
 #'   `TRUE`, areas of the raster that do not overlap with `x` are masked.
 #'
-#' @param crs Character string describing a CRS.
-#'   This parameter only applies when `x` is a `SpatExtent`, `sfg`, `bbox` or
-#'   a vector of coordinates. See **CRS** section.
+#' @param crs Character string describing a CRS. This parameter only applies
+#'   when `x` is a `SpatExtent`, `sfg`, `bbox` or a numeric coordinate vector.
+#'   See **CRS** section.
 #'
 #' @param ... Further arguments passed to methods.
 #'
@@ -71,8 +72,7 @@
 #'
 #' ## S3 methods
 #'
-#' `rasterpic_img()` is an S3 generic. **rasterpic** provides methods for the
-#' following classes:
+#' \CRANpkg{rasterpic} provides methods for the following classes:
 #'
 #' - `bbox`, see [`bbox`][sf::st_bbox].
 #' - `numeric`. This must be a numeric vector of length 4 with the extent to be
@@ -80,11 +80,15 @@
 #' - `sf`, see [`sf`][sf::st_sf].
 #' - `sfc`, see [`sfc`][sf::st_sfc].
 #' - `sfg`, see [`sfg`][sf::st].
+#' - `stars`, see [`stars`][stars::st_as_stars].
 #' - `SpatExtent`, see [`SpatExtent`][terra::ext].
 #' - `SpatRaster`, see [`SpatRaster`][terra::rast].
 #' - `SpatVector`, see [`SpatVector`][terra::vect].
 #'
 #' Other packages can provide methods for additional spatial classes.
+#'
+#' Methods for extent-like inputs use the object extent. Methods for vector
+#' inputs can also mask the image to the object shape.
 #'
 #' ## CRS
 #'
@@ -108,6 +112,9 @@
 #' - [sf::st_bbox()].
 #' - `vignette("sf1", package = "sf")` to understand how \CRANpkg{sf} organizes
 #'   **R** objects.
+#'
+#' From \CRANpkg{stars}:
+#' - [stars::st_as_stars()].
 #'
 #' From \CRANpkg{terra}:
 #' - [terra::vect()], [terra::rast()] and [terra::ext()].
@@ -194,9 +201,6 @@ rasterpic_img <- function(
   valign = 0.5,
   expand = 0,
   crop = FALSE,
-  mask = FALSE,
-  inverse = FALSE,
-  crs = NULL,
   ...
 ) {
   UseMethod("rasterpic_img")
@@ -210,58 +214,299 @@ rasterpic_img.default <- function(
   valign = 0.5,
   expand = 0,
   crop = FALSE,
-  mask = FALSE,
-  inverse = FALSE,
-  crs = NULL,
   ...
 ) {
-  rasterpic_img_impl(
-    x = x,
-    img = img,
-    halign = halign,
-    valign = valign,
-    expand = expand,
-    crop = crop,
-    mask = mask,
-    inverse = inverse,
-    crs = crs,
-    ...
+  # Create error message
+  msg <- paste0(
+    "S3 method `rasterpic_img` not implemented for `",
+    paste0(class(x), collapse = "."),
+    "` objects."
   )
+  stop(msg)
 }
 
+#' @rdname rasterpic_img
 #' @export
-rasterpic_img.sf <- rasterpic_img.default
-
-#' @export
-rasterpic_img.sfc <- rasterpic_img.default
-
-#' @export
-rasterpic_img.sfg <- rasterpic_img.default
-
-#' @export
-rasterpic_img.bbox <- rasterpic_img.default
-
-#' @export
-rasterpic_img.numeric <- rasterpic_img.default
-
-#' @export
-rasterpic_img.SpatRaster <- rasterpic_img.default
-
-#' @export
-rasterpic_img.SpatVector <- rasterpic_img.default
-
-#' @export
-rasterpic_img.SpatExtent <- rasterpic_img.default
-
-rasterpic_img_impl <- function(
+#' @encoding UTF-8
+rasterpic_img.sf <- function(
   x,
   img,
   halign = 0.5,
   valign = 0.5,
   expand = 0,
   crop = FALSE,
+  ...,
+  mask = FALSE,
+  inverse = FALSE
+) {
+  crs <- sf::st_crs(x)
+
+  x <- terra::vect(x)
+
+  if (is.na(crs)) {
+    terra::crs(x) <- ""
+  }
+
+  rasterpic_img(
+    x,
+    img = img,
+    halign = halign,
+    valign = valign,
+    expand = expand,
+    crop = crop,
+    mask = mask,
+    inverse = inverse
+  )
+}
+
+#' @rdname rasterpic_img
+#' @export
+#' @encoding UTF-8
+rasterpic_img.sfc <- function(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  ...,
+  mask = FALSE,
+  inverse = FALSE
+) {
+  x <- sf::st_as_sf(x)
+
+  rasterpic_img(
+    x,
+    img = img,
+    halign = halign,
+    valign = valign,
+    expand = expand,
+    crop = crop,
+    mask = mask,
+    inverse = inverse
+  )
+}
+
+#' @rdname rasterpic_img
+#' @export
+#' @encoding UTF-8
+rasterpic_img.sfg <- function(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  ...,
   mask = FALSE,
   inverse = FALSE,
+  crs = NULL
+) {
+  if (any(is.null(crs), is.na(crs))) {
+    crs <- NA
+  }
+  x <- sf::st_sfc(x)
+  x <- sf::st_sf(x)
+  sf::st_crs(x) <- crs
+  rasterpic_img(
+    x,
+    img = img,
+    halign = halign,
+    valign = valign,
+    expand = expand,
+    crop = crop,
+    mask = mask,
+    inverse = inverse
+  )
+}
+
+#' @rdname rasterpic_img
+#' @export
+#' @encoding UTF-8
+rasterpic_img.stars <- function(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  ...
+) {
+  box <- unname(sf::st_bbox(x))
+  crs <- sf::st_crs(x)$wkt
+
+  rasterpic_img_impl(
+    box = box,
+    img = img,
+    halign = halign,
+    valign = valign,
+    expand = expand,
+    crop = crop,
+    crs = crs
+  )
+}
+
+#' @rdname rasterpic_img
+#' @export
+#' @encoding UTF-8
+rasterpic_img.bbox <- function(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  ...,
+  crs = NULL
+) {
+  x <- sf::st_as_sfc(x)
+
+  crs_orig <- sf::st_crs(x)
+  if (is.na(crs_orig)) {
+    sf::st_crs(x) <- unique(c(crs, NA))[1]
+  }
+
+  rasterpic_img(
+    x,
+    img = img,
+    halign = halign,
+    valign = valign,
+    expand = expand,
+    crop = crop
+  )
+}
+
+#' @rdname rasterpic_img
+#' @export
+#' @encoding UTF-8
+rasterpic_img.numeric <- function(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  ...,
+  crs = NULL
+) {
+  if (length(x) != 4) {
+    stop("Don't know how to extract a bounding box from 'x'.")
+  }
+
+  rasterpic_img_impl(
+    box = x,
+    img = img,
+    halign = halign,
+    valign = valign,
+    expand = expand,
+    crop = crop,
+    crs = crs
+  )
+}
+
+#' @rdname rasterpic_img
+#' @export
+#' @encoding UTF-8
+rasterpic_img.SpatRaster <- function(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  ...
+) {
+  processed <- rpic_input_spat(x)
+
+  box <- processed$box
+  x <- processed$x
+  crs <- processed$crs
+
+  rasterpic_img_impl(
+    box = box,
+    img = img,
+    halign = halign,
+    valign = valign,
+    expand = expand,
+    crop = crop,
+    crs = crs
+  )
+}
+
+#' @rdname rasterpic_img
+#' @export
+#' @encoding UTF-8
+rasterpic_img.SpatVector <- function(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  ...,
+  mask = FALSE,
+  inverse = FALSE
+) {
+  processed <- rpic_input_spat(x)
+
+  box <- processed$box
+  x <- processed$x
+  crs <- processed$crs
+
+  new_rast <- rasterpic_img_impl(
+    box = box,
+    img = img,
+    halign = halign,
+    valign = valign,
+    expand = expand,
+    crop = crop,
+    crs = crs
+  )
+
+  # Optionally mask. ----
+
+  if (mask) {
+    # Ensure same crs.
+    terra::crs(x) <- terra::crs(new_rast)
+    new_rast <- terra::mask(new_rast, x, inverse = inverse)
+  }
+
+  new_rast
+}
+
+#' @rdname rasterpic_img
+#' @export
+#' @encoding UTF-8
+rasterpic_img.SpatExtent <- function(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  ...,
+  crs = NULL
+) {
+  box <- c(terra::xmin(x), terra::ymin(x), terra::xmax(x), terra::ymax(x))
+
+  rasterpic_img_impl(
+    box = box,
+    img = img,
+    halign = halign,
+    valign = valign,
+    expand = expand,
+    crop = crop,
+    crs = crs
+  )
+}
+
+rasterpic_img_impl <- function(
+  box,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
   crs = NULL,
   ...
 ) {
@@ -273,16 +518,19 @@ rasterpic_img_impl <- function(
     stop("'valign' should be between 0 and 1.")
   }
 
-  # A. Extract CRS and initial extent from `x`. ----
+  # Alert on no crs.
+  crs <- rpic_crs(crs)
 
-  process <- rpic_input(x, crs)
+  if (crs == "") {
+    message("'crs' is NA.")
+  } else if (terra::is.lonlat(crs, warn = FALSE)) {
+    message(
+      "Warning: x has geographic coordinates. ",
+      "Assuming planar coordinates."
+    )
+  }
 
-  # Unpack extracted values.
-  crs <- process$crs
-  box <- process$box
-  x <- process$x
-
-  # B. Read the `img` file. ----
+  # A. Read the `img` file. ----
   rast <- rpic_read(img, crs)
 
   # Warn when the image does not have the expected number of layers.
@@ -295,7 +543,7 @@ rasterpic_img_impl <- function(
     )
   }
 
-  # C. Geotag the image. ----
+  # B. Geotag the image. ----
   ## 1. Create an expanded bounding box. ----
   innermarg <- min((box[3] - box[1]), (box[4] - box[2])) * expand
 
@@ -339,21 +587,8 @@ rasterpic_img_impl <- function(
   new_rast <- rast
   terra::ext(new_rast) <- terra::ext(ext)
 
-  # D. Optionally crop. ----
+  # C. Optionally crop. ----
   new_rast <- rpic_crop(crop, box_marg, new_rast)
-
-  # E. Optionally mask. ----
-
-  if (mask) {
-    if (inherits(x, "SpatVector")) {
-      # Set CRS on the `SpatVector`.
-      terra::crs(x) <- crs
-
-      new_rast <- terra::mask(new_rast, x, inverse = inverse)
-    } else {
-      message("'mask' only available when 'x' is an 'sf/sfc/SpatVector' object")
-    }
-  }
 
   # Assign RGB if there are at least 3 layers and no RGB definition.
   if (terra::nlyr(new_rast) >= 3) {

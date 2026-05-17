@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Create 'SpatRaster' objects, as defined by the 'terra' package, from digital images using a specified spatial object as a geographic reference. The main function is an S3 generic, allowing methods for additional spatial classes.
+Create 'SpatRaster' objects, as defined by the 'terra' package, from digital images using a specified spatial object as a geographic reference. Supported inputs include objects from the 'sf', 'terra' and 'stars' packages. The main function is an S3 generic, allowing methods for additional spatial classes.
 }
 \seealso{
 Useful links:
