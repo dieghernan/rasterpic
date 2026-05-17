@@ -6,30 +6,24 @@
 #'
 #' `rasterpic_img()` is an S3 generic. \CRANpkg{rasterpic} provides methods for
 #' the following classes:
-#' - `bbox`
-#' - `numeric`
-#' - `sf`
-#' - `sfc`
-#' - `sfg`
-#' - `stars`
-#' - `SpatExtent`
-#' - `SpatRaster`
-#' - `SpatVector`
+#'
+#' `r doclisting::methods_list("rasterpic_img")`
 #'
 #' @rdname rasterpic_img
 #' @param x An **R** object (see **S3 methods**).
 #'
-#' @param img An image to be geotagged. It can be a local file or an online
-#'   file (e.g. `"https://i.imgur.com/6yHmlwT.jpeg"`). The following image
+#' @param img An image to be geotagged. It can be a local file or a URL
+#'   (e.g. `"https://i.imgur.com/6yHmlwT.jpeg"`). The following image
 #'   extensions are accepted:
-#'   - `png`.
-#'   - `jpeg`/`jpg`.
-#'   - `tiff`/`tif`.
 #'
-#' @param halign Numeric between `0` and `1` giving the horizontal alignment of
+#'   - `png` files
+#'   - `jpeg`/`jpg` files
+#'   - `tiff`/`tif` files
+#'
+#' @param halign A number between `0` and `1` giving the horizontal alignment of
 #'   `img` relative to `x`. `0` aligns `x` with the left edge, `1` aligns with
 #'   the right edge and `0.5` centers it horizontally.
-#' @param valign Numeric between `0` and `1` giving the vertical alignment of
+#' @param valign A number between `0` and `1` giving the vertical alignment of
 #'   `img` relative to `x`. `0` aligns `x` with the bottom edge, `1` aligns with
 #'   the top edge and `0.5` centers it vertically.
 #' @seealso `vignette("rasterpic", package = "rasterpic")` for examples.
@@ -42,10 +36,10 @@
 #'   box of `x`? See **Details**.
 #'
 #' @param mask Logical, available for vector methods. Should the raster be
-#'   [masked][terra::mask] to `x`? See **Details**.
+#'   [masked][terra::mask] to the shape of `x`? See **Details**.
 #'
 #' @param inverse Logical. This only has an effect when `mask = TRUE`. If
-#'   `TRUE`, areas of the raster that do not overlap with `x` are masked.
+#'   `TRUE`, areas of the raster covered by `x` are masked.
 #'
 #' @param crs Character string describing a CRS. This parameter only applies
 #'   when `x` is a `SpatExtent`, `sfg`, `bbox` or a numeric coordinate vector.
@@ -56,6 +50,7 @@
 #' @return
 #' A `SpatRaster` object (see [terra::rast()]) where each layer corresponds to
 #' a color channel of `img`:
+#'
 #' - If `img` has at least 3 channels (e.g. layers), the result will have
 #'   an additional property setting layers 1 to 3 as the red, green and blue
 #'   channels with names `"r"`, `"g"` and `"b"` and `alpha` if applicable.
@@ -68,22 +63,16 @@
 #' @details
 #'
 #' `vignette("rasterpic", package = "rasterpic")` explains, with examples, the
-#'   effect of parameters `halign`, `valign`, `expand`, `crop` and `mask`.
+#' effect of parameters `halign`, `valign`, `expand`, `crop` and `mask`.
 #'
 #' ## S3 methods
 #'
-#' \CRANpkg{rasterpic} provides methods for the following classes:
+#' \CRANpkg{rasterpic} supports the following input classes:
 #'
-#' - `bbox`, see [`bbox`][sf::st_bbox].
-#' - `numeric`. This must be a numeric vector of length 4 with the extent to be
-#'   used for geotagging (i.e. `c(xmin, ymin, xmax, ymax)`).
-#' - `sf`, see [`sf`][sf::st_sf].
-#' - `sfc`, see [`sfc`][sf::st_sfc].
-#' - `sfg`, see [`sfg`][sf::st].
-#' - `stars`, see [`stars`][stars::st_as_stars].
-#' - `SpatExtent`, see [`SpatExtent`][terra::ext].
-#' - `SpatRaster`, see [`SpatRaster`][terra::rast].
-#' - `SpatVector`, see [`SpatVector`][terra::vect].
+#' - **sf** classes: `sf`, `sfc`, `sfg` or `bbox`.
+#' - **terra** classes: `SpatRaster`, `SpatVector` and `SpatExtent`.
+#' - **stars** classes: `stars`.
+#' - A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 #'
 #' Other packages can provide methods for additional spatial classes.
 #'
@@ -99,6 +88,7 @@
 #' `crs` can be in a WKT format, as a `"authority:number"` code such as
 #' `"EPSG:4326"` or a PROJ-string format such as `"+proj=utm +zone=12"`. It can
 #' also be retrieved with:
+#'
 #' - [`sf::st_crs(25830)$wkt`][sf::st_crs].
 #' - [terra::crs()].
 #' - [tidyterra::pull_crs()].
@@ -108,25 +98,30 @@
 #' @seealso
 #'
 #' From \CRANpkg{sf}:
+#'
 #' - [sf::st_crs()].
 #' - [sf::st_bbox()].
 #' - `vignette("sf1", package = "sf")` to understand how \CRANpkg{sf} organizes
 #'   **R** objects.
 #'
 #' From \CRANpkg{stars}:
+#'
 #' - [stars::st_as_stars()].
 #'
 #' From \CRANpkg{terra}:
+#'
 #' - [terra::vect()], [terra::rast()] and [terra::ext()].
 #' - [terra::mask()].
 #' - [terra::crs()].
 #' - [terra::RGB()].
 #'
 #' For plotting:
+#'
 #' - [terra::plot()] and [terra::plotRGB()].
 #' - With \CRANpkg{ggplot2}, use \CRANpkg{tidyterra}:
 #'   - [tidyterra::autoplot.SpatRaster()].
 #'   - [tidyterra::geom_spatraster_rgb()].
+#'
 #' - Other packages:
 #'   - \CRANpkg{tmap}.
 #'   - \CRANpkg{mapsf}.
@@ -216,7 +211,7 @@ rasterpic_img.default <- function(
   crop = FALSE,
   ...
 ) {
-  # Create error message
+  # Report unsupported S3 classes clearly.
   msg <- paste0(
     "S3 method `rasterpic_img` not implemented for `",
     paste0(class(x), collapse = "."),
@@ -463,10 +458,10 @@ rasterpic_img.SpatVector <- function(
     crs = crs
   )
 
-  # Optionally mask. ----
+  # Optionally mask the raster. ----
 
   if (mask) {
-    # Ensure same crs.
+    # Ensure the same CRS.
     terra::crs(x) <- terra::crs(new_rast)
     new_rast <- terra::mask(new_rast, x, inverse = inverse)
   }
@@ -518,7 +513,7 @@ rasterpic_img_impl <- function(
     stop("'valign' should be between 0 and 1.")
   }
 
-  # Alert on no crs.
+  # Normalize missing CRS values.
   crs <- rpic_crs(crs)
 
   if (crs == "") {

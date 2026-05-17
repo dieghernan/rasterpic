@@ -72,7 +72,6 @@ rpic_read <- function(img, crs = NA) {
   rast
 }
 
-
 rpic_input_spat <- function(x) {
   box <- c(terra::xmin(x), terra::ymin(x), terra::xmax(x), terra::ymax(x))
   list(x = x, box = box, crs = terra::crs(x))

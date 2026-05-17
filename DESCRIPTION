@@ -18,13 +18,13 @@ Depends:
 Imports: 
     png,
     sf (>= 1.0.0),
-    stars,
     terra (>= 1.8-21)
 Suggests: 
     doclisting,
     ggplot2,
     knitr,
     quarto,
+    stars,
     testthat (>= 3.0.0),
     tidyterra
 VignetteBuilder: 
