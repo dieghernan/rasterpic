@@ -2,8 +2,9 @@
 
 Create 'SpatRaster' objects, as defined by the 'terra' package, from
 digital images using a specified spatial object as a geographic
-reference. The main function is an S3 generic, allowing methods for
-additional spatial classes.
+reference. Supported inputs include objects from the 'sf', 'terra' and
+'stars' packages. The main function is an S3 generic, allowing methods
+for additional spatial classes.
 
 ## See also
 

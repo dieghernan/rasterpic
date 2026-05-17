@@ -1,7 +1,6 @@
 # Compute aspect ratio for spatial input
 
-Helper function. The ratio is computed as width / height (or cols /
-rows).
+Computes the aspect ratio as width / height, or columns / rows.
 
 ## Usage
 
@@ -19,7 +18,7 @@ asp_ratio(x)
 
 ## Value
 
-The aspect ratio.
+A numeric scalar giving the aspect ratio.
 
 ## Examples
 

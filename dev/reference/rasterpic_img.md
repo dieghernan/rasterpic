@@ -2,10 +2,19 @@
 
 Geotags an image based on the coordinates of a given spatial object.
 
-`rasterpic_img()` is an S3 generic. **rasterpic** provides methods for
-the following classes:
+`rasterpic_img()` is an S3 generic.
+[rasterpic](https://CRAN.R-project.org/package=rasterpic) provides
+methods for the following classes:
+
+- `SpatExtent`
+
+- `SpatRaster`
+
+- `SpatVector`
 
 - `bbox`
+
+- `default`
 
 - `numeric`
 
@@ -15,11 +24,7 @@ the following classes:
 
 - `sfg`
 
-- `SpatExtent`
-
-- `SpatRaster`
-
-- `SpatVector`
+- `stars`
 
 ## Usage
 
@@ -31,10 +36,118 @@ rasterpic_img(
   valign = 0.5,
   expand = 0,
   crop = FALSE,
+  ...
+)
+
+# S3 method for class 'sf'
+rasterpic_img(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  ...,
+  mask = FALSE,
+  inverse = FALSE
+)
+
+# S3 method for class 'sfc'
+rasterpic_img(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  ...,
+  mask = FALSE,
+  inverse = FALSE
+)
+
+# S3 method for class 'sfg'
+rasterpic_img(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  ...,
   mask = FALSE,
   inverse = FALSE,
-  crs = NULL,
+  crs = NULL
+)
+
+# S3 method for class 'stars'
+rasterpic_img(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
   ...
+)
+
+# S3 method for class 'bbox'
+rasterpic_img(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  ...,
+  crs = NULL
+)
+
+# S3 method for class 'numeric'
+rasterpic_img(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  ...,
+  crs = NULL
+)
+
+# S3 method for class 'SpatRaster'
+rasterpic_img(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  ...
+)
+
+# S3 method for class 'SpatVector'
+rasterpic_img(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  ...,
+  mask = FALSE,
+  inverse = FALSE
+)
+
+# S3 method for class 'SpatExtent'
+rasterpic_img(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  ...,
+  crs = NULL
 )
 ```
 
@@ -46,25 +159,25 @@ rasterpic_img(
 
 - img:
 
-  An image to be geotagged. It can be a local file or an online file
-  (e.g. `"https://i.imgur.com/6yHmlwT.jpeg"`). The following image
-  extensions are accepted:
+  An image to be geotagged. It can be a local file or a URL (e.g.
+  `"https://i.imgur.com/6yHmlwT.jpeg"`). The following image extensions
+  are accepted:
 
-  - `png`.
+  - `png` files
 
-  - `jpeg`/`jpg`.
+  - `jpeg`/`jpg` files
 
-  - `tiff`/`tif`.
+  - `tiff`/`tif` files
 
 - halign:
 
-  Numeric between `0` and `1` giving the horizontal alignment of `img`
+  A number between `0` and `1` giving the horizontal alignment of `img`
   relative to `x`. `0` aligns `x` with the left edge, `1` aligns with
   the right edge and `0.5` centers it horizontally.
 
 - valign:
 
-  Numeric between `0` and `1` giving the vertical alignment of `img`
+  A number between `0` and `1` giving the vertical alignment of `img`
   relative to `x`. `0` aligns `x` with the bottom edge, `1` aligns with
   the top edge and `0.5` centers it vertically.
 
@@ -79,27 +192,26 @@ rasterpic_img(
   Logical. Should the raster be cropped to the (expanded) bounding box
   of `x`? See **Details**.
 
+- ...:
+
+  Further arguments passed to methods.
+
 - mask:
 
-  Logical, applicable only if `x` is an `sf`, `sfc` or `SpatVector`
-  object. Should the raster be
-  [masked](https://rspatial.github.io/terra/reference/mask.html) to `x`?
-  See **Details**.
+  Logical, available for vector methods. Should the raster be
+  [masked](https://rspatial.github.io/terra/reference/mask.html) to the
+  shape of `x`? See **Details**.
 
 - inverse:
 
   Logical. This only has an effect when `mask = TRUE`. If `TRUE`, areas
-  of the raster that do not overlap with `x` are masked.
+  of the raster covered by `x` are masked.
 
 - crs:
 
   Character string describing a CRS. This parameter only applies when
-  `x` is a `SpatExtent`, `sfg`, `bbox` or a vector of coordinates. See
-  **CRS** section.
-
-- ...:
-
-  Further arguments passed to methods.
+  `x` is a `SpatExtent`, `sfg`, `bbox` or a numeric coordinate vector.
+  See **CRS** section.
 
 ## Value
 
@@ -127,31 +239,21 @@ explains, with examples, the effect of parameters `halign`, `valign`,
 
 ### S3 methods
 
-`rasterpic_img()` is an S3 generic. **rasterpic** provides methods for
-the following classes:
+[rasterpic](https://CRAN.R-project.org/package=rasterpic) supports the
+following input classes:
 
-- `bbox`, see
-  [`bbox`](https://r-spatial.github.io/sf/reference/st_bbox.html).
+- **sf** classes: `sf`, `sfc`, `sfg` or `bbox`.
 
-- `numeric`. This must be a numeric vector of length 4 with the extent
-  to be used for geotagging (i.e. `c(xmin, ymin, xmax, ymax)`).
+- **terra** classes: `SpatRaster`, `SpatVector` and `SpatExtent`.
 
-- `sf`, see [`sf`](https://r-spatial.github.io/sf/reference/sf.html).
+- **stars** classes: `stars`.
 
-- `sfc`, see [`sfc`](https://r-spatial.github.io/sf/reference/sfc.html).
-
-- `sfg`, see [`sfg`](https://r-spatial.github.io/sf/reference/st.html).
-
-- `SpatExtent`, see
-  [`SpatExtent`](https://rspatial.github.io/terra/reference/ext.html).
-
-- `SpatRaster`, see
-  [`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html).
-
-- `SpatVector`, see
-  [`SpatVector`](https://rspatial.github.io/terra/reference/vect.html).
+- A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 
 Other packages can provide methods for additional spatial classes.
+
+Methods for extent-like inputs use the object extent. Methods for vector
+inputs can also mask the image to the object shape.
 
 ### CRS
 
@@ -185,6 +287,10 @@ From [sf](https://CRAN.R-project.org/package=sf):
 - [`vignette("sf1", package = "sf")`](https://r-spatial.github.io/sf/articles/sf1.html)
   to understand how [sf](https://CRAN.R-project.org/package=sf)
   organizes **R** objects.
+
+From [stars](https://CRAN.R-project.org/package=stars):
+
+- [`stars::st_as_stars()`](https://r-spatial.github.io/stars/reference/st_as_stars.html).
 
 From [terra](https://CRAN.R-project.org/package=terra):
 

@@ -1,19 +1,19 @@
 # Package index
 
-## Main function
+## Core geotagging
 
 - [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
   :
 
   Convert an image to a geotagged `SpatRaster`
 
-## Package
+## Package metadata
 
 - [`rasterpic`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic-package.md)
   [`rasterpic-package`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic-package.md)
   : rasterpic: Convert Digital Images to 'SpatRaster' Objects
 
-## Plotting
+## Plotting helpers
 
 Functions from other packages for plotting `SpatRaster` objects.
 

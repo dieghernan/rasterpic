@@ -20,7 +20,7 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><h6 class="dropdown-header" data-toc-skip>Articles</h6></li>
-    <li><a class="dropdown-item" href="../articles/plots.html">Plotting terra rasters</a></li>
+    <li><a class="dropdown-item" href="../articles/plots.html">Plotting SpatRaster objects</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Blog</h6></li>
     <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/202201_maps-flags/">Beautiful maps with R (IV): Fun with flags revisited</a></li>
@@ -51,15 +51,17 @@
 <h2 class="pkg-version" data-toc-text="development version" id="rasterpic-development-version">rasterpic (development version)<a class="anchor" aria-label="anchor" href="#rasterpic-development-version"></a></h2>
 <ul><li>
 <code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> is now an S3 generic, with methods for the supported input classes.</li>
+<li>
+<code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> gains support for <code>stars</code> objects.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.0" id="rasterpic-040">rasterpic 0.4.0<a class="anchor" aria-label="anchor" href="#rasterpic-040"></a></h2><p class="text-muted">CRAN release: 2026-03-21</p>
-<ul><li>Migrate vignettes to Quarto.</li>
+<ul><li>Migrated vignettes to Quarto.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.1" id="rasterpic-031">rasterpic 0.3.1<a class="anchor" aria-label="anchor" href="#rasterpic-031"></a></h2><p class="text-muted">CRAN release: 2026-01-14</p>
-<ul><li>New logo.</li>
-<li>Minimum <strong>R</strong> version required is now 4.1.0.</li>
+<ul><li>New logo</li>
+<li>The minimum required <strong>R</strong> version is now 4.1.0.</li>
 <li>Minor internal and documentation improvements.</li>
 </ul></div>
     <div class="section level2">
@@ -108,7 +110,7 @@
 <strong>sf</strong>: <code>sfg</code>, <code><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">sf::st_bbox()</a></code>.</li>
 <li>Numeric vectors <code>c(xmin, ymin, xmax, ymax)</code>.</li>
 </ul></li>
-<li>The <code>img</code> parameter in <code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> now accepts online images.</li>
+<li>The <code>img</code> parameter in <code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> now accepts image URLs.</li>
 <li>Added an <a href="https://dieghernan.github.io/rasterpic/articles/plots.html">article</a> to the pkgdown site.</li>
 <li>Fixed <strong>CRAN</strong> errors.</li>
 </ul></div>
