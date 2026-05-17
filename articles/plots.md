@@ -8,7 +8,7 @@ with several packages.
 
 The most straightforward option is to use the base
 [`plot()`](https://rspatial.github.io/terra/reference/plot.html) methods
-provided by the package **terra**
+provided by the **terra** package
 ([`terra::plotRGB()`](https://rspatial.github.io/terra/reference/plotRGB.html)):
 
 ``` r
@@ -16,7 +16,7 @@ provided by the package **terra**
 library(rasterpic)
 library(terra)
 
-# The flag of the United Kingdom
+# Use the flag of the United Kingdom.
 img <- system.file("img/UK_flag.png",
   package = "rasterpic"
 )
@@ -34,11 +34,12 @@ plotRGB(uk_img)
 
 ![](plots_files/figure-html/fig-terra-1.png)
 
-Figure 1: Plot with terra package
+Figure 1: Plot with the **terra** package
 
 ## With ggplot2 + tidyterra
 
-**tidyterra** provides full support for **terra** `SpatRaster` objects:
+The **tidyterra** package provides full support for **terra**
+`SpatRaster` objects:
 
 ``` r
 
@@ -51,11 +52,11 @@ ggplot() +
 
 ![](plots_files/figure-html/fig-tterra-1.png)
 
-Figure 2: Plot with tidyterra package
+Figure 2: Plot with the **tidyterra** package
 
 ## With tmap
 
-**tmap** can also be used to create great maps:
+The **tmap** package can also be used to create maps:
 
 ``` r
 
@@ -68,11 +69,11 @@ tm_shape(uk_img) +
 
 ![](plots_files/figure-html/fig-tmap-1.png)
 
-Figure 3: Plot with tmap package
+Figure 3: Plot with the **tmap** package
 
 ## With mapsf
 
-**mapsf** also provides this functionality:
+The **mapsf** package also provides this functionality:
 
 ``` r
 
@@ -88,13 +89,13 @@ mf_inset_off()
 
 ![](plots_files/figure-html/fig-mapsf-1.png)
 
-Figure 4: Plot with mapsf package
+Figure 4: Plot with the **mapsf** package
 
 ## With maptiles
 
-**maptiles** is an interesting package that provides the ability to
-download map tiles from different providers. It also has a specific
-function for plotting **terra** `SpatRaster` objects:
+The **maptiles** package can download map tiles from different
+providers. It also has a specific function for plotting **terra**
+`SpatRaster` objects:
 
 ``` r
 
@@ -110,7 +111,7 @@ plot_tiles(uk_img, add = TRUE)
 
 ![](plots_files/figure-html/fig-maptiles-1.png)
 
-Figure 5: Plot with maptiles package
+Figure 5: Plot with the **maptiles** package
 
 ## References
 

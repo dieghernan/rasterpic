@@ -1,21 +1,21 @@
 # Package index
 
-## Functions
+## Main function
 
 - [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/reference/rasterpic_img.md)
   :
 
-  Convert an image to a geo-tagged `SpatRaster`
+  Convert an image to a geotagged `SpatRaster`
 
-## About the package
+## Package
 
 - [`rasterpic`](https://dieghernan.github.io/rasterpic/reference/rasterpic-package.md)
   [`rasterpic-package`](https://dieghernan.github.io/rasterpic/reference/rasterpic-package.md)
-  : rasterpic: Convert Digital Images into 'SpatRaster' Objects
+  : rasterpic: Convert Digital Images to 'SpatRaster' Objects
 
 ## Plotting
 
-Functions from other packages from plotting `SpatRaster` objects.
+Functions from other packages for plotting `SpatRaster` objects.
 
 - [`plotRGB(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/plotRGB.html)
   : Red-Green-Blue plot of a multi-layered SpatRaster (from terra)

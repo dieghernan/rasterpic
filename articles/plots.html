@@ -55,7 +55,7 @@
     <li><a class="dropdown-item" href="../articles/plots.html">Plotting terra rasters</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Blog</h6></li>
-    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/202201_maps-flags/">Beautiful Maps with R (IV): Fun with flags revisited</a></li>
+    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/202201_maps-flags/">Beautiful maps with R (IV): Fun with flags revisited</a></li>
     <li><a class="external-link dropdown-item" href="https://x.com/dhernangomez/status/1486666356544225281">Quick Brazil</a></li>
   </ul>
 </li>
@@ -99,13 +99,13 @@
     <p>This article shows how to plot the <code>SpatRaster</code> produced by <code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> with several packages.</p>
 <section class="level2"><h2 id="base-plots">Base plots<a class="anchor" aria-label="anchor" href="#base-plots"></a>
 </h2>
-<p>The most straightforward option is to use the base <code><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot()</a></code> methods provided by the package <strong>terra</strong> (<code><a href="https://rspatial.github.io/terra/reference/plotRGB.html" class="external-link">terra::plotRGB()</a></code>):</p>
+<p>The most straightforward option is to use the base <code><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot()</a></code> methods provided by the <strong>terra</strong> package (<code><a href="https://rspatial.github.io/terra/reference/plotRGB.html" class="external-link">terra::plotRGB()</a></code>):</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/rasterpic/">rasterpic</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># The flag of the United Kingdom</span></span>
+<span><span class="co"># Use the flag of the United Kingdom.</span></span>
 <span><span class="va">img</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"img/UK_flag.png"</span>,</span>
 <span>  package <span class="op">=</span> <span class="st">"rasterpic"</span></span>
 <span><span class="op">)</span></span>
@@ -125,14 +125,14 @@
 <img src="plots_files/figure-html/fig-terra-1.png" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-terra-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 1: Plot with terra package
+Figure 1: Plot with the <strong>terra</strong> package
 </figcaption></figure>
 </div>
 </div>
 </div>
 </section><section class="level2"><h2 id="with-ggplot2-tidyterra">With ggplot2 + tidyterra<a class="anchor" aria-label="anchor" href="#with-ggplot2-tidyterra"></a>
 </h2>
-<p><strong>tidyterra</strong> provides full support for <strong>terra</strong> <code>SpatRaster</code> objects:</p>
+<p>The <strong>tidyterra</strong> package provides full support for <strong>terra</strong> <code>SpatRaster</code> objects:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
@@ -146,14 +146,14 @@ Figure 1: Plot with terra package
 <img src="plots_files/figure-html/fig-tterra-1.png" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tterra-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 2: Plot with tidyterra package
+Figure 2: Plot with the <strong>tidyterra</strong> package
 </figcaption></figure>
 </div>
 </div>
 </div>
 </section><section class="level2"><h2 id="with-tmap">With tmap<a class="anchor" aria-label="anchor" href="#with-tmap"></a>
 </h2>
-<p><strong>tmap</strong> can also be used to create great maps:</p>
+<p>The <strong>tmap</strong> package can also be used to create maps:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap" class="external-link">tmap</a></span><span class="op">)</span></span>
@@ -167,14 +167,14 @@ Figure 2: Plot with tidyterra package
 <img src="plots_files/figure-html/fig-tmap-1.png" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 3: Plot with tmap package
+Figure 3: Plot with the <strong>tmap</strong> package
 </figcaption></figure>
 </div>
 </div>
 </div>
 </section><section class="level2"><h2 id="with-mapsf">With mapsf<a class="anchor" aria-label="anchor" href="#with-mapsf"></a>
 </h2>
-<p><strong>mapsf</strong> also provides this functionality:</p>
+<p>The <strong>mapsf</strong> package also provides this functionality:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://riatelab.github.io/mapsf/" class="external-link">mapsf</a></span><span class="op">)</span></span>
@@ -191,14 +191,14 @@ Figure 3: Plot with tmap package
 <img src="plots_files/figure-html/fig-mapsf-1.png" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mapsf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 4: Plot with mapsf package
+Figure 4: Plot with the <strong>mapsf</strong> package
 </figcaption></figure>
 </div>
 </div>
 </div>
 </section><section class="level2"><h2 id="with-maptiles">With maptiles<a class="anchor" aria-label="anchor" href="#with-maptiles"></a>
 </h2>
-<p><strong>maptiles</strong> is an interesting package that provides the ability to download map tiles from different providers. It also has a specific function for plotting <strong>terra</strong> <code>SpatRaster</code> objects:</p>
+<p>The <strong>maptiles</strong> package can download map tiles from different providers. It also has a specific function for plotting <strong>terra</strong> <code>SpatRaster</code> objects:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/maptiles/" class="external-link">maptiles</a></span><span class="op">)</span></span>
@@ -215,7 +215,7 @@ Figure 4: Plot with mapsf package
 <img src="plots_files/figure-html/fig-maptiles-1.png" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-maptiles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 5: Plot with maptiles package
+Figure 5: Plot with the <strong>maptiles</strong> package
 </figcaption></figure>
 </div>
 </div>

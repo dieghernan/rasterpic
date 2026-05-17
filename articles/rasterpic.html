@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Get Started • rasterpic</title>
+<title>Get started • rasterpic</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
 <link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
@@ -22,7 +22,7 @@
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><script src="rasterpic_files/libs/quarto-html/popper.min.js"></script><script src="rasterpic_files/libs/quarto-html/tippy.umd.min.js"></script><link href="rasterpic_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="rasterpic_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Get Started">
+<!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Get started">
 <meta property="og:image" content="https://dieghernan.github.io/rasterpic/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@dhernangomez">
@@ -55,7 +55,7 @@
     <li><a class="dropdown-item" href="../articles/plots.html">Plotting terra rasters</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Blog</h6></li>
-    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/202201_maps-flags/">Beautiful Maps with R (IV): Fun with flags revisited</a></li>
+    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/202201_maps-flags/">Beautiful maps with R (IV): Fun with flags revisited</a></li>
     <li><a class="external-link dropdown-item" href="https://x.com/dhernangomez/status/1486666356544225281">Quick Brazil</a></li>
   </ul>
 </li>
@@ -82,7 +82,7 @@
 </nav><div class="container template-quarto">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="../logo.png" class="logo" alt=""><h1>Get Started</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Get started</h1>
 
 
 
@@ -96,7 +96,7 @@
 
 
 
-    <p>Getting started with <strong>rasterpic</strong> is easy: you need an image (<code>png</code>, <code>jpeg/jpg</code>, or <code>tif/tiff</code>) and a spatial object from the <strong>sf</strong> or <strong>terra</strong> package to begin.</p>
+    <p>Getting started with <strong>rasterpic</strong> is easy: you need an image (<code>png</code>, <code>jpeg/jpg</code> or <code>tif/tiff</code>) and a spatial object from the <strong>sf</strong> or <strong>terra</strong> package to begin.</p>
 <section class="level2"><h2 id="basic-usage">Basic usage<a class="anchor" aria-label="anchor" href="#basic-usage"></a>
 </h2>
 <p>Here we use the shape of Austria as an example:</p>
@@ -106,15 +106,15 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/rasterpic/">rasterpic</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Plot</span></span>
+<span><span class="co"># Plot.</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/tidyterra/" class="external-link">tidyterra</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Shape and image</span></span>
+<span><span class="co"># Set the shape and image.</span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">read_sf</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"gpkg/austria.gpkg"</span>, package <span class="op">=</span> <span class="st">"rasterpic"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">img</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"img/vertical.png"</span>, package <span class="op">=</span> <span class="st">"rasterpic"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Create the raster!</span></span>
+<span><span class="co"># Create the raster.</span></span>
 <span></span>
 <span><span class="va">default</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rasterpic_img.html">rasterpic_img</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">img</span><span class="op">)</span></span>
 <span></span>
@@ -126,14 +126,14 @@
 <img src="rasterpic_files/figure-html/fig-setup-1.png" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-setup-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 1: Raster map geolocated with the coordinates of Austria
+Figure 1: Raster map geotagged with the coordinates of Austria
 </figcaption></figure>
 </div>
 </div>
 </div>
 </section><section class="level2"><h2 id="options">Options<a class="anchor" aria-label="anchor" href="#options"></a>
 </h2>
-<p>The function provides several options for expansion, alignment, and cropping.</p>
+<p><code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> provides several options for expansion, alignment and cropping.</p>
 <section class="level3"><h3 id="expand">Expand<a class="anchor" aria-label="anchor" href="#expand"></a>
 </h3>
 <p>With this option, the raster extent is expanded beyond the spatial object:</p>
@@ -149,7 +149,7 @@ Figure 1: Raster map geolocated with the coordinates of Austria
 <img src="rasterpic_files/figure-html/fig-expand-1.png" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-expand-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 2: Example of expansion of image
+Figure 2: Example image expansion
 </figcaption></figure>
 </div>
 </div>
@@ -169,7 +169,7 @@ Figure 2: Example of expansion of image
 <img src="rasterpic_files/figure-html/fig-bottom-1.png" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bottom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 3: Example of alignment of image
+Figure 3: Example image alignment
 </figcaption></figure>
 </div>
 </div>
@@ -210,8 +210,8 @@ Figure 5: Example of inverse masked image
 </section></section><section class="level2"><h2 id="supported-spatial-objects-for-geotagging">Supported spatial objects for geotagging<a class="anchor" aria-label="anchor" href="#supported-spatial-objects-for-geotagging"></a>
 </h2>
 <ul>
-<li>Spatial objects of the <strong>sf</strong> package: <code>sf</code>, <code>sfc</code>, <code>sfg</code>, or <code>bbox</code>.</li>
-<li>Spatial objects of the <strong>terra</strong> package: <code>SpatRaster</code>, <code>SpatVector</code>, <code>SpatExtent</code>.</li>
+<li>Spatial objects of the <strong>sf</strong> package: <code>sf</code>, <code>sfc</code>, <code>sfg</code> or <code>bbox</code>.</li>
+<li>Spatial objects of the <strong>terra</strong> package: <code>SpatRaster</code>, <code>SpatVector</code> and <code>SpatExtent</code>.</li>
 <li>A numeric coordinate vector of the form <code>c(xmin, ymin, xmax, ymax)</code>.</li>
 </ul></section><section class="level2"><h2 id="supported-image-formats">Supported image formats<a class="anchor" aria-label="anchor" href="#supported-image-formats"></a>
 </h2>

@@ -23,7 +23,7 @@
     <li><a class="dropdown-item" href="../articles/plots.html">Plotting terra rasters</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Blog</h6></li>
-    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/202201_maps-flags/">Beautiful Maps with R (IV): Fun with flags revisited</a></li>
+    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/202201_maps-flags/">Beautiful maps with R (IV): Fun with flags revisited</a></li>
     <li><a class="external-link dropdown-item" href="https://x.com/dhernangomez/status/1486666356544225281">Quick Brazil</a></li>
   </ul></li>
 <li class="active nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -59,7 +59,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.0" id="rasterpic-030">rasterpic 0.3.0<a class="anchor" aria-label="anchor" href="#rasterpic-030"></a></h2><p class="text-muted">CRAN release: 2025-03-19</p>
-<ul><li>When the output has 3 or more layers, the first three are renamed as <code>"r", "g", "b"</code>. In cases with 4 layers or more the fourth layer is renamed as <code>"alpha"</code>. This allows compatibility with <strong>tmap</strong> <code>&gt;= 4.0</code> avoiding error <code>! [subset] you cannot select a layer with a name that is not unique</code>.</li>
+<ul><li>When the output has 3 or more layers, the first three are renamed as <code>"r"</code>, <code>"g"</code> and <code>"b"</code>. In cases with 4 layers or more, the fourth layer is renamed as <code>"alpha"</code>. This allows compatibility with <strong>tmap</strong> <code>&gt;= 4.0</code> and avoids the error <code>! [subset] you cannot select a layer with a name that is not unique</code>.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.6" id="rasterpic-026">rasterpic 0.2.6<a class="anchor" aria-label="anchor" href="#rasterpic-026"></a></h2><p class="text-muted">CRAN release: 2024-12-17</p>
@@ -68,25 +68,24 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.5" id="rasterpic-025">rasterpic 0.2.5<a class="anchor" aria-label="anchor" href="#rasterpic-025"></a></h2><p class="text-muted">CRAN release: 2024-04-12</p>
 <ul><li>Updated documentation.</li>
-<li>
-<code>DESCRIPTION</code> file: Made Title and Description of the package more specific.</li>
+<li>Made the <code>Title</code> and <code>Description</code> fields in <code>DESCRIPTION</code> more specific.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.4" id="rasterpic-024">rasterpic 0.2.4<a class="anchor" aria-label="anchor" href="#rasterpic-024"></a></h2><p class="text-muted">CRAN release: 2024-01-18</p>
-<ul><li>Ensured that <code>SpatVector</code>s always have <code>crs</code>.</li>
+<ul><li>Ensured that <code>SpatVector</code> objects always have a CRS.</li>
 <li>If the image has fewer than 3 channels, the raster output does not have the RGB property (<code><a href="https://rspatial.github.io/terra/reference/RGB.html" class="external-link">terra::has.RGB()</a></code> is <code>FALSE</code>). This is expected to be a corner case.</li>
 <li>If the image file (e.g., <code>tiff</code>) already has an RGB definition, preserve it in the output.</li>
-<li>Updated docs and tests.</li>
+<li>Updated documentation and tests.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.3" id="rasterpic-023">rasterpic 0.2.3<a class="anchor" aria-label="anchor" href="#rasterpic-023"></a></h2><p class="text-muted">CRAN release: 2023-09-08</p>
 <ul><li>Made <code><a href="../reference/asp_ratio.html">asp_ratio()</a></code> an internal function.</li>
-<li>Improved docs and tests.</li>
+<li>Improved documentation and tests.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.2" id="rasterpic-022">rasterpic 0.2.2<a class="anchor" aria-label="anchor" href="#rasterpic-022"></a></h2><p class="text-muted">CRAN release: 2023-04-18</p>
 <ul><li>Removed unused dependencies.</li>
-<li>Improved docs.</li>
+<li>Improved documentation.</li>
 <li>Fixed typos in messages.</li>
 <li>Declared output as RGB raster with <code><a href="https://rspatial.github.io/terra/reference/RGB.html" class="external-link">terra::RGB()</a></code>.</li>
 <li>Added <strong>ggplot2</strong> to “Suggests”.</li>

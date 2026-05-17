@@ -1,7 +1,7 @@
-# Get Started
+# Get started
 
 Getting started with **rasterpic** is easy: you need an image (`png`,
-`jpeg/jpg`, or `tif/tiff`) and a spatial object from the **sf** or
+`jpeg/jpg` or `tif/tiff`) and a spatial object from the **sf** or
 **terra** package to begin.
 
 ## Basic usage
@@ -14,15 +14,15 @@ library(sf)
 library(terra)
 library(rasterpic)
 
-# Plot
+# Plot.
 library(tidyterra)
 library(ggplot2)
 
-# Shape and image
+# Set the shape and image.
 x <- read_sf(system.file("gpkg/austria.gpkg", package = "rasterpic"))
 img <- system.file("img/vertical.png", package = "rasterpic")
 
-# Create the raster!
+# Create the raster.
 
 default <- rasterpic_img(x, img)
 
@@ -32,12 +32,12 @@ autoplot(default) +
 
 ![](rasterpic_files/figure-html/fig-setup-1.png)
 
-Figure 1: Raster map geolocated with the coordinates of Austria
+Figure 1: Raster map geotagged with the coordinates of Austria
 
 ## Options
 
-The function provides several options for expansion, alignment, and
-cropping.
+[`rasterpic_img()`](https://dieghernan.github.io/rasterpic/reference/rasterpic_img.md)
+provides several options for expansion, alignment and cropping.
 
 ### Expand
 
@@ -54,7 +54,7 @@ autoplot(expand) +
 
 ![](rasterpic_files/figure-html/fig-expand-1.png)
 
-Figure 2: Example of expansion of image
+Figure 2: Example image expansion
 
 ### Alignment
 
@@ -70,7 +70,7 @@ autoplot(bottom) +
 
 ![](rasterpic_files/figure-html/fig-bottom-1.png)
 
-Figure 3: Example of alignment of image
+Figure 3: Example image alignment
 
 ### Crop and mask
 
@@ -97,9 +97,9 @@ Figure 5: Example of inverse masked image
 
 ## Supported spatial objects for geotagging
 
-- Spatial objects of the **sf** package: `sf`, `sfc`, `sfg`, or `bbox`.
-- Spatial objects of the **terra** package: `SpatRaster`, `SpatVector`,
-  `SpatExtent`.
+- Spatial objects of the **sf** package: `sf`, `sfc`, `sfg` or `bbox`.
+- Spatial objects of the **terra** package: `SpatRaster`, `SpatVector`
+  and `SpatExtent`.
 - A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 
 ## Supported image formats
