@@ -8,9 +8,9 @@ rpic_crop <- function(crop, box_marg, new_rast) {
 }
 
 rpic_read <- function(img, crs = NA) {
-  # Check if img is a URL, download it if needed
+  # Download `img` when it is a URL.
   if (grepl("^http:|^https:", img)) {
-    # Try to download
+    # Try the download.
     tmp <- tempfile(fileext = paste0(".", tools::file_ext(img)))
 
     err_dwnload <- tryCatch(
@@ -23,12 +23,12 @@ rpic_read <- function(img, crs = NA) {
       }
     )
 
-    # On error
+    # Stop when the download fails.
     if (err_dwnload) {
       stop(sprintf("Cannot reach img on url '%s'.", img), call. = FALSE)
     }
 
-    # If everything is ok, rename img
+    # Use the downloaded file path for `img`.
     img <- tmp
   }
 
@@ -40,11 +40,11 @@ rpic_read <- function(img, crs = NA) {
     stop("'img' only accepts 'png', 'jpg' or 'jpeg' files.", call. = FALSE)
   }
 
-  # png files
+  # Handle PNG files.
   if ("png" %in% tools::file_ext(img)) {
     pngfile <- png::readPNG(img) * 255
 
-    # Give transparency if available
+    # Preserve transparency when an alpha channel is available.
     if (all(dim(pngfile)[3] == 4, !is.na(dim(pngfile)[3]))) {
       nrow <- dim(pngfile)[1]
 
@@ -62,7 +62,7 @@ rpic_read <- function(img, crs = NA) {
 
     rast
   } else if (tools::file_ext(img) %in% c("jpg", "jpeg", "tif", "tiff")) {
-    # jpg/jpeg and tif/tiff
+    # Handle JPEG and TIFF files.
 
     rast <- terra::rast(img, noflip = TRUE)
     terra::crs(rast) <- crs
@@ -72,9 +72,8 @@ rpic_read <- function(img, crs = NA) {
   rast
 }
 
-
 rpic_input <- function(x, crs) {
-  # Convert sf/sfc to SpatVector for consistent handling
+  # Convert `sf`/`sfc` to `SpatVector` for consistent handling.
   if (any(inherits(x, "sf"), inherits(x, "sfc"))) {
     x <- terra::vect(x)
   }
@@ -89,12 +88,12 @@ rpic_input <- function(x, crs) {
 
     crs <- terra::crs(x)
     box <- c(terra::xmin(x), terra::ymin(x), terra::xmax(x), terra::ymax(x))
-    # Output object is a list
+    # Return extracted spatial input, bounding box and CRS.
     result <- list(x = x, box = box, crs = crs)
     return(result)
   }
 
-  # Case of no CRS
+  # Handle inputs that may not carry a CRS.
   if (inherits(x, "sfg")) {
     x <- terra::vect(x)
     box <- c(terra::xmin(x), terra::ymin(x), terra::xmax(x), terra::ymax(x))

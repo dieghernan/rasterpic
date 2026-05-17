@@ -1,6 +1,6 @@
 ---
 title: "Plotting terra rasters"
-description: Several ways to create maps with raster objects in R
+description: Several ways to create maps with raster objects in R.
 knitr:
   opts_chunk:
     collapse: true
@@ -19,15 +19,15 @@ with several packages.
 ## Base plots
 
 The most straightforward option is to use the base `plot()` methods provided by
-the package **terra** (`terra::plotRGB()`):
+the **terra** package (`terra::plotRGB()`):
 
 ```{r}
 #| label: fig-terra
-#| fig-cap: 'Plot with terra package'
+#| fig-cap: "Plot with the **terra** package"
 library(rasterpic)
 library(terra)
 
-# The flag of the United Kingdom
+# Use the flag of the United Kingdom.
 img <- system.file("img/UK_flag.png",
   package = "rasterpic"
 )
@@ -45,11 +45,12 @@ plotRGB(uk_img)
 
 ## With ggplot2 + tidyterra
 
-**tidyterra** provides full support for **terra** `SpatRaster` objects:
+The **tidyterra** package provides full support for **terra** `SpatRaster`
+objects:
 
 ```{r}
 #| label: fig-tterra
-#| fig-cap: 'Plot with tidyterra package'
+#| fig-cap: "Plot with the **tidyterra** package"
 library(ggplot2)
 library(tidyterra)
 
@@ -59,11 +60,11 @@ ggplot() +
 
 ## With tmap
 
-**tmap** can also be used to create great maps:
+The **tmap** package can also be used to create maps:
 
 ```{r}
 #| label: fig-tmap
-#| fig-cap: 'Plot with tmap package'
+#| fig-cap: "Plot with the **tmap** package"
 library(tmap)
 
 tm_shape(uk_img) +
@@ -73,11 +74,11 @@ tm_shape(uk_img) +
 
 ## With mapsf
 
-**mapsf** also provides this functionality:
+The **mapsf** package also provides this functionality:
 
 ```{r}
 #| label: fig-mapsf
-#| fig-cap: 'Plot with mapsf package'
+#| fig-cap: "Plot with the **mapsf** package"
 library(mapsf)
 
 mf_raster(uk_img)
@@ -90,13 +91,12 @@ mf_inset_off()
 
 ## With maptiles
 
-**maptiles** is an interesting package that provides the ability to download map
-tiles from different providers. It also has a specific function for plotting
-**terra** `SpatRaster` objects:
+The **maptiles** package can download map tiles from different providers. It
+also has a specific function for plotting **terra** `SpatRaster` objects:
 
 ```{r}
 #| label: fig-maptiles
-#| fig-cap: 'Plot with maptiles package'
+#| fig-cap: "Plot with the **maptiles** package"
 library(maptiles)
 
 other_tile <- get_tiles(uk, crop = TRUE, zoom = 6)

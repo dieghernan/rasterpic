@@ -1,6 +1,6 @@
-# These functions are used only for testing purposes
+# Use these helpers only for testing purposes.
 
-# Load a test raster using the temp directory
+# Load a test raster from a temporary file.
 
 testhelp_load_rast <- function(path) {
   ext <- tools::file_ext(path)

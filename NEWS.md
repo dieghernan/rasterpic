@@ -10,10 +10,10 @@
 
 # rasterpic 0.3.0
 
-- When the output has 3 or more layers, the first three are renamed as
-  `"r", "g", "b"`. In cases with 4 layers or more the fourth layer is renamed as
-  `"alpha"`. This allows compatibility with **tmap** `>= 4.0` avoiding error
-  `! [subset] you cannot select a layer with a name that is not unique`.
+- When the output has 3 or more layers, the first three are renamed as `"r"`,
+  `"g"` and `"b"`. In cases with 4 layers or more, the fourth layer is renamed
+  as `"alpha"`. This allows compatibility with **tmap** `>= 4.0` and avoids the
+  error `! [subset] you cannot select a layer with a name that is not unique`.
 
 # rasterpic 0.2.6
 
@@ -22,27 +22,27 @@
 # rasterpic 0.2.5
 
 - Updated documentation.
-- `DESCRIPTION` file: Made Title and Description of the package more specific.
+- Made the `Title` and `Description` fields in `DESCRIPTION` more specific.
 
 # rasterpic 0.2.4
 
-- Ensured that `SpatVector`s always have `crs`.
+- Ensured that `SpatVector` objects always have a CRS.
 - If the image has fewer than 3 channels, the raster output does not have the
   RGB property (`terra::has.RGB()` is `FALSE`). This is expected to be a corner
   case.
 - If the image file (e.g., `tiff`) already has an RGB definition, preserve it in
   the output.
-- Updated docs and tests.
+- Updated documentation and tests.
 
 # rasterpic 0.2.3
 
 - Made `asp_ratio()` an internal function.
-- Improved docs and tests.
+- Improved documentation and tests.
 
 # rasterpic 0.2.2
 
 - Removed unused dependencies.
-- Improved docs.
+- Improved documentation.
 - Fixed typos in messages.
 - Declared output as RGB raster with `terra::RGB()`.
 - Added **ggplot2** to "Suggests".

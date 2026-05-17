@@ -8,15 +8,15 @@
 asp_ratio(x)
 }
 \arguments{
-\item{x}{A \code{SpatRaster} object, an \code{sf}/\code{sfc} object, or a numeric vector of
-length 4 with coordinates c(\code{xmin}, \code{ymin}, \code{xmax}, \code{ymax}), as created by
+\item{x}{A \code{SpatRaster} object, an \code{sf}/\code{sfc} object or a numeric vector of
+length 4 with coordinates \code{c(xmin, ymin, xmax, ymax)}, as created by
 \code{\link[sf:st_bbox]{sf::st_bbox()}}.}
 }
 \value{
 The aspect ratio.
 }
 \description{
-Helper function. Ratio is computed as width / height (or cols / rows).
+Helper function. The ratio is computed as width / height (or cols / rows).
 }
 \examples{
 \donttest{

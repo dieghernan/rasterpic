@@ -1,12 +1,12 @@
 Package: rasterpic
-Title: Convert Digital Images into 'SpatRaster' Objects
+Title: Convert Digital Images to 'SpatRaster' Objects
 Version: 0.4.0
 Authors@R: 
     person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-8457-4658"))
-Description: Generate 'SpatRaster' objects, as defined by the 'terra'
-    package, from digital images, using a specified spatial object as a
-    geographical reference.
+Description: Create 'SpatRaster' objects, as defined by the 'terra'
+    package, from digital images using a specified spatial object as a
+    geographic reference.
 License: MIT + file LICENSE
 URL: https://dieghernan.github.io/rasterpic/,
     https://github.com/dieghernan/rasterpic
@@ -27,8 +27,8 @@ VignetteBuilder:
     quarto
 Config/Needs/check: curl
 Config/Needs/coverage: curl
-Config/Needs/website: dieghernan/gitdevr, tmap, mapsf, maptiles, devtools,
-    curl, remotes, cpp11
+Config/Needs/website: cpp11, curl, devtools, dieghernan/gitdevr, mapsf,
+    maptiles, remotes, tmap
 Config/roxygen2/markdown: TRUE
 Config/roxygen2/version: 8.0.0
 Config/testthat/edition: 3

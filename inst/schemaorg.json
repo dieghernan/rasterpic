@@ -14,9 +14,9 @@
         "familyName": "Hernangómez",
         "givenName": "Diego"
       },
-      "description": "Generate 'SpatRaster' objects, as defined by the 'terra' package, from digital images, using a specified spatial object as a geographical reference.",
+      "description": "Create 'SpatRaster' objects, as defined by the 'terra' package, from digital images using a specified spatial object as a geographic reference.",
       "license": "https://spdx.org/licenses/MIT",
-      "name": "rasterpic: Convert Digital Images into 'SpatRaster' Objects",
+      "name": "rasterpic: Convert Digital Images to 'SpatRaster' Objects",
       "programmingLanguage": {
         "type": "ComputerLanguage",
         "name": "R",
@@ -39,7 +39,7 @@
         "familyName": "Hernangómez",
         "givenName": "Diego"
       },
-      "name": "{rasterpic}: Convert Digital Images into {SpatRaster} Objects"
+      "name": "{rasterpic}: Convert Digital Images to {SpatRaster} Objects"
     }
   ]
 }

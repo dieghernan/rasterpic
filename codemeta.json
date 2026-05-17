@@ -2,8 +2,8 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "rasterpic",
-  "description": "Generate 'SpatRaster' objects, as defined by the 'terra' package, from digital images, using a specified spatial object as a geographical reference.",
-  "name": "rasterpic: Convert Digital Images into 'SpatRaster' Objects",
+  "description": "Create 'SpatRaster' objects, as defined by the 'terra' package, from digital images using a specified spatial object as a geographic reference.",
+  "name": "rasterpic: Convert Digital Images to 'SpatRaster' Objects",
   "relatedLink": ["https://dieghernan.github.io/rasterpic/", "https://CRAN.R-project.org/package=rasterpic"],
   "codeRepository": "https://github.com/dieghernan/rasterpic",
   "issueTracker": "https://github.com/dieghernan/rasterpic/issues",
@@ -159,7 +159,7 @@
     "SystemRequirements": null
   },
   "keywords": ["cran", "jpeg", "jpg", "maps", "png", "r", "r-package", "r-stats", "raster", "rstats", "sf", "terra", "tif", "tiff", "cran-r"],
-  "fileSize": "1167.985KB",
+  "fileSize": "1168.215KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -171,7 +171,7 @@
           "familyName": "Hernangómez"
         }
       ],
-      "name": "{rasterpic}: Convert Digital Images into {SpatRaster} Objects",
+      "name": "{rasterpic}: Convert Digital Images to {SpatRaster} Objects",
       "identifier": "10.32614/CRAN.package.rasterpic",
       "url": "https://dieghernan.github.io/rasterpic/",
       "@id": "https://doi.org/10.32614/CRAN.package.rasterpic",

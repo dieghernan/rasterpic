@@ -19,10 +19,10 @@ authors:
     href: https://dieghernan.github.io/
 
 home:
-  title: rasterpic | Convert Digital Images into SpatRaster Objects
+  title: rasterpic | Convert digital images to SpatRaster objects
   description: >
-    Generate SpatRaster objects from digital images, using a specified spatial
-    object as a geographical reference.
+    Create SpatRaster objects from digital images using a specified spatial
+    object as a geographic reference.
 
 navbar:
   components:
@@ -34,19 +34,19 @@ navbar:
         href: articles/plots.html
       - text: "---"
       - text: Blog
-      - text: "Beautiful Maps with R (IV): Fun with flags revisited"
+      - text: "Beautiful maps with R (IV): Fun with flags revisited"
         href: https://dieghernan.github.io/202201_maps-flags/
       - text: Quick Brazil
         href: https://x.com/dhernangomez/status/1486666356544225281
 
 reference:
-- title: Functions
+- title: Main function
   contents: rasterpic_img
-- title: About the package
+- title: Package
   contents: rasterpic-package
 - title: Plotting
   desc: >
-    Functions from other packages from plotting `SpatRaster` objects.
+    Functions from other packages for plotting `SpatRaster` objects.
   contents:
   - terra::plotRGB()
   - tidyterra::geom_spatraster_rgb()
@@ -55,7 +55,7 @@ reference:
   - maptiles::plot_tiles()
 
 articles:
-- title: Plots
-  navbar: Plots
+- title: Plotting
+  navbar: Plotting
   contents:
   - articles/plots

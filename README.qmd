@@ -37,7 +37,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 <!-- badges: end -->
 
 **rasterpic** is a tiny package with a single goal: to transform an image into a
-`SpatRaster` object (see `?terra::SpatRaster`).
+**terra** `SpatRaster` object (see `?terra::SpatRaster`).
 
 ## Installation
 
@@ -52,10 +52,10 @@ install.packages("rasterpic")
 :::
 
 ::: pkgdown-devel
-Check the docs of the developing version in
+Check the documentation for the development version at
 <https://dieghernan.github.io/rasterpic/dev/>.
 
-You can install the developing version of **rasterpic** with:
+You can install the development version of **rasterpic** with:
 
 ```{r}
 #| eval: false
@@ -68,7 +68,7 @@ Alternatively, you can install **rasterpic** using the
 
 ```{r}
 #| eval: false
-# Install rasterpic in R:
+# Install rasterpic in R.
 install.packages(
   "rasterpic",
   repos = c(
@@ -84,35 +84,32 @@ install.packages(
 This package allows you to create custom maps using a wide variety of spatial
 objects:
 
-- Spatial objects created with the **sf** package: `sf`, `sfc`, `sfg`, or
-  `bbox`.
-- Spatial objects created with the **terra** package: `SpatRaster`,
-  `SpatVector`, `SpatExtent`.
+- Spatial objects created with the **sf** package: `sf`, `sfc`, `sfg` or `bbox`.
+- Spatial objects created with the **terra** package: `SpatRaster`, `SpatVector`
+  and `SpatExtent`.
 - A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 
 An example using an `sf` object:
 
 ```{r}
 #| label: example-basic
-#| fig-cap: Example of use of rasterpic with the UK flag
+#| fig-cap: Example using **rasterpic** with the UK flag
 library(rasterpic)
 library(sf)
 library(terra)
 
-# The flag of the United Kingdom
+# Use the flag of the United Kingdom.
 img <- system.file("img/UK_flag.png", package = "rasterpic")
 uk <- read_sf(system.file("gpkg/UK.gpkg", package = "rasterpic"))
 
-
 class(uk)
 
-# Rasterize the image!
+# Rasterize the image.
 uk_flag <- rasterpic_img(uk, img)
 
 uk_flag
 
-# Plot it!
-# Using ggplot2 + tidyterra
+# Plot with ggplot2 and tidyterra.
 library(tidyterra)
 library(ggplot2)
 
@@ -120,14 +117,14 @@ autoplot(uk_flag) +
   geom_sf(data = uk, color = alpha("blue", 0.5))
 ```
 
-We can also adjust other parameters, as well as modifying the alignment of the
-image with respect to the object:
+We can also adjust other parameters and modify the alignment of the image with
+respect to the object:
 
 ```{r}
 #| label: align-crop-mask
-#| fig-cap: Example of use of rasterpic with the UK flag cropping to the shape
+#| fig-cap: Example using **rasterpic** with the UK flag cropped to the shape
 
-# Align, crop and mask
+# Align, crop and mask.
 uk_flag2 <- rasterpic_img(uk, img, halign = 0.2, crop = TRUE, mask = TRUE)
 
 autoplot(uk_flag2) +

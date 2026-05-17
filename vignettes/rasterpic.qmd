@@ -1,8 +1,8 @@
 ---
-title: "Get Started"
+title: "Get started"
 description: Introduction to the rasterpic package.
 vignette: >
-  %\VignetteIndexEntry{Get Started}
+  %\VignetteIndexEntry{Get started}
   %\VignetteEngine{quarto::html}
   %\VignetteEncoding{UTF-8}
 knitr:
@@ -14,9 +14,9 @@ knitr:
     out.width: "100%"
 ---
 
-Getting started with **rasterpic** is easy: you need an image (`png`,
-`jpeg/jpg`, or `tif/tiff`) and a spatial object from the **sf** or **terra**
-package to begin.
+Getting started with **rasterpic** is easy: you need an image (`png`, `jpeg/jpg`
+or `tif/tiff`) and a spatial object from the **sf** or **terra** package to
+begin.
 
 ## Basic usage
 
@@ -24,20 +24,20 @@ Here we use the shape of Austria as an example:
 
 ```{r}
 #| label: fig-setup
-#| fig-cap: Raster map geolocated with the coordinates of Austria
+#| fig-cap: Raster map geotagged with the coordinates of Austria
 library(sf)
 library(terra)
 library(rasterpic)
 
-# Plot
+# Plot.
 library(tidyterra)
 library(ggplot2)
 
-# Shape and image
+# Set the shape and image.
 x <- read_sf(system.file("gpkg/austria.gpkg", package = "rasterpic"))
 img <- system.file("img/vertical.png", package = "rasterpic")
 
-# Create the raster!
+# Create the raster.
 
 default <- rasterpic_img(x, img)
 
@@ -47,7 +47,8 @@ autoplot(default) +
 
 ## Options
 
-The function provides several options for expansion, alignment, and cropping.
+`rasterpic_img()` provides several options for expansion, alignment and
+cropping.
 
 ### Expand
 
@@ -55,7 +56,7 @@ With this option, the raster extent is expanded beyond the spatial object:
 
 ```{r}
 #| label: fig-expand
-#| fig-cap: Example of expansion of image
+#| fig-cap: Example image expansion
 expand <- rasterpic_img(x, img, expand = 1)
 
 autoplot(expand) +
@@ -68,7 +69,7 @@ Choose the alignment of the image within the spatial extent:
 
 ```{r}
 #| label: fig-bottom
-#| fig-cap: Example of alignment of image
+#| fig-cap: Example image alignment
 bottom <- rasterpic_img(x, img, valign = 0)
 
 autoplot(bottom) +
@@ -95,8 +96,8 @@ autoplot(maskinverse)
 
 ## Supported spatial objects for geotagging
 
-- Spatial objects of the **sf** package: `sf`, `sfc`, `sfg`, or `bbox`.
-- Spatial objects of the **terra** package: `SpatRaster`, `SpatVector`,
+- Spatial objects of the **sf** package: `sf`, `sfc`, `sfg` or `bbox`.
+- Spatial objects of the **terra** package: `SpatRaster`, `SpatVector` and
   `SpatExtent`.
 - A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 

@@ -4,11 +4,11 @@
 \name{rasterpic-package}
 \alias{rasterpic}
 \alias{rasterpic-package}
-\title{rasterpic: Convert Digital Images into 'SpatRaster' Objects}
+\title{rasterpic: Convert Digital Images to 'SpatRaster' Objects}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Generate 'SpatRaster' objects, as defined by the 'terra' package, from digital images, using a specified spatial object as a geographical reference.
+Create 'SpatRaster' objects, as defined by the 'terra' package, from digital images using a specified spatial object as a geographic reference.
 }
 \seealso{
 Useful links:
