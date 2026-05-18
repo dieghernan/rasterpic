@@ -8,7 +8,7 @@ test_that("Test stars", {
 
   expect_message(
     raster <- rasterpic_img(x, img),
-    "Warning: x has geographic coordinates. Assuming planar coordinates."
+    "Input 'x' has geographic coordinates. Assuming planar coordinates."
   )
 
   png_dim <- terra::rast(img, noflip = TRUE)
@@ -50,7 +50,7 @@ test_that("Test stars with projs", {
   expect_gte(terra::xmax(raster), bbox_x[3])
   expect_gte(terra::ymax(raster), bbox_x[4])
 
-  # On crop ok
+  # Crop keeps the raster within the stars extent.
   crop <- rasterpic_img(x, img, crop = TRUE)
   expect_false(terra::ext(raster) == terra::ext(crop))
 })

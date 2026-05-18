@@ -4,7 +4,7 @@
       rasterpic_img(x, img)
     Condition
       Error in `rasterpic_img.numeric()`:
-      ! Don't know how to extract a bounding box from 'x'.
+      ! Cannot extract a bounding box from 'x'.
 
 # Error on bad img formatting
 
@@ -12,7 +12,7 @@
       rasterpic_img(x, img)
     Condition
       Error:
-      ! 'img' file not found.
+      ! File supplied to 'img' not found.
 
 ---
 
@@ -20,7 +20,7 @@
       rasterpic_img(x, img2)
     Condition
       Error:
-      ! 'img' only accepts 'png', 'jpg' or 'jpeg' files.
+      ! Only 'png', 'jpg', 'jpeg', 'tif' and 'tiff' files are accepted for 'img'.
 
 # Error on invalid parameters
 
@@ -28,7 +28,7 @@
       rasterpic_img(x, img, valign = 1.2)
     Condition
       Error in `rasterpic_img_impl()`:
-      ! 'valign' should be between 0 and 1.
+      ! 'valign' must be between 0 and 1.
 
 ---
 
@@ -36,7 +36,7 @@
       rasterpic_img(x, img, valign = -1.2)
     Condition
       Error in `rasterpic_img_impl()`:
-      ! 'valign' should be between 0 and 1.
+      ! 'valign' must be between 0 and 1.
 
 ---
 
@@ -44,7 +44,7 @@
       rasterpic_img(x, img, halign = 1.2)
     Condition
       Error in `rasterpic_img_impl()`:
-      ! 'halign' should be between 0 and 1.
+      ! 'halign' must be between 0 and 1.
 
 ---
 
@@ -52,5 +52,5 @@
       rasterpic_img(x, img, halign = -1.2)
     Condition
       Error in `rasterpic_img_impl()`:
-      ! 'halign' should be between 0 and 1.
+      ! 'halign' must be between 0 and 1.
 

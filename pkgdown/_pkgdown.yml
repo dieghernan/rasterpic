@@ -19,11 +19,11 @@ authors:
     href: https://dieghernan.github.io/
 
 home:
-  title: rasterpic | Convert digital images to SpatRaster objects
+  title: rasterpic | Convert digital images into SpatRaster objects
   description: >
-    Create **terra** `SpatRaster` objects from digital images using spatial
+    Create **terra** `SpatRaster` objects from digital images. Use spatial
     input classes from **sf**, **terra** or **stars**, or numeric coordinate
-    vectors, as geographic references. Image files and image URLs are
+    vectors, as geographic references. Local image files and image URLs are
     supported.
 
 navbar:
@@ -43,6 +43,8 @@ navbar:
 
 reference:
 - title: Core geotagging
+  desc: >
+    Convert images into geotagged `SpatRaster` objects.
   contents: rasterpic_img
 - title: Package metadata
   contents: rasterpic-package

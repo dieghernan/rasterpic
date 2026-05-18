@@ -7,16 +7,16 @@ cff-version: 1.2.0
 message: 'To cite package "rasterpic" in publications use:'
 type: software
 license: MIT
-title: 'rasterpic: Convert Digital Images to ''SpatRaster'' Objects'
+title: 'rasterpic: Convert Digital Images into ''SpatRaster'' Objects'
 version: 0.4.0.9000
 doi: 10.32614/CRAN.package.rasterpic
 identifiers:
 - type: doi
   value: 10.32614/CRAN.package.rasterpic
 abstract: Create 'SpatRaster' objects, as defined by the 'terra' package, from digital
-  images using a specified spatial object as a geographic reference. Supported inputs
-  include objects from the 'sf', 'terra' and 'stars' packages. The main function is
-  an S3 generic, allowing methods for additional spatial classes.
+  images using a spatial object as a geographic reference. Supported inputs include
+  objects from the 'sf', 'terra' and 'stars' packages. The main function is an S3
+  generic, so other packages can provide methods for additional spatial classes.
 authors:
 - family-names: Hernangómez
   given-names: Diego
@@ -35,9 +35,9 @@ preferred-citation:
   version: 0.4.0.9000
   url: https://dieghernan.github.io/rasterpic/
   abstract: Create SpatRaster objects, as defined by the terra package, from digital
-    images using a specified spatial object as a geographic reference. Supported inputs
-    include objects from the sf, terra and stars packages. The main function is an
-    S3 generic, allowing methods for additional spatial classes.
+    images using a spatial object as a geographic reference. Supported inputs include
+    objects from the sf, terra and stars packages. The main function is an S3 generic,
+    so other packages can provide methods for additional spatial classes.
 repository: https://CRAN.R-project.org/package=rasterpic
 repository-code: https://github.com/dieghernan/rasterpic
 url: https://dieghernan.github.io/rasterpic/

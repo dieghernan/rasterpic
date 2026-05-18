@@ -1,7 +1,7 @@
 # rasterpic (development version)
 
-- `rasterpic_img()` is now an S3 generic, with methods for the supported
-  input classes.
+- `rasterpic_img()` is now an S3 generic, with methods for the supported input
+  classes (#39).
 - `rasterpic_img()` gains support for `stars` objects.
 
 # rasterpic 0.4.0
@@ -10,7 +10,7 @@
 
 # rasterpic 0.3.1
 
-- New logo
+- New logo.
 - The minimum required **R** version is now 4.1.0.
 - Minor internal and documentation improvements.
 

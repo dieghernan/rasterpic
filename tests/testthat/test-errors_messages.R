@@ -38,7 +38,7 @@ test_that("Message in lonlat sf", {
   img <- system.file("img/UK_flag.png", package = "rasterpic")
   expect_message(
     rasterpic_img(x, img),
-    "Warning: x has geographic coordinates. Assuming planar coordinates."
+    "Input 'x' has geographic coordinates. Assuming planar coordinates."
   )
 
   x2 <- sf::st_transform(x, 3857)
@@ -52,13 +52,12 @@ test_that("Message in lonlat raster", {
   img <- system.file("img/UK_flag.png", package = "rasterpic")
   expect_message(
     rasterpic_img(x, img),
-    "Warning: x has geographic coordinates. Assuming planar coordinates."
+    "Input 'x' has geographic coordinates. Assuming planar coordinates."
   )
 
   x2 <- terra::project(x, "epsg:3857")
   expect_silent(rasterpic_img(x2, img))
 })
-
 
 test_that("No mask raster", {
   x <- testhelp_load_rast(system.file("tiff/elev.tiff", package = "rasterpic"))

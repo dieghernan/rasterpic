@@ -34,7 +34,6 @@ test_that("Test all image formats with UK", {
   }
 })
 
-
 test_that("Test all image formats with AT vertical", {
   img <- system.file("img/vertical.png", package = "rasterpic")
   x <- sf::st_read(
@@ -70,7 +69,6 @@ test_that("Test all image formats with AT vertical", {
     expect_true(terra::has.RGB(raster_test))
   }
 })
-
 
 test_that("Test all image formats with a raster", {
   img <- system.file("img/vertical.png", package = "rasterpic")

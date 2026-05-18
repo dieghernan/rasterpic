@@ -32,7 +32,6 @@ test_that("Test horizontal alignments", {
   expect_true(terra::xmin(raster_x1) < sf::st_bbox(x)[1])
 })
 
-
 test_that("Test vertical alignments", {
   img <- system.file("img/vertical.png", package = "rasterpic")
   x <- sf::st_read(

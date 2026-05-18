@@ -14,7 +14,7 @@ knitr:
 ---
 
 This article shows how to plot the `SpatRaster` produced by `rasterpic_img()`
-with several R packages.
+with several **R** packages.
 
 ## Base plots
 
@@ -46,7 +46,7 @@ plotRGB(uk_img)
 ## With ggplot2 and tidyterra
 
 The **tidyterra** package provides plotting support for **terra**
-`SpatRaster` objects:
+`SpatRaster` objects with **ggplot2**:
 
 ```{r}
 #| label: fig-tterra
@@ -60,7 +60,7 @@ ggplot() +
 
 ## With tmap
 
-The **tmap** package can also create maps:
+The **tmap** package can also create maps from `SpatRaster` objects:
 
 ```{r}
 #| label: fig-tmap

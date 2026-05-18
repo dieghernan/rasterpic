@@ -14,7 +14,6 @@ test_that("Check how it works with single layers files", {
   expect_equal(terra::nlyr(raster), 1)
 })
 
-
 test_that("Check how it works with 2 layer file", {
   # PNG
   img <- system.file("img/UK_flag.png", package = "rasterpic")
@@ -27,7 +26,6 @@ test_that("Check how it works with 2 layer file", {
   expect_identical(names(r), c("r", "g", "b"))
 
   # Write as geotiff with 2 layers
-
   tmp_tiff <- tempfile(fileext = ".tiff")
   r_12 <- terra::subset(r, 1:2)
   expect_equal(terra::nlyr(r_12), 2)
@@ -45,7 +43,6 @@ test_that("Check how it works with 2 layer file", {
   expect_identical(terra::nlyr(r_new), terra::nlyr(r_12))
 })
 
-
 test_that("Check how it works with 6 layer file", {
   # PNG
   img <- system.file("img/transparent.png", package = "rasterpic")
@@ -58,7 +55,6 @@ test_that("Check how it works with 6 layer file", {
 
   r_8 <- c(r, r)
   # Write as geotiff with 6 layers
-
   tmp_tiff <- tempfile(fileext = ".tiff")
   expect_equal(terra::nlyr(r_8), 8)
   terra::writeRaster(r_8, tmp_tiff)
@@ -75,7 +71,6 @@ test_that("Check how it works with 6 layer file", {
   expect_true(terra::has.RGB(r_new))
   expect_identical(terra::nlyr(r_new), terra::nlyr(r_8))
 })
-
 
 test_that("Check how it works with tif with RGB", {
   # PNG

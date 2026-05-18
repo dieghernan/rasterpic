@@ -11,6 +11,10 @@
 *.yaml text eol=lf
 *.yml text eol=lf
 *.json text eol=lf
+*.toml text eol=lf
+*.cff text eol=lf
+*.webmanifest text eol=lf
+*.Rproj text eol=lf
 *.csv text eol=lf
 *.tsv text eol=lf
 *.txt text eol=lf
@@ -25,10 +29,40 @@
 *.jpg binary
 *.jpeg binary
 *.png binary
-*.rda binary
+*.svgz binary
+*.webp binary
+*.heic binary
+*.avif binary
+
 *.tif binary
 *.tiff binary
-*.webp binary
+
 *.gpkg binary
+*.sqlite binary
+*.sqlite3 binary
+*.db binary
+
+*.rda binary
+*.RData binary
+*.rds binary
+
 *.pdf binary
+*.doc binary
+*.docx binary
+*.ppt binary
+*.pptx binary
+*.xls binary
+*.xlsx binary
+
+*.zip binary
+*.tar binary
+*.gz binary
+*.bz2 binary
+*.xz binary
+*.7z binary
+
+*.eot binary
+*.otf binary
+*.ttf binary
 *.woff binary
+*.woff2 binary

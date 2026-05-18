@@ -12,7 +12,7 @@
 \alias{rasterpic_img.SpatRaster}
 \alias{rasterpic_img.SpatVector}
 \alias{rasterpic_img.SpatExtent}
-\title{Convert an image to a geotagged \code{SpatRaster}}
+\title{Convert an image into a geotagged \code{SpatRaster}}
 \usage{
 rasterpic_img(
   x,
@@ -130,13 +130,8 @@ rasterpic_img(
 \item{x}{An \strong{R} object (see \strong{S3 methods}).}
 
 \item{img}{An image to be geotagged. It can be a local file or a URL
-(e.g. \code{"https://i.imgur.com/6yHmlwT.jpeg"}). The following image
-extensions are accepted:
-\itemize{
-\item \code{png} files
-\item \code{jpeg}/\code{jpg} files
-\item \code{tiff}/\code{tif} files
-}}
+(e.g. \code{"https://i.imgur.com/6yHmlwT.jpeg"}). Accepted extensions are
+\code{png}, \code{jpeg}/\code{jpg} and \code{tiff}/\code{tif}.}
 
 \item{halign}{A number between \code{0} and \code{1} giving the horizontal alignment of
 \code{img} relative to \code{x}. \code{0} aligns \code{x} with the left edge, \code{1} aligns with
@@ -169,7 +164,7 @@ See \strong{CRS} section.}
 A \code{SpatRaster} object (see \code{\link[terra:rast]{terra::rast()}}) where each layer corresponds to
 a color channel of \code{img}:
 \itemize{
-\item If \code{img} has at least 3 channels (e.g. layers), the result will have
+\item If \code{img} has at least 3 layers, the result will have
 an additional property setting layers 1 to 3 as the red, green and blue
 channels with names \code{"r"}, \code{"g"} and \code{"b"} and \code{alpha} if applicable.
 \item If \code{img} already has a definition of RGB values (this may be the case for
@@ -180,7 +175,7 @@ The resulting \code{SpatRaster} will have an RGB specification as explained in
 \code{terra::RGB()}.
 }
 \description{
-Geotags an image based on the coordinates of a given spatial object.
+Geotags an image based on the coordinates of a spatial object.
 
 \code{rasterpic_img()} is an S3 generic. \CRANpkg{rasterpic} provides methods for
 the following classes:
@@ -219,9 +214,8 @@ inputs can also mask the image to the object shape.
 
 \subsection{CRS}{
 
-This function preserves the CRS of \code{x} when applicable.
-For optimal results \strong{do not use} geographic coordinates
-(longitude/latitude).
+This function preserves the CRS of \code{x} when applicable. For optimal results,
+\strong{do not use} geographic coordinates (longitude/latitude).
 
 \code{crs} can be in a WKT format, as a \code{"authority:number"} code such as
 \code{"EPSG:4326"} or a PROJ-string format such as \code{"+proj=utm +zone=12"}. It can
@@ -246,7 +240,7 @@ x_path <- system.file("gpkg/UK.gpkg", package = "rasterpic")
 x <- st_read(x_path, quiet = TRUE)
 img <- system.file("img/vertical.png", package = "rasterpic")
 
-# Default configuration
+# Default configuration.
 ex1 <- rasterpic_img(x, img)
 
 ex1
@@ -254,41 +248,41 @@ ex1
 autoplot(ex1) +
   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5)
 
-# Expand
+# Expand.
 ex2 <- rasterpic_img(x, img, expand = 0.5)
 
 autoplot(ex2) +
   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5)
 
-# Align
+# Align.
 ex3 <- rasterpic_img(x, img, halign = 0)
 
 autoplot(ex3) +
   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5)
 labs(title = "Align")
 
-# Crop
+# Crop.
 ex4 <- rasterpic_img(x, img, crop = TRUE)
 
 autoplot(ex4) +
   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5) +
   labs(title = "Crop")
 
-# Mask
+# Mask.
 ex5 <- rasterpic_img(x, img, mask = TRUE)
 
 autoplot(ex5) +
   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5) +
   labs(title = "Mask")
 
-# Inverse mask
+# Inverse mask.
 ex6 <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
 
 autoplot(ex6) +
   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5) +
   labs(title = "Mask Inverse")
 
-# Combine inverse masking and cropping
+# Combine inverse masking and cropping.
 ex7 <- rasterpic_img(x, img, crop = TRUE, mask = TRUE, inverse = TRUE)
 
 autoplot(ex7) +
@@ -323,16 +317,8 @@ From \CRANpkg{terra}:
 For plotting:
 \itemize{
 \item \code{\link[terra:plot]{terra::plot()}} and \code{\link[terra:plotRGB]{terra::plotRGB()}}.
-\item With \CRANpkg{ggplot2}, use \CRANpkg{tidyterra}:
-\itemize{
-\item \code{\link[tidyterra:autoplot.SpatRaster]{tidyterra::autoplot.SpatRaster()}}.
-\item \code{\link[tidyterra:geom_spatraster_rgb]{tidyterra::geom_spatraster_rgb()}}.
-}
-\item Other packages:
-\itemize{
-\item \CRANpkg{tmap}.
-\item \CRANpkg{mapsf}.
-\item \CRANpkg{maptiles}.
-}
+\item \code{\link[tidyterra:autoplot.SpatRaster]{tidyterra::autoplot.SpatRaster()}} and
+\code{\link[tidyterra:geom_spatraster_rgb]{tidyterra::geom_spatraster_rgb()}} with \CRANpkg{ggplot2}.
+\item \CRANpkg{tmap}, \CRANpkg{mapsf} and \CRANpkg{maptiles}.
 }
 }

@@ -4,5 +4,4 @@
       rasterpic_img(x, img)
     Condition
       Error:
-      ! Cannot reach img on url 'http://this_is_an_error_url.fake'.
-
+      ! Cannot reach 'img' URL 'http://this_is_an_error_url.fake'.

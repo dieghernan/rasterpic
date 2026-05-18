@@ -142,7 +142,6 @@ test_that("Test mask SpatVector", {
   expect_gt(nrow(df2), nrow(df))
 })
 
-
 test_that("Test crop sfg", {
   img <- system.file("img/UK_flag.png", package = "rasterpic")
   x <- sf::st_read(

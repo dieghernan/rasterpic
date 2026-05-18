@@ -1,5 +1,4 @@
 # Use these helpers only for testing purposes.
-
 # Load a test raster from a temporary file.
 
 testhelp_load_rast <- function(path) {

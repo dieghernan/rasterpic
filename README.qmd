@@ -138,9 +138,9 @@ autoplot(uk_flag2) +
 
 **rasterpic** can parse the following image formats:
 
-- `png` files
-- `jpeg/jpg` files
-- `tiff/tif` files
+- `png` files.
+- `jpeg`/`jpg` files.
+- `tiff`/`tif` files.
 
 ## Citation
 

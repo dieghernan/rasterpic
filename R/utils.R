@@ -8,9 +8,8 @@ rpic_crop <- function(crop, box_marg, new_rast) {
 }
 
 rpic_read <- function(img, crs = NA) {
-  # Download `img` when it is a URL.
+  # Download `img` to a temporary file when it is a URL.
   if (grepl("^http:|^https:", img)) {
-    # Try the download.
     tmp <- tempfile(fileext = paste0(".", tools::file_ext(img)))
 
     err_dwnload <- tryCatch(
@@ -23,9 +22,8 @@ rpic_read <- function(img, crs = NA) {
       }
     )
 
-    # Stop when the download fails.
     if (err_dwnload) {
-      stop(sprintf("Cannot reach img on url '%s'.", img), call. = FALSE)
+      stop(sprintf("Cannot reach 'img' URL '%s'.", img), call. = FALSE)
     }
 
     # Use the downloaded file path for `img`.
@@ -33,11 +31,17 @@ rpic_read <- function(img, crs = NA) {
   }
 
   if (!file.exists(img)) {
-    stop("'img' file not found.", call. = FALSE)
+    stop("File supplied to 'img' not found.", call. = FALSE)
   }
 
   if (!tools::file_ext(img) %in% c("jpg", "jpeg", "tif", "tiff", "png")) {
-    stop("'img' only accepts 'png', 'jpg' or 'jpeg' files.", call. = FALSE)
+    stop(
+      paste0(
+        "Only 'png', 'jpg', 'jpeg', 'tif' and 'tiff' files are ",
+        "accepted for 'img'."
+      ),
+      call. = FALSE
+    )
   }
 
   # Handle PNG files.
