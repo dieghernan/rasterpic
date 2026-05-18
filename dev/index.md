@@ -106,9 +106,9 @@ shape](reference/figures/README-align-crop-mask-1.png)
 
 **rasterpic** can parse the following image formats:
 
-- `png` files
-- `jpeg/jpg` files
-- `tiff/tif` files
+- `png` files.
+- `jpeg`/`jpg` files.
+- `tiff`/`tif` files.
 
 ## Citation
 
@@ -127,6 +127,6 @@ A BibTeX entry for LaTeX users is:
   year = {2026},
   version = {0.4.0.9000},
   url = {https://dieghernan.github.io/rasterpic/},
-  abstract = {Create SpatRaster objects, as defined by the terra package, from digital images using a specified spatial object as a geographic reference. Supported inputs include objects from the sf, terra and stars packages. The main function is an S3 generic, allowing methods for additional spatial classes.},
+  abstract = {Create SpatRaster objects, as defined by the terra package, from digital images using a spatial object as a geographic reference. Supported inputs include objects from the sf, terra and stars packages. The main function is an S3 generic, so other packages can provide methods for additional spatial classes.},
 }
 ```

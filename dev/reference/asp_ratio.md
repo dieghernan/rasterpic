@@ -1,6 +1,7 @@
 # Compute aspect ratio for spatial input
 
-Computes the aspect ratio as width / height, or columns / rows.
+Computes the aspect ratio as width divided by height, or columns divided
+by rows.
 
 ## Usage
 

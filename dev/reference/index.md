@@ -2,16 +2,18 @@
 
 ## Core geotagging
 
+Convert images into geotagged `SpatRaster` objects.
+
 - [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
   :
 
-  Convert an image to a geotagged `SpatRaster`
+  Convert an image into a geotagged `SpatRaster`
 
 ## Package metadata
 
 - [`rasterpic`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic-package.md)
   [`rasterpic-package`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic-package.md)
-  : rasterpic: Convert Digital Images to 'SpatRaster' Objects
+  : rasterpic: Convert Digital Images into 'SpatRaster' Objects
 
 ## Plotting helpers
 

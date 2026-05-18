@@ -2,7 +2,7 @@
 
 This article shows how to plot the `SpatRaster` produced by
 [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
-with several R packages.
+with several **R** packages.
 
 ## Base plots
 
@@ -39,7 +39,7 @@ Figure 1: Plot with the **terra** package
 ## With ggplot2 and tidyterra
 
 The **tidyterra** package provides plotting support for **terra**
-`SpatRaster` objects:
+`SpatRaster` objects with **ggplot2**:
 
 ``` r
 
@@ -56,7 +56,7 @@ Figure 2: Plot with the **tidyterra** package
 
 ## With tmap
 
-The **tmap** package can also create maps:
+The **tmap** package can also create maps from `SpatRaster` objects:
 
 ``` r
 

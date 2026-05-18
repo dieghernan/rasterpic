@@ -111,6 +111,6 @@ extent, and vector methods can also mask the image to the object shape.
 
 **rasterpic** can parse the following image formats:
 
-- `png` files
-- `jpeg/jpg` files
-- `tiff/tif` files
+- `png` files.
+- `jpeg`/`jpg` files.
+- `tiff`/`tif` files.

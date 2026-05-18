@@ -1,6 +1,6 @@
-# Convert an image to a geotagged `SpatRaster`
+# Convert an image into a geotagged `SpatRaster`
 
-Geotags an image based on the coordinates of a given spatial object.
+Geotags an image based on the coordinates of a spatial object.
 
 `rasterpic_img()` is an S3 generic.
 [rasterpic](https://CRAN.R-project.org/package=rasterpic) provides
@@ -160,14 +160,8 @@ rasterpic_img(
 - img:
 
   An image to be geotagged. It can be a local file or a URL (e.g.
-  `"https://i.imgur.com/6yHmlwT.jpeg"`). The following image extensions
-  are accepted:
-
-  - `png` files
-
-  - `jpeg`/`jpg` files
-
-  - `tiff`/`tif` files
+  `"https://i.imgur.com/6yHmlwT.jpeg"`). Accepted extensions are `png`,
+  `jpeg`/`jpg` and `tiff`/`tif`.
 
 - halign:
 
@@ -219,10 +213,9 @@ A `SpatRaster` object (see
 [`terra::rast()`](https://rspatial.github.io/terra/reference/rast.html))
 where each layer corresponds to a color channel of `img`:
 
-- If `img` has at least 3 channels (e.g. layers), the result will have
-  an additional property setting layers 1 to 3 as the red, green and
-  blue channels with names `"r"`, `"g"` and `"b"` and `alpha` if
-  applicable.
+- If `img` has at least 3 layers, the result will have an additional
+  property setting layers 1 to 3 as the red, green and blue channels
+  with names `"r"`, `"g"` and `"b"` and `alpha` if applicable.
 
 - If `img` already has a definition of RGB values (this may be the case
   for `tiff`/`tif` files) the result will keep that channel definition.
@@ -258,7 +251,7 @@ inputs can also mask the image to the object shape.
 ### CRS
 
 This function preserves the CRS of `x` when applicable. For optimal
-results **do not use** geographic coordinates (longitude/latitude).
+results, **do not use** geographic coordinates (longitude/latitude).
 
 `crs` can be in a WKT format, as a `"authority:number"` code such as
 `"EPSG:4326"` or a PROJ-string format such as `"+proj=utm +zone=12"`. It
@@ -311,20 +304,14 @@ For plotting:
   and
   [`terra::plotRGB()`](https://rspatial.github.io/terra/reference/plotRGB.html).
 
-- With [ggplot2](https://CRAN.R-project.org/package=ggplot2), use
-  [tidyterra](https://CRAN.R-project.org/package=tidyterra):
+- [`tidyterra::autoplot.SpatRaster()`](https://dieghernan.github.io/tidyterra/reference/autoplot.Spat.html)
+  and
+  [`tidyterra::geom_spatraster_rgb()`](https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html)
+  with [ggplot2](https://CRAN.R-project.org/package=ggplot2).
 
-  - [`tidyterra::autoplot.SpatRaster()`](https://dieghernan.github.io/tidyterra/reference/autoplot.Spat.html).
-
-  - [`tidyterra::geom_spatraster_rgb()`](https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html).
-
-- Other packages:
-
-  - [tmap](https://CRAN.R-project.org/package=tmap).
-
-  - [mapsf](https://CRAN.R-project.org/package=mapsf).
-
-  - [maptiles](https://CRAN.R-project.org/package=maptiles).
+- [tmap](https://CRAN.R-project.org/package=tmap),
+  [mapsf](https://CRAN.R-project.org/package=mapsf) and
+  [maptiles](https://CRAN.R-project.org/package=maptiles).
 
 ## Examples
 
@@ -345,7 +332,7 @@ x_path <- system.file("gpkg/UK.gpkg", package = "rasterpic")
 x <- st_read(x_path, quiet = TRUE)
 img <- system.file("img/vertical.png", package = "rasterpic")
 
-# Default configuration
+# Default configuration.
 ex1 <- rasterpic_img(x, img)
 
 ex1
@@ -364,14 +351,14 @@ autoplot(ex1) +
   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5)
 
 
-# Expand
+# Expand.
 ex2 <- rasterpic_img(x, img, expand = 0.5)
 
 autoplot(ex2) +
   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5)
 
 
-# Align
+# Align.
 ex3 <- rasterpic_img(x, img, halign = 0)
 
 autoplot(ex3) +
@@ -381,7 +368,7 @@ labs(title = "Align")
 #> <ggplot2::labels> List of 1
 #>  $ title: chr "Align"
 
-# Crop
+# Crop.
 ex4 <- rasterpic_img(x, img, crop = TRUE)
 
 autoplot(ex4) +
@@ -389,7 +376,7 @@ autoplot(ex4) +
   labs(title = "Crop")
 
 
-# Mask
+# Mask.
 ex5 <- rasterpic_img(x, img, mask = TRUE)
 
 autoplot(ex5) +
@@ -397,7 +384,7 @@ autoplot(ex5) +
   labs(title = "Mask")
 
 
-# Inverse mask
+# Inverse mask.
 ex6 <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
 
 autoplot(ex6) +
@@ -405,7 +392,7 @@ autoplot(ex6) +
   labs(title = "Mask Inverse")
 
 
-# Combine inverse masking and cropping
+# Combine inverse masking and cropping.
 ex7 <- rasterpic_img(x, img, crop = TRUE, mask = TRUE, inverse = TRUE)
 
 autoplot(ex7) +

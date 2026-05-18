@@ -3,7 +3,8 @@
 ## rasterpic (development version)
 
 - [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
-  is now an S3 generic, with methods for the supported input classes.
+  is now an S3 generic, with methods for the supported input classes
+  ([\#39](https://github.com/dieghernan/rasterpic/issues/39)).
 - [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
   gains support for `stars` objects.
 
@@ -17,7 +18,7 @@ CRAN release: 2026-03-21
 
 CRAN release: 2026-01-14
 
-- New logo
+- New logo.
 - The minimum required **R** version is now 4.1.0.
 - Minor internal and documentation improvements.
 

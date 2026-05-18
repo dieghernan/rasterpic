@@ -97,7 +97,7 @@
 
 
 
-    <p>This article shows how to plot the <code>SpatRaster</code> produced by <code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> with several R packages.</p>
+    <p>This article shows how to plot the <code>SpatRaster</code> produced by <code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> with several <strong>R</strong> packages.</p>
 <section class="level2"><h2 id="base-plots">Base plots<a class="anchor" aria-label="anchor" href="#base-plots"></a>
 </h2>
 <p>The most straightforward option is to use the base <code><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot()</a></code> methods provided by the <strong>terra</strong> package (<code><a href="https://rspatial.github.io/terra/reference/plotRGB.html" class="external-link">terra::plotRGB()</a></code>):</p>
@@ -133,7 +133,7 @@ Figure 1: Plot with the <strong>terra</strong> package
 </div>
 </section><section class="level2"><h2 id="with-ggplot2-and-tidyterra">With ggplot2 and tidyterra<a class="anchor" aria-label="anchor" href="#with-ggplot2-and-tidyterra"></a>
 </h2>
-<p>The <strong>tidyterra</strong> package provides plotting support for <strong>terra</strong> <code>SpatRaster</code> objects:</p>
+<p>The <strong>tidyterra</strong> package provides plotting support for <strong>terra</strong> <code>SpatRaster</code> objects with <strong>ggplot2</strong>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
@@ -154,7 +154,7 @@ Figure 2: Plot with the <strong>tidyterra</strong> package
 </div>
 </section><section class="level2"><h2 id="with-tmap">With tmap<a class="anchor" aria-label="anchor" href="#with-tmap"></a>
 </h2>
-<p>The <strong>tmap</strong> package can also create maps:</p>
+<p>The <strong>tmap</strong> package can also create maps from <code>SpatRaster</code> objects:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap" class="external-link">tmap</a></span><span class="op">)</span></span>
