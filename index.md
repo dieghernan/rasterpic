@@ -16,14 +16,17 @@ install.packages("rasterpic")
 
 ## Example
 
-This package allows you to create custom maps using a wide variety of
-spatial objects:
+You can create custom maps with several spatial input classes:
 
-- Spatial objects created with the **sf** package: `sf`, `sfc`, `sfg` or
-  `bbox`.
-- Spatial objects created with the **terra** package: `SpatRaster`,
-  `SpatVector` and `SpatExtent`.
+- **sf** classes: `sf`, `sfc`, `sfg` or `bbox`.
+- **terra** classes: `SpatRaster`, `SpatVector` and `SpatExtent`.
+- **stars** classes: `stars`.
 - A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
+
+The main function,
+[`rasterpic_img()`](https://dieghernan.github.io/rasterpic/reference/rasterpic_img.md),
+is an S3 generic. The methods for extent-like inputs use the object
+extent, and vector methods can also mask the image to the object shape.
 
 An example using an `sf` object:
 
@@ -86,8 +89,8 @@ shape](reference/figures/README-align-crop-mask-1.png)
 **rasterpic** can parse the following image formats:
 
 - `png` files.
-- `jpg/jpeg` files.
-- `tif/tiff` files.
+- `jpeg`/`jpg` files.
+- `tiff`/`tif` files.
 
 ## Citation
 
@@ -104,8 +107,8 @@ A BibTeX entry for LaTeX users is:
   doi = {10.32614/CRAN.package.rasterpic},
   author = {Diego Hernangómez},
   year = {2026},
-  version = {0.4.0},
+  version = {0.5.0},
   url = {https://dieghernan.github.io/rasterpic/},
-  abstract = {Create SpatRaster objects, as defined by the terra package, from digital images using a specified spatial object as a geographic reference.},
+  abstract = {Create SpatRaster objects, as defined by the terra package, from digital images using a spatial object as a geographic reference. Supported inputs include objects from the sf, terra and stars packages. The main function is an S3 generic, so other packages can provide methods for additional spatial classes.},
 }
 ```

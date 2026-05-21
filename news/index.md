@@ -1,17 +1,27 @@
 # Changelog
 
+## rasterpic 0.5.0
+
+- Package documentation was reviewed and updated with AI-assisted
+  editing.
+- [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/reference/rasterpic_img.md)
+  is now an S3 generic with methods for supported input classes
+  ([\#39](https://github.com/dieghernan/rasterpic/issues/39)).
+- [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/reference/rasterpic_img.md)
+  now supports `stars` objects.
+
 ## rasterpic 0.4.0
 
 CRAN release: 2026-03-21
 
-- Migrate vignettes to Quarto.
+- Migrated vignettes to Quarto.
 
 ## rasterpic 0.3.1
 
 CRAN release: 2026-01-14
 
 - New logo.
-- Minimum **R** version required is now 4.1.0.
+- The minimum required **R** version is now 4.1.0.
 - Minor internal and documentation improvements.
 
 ## rasterpic 0.3.0
@@ -88,7 +98,7 @@ CRAN release: 2022-02-18
   - Numeric vectors `c(xmin, ymin, xmax, ymax)`.
 - The `img` parameter in
   [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/reference/rasterpic_img.md)
-  now accepts online images.
+  now accepts image URLs.
 - Added an
   [article](https://dieghernan.github.io/rasterpic/articles/plots.html)
   to the pkgdown site.

@@ -1,8 +1,8 @@
-# Plotting terra rasters
+# Plotting SpatRaster objects
 
 This article shows how to plot the `SpatRaster` produced by
 [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/reference/rasterpic_img.md)
-with several packages.
+with several **R** packages.
 
 ## Base plots
 
@@ -36,10 +36,10 @@ plotRGB(uk_img)
 
 Figure 1: Plot with the **terra** package
 
-## With ggplot2 + tidyterra
+## With ggplot2 and tidyterra
 
-The **tidyterra** package provides full support for **terra**
-`SpatRaster` objects:
+The **tidyterra** package provides plotting support for **terra**
+`SpatRaster` objects with **ggplot2**:
 
 ``` r
 
@@ -56,7 +56,7 @@ Figure 2: Plot with the **tidyterra** package
 
 ## With tmap
 
-The **tmap** package can also be used to create maps:
+The **tmap** package can also create maps from `SpatRaster` objects:
 
 ``` r
 
@@ -73,7 +73,7 @@ Figure 3: Plot with the **tmap** package
 
 ## With mapsf
 
-The **mapsf** package also provides this functionality:
+The **mapsf** package can also plot `SpatRaster` objects:
 
 ``` r
 
@@ -94,7 +94,7 @@ Figure 4: Plot with the **mapsf** package
 ## With maptiles
 
 The **maptiles** package can download map tiles from different
-providers. It also has a specific function for plotting **terra**
+providers. It also provides a function for plotting **terra**
 `SpatRaster` objects:
 
 ``` r

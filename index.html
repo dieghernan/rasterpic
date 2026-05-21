@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>rasterpic | Convert digital images to SpatRaster objects • rasterpic</title>
+<title>rasterpic | Convert digital images into SpatRaster objects • rasterpic</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
 <link rel="icon" type="”image/svg+xml”" href="favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -20,10 +20,10 @@
 <link href="deps/Roboto-0.4.10/font.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="rasterpic | Convert digital images to SpatRaster objects">
-<meta name="description" content="Create SpatRaster objects from digital images using a specified spatial object as a geographic reference.
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="rasterpic | Convert digital images into SpatRaster objects">
+<meta name="description" content="Create **terra** `SpatRaster` objects from digital images. Use spatial input classes from **sf**, **terra** or **stars**, or numeric coordinate vectors, as geographic references. Local image files and image URLs are supported.
 ">
-<meta property="og:description" content="Create SpatRaster objects from digital images using a specified spatial object as a geographic reference.
+<meta property="og:description" content="Create **terra** `SpatRaster` objects from digital images. Use spatial input classes from **sf**, **terra** or **stars**, or numeric coordinate vectors, as geographic references. Local image files and image URLs are supported.
 ">
 <meta property="og:image" content="https://dieghernan.github.io/rasterpic/logo.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -39,7 +39,7 @@
 
     <a class="navbar-brand me-2" href="index.html"><img src="apple-touch-icon.png" alt="rasterpic logo" height="34" width="34" class="d-inline-block me-1">rasterpic</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.4.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,7 +54,7 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><h6 class="dropdown-header" data-toc-skip>Articles</h6></li>
-    <li><a class="dropdown-item" href="articles/plots.html">Plotting terra rasters</a></li>
+    <li><a class="dropdown-item" href="articles/plots.html">Plotting SpatRaster objects</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Blog</h6></li>
     <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/202201_maps-flags/">Beautiful maps with R (IV): Fun with flags revisited</a></li>
@@ -106,12 +106,17 @@
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
-<p>This package allows you to create custom maps using a wide variety of spatial objects:</p>
+<p>You can create custom maps with several spatial input classes:</p>
 <ul>
-<li>Spatial objects created with the <strong>sf</strong> package: <code>sf</code>, <code>sfc</code>, <code>sfg</code> or <code>bbox</code>.</li>
-<li>Spatial objects created with the <strong>terra</strong> package: <code>SpatRaster</code>, <code>SpatVector</code> and <code>SpatExtent</code>.</li>
+<li>
+<strong>sf</strong> classes: <code>sf</code>, <code>sfc</code>, <code>sfg</code> or <code>bbox</code>.</li>
+<li>
+<strong>terra</strong> classes: <code>SpatRaster</code>, <code>SpatVector</code> and <code>SpatExtent</code>.</li>
+<li>
+<strong>stars</strong> classes: <code>stars</code>.</li>
 <li>A numeric coordinate vector of the form <code>c(xmin, ymin, xmax, ymax)</code>.</li>
 </ul>
+<p>The main function, <code><a href="reference/rasterpic_img.html">rasterpic_img()</a></code>, is an S3 generic. The methods for extent-like inputs use the object extent, and vector methods can also mask the image to the object shape.</p>
 <p>An example using an <code>sf</code> object:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/rasterpic/">rasterpic</a></span><span class="op">)</span></span>
@@ -164,9 +169,9 @@
 <li>
 <code>png</code> files.</li>
 <li>
-<code>jpg/jpeg</code> files.</li>
+<code>jpeg</code>/<code>jpg</code> files.</li>
 <li>
-<code>tif/tiff</code> files.</li>
+<code>tiff</code>/<code>tif</code> files.</li>
 </ul>
 </div>
 <div class="section level2">
@@ -181,9 +186,9 @@ Hernangómez D (2026). <em>rasterpic: Convert Digital Images to SpatRaster Objec
 <span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  doi <span class="ot">=</span> {<span class="fl">10.32614</span><span class="sc">/</span>CRAN.package.rasterpic},</span>
 <span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>  author <span class="ot">=</span> {Diego Hernangómez},</span>
 <span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>  year <span class="ot">=</span> {<span class="dv">2026</span>},</span>
-<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">0</span>.<span class="fl">4.0</span>},</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">0</span>.<span class="fl">5.0</span>},</span>
 <span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>  url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>dieghernan.github.io<span class="sc">/</span>rasterpic<span class="sc">/</span>},</span>
-<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>  abstract <span class="ot">=</span> {Create SpatRaster objects, as defined by the terra package, from digital images using a specified spatial object as a geographic reference.},</span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>  abstract <span class="ot">=</span> {Create SpatRaster objects, as defined by the terra package, from digital images using a spatial object as a geographic reference. Supported inputs include objects from the sf, terra and stars packages. The main <span class="cf">function</span> is an S3 generic, so other packages can provide methods <span class="cf">for</span> additional spatial classes.},</span>
 <span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 </div>
