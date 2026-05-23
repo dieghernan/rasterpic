@@ -2,6 +2,8 @@
 
 ## rasterpic 0.5.0
 
+CRAN release: 2026-05-21
+
 - Package documentation was reviewed and updated with AI-assisted
   editing.
 - [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/reference/rasterpic_img.md)
