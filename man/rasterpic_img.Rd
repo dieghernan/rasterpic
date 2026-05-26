@@ -127,7 +127,7 @@ rasterpic_img(
 )
 }
 \arguments{
-\item{x}{An \strong{R} object (see \strong{S3 methods}).}
+\item{x}{An \R object (see \strong{S3 methods}).}
 
 \item{img}{An image to be geotagged. It can be a local file or a URL
 (e.g. \code{"https://i.imgur.com/6yHmlwT.jpeg"}). Accepted extensions are
@@ -298,7 +298,7 @@ From \CRANpkg{sf}:
 \item \code{\link[sf:st_crs]{sf::st_crs()}}.
 \item \code{\link[sf:st_bbox]{sf::st_bbox()}}.
 \item \code{vignette("sf1", package = "sf")} to understand how \CRANpkg{sf} organizes
-\strong{R} objects.
+\R objects.
 }
 
 From \CRANpkg{stars}:

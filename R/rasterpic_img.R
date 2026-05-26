@@ -10,7 +10,7 @@
 #' `r doclisting::methods_list("rasterpic_img")`
 #'
 #' @rdname rasterpic_img
-#' @param x An **R** object (see **S3 methods**).
+#' @param x An \R object (see **S3 methods**).
 #'
 #' @param img An image to be geotagged. It can be a local file or a URL
 #'   (e.g. `"https://i.imgur.com/6yHmlwT.jpeg"`). Accepted extensions are
@@ -97,7 +97,7 @@
 #' - [sf::st_crs()].
 #' - [sf::st_bbox()].
 #' - `vignette("sf1", package = "sf")` to understand how \CRANpkg{sf} organizes
-#'   **R** objects.
+#'   \R objects.
 #'
 #' From \CRANpkg{stars}:
 #'
