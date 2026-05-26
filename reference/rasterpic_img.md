@@ -155,7 +155,7 @@ rasterpic_img(
 
 - x:
 
-  An **R** object (see **S3 methods**).
+  An R object (see **S3 methods**).
 
 - img:
 
@@ -279,7 +279,7 @@ From [sf](https://CRAN.R-project.org/package=sf):
 
 - [`vignette("sf1", package = "sf")`](https://r-spatial.github.io/sf/articles/sf1.html)
   to understand how [sf](https://CRAN.R-project.org/package=sf)
-  organizes **R** objects.
+  organizes R objects.
 
 From [stars](https://CRAN.R-project.org/package=stars):
 
