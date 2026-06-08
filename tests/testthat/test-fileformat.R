@@ -192,7 +192,7 @@ test_that("Test transparent", {
 
   raster <- rasterpic_img(x, img)
 
-  expect_identical(names(raster), c("r", "g", "b", "alpha"))
+  expect_named(raster, c("r", "g", "b", "alpha"))
 
   expect_true(terra::has.RGB(raster))
 

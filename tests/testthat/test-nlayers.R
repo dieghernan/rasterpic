@@ -23,7 +23,7 @@ test_that("Check how it works with 2 layer file", {
   )
 
   r <- rasterpic_img(x, img)
-  expect_identical(names(r), c("r", "g", "b"))
+  expect_named(r, c("r", "g", "b"))
 
   # Write as geotiff with 2 layers
   tmp_tiff <- tempfile(fileext = ".tiff")
