@@ -67,5 +67,5 @@ test_that("Test stars without crs", {
   expect_s3_class(x, "stars")
 
   expect_message(raster <- rasterpic_img(x, img), "'crs' is NA")
-  expect_true(terra::crs(raster) == "")
+  expect_false(nzchar(terra::crs(raster)))
 })

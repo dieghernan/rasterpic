@@ -10,7 +10,7 @@ test_that("Test SpatExtent", {
 
   expect_message(raster <- rasterpic_img(x, img), "'crs' is NA")
 
-  expect_true(terra::crs(raster) == "")
+  expect_false(nzchar(terra::crs(raster)))
 
   png_dim <- terra::rast(img, noflip = TRUE)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])

@@ -12,7 +12,7 @@ test_that("Test vector", {
   expect_error(rasterpic_img(x[1:3], img))
   expect_message(raster <- rasterpic_img(x, img), "'crs' is NA")
 
-  expect_true(terra::crs(raster) == "")
+  expect_false(nzchar(terra::crs(raster)))
 
   png_dim <- terra::rast(img, noflip = TRUE)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
@@ -41,7 +41,7 @@ test_that("Test vector with projs", {
   expect_length(x, 4)
 
   raster <- rasterpic_img(x, img, crs = crs_wkt_sf)
-  expect_false(terra::crs(raster) == "")
+  expect_true(nzchar(terra::crs(raster)))
 
   png_dim <- terra::rast(img, noflip = TRUE)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])

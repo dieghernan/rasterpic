@@ -506,7 +506,7 @@ rasterpic_img_impl <- function(
   # Normalize missing CRS values.
   crs <- rpic_crs(crs)
 
-  if (crs == "") {
+  if (!nzchar(crs)) {
     message("Argument 'crs' is NA.")
   } else if (terra::is.lonlat(crs, warn = FALSE)) {
     message(

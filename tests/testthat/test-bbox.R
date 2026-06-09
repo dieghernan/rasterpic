@@ -41,10 +41,10 @@ test_that("Test bbox with projs", {
 
   # NULL crs
   raster_null <- rasterpic_img(x, img)
-  expect_true(terra::crs(raster_null) == "")
+  expect_false(nzchar(terra::crs(raster_null)))
 
   raster <- rasterpic_img(x, img, crs = crs_wkt_sf)
-  expect_false(terra::crs(raster) == "")
+  expect_true(nzchar(terra::crs(raster)))
 
   png_dim <- terra::rast(img, noflip = TRUE)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
