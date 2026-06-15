@@ -188,9 +188,9 @@ parameters \code{halign}, \code{valign}, \code{expand}, \code{crop} and \code{ma
 
 \CRANpkg{rasterpic} supports these spatial input classes:
 \itemize{
-\item \strong{sf} classes: \code{sf}, \code{sfc}, \code{sfg} and \code{bbox}.
-\item \strong{terra} classes: \code{SpatRaster}, \code{SpatVector} and \code{SpatExtent}.
-\item \strong{stars} class: \code{stars}.
+\item \CRANpkg{sf} classes: \code{sf}, \code{sfc}, \code{sfg} and \code{bbox}.
+\item \CRANpkg{terra} classes: \code{SpatRaster}, \code{SpatVector} and \code{SpatExtent}.
+\item \CRANpkg{stars} class: \code{stars}.
 \item A numeric coordinate vector of the form \code{c(xmin, ymin, xmax, ymax)}.
 }
 

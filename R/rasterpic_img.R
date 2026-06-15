@@ -62,9 +62,9 @@
 #'
 #' \CRANpkg{rasterpic} supports these spatial input classes:
 #'
-#' - **sf** classes: `sf`, `sfc`, `sfg` and `bbox`.
-#' - **terra** classes: `SpatRaster`, `SpatVector` and `SpatExtent`.
-#' - **stars** class: `stars`.
+#' - \CRANpkg{sf} classes: `sf`, `sfc`, `sfg` and `bbox`.
+#' - \CRANpkg{terra} classes: `SpatRaster`, `SpatVector` and `SpatExtent`.
+#' - \CRANpkg{stars} class: `stars`.
 #' - A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 #'
 #' Other packages can provide methods for additional spatial classes.
