@@ -2,6 +2,8 @@
 
 - User-facing errors, warnings and notes now use **cli** alerts and inline
   markup for consistent argument, file and URL formatting.
+- `rasterpic_img()` with `mask = TRUE` and/or `inverse = TRUE` returns a
+  `SpatRaster` with RGB specification again (`terra::has.RGB()` returns `TRUE`).
 
 # rasterpic 0.5.0
 

@@ -144,8 +144,8 @@
 #' ex3 <- rasterpic_img(x, img, halign = 0)
 #'
 #' autoplot(ex3) +
-#'   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5)
-#' labs(title = "Align")
+#'   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5) +
+#'   labs(title = "Align")
 #'
 #' # Crop to the bounding box.
 #' ex4 <- rasterpic_img(x, img, crop = TRUE)
@@ -453,7 +453,7 @@ rasterpic_img.SpatVector <- function(
     new_rast <- terra::mask(new_rast, x, inverse = inverse)
   }
 
-  new_rast
+  add_rgb_channels(new_rast)
 }
 
 #' @rdname rasterpic_img
@@ -568,6 +568,10 @@ rasterpic_img_impl <- function(
   # C. Optionally crop. ----
   new_rast <- rpic_crop(crop, box_marg, new_rast)
 
+  add_rgb_channels(new_rast)
+}
+
+add_rgb_channels <- function(new_rast) {
   # Assign RGB if there are at least 3 layers and no RGB definition.
   if (terra::nlyr(new_rast) >= 3) {
     if (!terra::has.RGB(new_rast)) {

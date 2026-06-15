@@ -106,6 +106,8 @@ test_that("Test mask SpatVector", {
 
   raster <- rasterpic_img(x, img, mask = TRUE)
 
+  expect_true(terra::has.RGB(raster))
+
   png_dim <- terra::rast(img, noflip = TRUE)
 
   expect_true(asp_ratio(raster) == dim(png_dim)[2] / dim(png_dim)[1])
@@ -125,6 +127,8 @@ test_that("Test mask SpatVector", {
 
   # Inverse
   raster_inv <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
+
+  expect_true(terra::has.RGB(raster_inv))
 
   expect_true(asp_ratio(raster_inv) == dim(png_dim)[2] / dim(png_dim)[1])
 
