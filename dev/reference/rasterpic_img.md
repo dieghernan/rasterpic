@@ -215,11 +215,13 @@ and `mask` with examples.
 [rasterpic](https://CRAN.R-project.org/package=rasterpic) supports these
 spatial input classes:
 
-- **sf** classes: `sf`, `sfc`, `sfg` and `bbox`.
+- [sf](https://CRAN.R-project.org/package=sf) classes: `sf`, `sfc`,
+  `sfg` and `bbox`.
 
-- **terra** classes: `SpatRaster`, `SpatVector` and `SpatExtent`.
+- [terra](https://CRAN.R-project.org/package=terra) classes:
+  `SpatRaster`, `SpatVector` and `SpatExtent`.
 
-- **stars** class: `stars`.
+- [stars](https://CRAN.R-project.org/package=stars) class: `stars`.
 
 - A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 
