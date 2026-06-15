@@ -4,6 +4,11 @@
 
 - User-facing errors, warnings and notes now use **cli** alerts and
   inline markup for consistent argument, file and URL formatting.
+- [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
+  with `mask = TRUE` and/or `inverse = TRUE` returns a `SpatRaster` with
+  RGB specification again
+  ([`terra::has.RGB()`](https://rspatial.github.io/terra/reference/RGB.html)
+  returns `TRUE`).
 
 ## rasterpic 0.5.0
 

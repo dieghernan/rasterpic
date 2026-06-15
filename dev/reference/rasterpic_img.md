@@ -344,11 +344,9 @@ autoplot(ex2) +
 ex3 <- rasterpic_img(x, img, halign = 0)
 
 autoplot(ex3) +
-  geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5)
+  geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5) +
+  labs(title = "Align")
 
-labs(title = "Align")
-#> <ggplot2::labels> List of 1
-#>  $ title: chr "Align"
 
 # Crop to the bounding box.
 ex4 <- rasterpic_img(x, img, crop = TRUE)
