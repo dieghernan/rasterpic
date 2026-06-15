@@ -6,10 +6,7 @@ test_that("Test stars", {
   )
   expect_s3_class(x, "stars")
 
-  expect_message(
-    raster <- rasterpic_img(x, img),
-    "Input 'x' has geographic coordinates. Assuming planar coordinates."
-  )
+  expect_snapshot(raster <- rasterpic_img(x, img))
 
   png_dim <- terra::rast(img, noflip = TRUE)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
@@ -66,6 +63,6 @@ test_that("Test stars without crs", {
   x <- stars::st_as_stars(sf::st_bbox(x))
   expect_s3_class(x, "stars")
 
-  expect_message(raster <- rasterpic_img(x, img), "'crs' is NA")
+  expect_snapshot(raster <- rasterpic_img(x, img))
   expect_false(nzchar(terra::crs(raster)))
 })

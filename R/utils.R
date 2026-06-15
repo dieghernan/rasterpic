@@ -23,7 +23,7 @@ rpic_read <- function(img, crs = NA) {
     )
 
     if (err_dwnload) {
-      stop(sprintf("Cannot reach 'img' URL '%s'.", img), call. = FALSE)
+      cli::cli_abort("Cannot download {.arg img} from {.url {img}}.")
     }
 
     # Use the downloaded file path for `img`.
@@ -31,17 +31,14 @@ rpic_read <- function(img, crs = NA) {
   }
 
   if (!file.exists(img)) {
-    stop("File supplied to 'img' not found.", call. = FALSE)
+    cli::cli_abort("File supplied to {.arg img} does not exist.")
   }
 
   if (!tools::file_ext(img) %in% c("jpg", "jpeg", "tif", "tiff", "png")) {
-    stop(
-      paste0(
-        "Only 'png', 'jpg', 'jpeg', 'tif' and 'tiff' files are ",
-        "accepted for 'img'."
-      ),
-      call. = FALSE
-    )
+    cli::cli_abort(paste0(
+      "{.arg img} must be a {.file png}, {.file jpg}, {.file jpeg}, ",
+      "{.file tif} or {.file tiff} file."
+    ))
   }
 
   # Handle PNG files.

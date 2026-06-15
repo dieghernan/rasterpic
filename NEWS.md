@@ -1,8 +1,13 @@
+# rasterpic (development version)
+
+- User-facing errors, warnings and notes now use **cli** alerts and inline
+  markup for consistent argument, file and URL formatting.
+
 # rasterpic 0.5.0
 
 - Package documentation was reviewed and updated with AI-assisted editing.
-- `rasterpic_img()` is now an S3 generic with methods for supported input
-  classes (#39).
+- `rasterpic_img()` is now an S3 generic with methods for supported spatial
+  input classes (#39).
 - `rasterpic_img()` now supports `stars` objects.
 
 # rasterpic 0.4.0

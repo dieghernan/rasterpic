@@ -1,13 +1,15 @@
 year <- format(Sys.time(), "%Y")
 abs <- trimws(gsub("\\s+", " ", meta$Description))
 abs <- gsub("'", "", abs)
+title <- gsub("'", "", meta$Title, fixed = TRUE)
+title <- gsub("SpatRaster", "{SpatRaster}", title, fixed = TRUE)
 pkg <- meta$Package
 doi <- paste0("10.32614/CRAN.package.", pkg)
 
 bibentry(
   "Manual",
   header = paste0("To cite '", pkg, "' in publications use:"),
-  title = "{rasterpic}: Convert Digital Images to {SpatRaster} Objects",
+  title = paste0("{", pkg, "}: ", gsub("'", "", title)),
   doi = doi,
   author = c(person("Diego", "Hernangómez")),
   year = year,

@@ -2,13 +2,13 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "rasterpic",
-  "description": "Create 'SpatRaster' objects, as defined by the 'terra' package, from digital images using a spatial object as a geographic reference. Supported inputs include objects from the 'sf', 'terra' and 'stars' packages. The main function is an S3 generic, so other packages can provide methods for additional spatial classes.",
-  "name": "rasterpic: Convert Digital Images into 'SpatRaster' Objects",
+  "description": "Geotag digital images and return 'SpatRaster' objects, as defined by the 'terra' package, using coordinates from supported spatial inputs as a reference. Supported inputs include objects from the 'sf', 'terra' and 'stars' packages. The main function is an S3 generic, so other packages can provide methods for additional spatial classes.",
+  "name": "rasterpic: Convert Digital Images into Geotagged 'SpatRaster' Objects",
   "relatedLink": ["https://dieghernan.github.io/rasterpic/", "https://CRAN.R-project.org/package=rasterpic"],
   "codeRepository": "https://github.com/dieghernan/rasterpic",
   "issueTracker": "https://github.com/dieghernan/rasterpic/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.5.0",
+  "version": "0.5.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -144,6 +144,18 @@
     },
     "2": {
       "@type": "SoftwareApplication",
+      "identifier": "cli",
+      "name": "cli",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=cli"
+    },
+    "3": {
+      "@type": "SoftwareApplication",
       "identifier": "png",
       "name": "png",
       "provider": {
@@ -154,7 +166,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=png"
     },
-    "3": {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "sf",
       "name": "sf",
@@ -167,7 +179,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=sf"
     },
-    "4": {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "terra",
       "name": "terra",
@@ -180,10 +192,20 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=terra"
     },
+    "6": {
+      "@type": "SoftwareApplication",
+      "identifier": "tools",
+      "name": "tools"
+    },
+    "7": {
+      "@type": "SoftwareApplication",
+      "identifier": "utils",
+      "name": "utils"
+    },
     "SystemRequirements": null
   },
   "keywords": ["cran", "jpeg", "jpg", "maps", "png", "r", "r-package", "r-stats", "raster", "rstats", "sf", "stars", "terra", "tif", "tiff", "cran-r"],
-  "fileSize": "1177.974KB",
+  "fileSize": "1179.376KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -195,7 +217,7 @@
           "familyName": "Hernangómez"
         }
       ],
-      "name": "{rasterpic}: Convert Digital Images to {SpatRaster} Objects",
+      "name": "{rasterpic}: Convert Digital Images into Geotagged {SpatRaster} Objects",
       "identifier": "10.32614/CRAN.package.rasterpic",
       "url": "https://dieghernan.github.io/rasterpic/",
       "@id": "https://doi.org/10.32614/CRAN.package.rasterpic",

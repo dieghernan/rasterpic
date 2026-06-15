@@ -14,9 +14,9 @@
         "familyName": "Hernangómez",
         "givenName": "Diego"
       },
-      "description": "Create 'SpatRaster' objects, as defined by the 'terra' package, from digital images using a spatial object as a geographic reference. Supported inputs include objects from the 'sf', 'terra' and 'stars' packages. The main function is an S3 generic, so other packages can provide methods for additional spatial classes.",
+      "description": "Geotag digital images and return 'SpatRaster' objects, as defined by the 'terra' package, using coordinates from supported spatial inputs as a reference. Supported inputs include objects from the 'sf', 'terra' and 'stars' packages. The main function is an S3 generic, so other packages can provide methods for additional spatial classes.",
       "license": "https://spdx.org/licenses/MIT",
-      "name": "rasterpic: Convert Digital Images into 'SpatRaster' Objects",
+      "name": "rasterpic: Convert Digital Images into Geotagged 'SpatRaster' Objects",
       "programmingLanguage": {
         "type": "ComputerLanguage",
         "name": "R",
@@ -29,7 +29,7 @@
         "url": "https://cran.r-project.org"
       },
       "runtimePlatform": "R version 4.6.0 (2026-04-24 ucrt)",
-      "version": "0.5.0"
+      "version": "0.5.0.9000"
     },
     {
       "id": "https://doi.org/10.32614/CRAN.package.rasterpic",
@@ -39,7 +39,7 @@
         "familyName": "Hernangómez",
         "givenName": "Diego"
       },
-      "name": "{rasterpic}: Convert Digital Images to {SpatRaster} Objects"
+      "name": "{rasterpic}: Convert Digital Images into Geotagged {SpatRaster} Objects"
     }
   ]
 }

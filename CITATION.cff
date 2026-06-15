@@ -7,16 +7,17 @@ cff-version: 1.2.0
 message: 'To cite package "rasterpic" in publications use:'
 type: software
 license: MIT
-title: 'rasterpic: Convert Digital Images into ''SpatRaster'' Objects'
-version: 0.5.0
+title: 'rasterpic: Convert Digital Images into Geotagged ''SpatRaster'' Objects'
+version: 0.5.0.9000
 doi: 10.32614/CRAN.package.rasterpic
 identifiers:
 - type: doi
   value: 10.32614/CRAN.package.rasterpic
-abstract: Create 'SpatRaster' objects, as defined by the 'terra' package, from digital
-  images using a spatial object as a geographic reference. Supported inputs include
-  objects from the 'sf', 'terra' and 'stars' packages. The main function is an S3
-  generic, so other packages can provide methods for additional spatial classes.
+abstract: Geotag digital images and return 'SpatRaster' objects, as defined by the
+  'terra' package, using coordinates from supported spatial inputs as a reference.
+  Supported inputs include objects from the 'sf', 'terra' and 'stars' packages. The
+  main function is an S3 generic, so other packages can provide methods for additional
+  spatial classes.
 authors:
 - family-names: Hernangómez
   given-names: Diego
@@ -24,7 +25,7 @@ authors:
   orcid: https://orcid.org/0000-0001-8457-4658
 preferred-citation:
   type: manual
-  title: 'rasterpic: Convert Digital Images to SpatRaster Objects'
+  title: 'rasterpic: Convert Digital Images into Geotagged SpatRaster Objects'
   authors:
   - family-names: Hernangómez
     given-names: Diego
@@ -32,12 +33,13 @@ preferred-citation:
     orcid: https://orcid.org/0000-0001-8457-4658
   doi: 10.32614/CRAN.package.rasterpic
   year: '2026'
-  version: 0.5.0
+  version: 0.5.0.9000
   url: https://dieghernan.github.io/rasterpic/
-  abstract: Create SpatRaster objects, as defined by the terra package, from digital
-    images using a spatial object as a geographic reference. Supported inputs include
-    objects from the sf, terra and stars packages. The main function is an S3 generic,
-    so other packages can provide methods for additional spatial classes.
+  abstract: Geotag digital images and return SpatRaster objects, as defined by the
+    terra package, using coordinates from supported spatial inputs as a reference.
+    Supported inputs include objects from the sf, terra and stars packages. The main
+    function is an S3 generic, so other packages can provide methods for additional
+    spatial classes.
 repository: https://CRAN.R-project.org/package=rasterpic
 repository-code: https://github.com/dieghernan/rasterpic
 url: https://dieghernan.github.io/rasterpic/
@@ -78,6 +80,18 @@ references:
   year: '2026'
   doi: 10.32614/R.manuals
   version: '>= 4.1.0'
+- type: software
+  title: cli
+  abstract: 'cli: Helpers for Developing Command Line Interfaces'
+  notes: Imports
+  url: https://cli.r-lib.org
+  repository: https://CRAN.R-project.org/package=cli
+  authors:
+  - family-names: Csárdi
+    given-names: Gábor
+    email: gabor@posit.co
+  year: '2026'
+  doi: 10.32614/CRAN.package.cli
 - type: software
   title: png
   abstract: 'png: Read and write PNG images'
@@ -125,6 +139,32 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.terra
   version: '>= 1.8-21'
+- type: software
+  title: tools
+  abstract: 'R: A Language and Environment for Statistical Computing'
+  notes: Imports
+  authors:
+  - name: R Core Team
+    website: https://ror.org/02zz1nj61
+  institution:
+    name: R Foundation for Statistical Computing
+    website: https://ror.org/05qewa988
+    address: Vienna, Austria
+  year: '2026'
+  doi: 10.32614/R.manuals
+- type: software
+  title: utils
+  abstract: 'R: A Language and Environment for Statistical Computing'
+  notes: Imports
+  authors:
+  - name: R Core Team
+    website: https://ror.org/02zz1nj61
+  institution:
+    name: R Foundation for Statistical Computing
+    website: https://ror.org/05qewa988
+    address: Vienna, Austria
+  year: '2026'
+  doi: 10.32614/R.manuals
 - type: software
   title: doclisting
   abstract: 'doclisting: List Functions in Documentation'

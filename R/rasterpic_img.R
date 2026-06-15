@@ -1,28 +1,26 @@
-#' Convert an image into a geotagged `SpatRaster`
+#' Geotag an image as a `SpatRaster`
 #'
 #' @description
+#' Geotag an image and return a `SpatRaster` based on coordinates from a
+#' supported spatial input.
 #'
-#' Geotags an image based on the coordinates of a spatial object.
-#'
-#' `rasterpic_img()` is an S3 generic. \CRANpkg{rasterpic} provides methods for
-#' the following classes:
-#'
-#' `r doclisting::methods_list("rasterpic_img")`
+#' `rasterpic_img()` is an S3 generic. See **S3 methods** for supported input
+#' classes.
 #'
 #' @rdname rasterpic_img
-#' @param x An \R object (see **S3 methods**).
+#' @param x An \R object. See **S3 methods**.
 #'
-#' @param img An image to be geotagged. It can be a local file or a URL
-#'   (e.g. `"https://i.imgur.com/6yHmlwT.jpeg"`). Accepted extensions are
-#'   `png`, `jpeg`/`jpg` and `tiff`/`tif`.
+#' @param img An image to geotag. It can be a local file or a URL, for example
+#'   `"https://i.imgur.com/6yHmlwT.jpeg"`. Accepted file extensions are `png`,
+#'   `jpg`, `jpeg`, `tif` and `tiff`.
 #'
 #' @param halign A number between `0` and `1` giving the horizontal alignment of
-#'   `img` relative to `x`. `0` aligns `x` with the left edge, `1` aligns with
-#'   the right edge and `0.5` centers it horizontally.
+#'   `img` relative to `x`. `0` aligns `img` with the left edge of `x`, `1`
+#'   aligns it with the right edge and `0.5` centers it horizontally.
+#'
 #' @param valign A number between `0` and `1` giving the vertical alignment of
-#'   `img` relative to `x`. `0` aligns `x` with the bottom edge, `1` aligns with
-#'   the top edge and `0.5` centers it vertically.
-#' @seealso `vignette("rasterpic", package = "rasterpic")` for examples.
+#'   `img` relative to `x`. `0` aligns `img` with the bottom edge of `x`, `1`
+#'   aligns it with the top edge and `0.5` centers it vertically.
 #'
 #' @param expand An expansion factor of the bounding box of `x`. `0` means that
 #'   no expansion is added, `1` means that the bounding box is expanded to
@@ -47,27 +45,26 @@
 #' A `SpatRaster` object (see [terra::rast()]) where each layer corresponds to
 #' a color channel of `img`:
 #'
-#' - If `img` has at least 3 layers, the result will have
-#'   an additional property setting layers 1 to 3 as the red, green and blue
-#'   channels with names `"r"`, `"g"` and `"b"` and `alpha` if applicable.
+#' - If `img` has at least 3 layers, the result has an additional property
+#'   setting layers 1 to 3 as the red, green and blue channels with names
+#'   `"r"`, `"g"` and `"b"` and `alpha` if applicable.
 #' - If `img` already has a definition of RGB values (this may be the case for
-#'   `tiff`/`tif` files) the result will keep that channel definition.
+#'   `tif`/`tiff` files), the result keeps that channel definition.
 #'
 #' The resulting `SpatRaster` will have an RGB specification as explained in
 #' `terra::RGB()`.
 #'
 #' @details
-#'
-#' `vignette("rasterpic", package = "rasterpic")` explains, with examples, the
-#' effect of parameters `halign`, `valign`, `expand`, `crop` and `mask`.
+#' `vignette("rasterpic", package = "rasterpic")` explains the effect of
+#' parameters `halign`, `valign`, `expand`, `crop` and `mask` with examples.
 #'
 #' ## S3 methods
 #'
-#' \CRANpkg{rasterpic} supports the following input classes:
+#' \CRANpkg{rasterpic} supports these spatial input classes:
 #'
-#' - **sf** classes: `sf`, `sfc`, `sfg` or `bbox`.
+#' - **sf** classes: `sf`, `sfc`, `sfg` and `bbox`.
 #' - **terra** classes: `SpatRaster`, `SpatVector` and `SpatExtent`.
-#' - **stars** classes: `stars`.
+#' - **stars** class: `stars`.
 #' - A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 #'
 #' Other packages can provide methods for additional spatial classes.
@@ -80,17 +77,18 @@
 #' This function preserves the CRS of `x` when applicable. For optimal results,
 #' **do not use** geographic coordinates (longitude/latitude).
 #'
-#' `crs` can be in a WKT format, as a `"authority:number"` code such as
-#' `"EPSG:4326"` or a PROJ-string format such as `"+proj=utm +zone=12"`. It can
-#' also be retrieved with:
+#' `crs` can be in WKT format, as an `"authority:number"` code such as
+#' `"EPSG:4326"` or as a PROJ-string such as `"+proj=utm +zone=12"`. It can also
+#' be retrieved with:
 #'
 #' - [`sf::st_crs(25830)$wkt`][sf::st_crs].
 #' - [terra::crs()].
 #' - [tidyterra::pull_crs()].
 #'
-#' See **Value** and **Notes** in [terra::crs()].
+#' See the **Value** and **Notes** sections in [terra::crs()].
 #'
 #' @seealso
+#' `vignette("rasterpic", package = "rasterpic")` for examples.
 #'
 #' From \CRANpkg{sf}:
 #'
@@ -117,8 +115,6 @@
 #'   [tidyterra::geom_spatraster_rgb()] with \CRANpkg{ggplot2}.
 #' - \CRANpkg{tmap}, \CRANpkg{mapsf} and \CRANpkg{maptiles}.
 #'
-#' @export
-#' @encoding UTF-8
 #' @examples
 #' \donttest{
 #' library(sf)
@@ -130,7 +126,7 @@
 #' x <- st_read(x_path, quiet = TRUE)
 #' img <- system.file("img/vertical.png", package = "rasterpic")
 #'
-#' # Default configuration.
+#' # Use the default configuration.
 #' ex1 <- rasterpic_img(x, img)
 #'
 #' ex1
@@ -138,47 +134,49 @@
 #' autoplot(ex1) +
 #'   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5)
 #'
-#' # Expand.
+#' # Expand the bounding box.
 #' ex2 <- rasterpic_img(x, img, expand = 0.5)
 #'
 #' autoplot(ex2) +
 #'   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5)
 #'
-#' # Align.
+#' # Align the image to the left edge.
 #' ex3 <- rasterpic_img(x, img, halign = 0)
 #'
 #' autoplot(ex3) +
 #'   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5)
 #' labs(title = "Align")
 #'
-#' # Crop.
+#' # Crop to the bounding box.
 #' ex4 <- rasterpic_img(x, img, crop = TRUE)
 #'
 #' autoplot(ex4) +
 #'   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5) +
 #'   labs(title = "Crop")
 #'
-#' # Mask.
+#' # Mask to the vector shape.
 #' ex5 <- rasterpic_img(x, img, mask = TRUE)
 #'
 #' autoplot(ex5) +
 #'   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5) +
 #'   labs(title = "Mask")
 #'
-#' # Inverse mask.
+#' # Mask outside the vector shape.
 #' ex6 <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
 #'
 #' autoplot(ex6) +
 #'   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5) +
 #'   labs(title = "Mask Inverse")
 #'
-#' # Combine inverse masking and cropping.
+#' # Combine cropping and inverse masking.
 #' ex7 <- rasterpic_img(x, img, crop = TRUE, mask = TRUE, inverse = TRUE)
 #'
 #' autoplot(ex7) +
 #'   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5) +
 #'   labs(title = "Combine")
 #' }
+#' @export
+#' @encoding UTF-8
 rasterpic_img <- function(
   x,
   img,
@@ -201,13 +199,12 @@ rasterpic_img.default <- function(
   crop = FALSE,
   ...
 ) {
-  # Report unsupported S3 classes clearly.
-  msg <- paste0(
-    "S3 method `rasterpic_img` not implemented for `",
-    paste0(class(x), collapse = "."),
-    "` objects."
-  )
-  stop(msg)
+  # Report unsupported S3 classes.
+  class_name <- paste0(class(x), collapse = ".") # nolint
+  cli::cli_abort(paste0(
+    "S3 method {.fun rasterpic_img} not implemented for",
+    " {.cls {class_name}} objects."
+  ))
 }
 
 #' @rdname rasterpic_img
@@ -375,7 +372,7 @@ rasterpic_img.numeric <- function(
   crs = NULL
 ) {
   if (length(x) != 4) {
-    stop("Cannot extract a bounding box from 'x'.")
+    cli::cli_abort("Cannot extract a bounding box from {.arg x}.")
   }
 
   rasterpic_img_impl(
@@ -448,7 +445,7 @@ rasterpic_img.SpatVector <- function(
     crs = crs
   )
 
-  # Optionally mask the raster. ----
+  # Mask the raster when requested. ----
 
   if (mask) {
     # Ensure the same CRS.
@@ -497,21 +494,20 @@ rasterpic_img_impl <- function(
 ) {
   # Validate alignment inputs.
   if (halign < 0 || halign > 1) {
-    stop("'halign' must be between 0 and 1.")
+    cli::cli_abort("{.arg halign} must be between 0 and 1.")
   }
   if (valign < 0 || valign > 1) {
-    stop("'valign' must be between 0 and 1.")
+    cli::cli_abort("{.arg valign} must be between 0 and 1.")
   }
 
   # Normalize missing CRS values.
   crs <- rpic_crs(crs)
 
   if (!nzchar(crs)) {
-    message("Argument 'crs' is NA.")
+    cli::cli_alert_info("No CRS supplied in {.arg crs}.")
   } else if (terra::is.lonlat(crs, warn = FALSE)) {
-    message(
-      "Input 'x' has geographic coordinates. ",
-      "Assuming planar coordinates."
+    cli::cli_alert_info(
+      "Input {.arg x} uses geographic coordinates. Assuming planar coordinates."
     )
   }
 
@@ -520,15 +516,11 @@ rasterpic_img_impl <- function(
 
   # Warn when the image does not have the expected number of layers.
   if (terra::nlyr(rast) < 3) {
-    n_layers <- terra::nlyr(rast)
-    warning(
-      "'img' has ",
-      n_layers,
-      " ",
-      if (n_layers == 1) "layer" else "layers",
-      ", not 3 or 4 layers. ",
-      "Result does not have an RGB property."
-    )
+    n_layers <- terra::nlyr(rast) # nolint
+    cli::cli_alert_warning(paste0(
+      "{.arg img} has {n_layers} layer{?s}, not 3 or 4 layers. ",
+      "Result will not have an RGB property."
+    ))
   }
 
   # B. Geotag the image. ----

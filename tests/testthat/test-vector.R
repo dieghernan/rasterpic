@@ -10,7 +10,7 @@ test_that("Test vector", {
   expect_length(x, 4)
 
   expect_error(rasterpic_img(x[1:3], img))
-  expect_message(raster <- rasterpic_img(x, img), "'crs' is NA")
+  expect_snapshot(raster <- rasterpic_img(x, img))
 
   expect_false(nzchar(terra::crs(raster)))
 

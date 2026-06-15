@@ -1,6 +1,6 @@
 ---
 title: "Plotting SpatRaster objects"
-description: Several ways to create maps with raster objects in R.
+description: Several ways to plot geotagged raster objects in R.
 knitr:
   opts_chunk:
     collapse: true
@@ -13,13 +13,13 @@ knitr:
     out.width: "100%"
 ---
 
-This article shows how to plot the `SpatRaster` produced by `rasterpic_img()`
-with several **R** packages.
+This article shows several ways to plot the `SpatRaster` object produced by
+`rasterpic_img()`.
 
 ## Base plots
 
-The most straightforward option is to use the base `plot()` methods provided by
-the **terra** package (`terra::plotRGB()`):
+The most direct option is to use the base `plot()` methods provided by the
+**terra** package, such as `terra::plotRGB()`:
 
 ```{r}
 #| label: fig-terra
@@ -45,8 +45,8 @@ plotRGB(uk_img)
 
 ## With ggplot2 and tidyterra
 
-The **tidyterra** package provides plotting support for **terra**
-`SpatRaster` objects with **ggplot2**:
+The **tidyterra** package provides **ggplot2** support for **terra**
+`SpatRaster` objects:
 
 ```{r}
 #| label: fig-tterra
@@ -92,7 +92,7 @@ mf_inset_off()
 ## With maptiles
 
 The **maptiles** package can download map tiles from different providers. It
-also provides a function for plotting **terra** `SpatRaster` objects:
+also provides functions for plotting **terra** `SpatRaster` objects:
 
 ```{r}
 #| label: fig-maptiles

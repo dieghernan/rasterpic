@@ -16,7 +16,7 @@ length 4 with coordinates \code{c(xmin, ymin, xmax, ymax)}, as created by
 A numeric scalar giving the aspect ratio.
 }
 \description{
-Computes the aspect ratio as width divided by height, or columns divided by
+Compute the aspect ratio as width divided by height, or columns divided by
 rows.
 }
 \examples{

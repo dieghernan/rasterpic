@@ -8,7 +8,7 @@ test_that("Test SpatExtent", {
   x <- terra::ext(terra::vect(x))
   expect_s4_class(x, "SpatExtent")
 
-  expect_message(raster <- rasterpic_img(x, img), "'crs' is NA")
+  expect_snapshot(raster <- rasterpic_img(x, img))
 
   expect_false(nzchar(terra::crs(raster)))
 

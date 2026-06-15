@@ -3,24 +3,24 @@
     Code
       rasterpic_img(x, img)
     Condition
-      Error in `rasterpic_img.numeric()`:
-      ! Cannot extract a bounding box from 'x'.
+      Error in `rasterpic_img()`:
+      ! Cannot extract a bounding box from `x`.
 
 # Error on bad img formatting
 
     Code
       rasterpic_img(x, img)
     Condition
-      Error:
-      ! File supplied to 'img' not found.
+      Error in `rpic_read()`:
+      ! File supplied to `img` does not exist.
 
 ---
 
     Code
       rasterpic_img(x, img2)
     Condition
-      Error:
-      ! Only 'png', 'jpg', 'jpeg', 'tif' and 'tiff' files are accepted for 'img'.
+      Error in `rpic_read()`:
+      ! `img` must be a 'png', 'jpg', 'jpeg', 'tif' or 'tiff' file.
 
 # Error on invalid parameters
 
@@ -28,7 +28,7 @@
       rasterpic_img(x, img, valign = 1.2)
     Condition
       Error in `rasterpic_img_impl()`:
-      ! 'valign' must be between 0 and 1.
+      ! `valign` must be between 0 and 1.
 
 ---
 
@@ -36,7 +36,7 @@
       rasterpic_img(x, img, valign = -1.2)
     Condition
       Error in `rasterpic_img_impl()`:
-      ! 'valign' must be between 0 and 1.
+      ! `valign` must be between 0 and 1.
 
 ---
 
@@ -44,7 +44,7 @@
       rasterpic_img(x, img, halign = 1.2)
     Condition
       Error in `rasterpic_img_impl()`:
-      ! 'halign' must be between 0 and 1.
+      ! `halign` must be between 0 and 1.
 
 ---
 
@@ -52,5 +52,19 @@
       rasterpic_img(x, img, halign = -1.2)
     Condition
       Error in `rasterpic_img_impl()`:
-      ! 'halign' must be between 0 and 1.
+      ! `halign` must be between 0 and 1.
+
+# Message in lonlat sf
+
+    Code
+      s <- rasterpic_img(x, img)
+    Message
+      i Input `x` uses geographic coordinates. Assuming planar coordinates.
+
+# Message in lonlat raster
+
+    Code
+      s <- rasterpic_img(x, img)
+    Message
+      i Input `x` uses geographic coordinates. Assuming planar coordinates.
 

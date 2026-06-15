@@ -3,6 +3,6 @@
     Code
       rasterpic_img(x, img)
     Condition
-      Error:
-      ! Cannot reach 'img' URL 'http://this_is_an_error_url.fake'.
+      Error in `rpic_read()`:
+      ! Cannot download `img` from <http://this_is_an_error_url.fake>.
 
