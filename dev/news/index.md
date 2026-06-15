@@ -2,11 +2,20 @@
 
 ## rasterpic (development version)
 
+- User-facing errors, warnings and notes now use **cli** alerts and
+  inline markup for consistent argument, file and URL formatting.
+
+## rasterpic 0.5.0
+
+CRAN release: 2026-05-21
+
+- Package documentation was reviewed and updated with AI-assisted
+  editing.
 - [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
-  is now an S3 generic, with methods for the supported input classes
+  is now an S3 generic with methods for supported spatial input classes
   ([\#39](https://github.com/dieghernan/rasterpic/issues/39)).
 - [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
-  gains support for `stars` objects.
+  now supports `stars` objects.
 
 ## rasterpic 0.4.0
 

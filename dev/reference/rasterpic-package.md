@@ -1,10 +1,10 @@
-# rasterpic: Convert Digital Images into 'SpatRaster' Objects
+# rasterpic: Convert Digital Images into Geotagged 'SpatRaster' Objects
 
-Create 'SpatRaster' objects, as defined by the 'terra' package, from
-digital images using a spatial object as a geographic reference.
-Supported inputs include objects from the 'sf', 'terra' and 'stars'
-packages. The main function is an S3 generic, so other packages can
-provide methods for additional spatial classes.
+Geotag digital images and return 'SpatRaster' objects, as defined by the
+'terra' package, using coordinates from supported spatial inputs as a
+reference. Supported inputs include objects from the 'sf', 'terra' and
+'stars' packages. The main function is an S3 generic, so other packages
+can provide methods for additional spatial classes.
 
 ## See also
 

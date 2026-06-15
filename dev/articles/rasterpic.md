@@ -1,12 +1,13 @@
 # Get started
 
-Getting started with **rasterpic** is easy: you need an image file
-(`png`, `jpeg`/`jpg` or `tiff`/`tif`) and a spatial object from the
-**sf**, **terra** or **stars** packages.
+Getting started with **rasterpic** is straightforward: you need an image
+file (`png`, `jpeg`/`jpg` or `tiff`/`tif`) and a supported spatial
+input, such as an object from the **sf**, **terra** or **stars**
+packages.
 
 ## Basic usage
 
-This example uses the shape of Austria:
+This example geotags an image using the shape of Austria:
 
 ``` r
 
@@ -22,7 +23,7 @@ library(ggplot2)
 x <- read_sf(system.file("gpkg/austria.gpkg", package = "rasterpic"))
 img <- system.file("img/vertical.png", package = "rasterpic")
 
-# Create the raster.
+# Geotag the image.
 default <- rasterpic_img(x, img)
 
 autoplot(default) +
@@ -36,11 +37,12 @@ Figure 1: Raster map geotagged with the coordinates of Austria
 ## Options
 
 [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
-provides several options for expansion, alignment, cropping and masking.
+provides options for expansion, alignment, cropping and masking.
 
 ### Expand
 
-This option expands the raster extent beyond the spatial object:
+The `expand` argument expands the raster extent beyond the spatial
+object:
 
 ``` r
 
@@ -56,7 +58,8 @@ Figure 2: Example image expansion
 
 ### Alignment
 
-Choose the alignment of the image within the spatial extent:
+The `halign` and `valign` arguments control the alignment of the image
+within the spatial extent:
 
 ``` r
 
@@ -72,7 +75,8 @@ Figure 3: Example image alignment
 
 ### Crop and mask
 
-Crop the raster and mask it to the object shape:
+The `crop`, `mask` and `inverse` arguments control whether the raster is
+cropped and masked to the object shape:
 
 ``` r
 
@@ -96,7 +100,7 @@ Figure 5: Example of inverse masked image
 ## Supported spatial input classes
 
 [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
-supports the following input classes:
+supports the following spatial input classes:
 
 - **sf** classes: `sf`, `sfc`, `sfg` or `bbox`.
 - **terra** classes: `SpatRaster`, `SpatVector` and `SpatExtent`.
@@ -104,8 +108,8 @@ supports the following input classes:
 - A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 
 [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
-is an S3 generic. The methods for extent-like inputs use the object
-extent, and vector methods can also mask the image to the object shape.
+is an S3 generic. Methods for extent-like inputs use the object extent,
+and vector methods can also mask the image to the object shape.
 
 ## Supported image formats
 
