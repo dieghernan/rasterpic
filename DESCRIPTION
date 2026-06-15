@@ -24,7 +24,6 @@ Imports:
     tools,
     utils
 Suggests: 
-    doclisting,
     ggplot2,
     knitr,
     quarto,
