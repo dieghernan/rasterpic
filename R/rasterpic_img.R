@@ -493,12 +493,8 @@ rasterpic_img_impl <- function(
   ...
 ) {
   # Validate alignment inputs.
-  if (halign < 0 || halign > 1) {
-    cli::cli_abort("{.arg halign} must be between 0 and 1.")
-  }
-  if (valign < 0 || valign > 1) {
-    cli::cli_abort("{.arg valign} must be between 0 and 1.")
-  }
+  rpic_check_unit_interval(halign, "halign")
+  rpic_check_unit_interval(valign, "valign")
 
   # Normalize missing CRS values.
   crs <- rpic_crs(crs)
@@ -524,49 +520,20 @@ rasterpic_img_impl <- function(
   }
 
   # B. Geotag the image. ----
-  ## 1. Create an expanded bounding box. ----
-  innermarg <- min((box[3] - box[1]), (box[4] - box[2])) * expand
-
-  box_marg <- box + c(rep(-innermarg, 2), rep(innermarg, 2))
-
-  ## 2. Adjust extent. ----
-  # Compute the raster width-height ratio.
-  ratio_raster <- asp_ratio(rast)
-  ratio_x <- asp_ratio(box_marg)
-
-  # Use planar coordinates from this point onward.
-  # Compute width and height of `x` after expansion.
-  w <- box_marg[3] - box_marg[1]
-  h <- box_marg[4] - box_marg[2]
-
-  # Place the raster relative to `x`.
-  if (ratio_x <= ratio_raster) {
-    # Adjust the width.
-    new_h <- h
-    y_init <- box_marg[2]
-
-    new_w <- h * ratio_raster
-    # Apply horizontal alignment.
-    x_init <- box_marg[1] - halign * (new_w - w)
-  } else {
-    # Adjust the height.
-    new_w <- w
-    x_init <- box_marg[1]
-
-    new_h <- w / ratio_raster
-    # Apply vertical alignment.
-    y_init <- box_marg[2] - valign * (new_h - h)
-  }
-
-  # Create the final raster extent.
-  ext <- c(x_init, x_init + new_w, y_init, y_init + new_h)
+  placement <- rpic_place_extent(
+    box = box,
+    rast = rast,
+    halign = halign,
+    valign = valign,
+    expand = expand
+  )
 
   # Copy the raster before updating its extent.
   new_rast <- rast
-  terra::ext(new_rast) <- terra::ext(ext)
+  terra::ext(new_rast) <- terra::ext(placement$ext)
 
   # C. Optionally crop. ----
-  new_rast <- rpic_crop(crop, box_marg, new_rast)
+  new_rast <- rpic_crop(crop, placement$box_marg, new_rast)
 
   add_rgb_channels(new_rast)
 }
