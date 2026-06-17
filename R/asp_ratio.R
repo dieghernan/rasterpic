@@ -9,6 +9,9 @@
 #'   [sf::st_bbox()].
 #'
 #' @return A numeric scalar giving the aspect ratio.
+#' @keywords internal
+#' @export
+#' @encoding UTF-8
 #' @examples
 #' \donttest{
 #' library(terra)
@@ -17,9 +20,6 @@
 #' plot(x)
 #' asp_ratio(x)
 #' }
-#' @encoding UTF-8
-#' @export
-#' @keywords internal
 asp_ratio <- function(x) {
   if (inherits(x, "SpatRaster")) {
     ratio <- terra::ncol(x) / terra::nrow(x)

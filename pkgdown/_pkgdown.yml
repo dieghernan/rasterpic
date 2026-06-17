@@ -31,17 +31,20 @@ reference:
   desc: >
     Create geotagged `SpatRaster` objects from supported spatial input classes
     and local image files or image URLs.
-  contents:
+- contents:
   - rasterpic_img
+
 - title: Package metadata
   desc: >
     Package-level documentation and metadata.
-  contents: rasterpic-package
+- contents:
+  - rasterpic-package
+
 - title: External plotting helpers
   desc: >
     Functions from other packages that are commonly used to plot the
     `SpatRaster` objects returned by `rasterpic_img()`.
-  contents:
+- contents:
   - terra::plotRGB()
   - tidyterra::geom_spatraster_rgb()
   - tmap::tm_rgb()
@@ -62,12 +65,18 @@ external-articles:
 
 articles:
 - title: Get started
+  desc: >
+    Learn how to geotag an image and control its placement, extent and mask.
   contents:
   - rasterpic
-- title: Articles
+
+- title: Plotting geotagged images
+  desc: >
+    Compare plotting approaches for the resulting `SpatRaster` objects.
   navbar: Articles
   contents:
   - articles/plots
+
 - title: External examples
   desc: >
     External posts and examples that use rasterpic.

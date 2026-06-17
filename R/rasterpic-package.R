@@ -1,3 +1,4 @@
+#' @encoding UTF-8
 #' @keywords internal
 "_PACKAGE"
 

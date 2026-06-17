@@ -114,6 +114,8 @@
 #'   [tidyterra::geom_spatraster_rgb()] with \CRANpkg{ggplot2}.
 #' - \CRANpkg{tmap}, \CRANpkg{mapsf} and \CRANpkg{maptiles}.
 #'
+#' @export
+#' @encoding UTF-8
 #' @examples
 #' \donttest{
 #' library(sf)
@@ -174,8 +176,6 @@
 #'   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5) +
 #'   labs(title = "Combine")
 #' }
-#' @encoding UTF-8
-#' @export
 rasterpic_img <- function(
   x,
   img,
@@ -188,7 +188,6 @@ rasterpic_img <- function(
   UseMethod("rasterpic_img")
 }
 
-#' @encoding UTF-8
 #' @export
 rasterpic_img.default <- function(
   x,
@@ -208,7 +207,6 @@ rasterpic_img.default <- function(
 }
 
 #' @rdname rasterpic_img
-#' @encoding UTF-8
 #' @export
 rasterpic_img.sf <- function(
   x,
@@ -242,7 +240,6 @@ rasterpic_img.sf <- function(
 }
 
 #' @rdname rasterpic_img
-#' @encoding UTF-8
 #' @export
 rasterpic_img.sfc <- function(
   x,
@@ -270,7 +267,6 @@ rasterpic_img.sfc <- function(
 }
 
 #' @rdname rasterpic_img
-#' @encoding UTF-8
 #' @export
 rasterpic_img.sfg <- function(
   x,
@@ -303,7 +299,6 @@ rasterpic_img.sfg <- function(
 }
 
 #' @rdname rasterpic_img
-#' @encoding UTF-8
 #' @export
 rasterpic_img.stars <- function(
   x,
@@ -329,7 +324,6 @@ rasterpic_img.stars <- function(
 }
 
 #' @rdname rasterpic_img
-#' @encoding UTF-8
 #' @export
 rasterpic_img.bbox <- function(
   x,
@@ -359,7 +353,6 @@ rasterpic_img.bbox <- function(
 }
 
 #' @rdname rasterpic_img
-#' @encoding UTF-8
 #' @export
 rasterpic_img.numeric <- function(
   x,
@@ -387,7 +380,6 @@ rasterpic_img.numeric <- function(
 }
 
 #' @rdname rasterpic_img
-#' @encoding UTF-8
 #' @export
 rasterpic_img.SpatRaster <- function(
   x,
@@ -416,7 +408,6 @@ rasterpic_img.SpatRaster <- function(
 }
 
 #' @rdname rasterpic_img
-#' @encoding UTF-8
 #' @export
 rasterpic_img.SpatVector <- function(
   x,
@@ -457,7 +448,6 @@ rasterpic_img.SpatVector <- function(
 }
 
 #' @rdname rasterpic_img
-#' @encoding UTF-8
 #' @export
 rasterpic_img.SpatExtent <- function(
   x,
