@@ -22,35 +22,25 @@ home:
   title: rasterpic | Convert digital images into geotagged SpatRaster objects
   description: >
     Geotag digital images and return **terra** `SpatRaster` objects using
-    coordinates from supported spatial inputs, including **sf**, **terra** or
-    **stars** classes and numeric coordinate vectors. Local image files and
-    image URLs are supported.
-
-navbar:
-  components:
-    articles:
-      text: Articles
-      menu:
-      - text: Articles
-      - text: Plotting SpatRaster objects
-        href: articles/plots.html
-      - text: "---"
-      - text: Blog
-      - text: "Beautiful maps with R (IV): Fun with flags revisited"
-        href: https://dieghernan.github.io/202201_maps-flags/
-      - text: Quick Brazil
-        href: https://x.com/dhernangomez/status/1486666356544225281
+    coordinates from supported spatial input classes, including numeric
+    coordinate vectors and objects from **sf**, **terra** and **stars**. Local
+    image files and image URLs are supported.
 
 reference:
-- title: Core geotagging
+- title: Geotagging images
   desc: >
-    Geotag images and return `SpatRaster` objects.
-  contents: rasterpic_img
+    Create geotagged `SpatRaster` objects from supported spatial input classes
+    and local image files or image URLs.
+  contents:
+  - rasterpic_img
 - title: Package metadata
-  contents: rasterpic-package
-- title: Plotting helpers
   desc: >
-    Functions from other packages for plotting `SpatRaster` objects.
+    Package-level documentation and metadata.
+  contents: rasterpic-package
+- title: External plotting helpers
+  desc: >
+    Functions from other packages that are commonly used to plot the
+    `SpatRaster` objects returned by `rasterpic_img()`.
   contents:
   - terra::plotRGB()
   - tidyterra::geom_spatraster_rgb()
@@ -58,8 +48,30 @@ reference:
   - mapsf::mf_raster()
   - maptiles::plot_tiles()
 
+external-articles:
+- name: beautiful-maps-flags
+  title: "Beautiful maps with R (IV): Fun with flags revisited"
+  description: >
+    Blog post showing how to use rasterpic to add flag images to maps.
+  href: https://dieghernan.github.io/202201_maps-flags/
+- name: quick-brazil
+  title: Quick Brazil
+  description: >
+    Short example that uses rasterpic to place the Brazilian flag on a map.
+  href: https://x.com/dhernangomez/status/1486666356544225281
+
 articles:
-- title: Plotting
-  navbar: Plotting
+- title: Get started
+  contents:
+  - rasterpic
+- title: Articles
+  navbar: Articles
   contents:
   - articles/plots
+- title: External examples
+  desc: >
+    External posts and examples that use rasterpic.
+  navbar: Examples
+  contents:
+  - beautiful-maps-flags
+  - quick-brazil

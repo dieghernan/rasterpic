@@ -2,8 +2,8 @@
 
 - User-facing errors, warnings and notes now use **cli** alerts and inline
   markup for consistent argument, file and URL formatting.
-- `rasterpic_img()` with `mask = TRUE` and/or `inverse = TRUE` returns a
-  `SpatRaster` with RGB specification again (`terra::has.RGB()` returns `TRUE`).
+- `rasterpic_img()` with `mask = TRUE`, `inverse = TRUE` or both again returns a
+  `SpatRaster` with an RGB specification (`terra::has.RGB()` returns `TRUE`).
 
 # rasterpic 0.5.0
 
@@ -41,11 +41,11 @@
 # rasterpic 0.2.4
 
 - Ensured that `SpatVector` objects always have a CRS.
-- If the image has fewer than 3 channels, the raster output does not have the
-  RGB property (`terra::has.RGB()` is `FALSE`). This is expected to be a corner
+- If the image has fewer than 3 layers, the raster output does not have an RGB
+  specification (`terra::has.RGB()` is `FALSE`). This is expected to be a corner
   case.
-- If the image file (e.g., `tiff`) already has an RGB definition, preserve it in
-  the output.
+- If the image file (e.g., `tiff`) already has an RGB specification, preserve it
+  in the output.
 - Updated documentation and tests.
 
 # rasterpic 0.2.3
@@ -58,7 +58,7 @@
 - Removed unused dependencies.
 - Improved documentation.
 - Fixed typos in messages.
-- Declared output as RGB raster with `terra::RGB()`.
+- Declared the output as an RGB raster with `terra::RGB()`.
 - Added **ggplot2** to "Suggests".
 
 # rasterpic 0.2.1

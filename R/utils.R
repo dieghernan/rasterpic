@@ -62,8 +62,8 @@ rpic_check_img_ext <- function(img) {
   if (!tools::file_ext(img) %in% c("jpg", "jpeg", "tif", "tiff", "png")) {
     cli::cli_abort(
       paste0(
-        "{.arg img} must be a {.file png}, {.file jpg}, {.file jpeg}, ",
-        "{.file tif} or {.file tiff} file."
+        "{.arg img} must have extension {.val png}, {.val jpg}, ",
+        "{.val jpeg}, {.val tif} or {.val tiff}."
       ),
       call = sys.call(-1)
     )

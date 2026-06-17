@@ -127,7 +127,7 @@ rasterpic_img(
 )
 }
 \arguments{
-\item{x}{An \R object. See \strong{S3 methods}.}
+\item{x}{An \R object. See \strong{S3 methods} for supported classes.}
 
 \item{img}{An image to geotag. It can be a local file or a URL, for example
 \code{"https://i.imgur.com/6yHmlwT.jpeg"}. Accepted file extensions are \code{png},
@@ -150,33 +150,33 @@ box of \code{x}? See \strong{Details}.}
 
 \item{...}{Further arguments passed to methods.}
 
-\item{mask}{Logical, available for vector methods. Should the raster be
+\item{mask}{Logical, for vector methods. Should the raster be
 \link[terra:mask]{masked} to the shape of \code{x}? See \strong{Details}.}
 
-\item{inverse}{Logical. This only has an effect when \code{mask = TRUE}. If
-\code{TRUE}, areas of the raster covered by \code{x} are masked.}
+\item{inverse}{Logical. Only used when \code{mask = TRUE}. If \code{TRUE}, areas of
+the raster covered by \code{x} are masked.}
 
 \item{crs}{Character string describing a CRS. This parameter only applies
 when \code{x} is a \code{SpatExtent}, \code{sfg}, \code{bbox} or a numeric coordinate vector.
-See \strong{CRS} section.}
+See the \strong{CRS} section.}
 }
 \value{
 A \code{SpatRaster} object (see \code{\link[terra:rast]{terra::rast()}}) where each layer corresponds to
 a color channel of \code{img}:
 \itemize{
-\item If \code{img} has at least 3 layers, the result has an additional property
-setting layers 1 to 3 as the red, green and blue channels with names
-\code{"r"}, \code{"g"} and \code{"b"} and \code{alpha} if applicable.
-\item If \code{img} already has a definition of RGB values (this may be the case for
-\code{tif}/\code{tiff} files), the result keeps that channel definition.
+\item If \code{img} has at least 3 layers, the result records layers 1 to 3 as the
+red, green and blue channels with names \code{"r"}, \code{"g"} and \code{"b"} and \code{alpha}
+if applicable.
+\item If \code{img} already has an RGB specification (this may be the case for
+\code{tif}/\code{tiff} files), the result keeps that specification.
 }
 
 The resulting \code{SpatRaster} will have an RGB specification as explained in
-\code{terra::RGB()}.
+\code{\link[terra:RGB]{terra::RGB()}}.
 }
 \description{
 Geotag an image and return a \code{SpatRaster} based on coordinates from a
-supported spatial input.
+supported spatial input class.
 
 \code{rasterpic_img()} is an S3 generic. See \strong{S3 methods} for supported input
 classes.

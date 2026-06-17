@@ -20,7 +20,7 @@
       rasterpic_img(x, img2)
     Condition
       Error in `rpic_read()`:
-      ! `img` must be a 'png', 'jpg', 'jpeg', 'tif' or 'tiff' file.
+      ! `img` must have extension "png", "jpg", "jpeg", "tif" or "tiff".
 
 # Error on invalid parameters
 
@@ -59,12 +59,12 @@
     Code
       s <- rasterpic_img(x, img)
     Message
-      i Input `x` uses geographic coordinates. Assuming planar coordinates.
+      i `x` uses geographic coordinates. Assuming planar coordinates.
 
 # Message in lonlat raster
 
     Code
       s <- rasterpic_img(x, img)
     Message
-      i Input `x` uses geographic coordinates. Assuming planar coordinates.
+      i `x` uses geographic coordinates. Assuming planar coordinates.
 

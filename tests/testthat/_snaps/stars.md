@@ -3,7 +3,7 @@
     Code
       raster <- rasterpic_img(x, img)
     Message
-      i Input `x` uses geographic coordinates. Assuming planar coordinates.
+      i `x` uses geographic coordinates. Assuming planar coordinates.
 
 # Test stars without crs
 

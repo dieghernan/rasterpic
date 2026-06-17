@@ -2,13 +2,12 @@
 #'
 #' @description
 #' Geotag an image and return a `SpatRaster` based on coordinates from a
-#' supported spatial input.
+#' supported spatial input class.
 #'
 #' `rasterpic_img()` is an S3 generic. See **S3 methods** for supported input
 #' classes.
 #'
-#' @rdname rasterpic_img
-#' @param x An \R object. See **S3 methods**.
+#' @param x An \R object. See **S3 methods** for supported classes.
 #'
 #' @param img An image to geotag. It can be a local file or a URL, for example
 #'   `"https://i.imgur.com/6yHmlwT.jpeg"`. Accepted file extensions are `png`,
@@ -29,15 +28,15 @@
 #' @param crop Logical. Should the raster be cropped to the (expanded) bounding
 #'   box of `x`? See **Details**.
 #'
-#' @param mask Logical, available for vector methods. Should the raster be
+#' @param mask Logical, for vector methods. Should the raster be
 #'   [masked][terra::mask] to the shape of `x`? See **Details**.
 #'
-#' @param inverse Logical. This only has an effect when `mask = TRUE`. If
-#'   `TRUE`, areas of the raster covered by `x` are masked.
+#' @param inverse Logical. Only used when `mask = TRUE`. If `TRUE`, areas of
+#'   the raster covered by `x` are masked.
 #'
 #' @param crs Character string describing a CRS. This parameter only applies
 #'   when `x` is a `SpatExtent`, `sfg`, `bbox` or a numeric coordinate vector.
-#'   See **CRS** section.
+#'   See the **CRS** section.
 #'
 #' @param ... Further arguments passed to methods.
 #'
@@ -45,14 +44,14 @@
 #' A `SpatRaster` object (see [terra::rast()]) where each layer corresponds to
 #' a color channel of `img`:
 #'
-#' - If `img` has at least 3 layers, the result has an additional property
-#'   setting layers 1 to 3 as the red, green and blue channels with names
-#'   `"r"`, `"g"` and `"b"` and `alpha` if applicable.
-#' - If `img` already has a definition of RGB values (this may be the case for
-#'   `tif`/`tiff` files), the result keeps that channel definition.
+#' - If `img` has at least 3 layers, the result records layers 1 to 3 as the
+#'   red, green and blue channels with names `"r"`, `"g"` and `"b"` and `alpha`
+#'   if applicable.
+#' - If `img` already has an RGB specification (this may be the case for
+#'   `tif`/`tiff` files), the result keeps that specification.
 #'
 #' The resulting `SpatRaster` will have an RGB specification as explained in
-#' `terra::RGB()`.
+#' [terra::RGB()].
 #'
 #' @details
 #' `vignette("rasterpic", package = "rasterpic")` explains the effect of
@@ -175,8 +174,8 @@
 #'   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5) +
 #'   labs(title = "Combine")
 #' }
-#' @export
 #' @encoding UTF-8
+#' @export
 rasterpic_img <- function(
   x,
   img,
@@ -189,6 +188,7 @@ rasterpic_img <- function(
   UseMethod("rasterpic_img")
 }
 
+#' @encoding UTF-8
 #' @export
 rasterpic_img.default <- function(
   x,
@@ -202,14 +202,14 @@ rasterpic_img.default <- function(
   # Report unsupported S3 classes.
   class_name <- paste0(class(x), collapse = ".") # nolint
   cli::cli_abort(paste0(
-    "S3 method {.fun rasterpic_img} not implemented for",
+    "S3 method {.fun rasterpic_img} is not implemented for",
     " {.cls {class_name}} objects."
   ))
 }
 
 #' @rdname rasterpic_img
-#' @export
 #' @encoding UTF-8
+#' @export
 rasterpic_img.sf <- function(
   x,
   img,
@@ -242,8 +242,8 @@ rasterpic_img.sf <- function(
 }
 
 #' @rdname rasterpic_img
-#' @export
 #' @encoding UTF-8
+#' @export
 rasterpic_img.sfc <- function(
   x,
   img,
@@ -270,8 +270,8 @@ rasterpic_img.sfc <- function(
 }
 
 #' @rdname rasterpic_img
-#' @export
 #' @encoding UTF-8
+#' @export
 rasterpic_img.sfg <- function(
   x,
   img,
@@ -303,8 +303,8 @@ rasterpic_img.sfg <- function(
 }
 
 #' @rdname rasterpic_img
-#' @export
 #' @encoding UTF-8
+#' @export
 rasterpic_img.stars <- function(
   x,
   img,
@@ -329,8 +329,8 @@ rasterpic_img.stars <- function(
 }
 
 #' @rdname rasterpic_img
-#' @export
 #' @encoding UTF-8
+#' @export
 rasterpic_img.bbox <- function(
   x,
   img,
@@ -359,8 +359,8 @@ rasterpic_img.bbox <- function(
 }
 
 #' @rdname rasterpic_img
-#' @export
 #' @encoding UTF-8
+#' @export
 rasterpic_img.numeric <- function(
   x,
   img,
@@ -387,8 +387,8 @@ rasterpic_img.numeric <- function(
 }
 
 #' @rdname rasterpic_img
-#' @export
 #' @encoding UTF-8
+#' @export
 rasterpic_img.SpatRaster <- function(
   x,
   img,
@@ -416,8 +416,8 @@ rasterpic_img.SpatRaster <- function(
 }
 
 #' @rdname rasterpic_img
-#' @export
 #' @encoding UTF-8
+#' @export
 rasterpic_img.SpatVector <- function(
   x,
   img,
@@ -448,7 +448,7 @@ rasterpic_img.SpatVector <- function(
   # Mask the raster when requested. ----
 
   if (mask) {
-    # Ensure the same CRS.
+    # Match the vector CRS to the output raster.
     terra::crs(x) <- terra::crs(new_rast)
     new_rast <- terra::mask(new_rast, x, inverse = inverse)
   }
@@ -457,8 +457,8 @@ rasterpic_img.SpatVector <- function(
 }
 
 #' @rdname rasterpic_img
-#' @export
 #' @encoding UTF-8
+#' @export
 rasterpic_img.SpatExtent <- function(
   x,
   img,
@@ -503,7 +503,7 @@ rasterpic_img_impl <- function(
     cli::cli_alert_info("No CRS supplied in {.arg crs}.")
   } else if (terra::is.lonlat(crs, warn = FALSE)) {
     cli::cli_alert_info(
-      "Input {.arg x} uses geographic coordinates. Assuming planar coordinates."
+      "{.arg x} uses geographic coordinates. Assuming planar coordinates."
     )
   }
 
@@ -514,8 +514,8 @@ rasterpic_img_impl <- function(
   if (terra::nlyr(rast) < 3) {
     n_layers <- terra::nlyr(rast) # nolint
     cli::cli_alert_warning(paste0(
-      "{.arg img} has {n_layers} layer{?s}, not 3 or 4 layers. ",
-      "Result will not have an RGB property."
+      "{.arg img} has {.val {n_layers}} layer{?s}, not ",
+      "{.val {3}} or {.val {4}}. Result will not have an RGB specification."
     ))
   }
 
@@ -539,7 +539,7 @@ rasterpic_img_impl <- function(
 }
 
 add_rgb_channels <- function(new_rast) {
-  # Assign RGB if there are at least 3 layers and no RGB definition.
+  # Assign RGB if there are at least 3 layers and no RGB specification.
   if (terra::nlyr(new_rast) >= 3) {
     if (!terra::has.RGB(new_rast)) {
       terra::RGB(new_rast) <- c(1, 2, 3)

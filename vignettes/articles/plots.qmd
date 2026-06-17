@@ -1,6 +1,6 @@
 ---
 title: "Plotting SpatRaster objects"
-description: Several ways to plot geotagged raster objects in R.
+description: Several ways to plot geotagged SpatRaster objects in R.
 knitr:
   opts_chunk:
     collapse: true
@@ -13,7 +13,7 @@ knitr:
     out.width: "100%"
 ---
 
-This article shows several ways to plot the `SpatRaster` object produced by
+This article shows several ways to plot the `SpatRaster` object returned by
 `rasterpic_img()`.
 
 ## Base plots

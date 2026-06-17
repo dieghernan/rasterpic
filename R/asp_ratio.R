@@ -4,8 +4,8 @@
 #' Compute the aspect ratio as width divided by height, or columns divided by
 #' rows.
 #'
-#' @param x A `SpatRaster` object, an `sf`/`sfc` object or a numeric vector of
-#'   length 4 with coordinates `c(xmin, ymin, xmax, ymax)`, as created by
+#' @param x A `SpatRaster` object, an `sf` or `sfc` object or a numeric vector
+#'   of length 4 with coordinates `c(xmin, ymin, xmax, ymax)`, as created by
 #'   [sf::st_bbox()].
 #'
 #' @return A numeric scalar giving the aspect ratio.
@@ -17,8 +17,8 @@
 #' plot(x)
 #' asp_ratio(x)
 #' }
-#' @export
 #' @encoding UTF-8
+#' @export
 #' @keywords internal
 asp_ratio <- function(x) {
   if (inherits(x, "SpatRaster")) {

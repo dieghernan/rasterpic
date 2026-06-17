@@ -1,7 +1,7 @@
-# --------------------------------------------
-# CITATION file created with {cffr} R package
+# ------------------------------------------------
+# CITATION.cff file created with {cffr} R package
 # See also: https://docs.ropensci.org/cffr/
-# --------------------------------------------
+# ------------------------------------------------
  
 cff-version: 1.2.0
 message: 'To cite package "rasterpic" in publications use:'
@@ -14,10 +14,10 @@ identifiers:
 - type: doi
   value: 10.32614/CRAN.package.rasterpic
 abstract: Geotag digital images and return 'SpatRaster' objects, as defined by the
-  'terra' package, using coordinates from supported spatial inputs as a reference.
-  Supported inputs include objects from the 'sf', 'terra' and 'stars' packages. The
-  main function is an S3 generic, so other packages can provide methods for additional
-  spatial classes.
+  'terra' package, using coordinates from supported spatial input classes. Supported
+  inputs include numeric coordinate vectors and objects from the 'sf', 'terra' and
+  'stars' packages. The main function is an S3 generic, so other packages can provide
+  methods for additional spatial classes.
 authors:
 - family-names: Hernangómez
   given-names: Diego
@@ -36,10 +36,10 @@ preferred-citation:
   version: 0.5.0.9000
   url: https://dieghernan.github.io/rasterpic/
   abstract: Geotag digital images and return SpatRaster objects, as defined by the
-    terra package, using coordinates from supported spatial inputs as a reference.
-    Supported inputs include objects from the sf, terra and stars packages. The main
-    function is an S3 generic, so other packages can provide methods for additional
-    spatial classes.
+    terra package, using coordinates from supported spatial input classes. Supported
+    inputs include numeric coordinate vectors and objects from the sf, terra and stars
+    packages. The main function is an S3 generic, so other packages can provide methods
+    for additional spatial classes.
 repository: https://CRAN.R-project.org/package=rasterpic
 repository-code: https://github.com/dieghernan/rasterpic
 url: https://dieghernan.github.io/rasterpic/

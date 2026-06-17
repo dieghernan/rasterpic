@@ -36,9 +36,9 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 
 <!-- badges: end -->
 
-**rasterpic** is a tiny package with a single goal: geotag an image and return
-a **terra** `SpatRaster` object using coordinates from supported spatial inputs
-(see `?terra::SpatRaster`).
+**rasterpic** is a tiny package with a single goal: geotag an image and return a
+**terra** `SpatRaster` object using coordinates from supported spatial input
+classes (see `?terra::SpatRaster`).
 
 ## Installation
 
@@ -84,19 +84,19 @@ install.packages(
 
 `rasterpic_img()` can geotag an image from several spatial input classes:
 
-- **sf** classes: `sf`, `sfc`, `sfg` or `bbox`.
+- **sf** classes: `sf`, `sfc`, `sfg` and `bbox`.
 - **terra** classes: `SpatRaster`, `SpatVector` and `SpatExtent`.
-- **stars** classes: `stars`.
+- **stars** class: `stars`.
 - A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 
 `rasterpic_img()` is an S3 generic. Methods for extent-like inputs use the
 object extent, and vector methods can also mask the image to the object shape.
 
-An example using an `sf` object:
+This example uses an `sf` object:
 
 ```{r}
 #| label: example-basic
-#| fig-cap: Example using **rasterpic** with the UK flag
+#| fig-cap: Example using **rasterpic** with the UK flag.
 library(rasterpic)
 library(sf)
 library(terra)
@@ -124,7 +124,7 @@ You can also adjust the expansion, alignment, cropping and masking options:
 
 ```{r}
 #| label: align-crop-mask
-#| fig-cap: Example using **rasterpic** with the UK flag cropped to the shape
+#| fig-cap: Example using **rasterpic** with the UK flag cropped to the shape.
 
 # Align, crop and mask the image.
 uk_flag2 <- rasterpic_img(uk, img, halign = 0.2, crop = TRUE, mask = TRUE)
@@ -135,7 +135,7 @@ autoplot(uk_flag2) +
 
 ## Supported image formats
 
-**rasterpic** can parse the following image formats:
+**rasterpic** can read the following image formats:
 
 - `png` files.
 - `jpeg`/`jpg` files.

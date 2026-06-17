@@ -15,8 +15,8 @@ knitr:
 ---
 
 Getting started with **rasterpic** is straightforward: you need an image file
-(`png`, `jpeg`/`jpg` or `tiff`/`tif`) and a supported spatial input, such as an
-object from the **sf**, **terra** or **stars** packages.
+(`png`, `jpeg`/`jpg` or `tiff`/`tif`) and a supported spatial input class, such
+as an object from the **sf**, **terra** or **stars** packages.
 
 ## Basic usage
 
@@ -24,7 +24,7 @@ This example geotags an image using the shape of Austria:
 
 ```{r}
 #| label: fig-setup
-#| fig-cap: Raster map geotagged with the coordinates of Austria
+#| fig-cap: Image geotagged with the coordinates of Austria.
 library(sf)
 library(terra)
 library(rasterpic)
@@ -55,7 +55,7 @@ The `expand` argument expands the raster extent beyond the spatial object:
 
 ```{r}
 #| label: fig-expand
-#| fig-cap: Example image expansion
+#| fig-cap: Example image expansion.
 expand <- rasterpic_img(x, img, expand = 1)
 
 autoplot(expand) +
@@ -69,7 +69,7 @@ the spatial extent:
 
 ```{r}
 #| label: fig-bottom
-#| fig-cap: Example image alignment
+#| fig-cap: Example image alignment.
 bottom <- rasterpic_img(x, img, valign = 0)
 
 autoplot(bottom) +
@@ -78,14 +78,14 @@ autoplot(bottom) +
 
 ### Crop and mask
 
-The `crop`, `mask` and `inverse` arguments control whether the raster is
-cropped and masked to the object shape:
+The `crop`, `mask` and `inverse` arguments control whether the raster is cropped
+to the object extent and masked to the object shape:
 
 ```{r}
 #| label: fig-mask
 #| fig-cap:
-#|   - Example of masked image
-#|   - Example of inverse masked image
+#|   - Example masked image.
+#|   - Example inverse masked image.
 mask <- rasterpic_img(x, img, crop = TRUE, mask = TRUE)
 
 autoplot(mask)
@@ -99,9 +99,9 @@ autoplot(maskinverse)
 
 `rasterpic_img()` supports the following spatial input classes:
 
-- **sf** classes: `sf`, `sfc`, `sfg` or `bbox`.
+- **sf** classes: `sf`, `sfc`, `sfg` and `bbox`.
 - **terra** classes: `SpatRaster`, `SpatVector` and `SpatExtent`.
-- **stars** classes: `stars`.
+- **stars** class: `stars`.
 - A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 
 `rasterpic_img()` is an S3 generic. Methods for extent-like inputs use the
@@ -109,7 +109,7 @@ object extent, and vector methods can also mask the image to the object shape.
 
 ## Supported image formats
 
-**rasterpic** can parse the following image formats:
+**rasterpic** can read the following image formats:
 
 - `png` files.
 - `jpeg`/`jpg` files.
