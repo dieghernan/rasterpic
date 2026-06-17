@@ -1,8 +1,8 @@
 # Get started
 
 Getting started with **rasterpic** is straightforward: you need an image
-file (`png`, `jpeg`/`jpg` or `tiff`/`tif`) and a supported spatial
-input, such as an object from the **sf**, **terra** or **stars**
+file (`png`, `jpeg`/`jpg` or `tiff`/`tif`) and a supported spatial input
+class, such as an object from the **sf**, **terra** or **stars**
 packages.
 
 ## Basic usage
@@ -32,7 +32,7 @@ autoplot(default) +
 
 ![](rasterpic_files/figure-html/fig-setup-1.png)
 
-Figure 1: Raster map geotagged with the coordinates of Austria
+Figure 1: Image geotagged with the coordinates of Austria.
 
 ## Options
 
@@ -54,7 +54,7 @@ autoplot(expand) +
 
 ![](rasterpic_files/figure-html/fig-expand-1.png)
 
-Figure 2: Example image expansion
+Figure 2: Example image expansion.
 
 ### Alignment
 
@@ -71,12 +71,12 @@ autoplot(bottom) +
 
 ![](rasterpic_files/figure-html/fig-bottom-1.png)
 
-Figure 3: Example image alignment
+Figure 3: Example image alignment.
 
 ### Crop and mask
 
 The `crop`, `mask` and `inverse` arguments control whether the raster is
-cropped and masked to the object shape:
+cropped to the object extent and masked to the object shape:
 
 ``` r
 
@@ -91,20 +91,20 @@ autoplot(maskinverse)
 
 ![](rasterpic_files/figure-html/fig-mask-1.png)
 
-Figure 4: Example of masked image
+Figure 4: Example masked image.
 
 ![](rasterpic_files/figure-html/fig-mask-2.png)
 
-Figure 5: Example of inverse masked image
+Figure 5: Example inverse masked image.
 
 ## Supported spatial input classes
 
 [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
 supports the following spatial input classes:
 
-- **sf** classes: `sf`, `sfc`, `sfg` or `bbox`.
+- **sf** classes: `sf`, `sfc`, `sfg` and `bbox`.
 - **terra** classes: `SpatRaster`, `SpatVector` and `SpatExtent`.
-- **stars** classes: `stars`.
+- **stars** class: `stars`.
 - A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 
 [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
@@ -113,7 +113,7 @@ and vector methods can also mask the image to the object shape.
 
 ## Supported image formats
 
-**rasterpic** can parse the following image formats:
+**rasterpic** can read the following image formats:
 
 - `png` files.
 - `jpeg`/`jpg` files.

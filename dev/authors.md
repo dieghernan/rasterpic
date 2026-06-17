@@ -23,5 +23,5 @@ SpatRaster Objects*.
       year = {2026},
       version = {0.5.0.9000},
       url = {https://dieghernan.github.io/rasterpic/},
-      abstract = {Geotag digital images and return SpatRaster objects, as defined by the terra package, using coordinates from supported spatial inputs as a reference. Supported inputs include objects from the sf, terra and stars packages. The main function is an S3 generic, so other packages can provide methods for additional spatial classes.},
+      abstract = {Geotag digital images and return SpatRaster objects, as defined by the terra package, using coordinates from supported spatial input classes. Supported inputs include numeric coordinate vectors and objects from the sf, terra and stars packages. The main function is an S3 generic, so other packages can provide methods for additional spatial classes.},
     }

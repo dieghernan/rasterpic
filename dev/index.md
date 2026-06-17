@@ -2,7 +2,7 @@
 
 **rasterpic** is a tiny package with a single goal: geotag an image and
 return a **terra** `SpatRaster` object using coordinates from supported
-spatial inputs (see
+spatial input classes (see
 [`?terra::SpatRaster`](https://rspatial.github.io/terra/reference/SpatRaster-class.html)).
 
 ## Installation
@@ -38,16 +38,16 @@ install.packages(
 [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
 can geotag an image from several spatial input classes:
 
-- **sf** classes: `sf`, `sfc`, `sfg` or `bbox`.
+- **sf** classes: `sf`, `sfc`, `sfg` and `bbox`.
 - **terra** classes: `SpatRaster`, `SpatVector` and `SpatExtent`.
-- **stars** classes: `stars`.
+- **stars** class: `stars`.
 - A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 
 [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
 is an S3 generic. Methods for extent-like inputs use the object extent,
 and vector methods can also mask the image to the object shape.
 
-An example using an `sf` object:
+This example uses an `sf` object:
 
 ``` r
 
@@ -86,7 +86,7 @@ autoplot(uk_flag) +
 ```
 
 ![Example using rasterpic with the UK
-flag](reference/figures/README-example-basic-1.png)
+flag.](reference/figures/README-example-basic-1.png)
 
 You can also adjust the expansion, alignment, cropping and masking
 options:
@@ -101,11 +101,11 @@ autoplot(uk_flag2) +
 ```
 
 ![Example using rasterpic with the UK flag cropped to the
-shape](reference/figures/README-align-crop-mask-1.png)
+shape.](reference/figures/README-align-crop-mask-1.png)
 
 ## Supported image formats
 
-**rasterpic** can parse the following image formats:
+**rasterpic** can read the following image formats:
 
 - `png` files.
 - `jpeg`/`jpg` files.
@@ -128,6 +128,6 @@ A BibTeX entry for LaTeX users is:
   year = {2026},
   version = {0.5.0.9000},
   url = {https://dieghernan.github.io/rasterpic/},
-  abstract = {Geotag digital images and return SpatRaster objects, as defined by the terra package, using coordinates from supported spatial inputs as a reference. Supported inputs include objects from the sf, terra and stars packages. The main function is an S3 generic, so other packages can provide methods for additional spatial classes.},
+  abstract = {Geotag digital images and return SpatRaster objects, as defined by the terra package, using coordinates from supported spatial input classes. Supported inputs include numeric coordinate vectors and objects from the sf, terra and stars packages. The main function is an S3 generic, so other packages can provide methods for additional spatial classes.},
 }
 ```

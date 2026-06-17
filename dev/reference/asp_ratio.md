@@ -13,7 +13,7 @@ asp_ratio(x)
 
 - x:
 
-  A `SpatRaster` object, an `sf`/`sfc` object or a numeric vector of
+  A `SpatRaster` object, an `sf` or `sfc` object or a numeric vector of
   length 4 with coordinates `c(xmin, ymin, xmax, ymax)`, as created by
   [`sf::st_bbox()`](https://r-spatial.github.io/sf/reference/st_bbox.html).
 

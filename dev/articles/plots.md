@@ -1,6 +1,6 @@
 # Plotting SpatRaster objects
 
-This article shows several ways to plot the `SpatRaster` object produced
+This article shows several ways to plot the `SpatRaster` object returned
 by
 [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md).
 

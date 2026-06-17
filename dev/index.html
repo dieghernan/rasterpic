@@ -21,9 +21,9 @@
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="rasterpic | Convert digital images into geotagged SpatRaster objects">
-<meta name="description" content="Geotag digital images and return **terra** `SpatRaster` objects using coordinates from supported spatial inputs, including **sf**, **terra** or **stars** classes and numeric coordinate vectors. Local image files and image URLs are supported.
+<meta name="description" content="Geotag digital images and return **terra** `SpatRaster` objects using coordinates from supported spatial input classes, including numeric coordinate vectors and objects from **sf**, **terra** and **stars**. Local image files and image URLs are supported.
 ">
-<meta property="og:description" content="Geotag digital images and return **terra** `SpatRaster` objects using coordinates from supported spatial inputs, including **sf**, **terra** or **stars** classes and numeric coordinate vectors. Local image files and image URLs are supported.
+<meta property="og:description" content="Geotag digital images and return **terra** `SpatRaster` objects using coordinates from supported spatial input classes, including numeric coordinate vectors and objects from **sf**, **terra** and **stars**. Local image files and image URLs are supported.
 ">
 <meta property="og:image" content="https://dieghernan.github.io/rasterpic/logo.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -54,12 +54,15 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><h6 class="dropdown-header" data-toc-skip>Articles</h6></li>
+<li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Articles</h6></li>
     <li><a class="dropdown-item" href="articles/plots.html">Plotting SpatRaster objects</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Blog</h6></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Examples</h6></li>
     <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/202201_maps-flags/">Beautiful maps with R (IV): Fun with flags revisited</a></li>
     <li><a class="external-link dropdown-item" href="https://x.com/dhernangomez/status/1486666356544225281">Quick Brazil</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="articles/index.html">More articles...</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
@@ -93,7 +96,7 @@
 <!-- badges: start -->
 
 <!-- badges: end -->
-<p><strong>rasterpic</strong> is a tiny package with a single goal: geotag an image and return a <strong>terra</strong> <code>SpatRaster</code> object using coordinates from supported spatial inputs (see <code><a href="https://rspatial.github.io/terra/reference/SpatRaster-class.html" class="external-link">?terra::SpatRaster</a></code>).</p>
+<p><strong>rasterpic</strong> is a tiny package with a single goal: geotag an image and return a <strong>terra</strong> <code>SpatRaster</code> object using coordinates from supported spatial input classes (see <code><a href="https://rspatial.github.io/terra/reference/SpatRaster-class.html" class="external-link">?terra::SpatRaster</a></code>).</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -122,15 +125,15 @@
 <p><code><a href="reference/rasterpic_img.html">rasterpic_img()</a></code> can geotag an image from several spatial input classes:</p>
 <ul>
 <li>
-<strong>sf</strong> classes: <code>sf</code>, <code>sfc</code>, <code>sfg</code> or <code>bbox</code>.</li>
+<strong>sf</strong> classes: <code>sf</code>, <code>sfc</code>, <code>sfg</code> and <code>bbox</code>.</li>
 <li>
 <strong>terra</strong> classes: <code>SpatRaster</code>, <code>SpatVector</code> and <code>SpatExtent</code>.</li>
 <li>
-<strong>stars</strong> classes: <code>stars</code>.</li>
+<strong>stars</strong> class: <code>stars</code>.</li>
 <li>A numeric coordinate vector of the form <code>c(xmin, ymin, xmax, ymax)</code>.</li>
 </ul>
 <p><code><a href="reference/rasterpic_img.html">rasterpic_img()</a></code> is an S3 generic. Methods for extent-like inputs use the object extent, and vector methods can also mask the image to the object shape.</p>
-<p>An example using an <code>sf</code> object:</p>
+<p>This example uses an <code>sf</code> object:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/rasterpic/">rasterpic</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span>
@@ -164,7 +167,7 @@
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">uk_flag</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">uk</span>, color <span class="op">=</span> <span class="fu"><a href="https://scales.r-lib.org/reference/alpha.html" class="external-link">alpha</a></span><span class="op">(</span><span class="st">"blue"</span>, <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-example-basic-1.png" style="width:100.0%" alt="Example using rasterpic with the UK flag"></p>
+<p><img src="reference/figures/README-example-basic-1.png" style="width:100.0%" alt="Example using rasterpic with the UK flag."></p>
 <p>You can also adjust the expansion, alignment, cropping and masking options:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Align, crop and mask the image.</span></span>
@@ -172,12 +175,12 @@
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">uk_flag2</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">uk</span>, fill <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-align-crop-mask-1.png" style="width:100.0%" alt="Example using rasterpic with the UK flag cropped to the shape"></p>
+<p><img src="reference/figures/README-align-crop-mask-1.png" style="width:100.0%" alt="Example using rasterpic with the UK flag cropped to the shape."></p>
 </div>
 <div class="section level2">
 <h2 id="supported-image-formats">Supported image formats<a class="anchor" aria-label="anchor" href="#supported-image-formats"></a>
 </h2>
-<p><strong>rasterpic</strong> can parse the following image formats:</p>
+<p><strong>rasterpic</strong> can read the following image formats:</p>
 <ul>
 <li>
 <code>png</code> files.</li>
@@ -201,7 +204,7 @@ Hernangómez D (2026). <em>rasterpic: Convert Digital Images into Geotagged Spat
 <span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>  year <span class="ot">=</span> {<span class="dv">2026</span>},</span>
 <span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">0</span>.<span class="dv">5</span>.<span class="fl">0.9000</span>},</span>
 <span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>  url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>dieghernan.github.io<span class="sc">/</span>rasterpic<span class="sc">/</span>},</span>
-<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>  abstract <span class="ot">=</span> {Geotag digital images and return SpatRaster objects, as defined by the terra package, using coordinates from supported spatial inputs as a reference. Supported inputs include objects from the sf, terra and stars packages. The main <span class="cf">function</span> is an S3 generic, so other packages can provide methods <span class="cf">for</span> additional spatial classes.},</span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>  abstract <span class="ot">=</span> {Geotag digital images and return SpatRaster objects, as defined by the terra package, using coordinates from supported spatial input classes. Supported inputs include numeric coordinate vectors and objects from the sf, terra and stars packages. The main <span class="cf">function</span> is an S3 generic, so other packages can provide methods <span class="cf">for</span> additional spatial classes.},</span>
 <span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 </div>

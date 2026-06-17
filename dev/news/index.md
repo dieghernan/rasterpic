@@ -5,8 +5,8 @@
 - User-facing errors, warnings and notes now use **cli** alerts and
   inline markup for consistent argument, file and URL formatting.
 - [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
-  with `mask = TRUE` and/or `inverse = TRUE` returns a `SpatRaster` with
-  RGB specification again
+  with `mask = TRUE`, `inverse = TRUE` or both again returns a
+  `SpatRaster` with an RGB specification
   ([`terra::has.RGB()`](https://rspatial.github.io/terra/reference/RGB.html)
   returns `TRUE`).
 
@@ -65,11 +65,11 @@ CRAN release: 2024-04-12
 CRAN release: 2024-01-18
 
 - Ensured that `SpatVector` objects always have a CRS.
-- If the image has fewer than 3 channels, the raster output does not
-  have the RGB property
+- If the image has fewer than 3 layers, the raster output does not have
+  an RGB specification
   ([`terra::has.RGB()`](https://rspatial.github.io/terra/reference/RGB.html)
   is `FALSE`). This is expected to be a corner case.
-- If the image file (e.g., `tiff`) already has an RGB definition,
+- If the image file (e.g., `tiff`) already has an RGB specification,
   preserve it in the output.
 - Updated documentation and tests.
 
@@ -89,7 +89,7 @@ CRAN release: 2023-04-18
 - Removed unused dependencies.
 - Improved documentation.
 - Fixed typos in messages.
-- Declared output as RGB raster with
+- Declared the output as an RGB raster with
   [`terra::RGB()`](https://rspatial.github.io/terra/reference/RGB.html).
 - Added **ggplot2** to “Suggests”.
 

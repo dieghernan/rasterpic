@@ -1,7 +1,7 @@
 # Geotag an image as a `SpatRaster`
 
 Geotag an image and return a `SpatRaster` based on coordinates from a
-supported spatial input.
+supported spatial input class.
 
 `rasterpic_img()` is an S3 generic. See **S3 methods** for supported
 input classes.
@@ -135,7 +135,7 @@ rasterpic_img(
 
 - x:
 
-  An R object. See **S3 methods**.
+  An R object. See **S3 methods** for supported classes.
 
 - img:
 
@@ -172,20 +172,20 @@ rasterpic_img(
 
 - mask:
 
-  Logical, available for vector methods. Should the raster be
+  Logical, for vector methods. Should the raster be
   [masked](https://rspatial.github.io/terra/reference/mask.html) to the
   shape of `x`? See **Details**.
 
 - inverse:
 
-  Logical. This only has an effect when `mask = TRUE`. If `TRUE`, areas
-  of the raster covered by `x` are masked.
+  Logical. Only used when `mask = TRUE`. If `TRUE`, areas of the raster
+  covered by `x` are masked.
 
 - crs:
 
   Character string describing a CRS. This parameter only applies when
   `x` is a `SpatExtent`, `sfg`, `bbox` or a numeric coordinate vector.
-  See **CRS** section.
+  See the **CRS** section.
 
 ## Value
 
@@ -193,12 +193,12 @@ A `SpatRaster` object (see
 [`terra::rast()`](https://rspatial.github.io/terra/reference/rast.html))
 where each layer corresponds to a color channel of `img`:
 
-- If `img` has at least 3 layers, the result has an additional property
-  setting layers 1 to 3 as the red, green and blue channels with names
-  `"r"`, `"g"` and `"b"` and `alpha` if applicable.
+- If `img` has at least 3 layers, the result records layers 1 to 3 as
+  the red, green and blue channels with names `"r"`, `"g"` and `"b"` and
+  `alpha` if applicable.
 
-- If `img` already has a definition of RGB values (this may be the case
-  for `tif`/`tiff` files), the result keeps that channel definition.
+- If `img` already has an RGB specification (this may be the case for
+  `tif`/`tiff` files), the result keeps that specification.
 
 The resulting `SpatRaster` will have an RGB specification as explained
 in

@@ -19,12 +19,15 @@
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><h6 class="dropdown-header" data-toc-skip>Articles</h6></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Articles</h6></li>
     <li><a class="dropdown-item" href="../articles/plots.html">Plotting SpatRaster objects</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Blog</h6></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Examples</h6></li>
     <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/202201_maps-flags/">Beautiful maps with R (IV): Fun with flags revisited</a></li>
     <li><a class="external-link dropdown-item" href="https://x.com/dhernangomez/status/1486666356544225281">Quick Brazil</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul></li>
 <li class="active nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -51,7 +54,7 @@
 <h2 class="pkg-version" data-toc-text="development version" id="rasterpic-development-version">rasterpic (development version)<a class="anchor" aria-label="anchor" href="#rasterpic-development-version"></a></h2>
 <ul><li>User-facing errors, warnings and notes now use <strong>cli</strong> alerts and inline markup for consistent argument, file and URL formatting.</li>
 <li>
-<code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> with <code>mask = TRUE</code> and/or <code>inverse = TRUE</code> returns a <code>SpatRaster</code> with RGB specification again (<code><a href="https://rspatial.github.io/terra/reference/RGB.html" class="external-link">terra::has.RGB()</a></code> returns <code>TRUE</code>).</li>
+<code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> with <code>mask = TRUE</code>, <code>inverse = TRUE</code> or both again returns a <code>SpatRaster</code> with an RGB specification (<code><a href="https://rspatial.github.io/terra/reference/RGB.html" class="external-link">terra::has.RGB()</a></code> returns <code>TRUE</code>).</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.0" id="rasterpic-050">rasterpic 0.5.0<a class="anchor" aria-label="anchor" href="#rasterpic-050"></a></h2><p class="text-muted">CRAN release: 2026-05-21</p>
@@ -87,8 +90,8 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.4" id="rasterpic-024">rasterpic 0.2.4<a class="anchor" aria-label="anchor" href="#rasterpic-024"></a></h2><p class="text-muted">CRAN release: 2024-01-18</p>
 <ul><li>Ensured that <code>SpatVector</code> objects always have a CRS.</li>
-<li>If the image has fewer than 3 channels, the raster output does not have the RGB property (<code><a href="https://rspatial.github.io/terra/reference/RGB.html" class="external-link">terra::has.RGB()</a></code> is <code>FALSE</code>). This is expected to be a corner case.</li>
-<li>If the image file (e.g., <code>tiff</code>) already has an RGB definition, preserve it in the output.</li>
+<li>If the image has fewer than 3 layers, the raster output does not have an RGB specification (<code><a href="https://rspatial.github.io/terra/reference/RGB.html" class="external-link">terra::has.RGB()</a></code> is <code>FALSE</code>). This is expected to be a corner case.</li>
+<li>If the image file (e.g., <code>tiff</code>) already has an RGB specification, preserve it in the output.</li>
 <li>Updated documentation and tests.</li>
 </ul></div>
     <div class="section level2">
@@ -101,7 +104,7 @@
 <ul><li>Removed unused dependencies.</li>
 <li>Improved documentation.</li>
 <li>Fixed typos in messages.</li>
-<li>Declared output as RGB raster with <code><a href="https://rspatial.github.io/terra/reference/RGB.html" class="external-link">terra::RGB()</a></code>.</li>
+<li>Declared the output as an RGB raster with <code><a href="https://rspatial.github.io/terra/reference/RGB.html" class="external-link">terra::RGB()</a></code>.</li>
 <li>Added <strong>ggplot2</strong> to “Suggests”.</li>
 </ul></div>
     <div class="section level2">

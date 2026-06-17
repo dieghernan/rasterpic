@@ -1,8 +1,9 @@
 # Package index
 
-## Core geotagging
+## Geotagging images
 
-Geotag images and return `SpatRaster` objects.
+Create geotagged `SpatRaster` objects from supported spatial input
+classes and local image files or image URLs.
 
 - [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
   :
@@ -11,14 +12,18 @@ Geotag images and return `SpatRaster` objects.
 
 ## Package metadata
 
+Package-level documentation and metadata.
+
 - [`rasterpic`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic-package.md)
   [`rasterpic-package`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic-package.md)
   : rasterpic: Convert Digital Images into Geotagged 'SpatRaster'
   Objects
 
-## Plotting helpers
+## External plotting helpers
 
-Functions from other packages for plotting `SpatRaster` objects.
+Functions from other packages that are commonly used to plot the
+`SpatRaster` objects returned by
+[`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md).
 
 - [`plotRGB(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/plotRGB.html)
   : Red-Green-Blue plot of a multi-layered SpatRaster (from terra)

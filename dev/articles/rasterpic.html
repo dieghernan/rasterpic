@@ -52,12 +52,15 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><h6 class="dropdown-header" data-toc-skip>Articles</h6></li>
+<li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Articles</h6></li>
     <li><a class="dropdown-item" href="../articles/plots.html">Plotting SpatRaster objects</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Blog</h6></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Examples</h6></li>
     <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/202201_maps-flags/">Beautiful maps with R (IV): Fun with flags revisited</a></li>
     <li><a class="external-link dropdown-item" href="https://x.com/dhernangomez/status/1486666356544225281">Quick Brazil</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -97,7 +100,7 @@
 
 
 
-    <p>Getting started with <strong>rasterpic</strong> is straightforward: you need an image file (<code>png</code>, <code>jpeg</code>/<code>jpg</code> or <code>tiff</code>/<code>tif</code>) and a supported spatial input, such as an object from the <strong>sf</strong>, <strong>terra</strong> or <strong>stars</strong> packages.</p>
+    <p>Getting started with <strong>rasterpic</strong> is straightforward: you need an image file (<code>png</code>, <code>jpeg</code>/<code>jpg</code> or <code>tiff</code>/<code>tif</code>) and a supported spatial input class, such as an object from the <strong>sf</strong>, <strong>terra</strong> or <strong>stars</strong> packages.</p>
 <section class="level2"><h2 id="basic-usage">Basic usage<a class="anchor" aria-label="anchor" href="#basic-usage"></a>
 </h2>
 <p>This example geotags an image using the shape of Austria:</p>
@@ -126,7 +129,7 @@
 <img src="rasterpic_files/figure-html/fig-setup-1.png" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-setup-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 1: Raster map geotagged with the coordinates of Austria
+Figure 1: Image geotagged with the coordinates of Austria.
 </figcaption></figure>
 </div>
 </div>
@@ -149,7 +152,7 @@ Figure 1: Raster map geotagged with the coordinates of Austria
 <img src="rasterpic_files/figure-html/fig-expand-1.png" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-expand-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 2: Example image expansion
+Figure 2: Example image expansion.
 </figcaption></figure>
 </div>
 </div>
@@ -169,14 +172,14 @@ Figure 2: Example image expansion
 <img src="rasterpic_files/figure-html/fig-bottom-1.png" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bottom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 3: Example image alignment
+Figure 3: Example image alignment.
 </figcaption></figure>
 </div>
 </div>
 </div>
 </section><section class="level3"><h3 id="crop-and-mask">Crop and mask<a class="anchor" aria-label="anchor" href="#crop-and-mask"></a>
 </h3>
-<p>The <code>crop</code>, <code>mask</code> and <code>inverse</code> arguments control whether the raster is cropped and masked to the object shape:</p>
+<p>The <code>crop</code>, <code>mask</code> and <code>inverse</code> arguments control whether the raster is cropped to the object extent and masked to the object shape:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mask</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rasterpic_img.html">rasterpic_img</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">img</span>, crop <span class="op">=</span> <span class="cn">TRUE</span>, mask <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -192,7 +195,7 @@ Figure 3: Example image alignment
 <img src="rasterpic_files/figure-html/fig-mask-1.png" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mask-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 4: Example of masked image
+Figure 4: Example masked image.
 </figcaption></figure>
 </div>
 </div>
@@ -202,7 +205,7 @@ Figure 4: Example of masked image
 <img src="rasterpic_files/figure-html/fig-mask-2.png" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mask-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 5: Example of inverse masked image
+Figure 5: Example inverse masked image.
 </figcaption></figure>
 </div>
 </div>
@@ -212,17 +215,17 @@ Figure 5: Example of inverse masked image
 <p><code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> supports the following spatial input classes:</p>
 <ul>
 <li>
-<strong>sf</strong> classes: <code>sf</code>, <code>sfc</code>, <code>sfg</code> or <code>bbox</code>.</li>
+<strong>sf</strong> classes: <code>sf</code>, <code>sfc</code>, <code>sfg</code> and <code>bbox</code>.</li>
 <li>
 <strong>terra</strong> classes: <code>SpatRaster</code>, <code>SpatVector</code> and <code>SpatExtent</code>.</li>
 <li>
-<strong>stars</strong> classes: <code>stars</code>.</li>
+<strong>stars</strong> class: <code>stars</code>.</li>
 <li>A numeric coordinate vector of the form <code>c(xmin, ymin, xmax, ymax)</code>.</li>
 </ul>
 <p><code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> is an S3 generic. Methods for extent-like inputs use the object extent, and vector methods can also mask the image to the object shape.</p>
 </section><section class="level2"><h2 id="supported-image-formats">Supported image formats<a class="anchor" aria-label="anchor" href="#supported-image-formats"></a>
 </h2>
-<p><strong>rasterpic</strong> can parse the following image formats:</p>
+<p><strong>rasterpic</strong> can read the following image formats:</p>
 <ul>
 <li>
 <code>png</code> files.</li>

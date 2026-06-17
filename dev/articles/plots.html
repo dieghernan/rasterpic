@@ -52,12 +52,15 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><h6 class="dropdown-header" data-toc-skip>Articles</h6></li>
+<li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Articles</h6></li>
     <li><a class="dropdown-item" href="../articles/plots.html">Plotting SpatRaster objects</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Blog</h6></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Examples</h6></li>
     <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/202201_maps-flags/">Beautiful maps with R (IV): Fun with flags revisited</a></li>
     <li><a class="external-link dropdown-item" href="https://x.com/dhernangomez/status/1486666356544225281">Quick Brazil</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -97,7 +100,7 @@
 
 
 
-    <p>This article shows several ways to plot the <code>SpatRaster</code> object produced by <code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code>.</p>
+    <p>This article shows several ways to plot the <code>SpatRaster</code> object returned by <code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code>.</p>
 <section class="level2"><h2 id="base-plots">Base plots<a class="anchor" aria-label="anchor" href="#base-plots"></a>
 </h2>
 <p>The most direct option is to use the base <code><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot()</a></code> methods provided by the <strong>terra</strong> package, such as <code><a href="https://rspatial.github.io/terra/reference/plotRGB.html" class="external-link">terra::plotRGB()</a></code>:</p>
