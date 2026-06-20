@@ -165,7 +165,7 @@ Functions from other packages that are commonly used to plot the
 - [`geom_spatraster_rgb()`](https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html)
   :
 
-  Visualise `SpatRaster` objects as images (from tidyterra)
+  Plot `SpatRaster` objects as images (from tidyterra)
 
 - [`tm_rgb()`](https://r-tmap.github.io/tmap/reference/tm_rgb.html)
   [`tm_rgba()`](https://r-tmap.github.io/tmap/reference/tm_rgb.html)
