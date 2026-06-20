@@ -1,5 +1,9 @@
 # rasterpic
 
+This package is stable and maintained on a best-effort basis. I
+currently prioritize CRAN compatibility, bug fixes and regressions over
+new features.
+
 **rasterpic** is a tiny package with a single goal: geotag an image and
 return a **terra** `SpatRaster` object using coordinates from supported
 spatial input classes (see
