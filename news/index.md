@@ -2,6 +2,8 @@
 
 ## rasterpic 0.5.1
 
+CRAN release: 2026-06-23
+
 - User-facing errors, warnings and notes now use **cli** alerts and
   inline markup for consistent argument, file and URL formatting.
 - [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/reference/rasterpic_img.md)
