@@ -26,7 +26,7 @@ A numeric scalar giving the aspect ratio.
 ``` r
 # \donttest{
 library(terra)
-#> terra 1.9.27
+#> terra 1.9.34
 
 x <- rast(system.file("tiff/elev.tiff", package = "rasterpic"))
 plot(x)
