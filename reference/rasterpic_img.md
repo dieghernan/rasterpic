@@ -1,30 +1,10 @@
-# Convert an image into a geotagged `SpatRaster`
+# Geotag an image as a `SpatRaster`
 
-Geotags an image based on the coordinates of a spatial object.
+Geotag an image and return a `SpatRaster` based on coordinates from a
+supported spatial input class.
 
-`rasterpic_img()` is an S3 generic.
-[rasterpic](https://CRAN.R-project.org/package=rasterpic) provides
-methods for the following classes:
-
-- `SpatExtent`
-
-- `SpatRaster`
-
-- `SpatVector`
-
-- `bbox`
-
-- `default`
-
-- `numeric`
-
-- `sf`
-
-- `sfc`
-
-- `sfg`
-
-- `stars`
+`rasterpic_img()` is an S3 generic. See **S3 methods** for supported
+input classes.
 
 ## Usage
 
@@ -155,25 +135,25 @@ rasterpic_img(
 
 - x:
 
-  An R object (see **S3 methods**).
+  An R object. See **S3 methods** for supported classes.
 
 - img:
 
-  An image to be geotagged. It can be a local file or a URL (e.g.
-  `"https://i.imgur.com/6yHmlwT.jpeg"`). Accepted extensions are `png`,
-  `jpeg`/`jpg` and `tiff`/`tif`.
+  An image to geotag. It can be a local file or a URL, for example
+  `"https://i.imgur.com/6yHmlwT.jpeg"`. Accepted file extensions are
+  `png`, `jpg`, `jpeg`, `tif` and `tiff`.
 
 - halign:
 
   A number between `0` and `1` giving the horizontal alignment of `img`
-  relative to `x`. `0` aligns `x` with the left edge, `1` aligns with
-  the right edge and `0.5` centers it horizontally.
+  relative to `x`. `0` aligns `img` with the left edge of `x`, `1`
+  aligns it with the right edge and `0.5` centers it horizontally.
 
 - valign:
 
   A number between `0` and `1` giving the vertical alignment of `img`
-  relative to `x`. `0` aligns `x` with the bottom edge, `1` aligns with
-  the top edge and `0.5` centers it vertically.
+  relative to `x`. `0` aligns `img` with the bottom edge of `x`, `1`
+  aligns it with the top edge and `0.5` centers it vertically.
 
 - expand:
 
@@ -192,20 +172,20 @@ rasterpic_img(
 
 - mask:
 
-  Logical, available for vector methods. Should the raster be
+  Logical, for vector methods. Should the raster be
   [masked](https://rspatial.github.io/terra/reference/mask.html) to the
   shape of `x`? See **Details**.
 
 - inverse:
 
-  Logical. This only has an effect when `mask = TRUE`. If `TRUE`, areas
-  of the raster covered by `x` are masked.
+  Logical. Only used when `mask = TRUE`. If `TRUE`, areas of the raster
+  covered by `x` are masked.
 
 - crs:
 
   Character string describing a CRS. This parameter only applies when
   `x` is a `SpatExtent`, `sfg`, `bbox` or a numeric coordinate vector.
-  See **CRS** section.
+  See the **CRS** section.
 
 ## Value
 
@@ -213,12 +193,12 @@ A `SpatRaster` object (see
 [`terra::rast()`](https://rspatial.github.io/terra/reference/rast.html))
 where each layer corresponds to a color channel of `img`:
 
-- If `img` has at least 3 layers, the result will have an additional
-  property setting layers 1 to 3 as the red, green and blue channels
-  with names `"r"`, `"g"` and `"b"` and `alpha` if applicable.
+- If `img` has at least 3 layers, the result records layers 1 to 3 as
+  the red, green and blue channels with names `"r"`, `"g"` and `"b"` and
+  `alpha` if applicable.
 
-- If `img` already has a definition of RGB values (this may be the case
-  for `tiff`/`tif` files) the result will keep that channel definition.
+- If `img` already has an RGB specification (this may be the case for
+  `tif`/`tiff` files), the result keeps that specification.
 
 The resulting `SpatRaster` will have an RGB specification as explained
 in
@@ -227,19 +207,21 @@ in
 ## Details
 
 [`vignette("rasterpic", package = "rasterpic")`](https://dieghernan.github.io/rasterpic/articles/rasterpic.md)
-explains, with examples, the effect of parameters `halign`, `valign`,
-`expand`, `crop` and `mask`.
+explains the effect of parameters `halign`, `valign`, `expand`, `crop`
+and `mask` with examples.
 
 ### S3 methods
 
-[rasterpic](https://CRAN.R-project.org/package=rasterpic) supports the
-following input classes:
+[rasterpic](https://CRAN.R-project.org/package=rasterpic) supports these
+spatial input classes:
 
-- **sf** classes: `sf`, `sfc`, `sfg` or `bbox`.
+- [sf](https://CRAN.R-project.org/package=sf) classes: `sf`, `sfc`,
+  `sfg` and `bbox`.
 
-- **terra** classes: `SpatRaster`, `SpatVector` and `SpatExtent`.
+- [terra](https://CRAN.R-project.org/package=terra) classes:
+  `SpatRaster`, `SpatVector` and `SpatExtent`.
 
-- **stars** classes: `stars`.
+- [stars](https://CRAN.R-project.org/package=stars) class: `stars`.
 
 - A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 
@@ -253,9 +235,9 @@ inputs can also mask the image to the object shape.
 This function preserves the CRS of `x` when applicable. For optimal
 results, **do not use** geographic coordinates (longitude/latitude).
 
-`crs` can be in a WKT format, as a `"authority:number"` code such as
-`"EPSG:4326"` or a PROJ-string format such as `"+proj=utm +zone=12"`. It
-can also be retrieved with:
+`crs` can be in WKT format, as an `"authority:number"` code such as
+`"EPSG:4326"` or as a PROJ-string such as `"+proj=utm +zone=12"`. It can
+also be retrieved with:
 
 - [`sf::st_crs(25830)$wkt`](https://r-spatial.github.io/sf/reference/st_crs.html).
 
@@ -263,7 +245,7 @@ can also be retrieved with:
 
 - [`tidyterra::pull_crs()`](https://dieghernan.github.io/tidyterra/reference/pull_crs.html).
 
-See **Value** and **Notes** in
+See the **Value** and **Notes** sections in
 [`terra::crs()`](https://rspatial.github.io/terra/reference/crs.html).
 
 ## See also
@@ -332,7 +314,7 @@ x_path <- system.file("gpkg/UK.gpkg", package = "rasterpic")
 x <- st_read(x_path, quiet = TRUE)
 img <- system.file("img/vertical.png", package = "rasterpic")
 
-# Default configuration.
+# Use the default configuration.
 ex1 <- rasterpic_img(x, img)
 
 ex1
@@ -351,24 +333,22 @@ autoplot(ex1) +
   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5)
 
 
-# Expand.
+# Expand the bounding box.
 ex2 <- rasterpic_img(x, img, expand = 0.5)
 
 autoplot(ex2) +
   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5)
 
 
-# Align.
+# Align the image to the left edge.
 ex3 <- rasterpic_img(x, img, halign = 0)
 
 autoplot(ex3) +
-  geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5)
+  geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5) +
+  labs(title = "Align")
 
-labs(title = "Align")
-#> <ggplot2::labels> List of 1
-#>  $ title: chr "Align"
 
-# Crop.
+# Crop to the bounding box.
 ex4 <- rasterpic_img(x, img, crop = TRUE)
 
 autoplot(ex4) +
@@ -376,7 +356,7 @@ autoplot(ex4) +
   labs(title = "Crop")
 
 
-# Mask.
+# Mask to the vector shape.
 ex5 <- rasterpic_img(x, img, mask = TRUE)
 
 autoplot(ex5) +
@@ -384,7 +364,7 @@ autoplot(ex5) +
   labs(title = "Mask")
 
 
-# Inverse mask.
+# Mask outside the vector shape.
 ex6 <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
 
 autoplot(ex6) +
@@ -392,7 +372,7 @@ autoplot(ex6) +
   labs(title = "Mask Inverse")
 
 
-# Combine inverse masking and cropping.
+# Combine cropping and inverse masking.
 ex7 <- rasterpic_img(x, img, crop = TRUE, mask = TRUE, inverse = TRUE)
 
 autoplot(ex7) +

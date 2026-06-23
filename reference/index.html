@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="rasterpic logo" height="34" width="34" class="d-inline-block me-1">rasterpic</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,12 +19,15 @@
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><h6 class="dropdown-header" data-toc-skip>Articles</h6></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Articles</h6></li>
     <li><a class="dropdown-item" href="../articles/plots.html">Plotting SpatRaster objects</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Blog</h6></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Examples</h6></li>
     <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/202201_maps-flags/">Beautiful maps with R (IV): Fun with flags revisited</a></li>
     <li><a class="external-link dropdown-item" href="https://x.com/dhernangomez/status/1486666356544225281">Quick Brazil</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -47,9 +50,9 @@
     </div>
 
     <div class="section level2">
-      <h2 id="core-geotagging">Core geotagging<a class="anchor" aria-label="anchor" href="#core-geotagging"></a></h2>
+      <h2 id="geotagging-images">Geotagging images<a class="anchor" aria-label="anchor" href="#geotagging-images"></a></h2>
 
-      <div class="section-desc"><p>Convert images into geotagged <code>SpatRaster</code> objects.</p></div>
+      <div class="section-desc"><p>Create geotagged <code>SpatRaster</code> objects from supported spatial input classes and local image files or image URLs.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -61,11 +64,11 @@
           <code><a href="rasterpic_img.html">rasterpic_img()</a></code>
 
         </dt>
-        <dd>Convert an image into a geotagged <code>SpatRaster</code></dd>
+        <dd>Geotag an image as a <code>SpatRaster</code></dd>
       </dl></div><div class="section level2">
       <h2 id="package-metadata">Package metadata<a class="anchor" aria-label="anchor" href="#package-metadata"></a></h2>
 
-
+      <div class="section-desc"><p>Package-level documentation and metadata.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -77,11 +80,11 @@
           <code><a href="rasterpic-package.html">rasterpic</a></code> <code><a href="rasterpic-package.html">rasterpic-package</a></code>
 
         </dt>
-        <dd>rasterpic: Convert Digital Images into 'SpatRaster' Objects</dd>
+        <dd>rasterpic: Convert Digital Images to Spatially Referenced 'SpatRaster' Objects</dd>
       </dl></div><div class="section level2">
-      <h2 id="plotting-helpers">Plotting helpers<a class="anchor" aria-label="anchor" href="#plotting-helpers"></a></h2>
+      <h2 id="external-plotting-helpers">External plotting helpers<a class="anchor" aria-label="anchor" href="#external-plotting-helpers"></a></h2>
 
-      <div class="section-desc"><p>Functions from other packages for plotting <code>SpatRaster</code> objects.</p></div>
+      <div class="section-desc"><p>Functions from other packages that are commonly used to plot the <code>SpatRaster</code> objects returned by <code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code>.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -100,7 +103,7 @@
           <code><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb()</a></code>
 
         </dt>
-        <dd>Visualise <code>SpatRaster</code> objects as images (from tidyterra)</dd>
+        <dd>Plot <code>SpatRaster</code> objects as images (from tidyterra)</dd>
 
         <dt>
 

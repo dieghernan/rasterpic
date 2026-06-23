@@ -1,15 +1,15 @@
 # Plotting SpatRaster objects
 
-This article shows how to plot the `SpatRaster` produced by
-[`rasterpic_img()`](https://dieghernan.github.io/rasterpic/reference/rasterpic_img.md)
-with several **R** packages.
+This article shows several ways to plot the `SpatRaster` object returned
+by
+[`rasterpic_img()`](https://dieghernan.github.io/rasterpic/reference/rasterpic_img.md).
 
 ## Base plots
 
-The most straightforward option is to use the base
+The most direct option is to use the base
 [`plot()`](https://rspatial.github.io/terra/reference/plot.html) methods
-provided by the **terra** package
-([`terra::plotRGB()`](https://rspatial.github.io/terra/reference/plotRGB.html)):
+provided by the **terra** package, such as
+[`terra::plotRGB()`](https://rspatial.github.io/terra/reference/plotRGB.html):
 
 ``` r
 
@@ -38,8 +38,8 @@ Figure 1: Plot with the **terra** package
 
 ## With ggplot2 and tidyterra
 
-The **tidyterra** package provides plotting support for **terra**
-`SpatRaster` objects with **ggplot2**:
+The **tidyterra** package provides **ggplot2** support for **terra**
+`SpatRaster` objects:
 
 ``` r
 
@@ -94,7 +94,7 @@ Figure 4: Plot with the **mapsf** package
 ## With maptiles
 
 The **maptiles** package can download map tiles from different
-providers. It also provides a function for plotting **terra**
+providers. It also provides functions for plotting **terra**
 `SpatRaster` objects:
 
 ``` r
@@ -129,7 +129,7 @@ ISSN 2475-9066.
 <https://doi.org/10.21105/joss.05751>.
 
 Hijmans R, Brown A, Barbosa M (2026). *terra: Spatial Data Analysis*. R
-package version 1.9-27, <https://rspatial.org/>.
+package version 1.9-34, <https://rspatial.org/>.
 
 Wickham H (2016). *ggplot2: Elegant Graphics for Data Analysis*.
 Springer-Verlag New York. ISBN 978-3-319-24277-4.

@@ -1,5 +1,15 @@
 # Changelog
 
+## rasterpic 0.5.1
+
+- User-facing errors, warnings and notes now use **cli** alerts and
+  inline markup for consistent argument, file and URL formatting.
+- [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/reference/rasterpic_img.md)
+  with `mask = TRUE`, `inverse = TRUE` or both again returns a
+  `SpatRaster` with an RGB specification
+  ([`terra::has.RGB()`](https://rspatial.github.io/terra/reference/RGB.html)
+  returns `TRUE`).
+
 ## rasterpic 0.5.0
 
 CRAN release: 2026-05-21
@@ -7,7 +17,7 @@ CRAN release: 2026-05-21
 - Package documentation was reviewed and updated with AI-assisted
   editing.
 - [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/reference/rasterpic_img.md)
-  is now an S3 generic with methods for supported input classes
+  is now an S3 generic with methods for supported spatial input classes
   ([\#39](https://github.com/dieghernan/rasterpic/issues/39)).
 - [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/reference/rasterpic_img.md)
   now supports `stars` objects.
@@ -55,11 +65,11 @@ CRAN release: 2024-04-12
 CRAN release: 2024-01-18
 
 - Ensured that `SpatVector` objects always have a CRS.
-- If the image has fewer than 3 channels, the raster output does not
-  have the RGB property
+- If the image has fewer than 3 layers, the raster output does not have
+  an RGB specification
   ([`terra::has.RGB()`](https://rspatial.github.io/terra/reference/RGB.html)
   is `FALSE`). This is expected to be a corner case.
-- If the image file (e.g., `tiff`) already has an RGB definition,
+- If the image file (e.g., `tiff`) already has an RGB specification,
   preserve it in the output.
 - Updated documentation and tests.
 
@@ -79,7 +89,7 @@ CRAN release: 2023-04-18
 - Removed unused dependencies.
 - Improved documentation.
 - Fixed typos in messages.
-- Declared output as RGB raster with
+- Declared the output as an RGB raster with
   [`terra::RGB()`](https://rspatial.github.io/terra/reference/RGB.html).
 - Added **ggplot2** to “Suggests”.
 
