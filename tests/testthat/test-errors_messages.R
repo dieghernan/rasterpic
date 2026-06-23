@@ -36,7 +36,7 @@ test_that("Message in lonlat sf", {
   )
   x <- sf::st_transform(x, 4326)
   img <- system.file("img/UK_flag.png", package = "rasterpic")
-  expect_snapshot(s <- rasterpic_img(x, img), )
+  expect_snapshot(s <- rasterpic_img(x, img))
 
   x2 <- sf::st_transform(x, 3857)
 

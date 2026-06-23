@@ -1,6 +1,6 @@
 
 
-<!-- README.md is generated from README.qmd. Please edit that file -->
+<!-- index.md is generated from index.qmd. Please edit that file -->
 
 # rasterpic <a href="https://dieghernan.github.io/rasterpic/"><img src="man/figures/logo.png" alt="rasterpic website" align="right" height="139"/></a>
 
@@ -27,11 +27,18 @@ allows.](https://www.repostatus.org/badges/latest/inactive.svg)](https://www.rep
 return a **terra** `SpatRaster` object using coordinates from supported
 spatial input classes (see `?terra::SpatRaster`).
 
-> [!NOTE]
->
-> This package is stable and maintained on a best-effort basis. I
-> currently prioritize CRAN compatibility, bug fixes and regressions
-> over new features.
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container"><i class="callout-icon"></i></div>
+<div class="callout-title-container flex-fill">Note</div></div>
+<div class="callout-body-container callout-body">
+
+This package is stable and maintained on a best-effort basis. I
+currently prioritize CRAN compatibility, bug fixes and regressions over
+new features.
+
+</div>
+</div>
 
 ## Installation
 

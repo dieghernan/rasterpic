@@ -7,17 +7,17 @@ cff-version: 1.2.0
 message: 'To cite package "rasterpic" in publications use:'
 type: software
 license: MIT
-title: 'rasterpic: Convert Digital Images into Geotagged ''SpatRaster'' Objects'
+title: 'rasterpic: Convert Digital Images to Spatially Referenced ''SpatRaster'' Objects'
 version: 0.5.0.9000
 doi: 10.32614/CRAN.package.rasterpic
 identifiers:
 - type: doi
   value: 10.32614/CRAN.package.rasterpic
-abstract: Geotag digital images and return 'SpatRaster' objects, as defined by the
-  'terra' package, using coordinates from supported spatial input classes. Supported
-  inputs include numeric coordinate vectors and objects from the 'sf', 'terra' and
-  'stars' packages. The main function is an S3 generic, so other packages can provide
-  methods for additional spatial classes.
+abstract: Convert digital images to spatially referenced 'SpatRaster' objects, as
+  defined by the 'terra' package, using coordinates from supported spatial input classes.
+  Supported inputs include numeric coordinate vectors and objects from the 'sf', 'terra'
+  and 'stars' packages. The main function is an S3 generic, allowing other packages
+  to extend support to additional spatial classes.
 authors:
 - family-names: Hernangómez
   given-names: Diego
@@ -25,7 +25,7 @@ authors:
   orcid: https://orcid.org/0000-0001-8457-4658
 preferred-citation:
   type: manual
-  title: 'rasterpic: Convert Digital Images into Geotagged SpatRaster Objects'
+  title: 'rasterpic: Convert Digital Images to Spatially Referenced SpatRaster Objects'
   authors:
   - family-names: Hernangómez
     given-names: Diego
@@ -35,11 +35,11 @@ preferred-citation:
   year: '2026'
   version: 0.5.0.9000
   url: https://dieghernan.github.io/rasterpic/
-  abstract: Geotag digital images and return SpatRaster objects, as defined by the
-    terra package, using coordinates from supported spatial input classes. Supported
-    inputs include numeric coordinate vectors and objects from the sf, terra and stars
-    packages. The main function is an S3 generic, so other packages can provide methods
-    for additional spatial classes.
+  abstract: Convert digital images to spatially referenced SpatRaster objects, as
+    defined by the terra package, using coordinates from supported spatial input classes.
+    Supported inputs include numeric coordinate vectors and objects from the sf, terra
+    and stars packages. The main function is an S3 generic, allowing other packages
+    to extend support to additional spatial classes.
 repository: https://CRAN.R-project.org/package=rasterpic
 repository-code: https://github.com/dieghernan/rasterpic
 url: https://dieghernan.github.io/rasterpic/

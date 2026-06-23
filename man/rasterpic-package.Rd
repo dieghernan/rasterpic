@@ -5,11 +5,11 @@
 \name{rasterpic-package}
 \alias{rasterpic}
 \alias{rasterpic-package}
-\title{rasterpic: Convert Digital Images into Geotagged 'SpatRaster' Objects}
+\title{rasterpic: Convert Digital Images to Spatially Referenced 'SpatRaster' Objects}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Geotag digital images and return 'SpatRaster' objects, as defined by the 'terra' package, using coordinates from supported spatial input classes. Supported inputs include numeric coordinate vectors and objects from the 'sf', 'terra' and 'stars' packages. The main function is an S3 generic, so other packages can provide methods for additional spatial classes.
+Convert digital images to spatially referenced 'SpatRaster' objects, as defined by the 'terra' package, using coordinates from supported spatial input classes. Supported inputs include numeric coordinate vectors and objects from the 'sf', 'terra' and 'stars' packages. The main function is an S3 generic, allowing other packages to extend support to additional spatial classes.
 }
 \seealso{
 Useful links:
