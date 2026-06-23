@@ -1,4 +1,4 @@
-# rasterpic (development version)
+# rasterpic 0.5.1
 
 - User-facing errors, warnings and notes now use **cli** alerts and inline
   markup for consistent argument, file and URL formatting.
