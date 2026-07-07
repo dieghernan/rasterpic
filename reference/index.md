@@ -36,7 +36,7 @@ Functions from other packages that are commonly used to plot the
 - [`tm_rgb()`](https://r-tmap.github.io/tmap/reference/tm_rgb.html)
   [`tm_rgba()`](https://r-tmap.github.io/tmap/reference/tm_rgb.html)
   [`opt_tm_rgb()`](https://r-tmap.github.io/tmap/reference/tm_rgb.html)
-  : Map layer: rgb images (from tmap)
+  : Map layer: RGB images (from tmap)
 
 - [`mf_raster()`](https://riatelab.github.io/mapsf/reference/mf_raster.html)
   : Plot a raster (from mapsf)
