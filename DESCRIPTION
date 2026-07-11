@@ -29,7 +29,8 @@ Suggests:
     quarto,
     stars,
     testthat (>= 3.0.0),
-    tidyterra
+    tidyterra,
+    withr
 VignetteBuilder: 
     quarto
 Config/Needs/check: curl

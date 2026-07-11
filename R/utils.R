@@ -28,7 +28,7 @@ rpic_local_img <- function(img) {
     tmp <- tempfile(fileext = paste0(".", tools::file_ext(img)))
 
     err_dwnload <- tryCatch(
-      utils::download.file(img, tmp, quiet = TRUE, mode = "wb"),
+      rpic_download_file(img, tmp, quiet = TRUE, mode = "wb"),
       warning = function(x) {
         TRUE
       },
@@ -56,6 +56,10 @@ rpic_local_img <- function(img) {
   }
 
   img
+}
+
+rpic_download_file <- function(url, destfile, quiet = TRUE, mode = "wb", ...) {
+  utils::download.file(url, destfile, quiet = quiet, mode = mode, ...)
 }
 
 rpic_check_img_ext <- function(img) {

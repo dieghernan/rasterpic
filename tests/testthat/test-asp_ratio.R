@@ -33,14 +33,14 @@ test_that("asp_ratio for sf/sfc/bbox", {
 
 test_that("Error on asp_ratio", {
   df <- data.frame(x = 1, y = 3)
-  expect_error(asp_ratio(df), "Cannot compute the aspect ratio")
+  expect_snapshot(asp_ratio(df), error = TRUE)
 
   s <- c(1, 2)
-  expect_error(asp_ratio(s), "Cannot compute the aspect ratio")
+  expect_snapshot(asp_ratio(s), error = TRUE)
 
   chars <- c("1", "2", "3", "4")
   expect_length(chars, 4)
-  expect_error(asp_ratio(chars), "Cannot compute the aspect ratio")
+  expect_snapshot(asp_ratio(chars), error = TRUE)
 })
 
 test_that("asp_ratio for numeric", {

@@ -5,3 +5,11 @@
     Message
       i No CRS supplied in `crs`.
 
+---
+
+    Code
+      rasterpic_img(x[1:3], img)
+    Condition
+      Error in `rasterpic_img()`:
+      ! Cannot extract a bounding box from `x`.
+

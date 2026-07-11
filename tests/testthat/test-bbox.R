@@ -17,12 +17,12 @@ test_that("Test bbox", {
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
   # Same y coords
-  expect_true(terra::ymin(raster) == x[2])
-  expect_true(terra::ymax(raster) == x[4])
+  expect_equal(terra::ymin(raster), unname(x[2]))
+  expect_equal(terra::ymax(raster), unname(x[4]))
 
   # Different x coords
-  expect_true(terra::xmin(raster) < x[1])
-  expect_true(terra::xmax(raster) > x[3])
+  expect_lt(terra::xmin(raster), unname(x[1]))
+  expect_gt(terra::xmax(raster), unname(x[3]))
 })
 
 test_that("Test bbox with projs", {
@@ -50,14 +50,17 @@ test_that("Test bbox with projs", {
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
   # Same y coords
-  expect_true(terra::ymin(raster) == x[2])
-  expect_true(terra::ymax(raster) == x[4])
+  expect_equal(terra::ymin(raster), unname(x[2]))
+  expect_equal(terra::ymax(raster), unname(x[4]))
 
   # Different x coords
-  expect_true(terra::xmin(raster) < x[1])
-  expect_true(terra::xmax(raster) > x[3])
+  expect_lt(terra::xmin(raster), unname(x[1]))
+  expect_gt(terra::xmax(raster), unname(x[3]))
 
   # On crop ok
   crop <- rasterpic_img(x, img, crs = crs_wkt_sf, crop = TRUE)
-  expect_false(terra::ext(raster) == terra::ext(crop))
+  expect_false(identical(
+    as.vector(terra::ext(raster)),
+    as.vector(terra::ext(crop))
+  ))
 })

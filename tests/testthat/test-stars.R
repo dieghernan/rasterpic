@@ -11,7 +11,7 @@ test_that("Test stars", {
   png_dim <- terra::rast(img, noflip = TRUE)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
-  bbox_x <- sf::st_bbox(x)
+  bbox_x <- unname(sf::st_bbox(x))
 
   # Raster extent contains the stars bbox.
   expect_lte(terra::xmin(raster), bbox_x[1])
@@ -34,12 +34,12 @@ test_that("Test stars with projs", {
   expect_s3_class(x, "stars")
 
   raster <- rasterpic_img(x, img)
-  expect_true(terra::crs(raster) == crs_wkt_sf)
+  expect_equal(terra::crs(raster), crs_wkt_sf)
 
   png_dim <- terra::rast(img, noflip = TRUE)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
-  bbox_x <- sf::st_bbox(x)
+  bbox_x <- unname(sf::st_bbox(x))
 
   # Raster extent contains the stars bbox.
   expect_lte(terra::xmin(raster), bbox_x[1])
@@ -49,7 +49,10 @@ test_that("Test stars with projs", {
 
   # Crop keeps the raster within the stars extent.
   crop <- rasterpic_img(x, img, crop = TRUE)
-  expect_false(terra::ext(raster) == terra::ext(crop))
+  expect_false(identical(
+    as.vector(terra::ext(raster)),
+    as.vector(terra::ext(crop))
+  ))
 })
 
 test_that("Test stars without crs", {

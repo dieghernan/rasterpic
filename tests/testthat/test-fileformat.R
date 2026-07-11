@@ -10,13 +10,15 @@ test_that("Test all image formats with UK", {
   png_dim <- terra::rast(img, noflip = TRUE)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
+  bbox_x <- unname(sf::st_bbox(x))
+
   # Same y coords
-  expect_true(terra::ymin(raster) == sf::st_bbox(x)[2])
-  expect_true(terra::ymax(raster) == sf::st_bbox(x)[4])
+  expect_equal(terra::ymin(raster), bbox_x[2])
+  expect_equal(terra::ymax(raster), bbox_x[4])
 
   # Different x coords
-  expect_true(terra::xmin(raster) < sf::st_bbox(x)[1])
-  expect_true(terra::xmax(raster) > sf::st_bbox(x)[3])
+  expect_lt(terra::xmin(raster), bbox_x[1])
+  expect_gt(terra::xmax(raster), bbox_x[3])
 
   otherformats <- list.files(
     system.file("img", package = "rasterpic"),
@@ -28,8 +30,11 @@ test_that("Test all image formats with UK", {
   for (file in otherformats) {
     raster_test <- rasterpic_img(x, file)
     expect_equal(asp_ratio(raster_test), asp_ratio(raster))
-    expect_true(terra::ext(raster_test) == terra::ext(raster))
-    expect_true(terra::crs(raster_test) == terra::crs(raster))
+    expect_equal(
+      as.vector(terra::ext(raster_test)),
+      as.vector(terra::ext(raster))
+    )
+    expect_equal(terra::crs(raster_test), terra::crs(raster))
     expect_true(terra::has.RGB(raster_test))
   }
 })
@@ -46,13 +51,16 @@ test_that("Test all image formats with AT vertical", {
 
   png_dim <- terra::rast(img, noflip = TRUE)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
+
+  bbox_x <- unname(sf::st_bbox(x))
+
   # Different y coords
-  expect_true(terra::ymin(raster) < sf::st_bbox(x)[2])
-  expect_true(terra::ymax(raster) > sf::st_bbox(x)[4])
+  expect_lt(terra::ymin(raster), bbox_x[2])
+  expect_gt(terra::ymax(raster), bbox_x[4])
 
   # Same x coords
-  expect_true(terra::xmin(raster) == sf::st_bbox(x)[1])
-  expect_true(terra::xmax(raster) == sf::st_bbox(x)[3])
+  expect_equal(terra::xmin(raster), bbox_x[1])
+  expect_equal(terra::xmax(raster), bbox_x[3])
 
   otherformats <- list.files(
     system.file("img", package = "rasterpic"),
@@ -64,8 +72,11 @@ test_that("Test all image formats with AT vertical", {
   for (file in otherformats) {
     raster_test <- rasterpic_img(x, file)
     expect_equal(asp_ratio(raster_test), asp_ratio(raster))
-    expect_true(terra::ext(raster_test) == terra::ext(raster))
-    expect_true(terra::crs(raster_test) == terra::crs(raster))
+    expect_equal(
+      as.vector(terra::ext(raster_test)),
+      as.vector(terra::ext(raster))
+    )
+    expect_equal(terra::crs(raster_test), terra::crs(raster))
     expect_true(terra::has.RGB(raster_test))
   }
 })
@@ -81,13 +92,14 @@ test_that("Test all image formats with a raster", {
   expect_true(terra::has.RGB(raster))
   png_dim <- terra::rast(img, noflip = TRUE)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
+
   # Different y coords
-  expect_true(terra::ymin(raster) < terra::ymin(x))
-  expect_true(terra::ymax(raster) > terra::ymax(x))
+  expect_lt(terra::ymin(raster), terra::ymin(x))
+  expect_gt(terra::ymax(raster), terra::ymax(x))
 
   # Same x coords
-  expect_true(terra::xmin(raster) == terra::xmin(x))
-  expect_true(terra::xmax(raster) == terra::xmax(x))
+  expect_equal(terra::xmin(raster), terra::xmin(x))
+  expect_equal(terra::xmax(raster), terra::xmax(x))
 
   otherformats <- list.files(
     system.file("img", package = "rasterpic"),
@@ -99,8 +111,11 @@ test_that("Test all image formats with a raster", {
   for (file in otherformats) {
     raster_test <- rasterpic_img(x, file)
     expect_equal(asp_ratio(raster_test), asp_ratio(raster))
-    expect_true(terra::ext(raster_test) == terra::ext(raster))
-    expect_true(terra::crs(raster_test) == terra::crs(raster))
+    expect_equal(
+      as.vector(terra::ext(raster_test)),
+      as.vector(terra::ext(raster))
+    )
+    expect_equal(terra::crs(raster_test), terra::crs(raster))
     expect_true(terra::has.RGB(raster_test))
   }
 })
@@ -120,13 +135,16 @@ test_that("Test all image formats with sfc vertical", {
 
   png_dim <- terra::rast(img, noflip = TRUE)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
+
+  bbox_x <- unname(sf::st_bbox(x))
+
   # Different y coords
-  expect_true(terra::ymin(raster) < sf::st_bbox(x)[2])
-  expect_true(terra::ymax(raster) > sf::st_bbox(x)[4])
+  expect_lt(terra::ymin(raster), bbox_x[2])
+  expect_gt(terra::ymax(raster), bbox_x[4])
 
   # Same x coords
-  expect_true(terra::xmin(raster) == sf::st_bbox(x)[1])
-  expect_true(terra::xmax(raster) == sf::st_bbox(x)[3])
+  expect_equal(terra::xmin(raster), bbox_x[1])
+  expect_equal(terra::xmax(raster), bbox_x[3])
 
   otherformats <- list.files(
     system.file("img", package = "rasterpic"),
@@ -138,8 +156,11 @@ test_that("Test all image formats with sfc vertical", {
   for (file in otherformats) {
     raster_test <- rasterpic_img(x, file)
     expect_equal(asp_ratio(raster_test), asp_ratio(raster))
-    expect_true(terra::ext(raster_test) == terra::ext(raster))
-    expect_true(terra::crs(raster_test) == terra::crs(raster))
+    expect_equal(
+      as.vector(terra::ext(raster_test)),
+      as.vector(terra::ext(raster))
+    )
+    expect_equal(terra::crs(raster_test), terra::crs(raster))
     expect_true(terra::has.RGB(raster_test))
   }
 })
@@ -159,13 +180,16 @@ test_that("Test all image formats with SpatExtent", {
   raster <- rasterpic_img(x, img, crs = "epsg:3035")
   png_dim <- terra::rast(img, noflip = TRUE)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
+
+  bbox_x <- unname(sf::st_bbox(x))
+
   # Different y coords
-  expect_true(terra::ymin(raster) < sf::st_bbox(x)[2])
-  expect_true(terra::ymax(raster) > sf::st_bbox(x)[4])
+  expect_lt(terra::ymin(raster), bbox_x[2])
+  expect_gt(terra::ymax(raster), bbox_x[4])
 
   # Same x coords
-  expect_true(terra::xmin(raster) == sf::st_bbox(x)[1])
-  expect_true(terra::xmax(raster) == sf::st_bbox(x)[3])
+  expect_equal(terra::xmin(raster), bbox_x[1])
+  expect_equal(terra::xmax(raster), bbox_x[3])
 
   otherformats <- list.files(
     system.file("img", package = "rasterpic"),
@@ -177,8 +201,11 @@ test_that("Test all image formats with SpatExtent", {
   for (file in otherformats) {
     raster_test <- rasterpic_img(x, file, crs = "epsg:3035")
     expect_equal(asp_ratio(raster_test), asp_ratio(raster))
-    expect_true(terra::ext(raster_test) == terra::ext(raster))
-    expect_true(terra::crs(raster_test) == terra::crs(raster))
+    expect_equal(
+      as.vector(terra::ext(raster_test)),
+      as.vector(terra::ext(raster))
+    )
+    expect_equal(terra::crs(raster_test), terra::crs(raster))
   }
 })
 
@@ -199,7 +226,7 @@ test_that("Test transparent", {
   png_dim <- terra::rast(img, noflip = TRUE)
   png_dim <- terra::colorize(png_dim, to = "rgb", alpha = TRUE)
 
-  expect_true(dim(png_dim)[3] == 4)
-  expect_true(terra::nlyr(raster) == 4)
+  expect_equal(dim(png_dim)[3], 4)
+  expect_equal(terra::nlyr(raster), 4)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 })

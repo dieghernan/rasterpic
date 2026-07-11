@@ -8,7 +8,7 @@ test_that("Test crop", {
   x0 <- rasterpic_img(x, img, expand = 0, crop = TRUE)
 
   png_dim <- terra::rast(img, noflip = TRUE)
-  expect_false(asp_ratio(x0) == dim(png_dim)[2] / dim(png_dim)[1])
+  expect_false(identical(asp_ratio(x0), dim(png_dim)[2] / dim(png_dim)[1]))
 
   # Bboxes
   bbox_x <- as.double(sf::st_bbox(x))
@@ -19,7 +19,7 @@ test_that("Test crop", {
 
   diff <- max(abs(bbox_x - bbox_x0[c(1, 3, 2, 4)]))
 
-  expect_true(diff / min_length < 0.0001)
+  expect_lt(diff / min_length, 0.0001)
 })
 
 test_that("Test mask", {
@@ -33,15 +33,17 @@ test_that("Test mask", {
 
   png_dim <- terra::rast(img, noflip = TRUE)
 
-  expect_true(asp_ratio(raster) == dim(png_dim)[2] / dim(png_dim)[1])
+  expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
+
+  bbox_x <- unname(sf::st_bbox(x))
 
   # Same y coords
-  expect_true(terra::ymin(raster) == sf::st_bbox(x)[2])
-  expect_true(terra::ymax(raster) == sf::st_bbox(x)[4])
+  expect_equal(terra::ymin(raster), bbox_x[2])
+  expect_equal(terra::ymax(raster), bbox_x[4])
 
   # Different x coords
-  expect_true(terra::xmin(raster) < sf::st_bbox(x)[1])
-  expect_true(terra::xmax(raster) > sf::st_bbox(x)[3])
+  expect_lt(terra::xmin(raster), bbox_x[1])
+  expect_gt(terra::xmax(raster), bbox_x[3])
 
   # Expect NAs
   rws <- terra::ncell(raster)
@@ -51,15 +53,15 @@ test_that("Test mask", {
   # Inverse
   raster_inv <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
 
-  expect_true(asp_ratio(raster_inv) == dim(png_dim)[2] / dim(png_dim)[1])
+  expect_equal(asp_ratio(raster_inv), dim(png_dim)[2] / dim(png_dim)[1])
 
   # Same y coords
-  expect_true(terra::ymin(raster_inv) == sf::st_bbox(x)[2])
-  expect_true(terra::ymax(raster_inv) == sf::st_bbox(x)[4])
+  expect_equal(terra::ymin(raster_inv), bbox_x[2])
+  expect_equal(terra::ymax(raster_inv), bbox_x[4])
 
   # Different x coords
-  expect_true(terra::xmin(raster_inv) < sf::st_bbox(x)[1])
-  expect_true(terra::xmax(raster_inv) > sf::st_bbox(x)[3])
+  expect_lt(terra::xmin(raster_inv), bbox_x[1])
+  expect_gt(terra::xmax(raster_inv), bbox_x[3])
 
   # Expect NAs
   df2 <- as.data.frame(raster_inv, na.rm = TRUE)
@@ -80,7 +82,7 @@ test_that("Test crop SpatVector", {
   x0 <- rasterpic_img(x, img, expand = 0, crop = TRUE)
 
   png_dim <- terra::rast(img, noflip = TRUE)
-  expect_false(asp_ratio(x0) == dim(png_dim)[2] / dim(png_dim)[1])
+  expect_false(identical(asp_ratio(x0), dim(png_dim)[2] / dim(png_dim)[1]))
 
   # Bboxes
   bbox_x <- as.double(sf::st_bbox(x))
@@ -91,7 +93,7 @@ test_that("Test crop SpatVector", {
 
   diff <- max(abs(bbox_x - bbox_x0[c(1, 3, 2, 4)]))
 
-  expect_true(diff / min_length < 0.0001)
+  expect_lt(diff / min_length, 0.0001)
 })
 
 test_that("Test mask SpatVector", {
@@ -110,15 +112,17 @@ test_that("Test mask SpatVector", {
 
   png_dim <- terra::rast(img, noflip = TRUE)
 
-  expect_true(asp_ratio(raster) == dim(png_dim)[2] / dim(png_dim)[1])
+  expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
+
+  bbox_x <- unname(sf::st_bbox(x))
 
   # Same y coords
-  expect_true(terra::ymin(raster) == sf::st_bbox(x)[2])
-  expect_true(terra::ymax(raster) == sf::st_bbox(x)[4])
+  expect_equal(terra::ymin(raster), bbox_x[2])
+  expect_equal(terra::ymax(raster), bbox_x[4])
 
   # Different x coords
-  expect_true(terra::xmin(raster) < sf::st_bbox(x)[1])
-  expect_true(terra::xmax(raster) > sf::st_bbox(x)[3])
+  expect_lt(terra::xmin(raster), bbox_x[1])
+  expect_gt(terra::xmax(raster), bbox_x[3])
 
   # Expect NAs
   rws <- terra::ncell(raster)
@@ -130,15 +134,15 @@ test_that("Test mask SpatVector", {
 
   expect_true(terra::has.RGB(raster_inv))
 
-  expect_true(asp_ratio(raster_inv) == dim(png_dim)[2] / dim(png_dim)[1])
+  expect_equal(asp_ratio(raster_inv), dim(png_dim)[2] / dim(png_dim)[1])
 
   # Same y coords
-  expect_true(terra::ymin(raster_inv) == sf::st_bbox(x)[2])
-  expect_true(terra::ymax(raster_inv) == sf::st_bbox(x)[4])
+  expect_equal(terra::ymin(raster_inv), bbox_x[2])
+  expect_equal(terra::ymax(raster_inv), bbox_x[4])
 
   # Different x coords
-  expect_true(terra::xmin(raster_inv) < sf::st_bbox(x)[1])
-  expect_true(terra::xmax(raster_inv) > sf::st_bbox(x)[3])
+  expect_lt(terra::xmin(raster_inv), bbox_x[1])
+  expect_gt(terra::xmax(raster_inv), bbox_x[3])
 
   # Expect NAs
   df2 <- as.data.frame(raster_inv, na.rm = TRUE)
@@ -168,7 +172,7 @@ test_that("Test crop sfg", {
   x0 <- rasterpic_img(x, img, expand = 0, crop = TRUE, crs = crs_wkt_sf)
 
   png_dim <- terra::rast(img, noflip = TRUE)
-  expect_false(asp_ratio(x0) == dim(png_dim)[2] / dim(png_dim)[1])
+  expect_false(identical(asp_ratio(x0), dim(png_dim)[2] / dim(png_dim)[1]))
 
   # Bboxes
   bbox_x <- as.double(sf::st_bbox(x))
@@ -179,7 +183,7 @@ test_that("Test crop sfg", {
 
   diff <- max(abs(bbox_x - bbox_x0[c(1, 3, 2, 4)]))
 
-  expect_true(diff / min_length < 0.0001)
+  expect_lt(diff / min_length, 0.0001)
 })
 
 test_that("Test mask sfg", {
@@ -205,15 +209,17 @@ test_that("Test mask sfg", {
 
   png_dim <- terra::rast(img, noflip = TRUE)
 
-  expect_true(asp_ratio(raster) == dim(png_dim)[2] / dim(png_dim)[1])
+  expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
+
+  bbox_x <- unname(sf::st_bbox(x))
 
   # Same y coords
-  expect_true(terra::ymin(raster) == sf::st_bbox(x)[2])
-  expect_true(terra::ymax(raster) == sf::st_bbox(x)[4])
+  expect_equal(terra::ymin(raster), bbox_x[2])
+  expect_equal(terra::ymax(raster), bbox_x[4])
 
   # Different x coords
-  expect_true(terra::xmin(raster) < sf::st_bbox(x)[1])
-  expect_true(terra::xmax(raster) > sf::st_bbox(x)[3])
+  expect_lt(terra::xmin(raster), bbox_x[1])
+  expect_gt(terra::xmax(raster), bbox_x[3])
 
   # Expect NAs
   rws <- terra::ncell(raster)
@@ -225,15 +231,15 @@ test_that("Test mask sfg", {
     raster_inv <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
   )
 
-  expect_true(asp_ratio(raster_inv) == dim(png_dim)[2] / dim(png_dim)[1])
+  expect_equal(asp_ratio(raster_inv), dim(png_dim)[2] / dim(png_dim)[1])
 
   # Same y coords
-  expect_true(terra::ymin(raster_inv) == sf::st_bbox(x)[2])
-  expect_true(terra::ymax(raster_inv) == sf::st_bbox(x)[4])
+  expect_equal(terra::ymin(raster_inv), bbox_x[2])
+  expect_equal(terra::ymax(raster_inv), bbox_x[4])
 
   # Different x coords
-  expect_true(terra::xmin(raster_inv) < sf::st_bbox(x)[1])
-  expect_true(terra::xmax(raster_inv) > sf::st_bbox(x)[3])
+  expect_lt(terra::xmin(raster_inv), bbox_x[1])
+  expect_gt(terra::xmax(raster_inv), bbox_x[3])
 
   # Expect NAs
   df2 <- as.data.frame(raster_inv, na.rm = TRUE)

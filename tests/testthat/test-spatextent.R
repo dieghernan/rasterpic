@@ -16,12 +16,12 @@ test_that("Test SpatExtent", {
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
   # Same y coords
-  expect_true(terra::ymin(raster) == terra::ymin(x))
-  expect_true(terra::ymax(raster) == terra::ymax(x))
+  expect_equal(terra::ymin(raster), terra::ymin(x))
+  expect_equal(terra::ymax(raster), terra::ymax(x))
 
   # Different x coords
-  expect_true(terra::xmin(raster) < terra::xmin(x))
-  expect_true(terra::xmax(raster) > terra::xmax(x))
+  expect_lt(terra::xmin(raster), terra::xmin(x))
+  expect_gt(terra::xmax(raster), terra::xmax(x))
 })
 
 test_that("Test SpatExtent with projs", {
@@ -40,16 +40,16 @@ test_that("Test SpatExtent with projs", {
   expect_s4_class(x, "SpatExtent")
 
   raster <- rasterpic_img(x, img, crs = crs_wkt_terra)
-  expect_true(terra::crs(raster) == crs_wkt_terra)
+  expect_equal(terra::crs(raster), crs_wkt_terra)
 
   png_dim <- terra::rast(img, noflip = TRUE)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
   # Same y coords
-  expect_true(terra::ymin(raster) == terra::ymin(x))
-  expect_true(terra::ymax(raster) == terra::ymax(x))
+  expect_equal(terra::ymin(raster), terra::ymin(x))
+  expect_equal(terra::ymax(raster), terra::ymax(x))
 
   # Different x coords
-  expect_true(terra::xmin(raster) < terra::xmin(x))
-  expect_true(terra::xmax(raster) > terra::xmax(x))
+  expect_lt(terra::xmin(raster), terra::xmin(x))
+  expect_gt(terra::xmax(raster), terra::xmax(x))
 })

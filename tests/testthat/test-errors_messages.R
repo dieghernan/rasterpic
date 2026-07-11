@@ -60,10 +60,8 @@ test_that("No mask raster", {
   res1 <- rasterpic_img(x, img)
   res2 <- rasterpic_img(x, img, mask = TRUE)
 
-  expect_true(terra::ext(res1) == terra::ext(res2))
-  expect_true(terra::crs(res1) == terra::crs(res2))
-  v1 <- terra::values(res1)
-  v2 <- terra::values(res2)
+  expect_equal(as.vector(terra::ext(res1)), as.vector(terra::ext(res2)))
+  expect_equal(terra::crs(res1), terra::crs(res2))
 
   expect_true(terra::compareGeom(res1, res2))
 })
@@ -80,8 +78,8 @@ test_that("No mask raster with SpatExtent", {
 
   res2 <- rasterpic_img(extent, img, mask = TRUE, crs = crs)
 
-  expect_true(terra::ext(res1) == terra::ext(res2))
-  expect_true(terra::crs(res1) == terra::crs(res2))
+  expect_equal(as.vector(terra::ext(res1)), as.vector(terra::ext(res2)))
+  expect_equal(terra::crs(res1), terra::crs(res2))
   v1 <- terra::values(res1)
   v2 <- terra::values(res2)
 
