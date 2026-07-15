@@ -1,4 +1,4 @@
-# rasterpic: Convert Digital Images to Spatially Referenced 'SpatRaster' Objects
+# rasterpic: Convert Images to Spatially Referenced 'SpatRaster' Objects
 
 Convert digital images to spatially referenced 'SpatRaster' objects, as
 defined by the 'terra' package, using coordinates from supported spatial

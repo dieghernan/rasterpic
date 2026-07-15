@@ -101,8 +101,8 @@ shape.](reference/figures/README-align-crop-mask-1.png)
 
 ## Citation
 
-Hernangómez D (2026). *rasterpic: Convert Digital Images to Spatially
-Referenced SpatRaster Objects*.
+Hernangómez D (2026). *rasterpic: Convert Images to Spatially Referenced
+SpatRaster Objects*.
 [doi:10.32614/CRAN.package.rasterpic](https://doi.org/10.32614/CRAN.package.rasterpic).
 <https://dieghernan.github.io/rasterpic/>.
 
@@ -110,7 +110,7 @@ A BibTeX entry for LaTeX users is:
 
 ``` R
 @Manual{R-rasterpic,
-  title = {{rasterpic}: Convert Digital Images to Spatially Referenced {SpatRaster} Objects},
+  title = {{rasterpic}: Convert Images to Spatially Referenced {SpatRaster} Objects},
   doi = {10.32614/CRAN.package.rasterpic},
   author = {Diego Hernangómez},
   year = {2026},

@@ -16,8 +16,8 @@ Package-level documentation and metadata.
 
 - [`rasterpic`](https://dieghernan.github.io/rasterpic/reference/rasterpic-package.md)
   [`rasterpic-package`](https://dieghernan.github.io/rasterpic/reference/rasterpic-package.md)
-  : rasterpic: Convert Digital Images to Spatially Referenced
-  'SpatRaster' Objects
+  : rasterpic: Convert Images to Spatially Referenced 'SpatRaster'
+  Objects
 
 ## External plotting helpers
 
