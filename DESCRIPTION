@@ -1,5 +1,5 @@
 Package: rasterpic
-Title: Convert Digital Images to Spatially Referenced 'SpatRaster' Objects
+Title: Convert Images to Spatially Referenced 'SpatRaster' Objects
 Version: 0.5.1
 Authors@R: 
     person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre", "cph"),
