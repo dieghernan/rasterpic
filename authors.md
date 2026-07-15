@@ -11,13 +11,13 @@
 Source:
 [`inst/CITATION`](https://github.com/dieghernan/rasterpic/blob/main/inst/CITATION)
 
-Hernangómez D (2026). *rasterpic: Convert Digital Images to Spatially
-Referenced SpatRaster Objects*.
+Hernangómez D (2026). *rasterpic: Convert Images to Spatially Referenced
+SpatRaster Objects*.
 [doi:10.32614/CRAN.package.rasterpic](https://doi.org/10.32614/CRAN.package.rasterpic).
 <https://dieghernan.github.io/rasterpic/>.
 
     @Manual{R-rasterpic,
-      title = {{rasterpic}: Convert Digital Images to Spatially Referenced {SpatRaster} Objects},
+      title = {{rasterpic}: Convert Images to Spatially Referenced {SpatRaster} Objects},
       doi = {10.32614/CRAN.package.rasterpic},
       author = {Diego Hernangómez},
       year = {2026},
