@@ -154,7 +154,7 @@ alt="Example using rasterpic with the UK flag cropped to the shape." />
 
 <p>
 
-Hernangómez D (2026). <em>rasterpic: Convert Digital Images to Spatially
+Hernangómez D (2026). <em>rasterpic: Convert Images to Spatially
 Referenced SpatRaster Objects</em>.
 <a href="https://doi.org/10.32614/CRAN.package.rasterpic">doi:10.32614/CRAN.package.rasterpic</a>.
 <a href="https://dieghernan.github.io/rasterpic/">https://dieghernan.github.io/rasterpic/</a>.
@@ -163,7 +163,7 @@ Referenced SpatRaster Objects</em>.
 A BibTeX entry for LaTeX users is:
 
     @Manual{R-rasterpic,
-      title = {{rasterpic}: Convert Digital Images to Spatially Referenced {SpatRaster} Objects},
+      title = {{rasterpic}: Convert Images to Spatially Referenced {SpatRaster} Objects},
       doi = {10.32614/CRAN.package.rasterpic},
       author = {Diego Hernangómez},
       year = {2026},

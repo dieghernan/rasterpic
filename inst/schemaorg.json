@@ -16,7 +16,7 @@
       },
       "description": "Convert digital images to spatially referenced 'SpatRaster' objects, as defined by the 'terra' package, using coordinates from supported spatial input classes. Supported inputs include numeric coordinate vectors and objects from the 'sf', 'terra' and 'stars' packages. The main function is an S3 generic, allowing other packages to extend support to additional spatial classes.",
       "license": "https://spdx.org/licenses/MIT",
-      "name": "rasterpic: Convert Digital Images to Spatially Referenced 'SpatRaster' Objects",
+      "name": "rasterpic: Convert Images to Spatially Referenced 'SpatRaster' Objects",
       "programmingLanguage": {
         "type": "ComputerLanguage",
         "name": "R",
@@ -28,7 +28,7 @@
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "runtimePlatform": "R version 4.6.0 (2026-04-24 ucrt)",
+      "runtimePlatform": "R version 4.6.1 (2026-06-24 ucrt)",
       "version": "0.5.1"
     },
     {
@@ -39,7 +39,7 @@
         "familyName": "Hernangómez",
         "givenName": "Diego"
       },
-      "name": "{rasterpic}: Convert Digital Images to Spatially Referenced {SpatRaster} Objects"
+      "name": "{rasterpic}: Convert Images to Spatially Referenced {SpatRaster} Objects"
     }
   ]
 }

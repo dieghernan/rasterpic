@@ -3,7 +3,7 @@
   "@type": "SoftwareSourceCode",
   "identifier": "rasterpic",
   "description": "Convert digital images to spatially referenced 'SpatRaster' objects, as defined by the 'terra' package, using coordinates from supported spatial input classes. Supported inputs include numeric coordinate vectors and objects from the 'sf', 'terra' and 'stars' packages. The main function is an S3 generic, allowing other packages to extend support to additional spatial classes.",
-  "name": "rasterpic: Convert Digital Images to Spatially Referenced 'SpatRaster' Objects",
+  "name": "rasterpic: Convert Images to Spatially Referenced 'SpatRaster' Objects",
   "relatedLink": ["https://dieghernan.github.io/rasterpic/", "https://CRAN.R-project.org/package=rasterpic"],
   "codeRepository": "https://github.com/dieghernan/rasterpic",
   "issueTracker": "https://github.com/dieghernan/rasterpic/issues",
@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.6.0 (2026-04-24 ucrt)",
+  "runtimePlatform": "R version 4.6.1 (2026-06-24 ucrt)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -121,6 +121,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=tidyterra"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "withr",
+      "name": "withr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=withr"
     }
   ],
   "softwareRequirements": {
@@ -193,7 +205,7 @@
     "SystemRequirements": null
   },
   "keywords": ["cran", "jpeg", "jpg", "maps", "png", "r", "r-package", "r-stats", "raster", "rstats", "sf", "stars", "terra", "tif", "tiff", "cran-r"],
-  "fileSize": "1180.21KB",
+  "fileSize": "1182.615KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -205,7 +217,7 @@
           "familyName": "Hernangómez"
         }
       ],
-      "name": "{rasterpic}: Convert Digital Images to Spatially Referenced {SpatRaster} Objects",
+      "name": "{rasterpic}: Convert Images to Spatially Referenced {SpatRaster} Objects",
       "identifier": "10.32614/CRAN.package.rasterpic",
       "url": "https://dieghernan.github.io/rasterpic/",
       "@id": "https://doi.org/10.32614/CRAN.package.rasterpic",

@@ -5,7 +5,7 @@
 \name{rasterpic-package}
 \alias{rasterpic}
 \alias{rasterpic-package}
-\title{rasterpic: Convert Digital Images to Spatially Referenced 'SpatRaster' Objects}
+\title{rasterpic: Convert Images to Spatially Referenced 'SpatRaster' Objects}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
