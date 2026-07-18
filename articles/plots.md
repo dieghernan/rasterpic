@@ -6,9 +6,8 @@ by
 
 ## Base plots
 
-The most direct option is to use the base
-[`plot()`](https://rspatial.github.io/terra/reference/plot.html) methods
-provided by the **terra** package, such as
+The most direct option is to use plotting functions from the **terra**
+package, such as
 [`terra::plotRGB()`](https://rspatial.github.io/terra/reference/plotRGB.html):
 
 ``` r

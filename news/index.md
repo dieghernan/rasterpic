@@ -42,7 +42,7 @@ CRAN release: 2026-01-14
 
 CRAN release: 2025-03-19
 
-- When the output has 3 or more layers, the first three are renamed as
+- When the output has 3 or more layers, the first three are renamed to
   `"r"`, `"g"` and `"b"`. In cases with 4 layers or more, the fourth
   layer is renamed as `"alpha"`. This allows compatibility with **tmap**
   `>= 4.0` and avoids the error

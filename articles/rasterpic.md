@@ -76,7 +76,8 @@ Figure 3: Example image alignment.
 ### Crop and mask
 
 The `crop`, `mask` and `inverse` arguments control whether the raster is
-cropped to the object extent and masked to the object shape:
+cropped to the object extent, masked to the object shape or inversely
+masked:
 
 ``` r
 
