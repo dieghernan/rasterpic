@@ -31,8 +31,8 @@
 #' @param mask Logical, for vector methods. Should the raster be
 #'   [masked][terra::mask] to the shape of `x`? See **Details**.
 #'
-#' @param inverse Logical. Only used when `mask = TRUE`. If `TRUE`, areas of
-#'   the raster covered by `x` are masked.
+#' @param inverse Logical. Only used when `mask = TRUE`. If `TRUE`, areas
+#'   covered by `x` are masked instead of areas outside `x`.
 #'
 #' @param crs Character string describing a CRS. This parameter only applies
 #'   when `x` is a `SpatExtent`, `sfg`, `bbox` or a numeric coordinate vector.

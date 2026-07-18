@@ -18,8 +18,8 @@ This article shows several ways to plot the `SpatRaster` object returned by
 
 ## Base plots
 
-The most direct option is to use the base `plot()` methods provided by the
-**terra** package, such as `terra::plotRGB()`:
+The most direct option is to use plotting functions from the **terra** package,
+such as `terra::plotRGB()`:
 
 ```{r}
 #| label: fig-terra

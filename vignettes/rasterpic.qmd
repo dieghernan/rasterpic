@@ -79,7 +79,7 @@ autoplot(bottom) +
 ### Crop and mask
 
 The `crop`, `mask` and `inverse` arguments control whether the raster is cropped
-to the object extent and masked to the object shape:
+to the object extent, masked to the object shape or inversely masked:
 
 ```{r}
 #| label: fig-mask

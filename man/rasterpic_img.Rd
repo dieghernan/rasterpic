@@ -153,8 +153,8 @@ box of \code{x}? See \strong{Details}.}
 \item{mask}{Logical, for vector methods. Should the raster be
 \link[terra:mask]{masked} to the shape of \code{x}? See \strong{Details}.}
 
-\item{inverse}{Logical. Only used when \code{mask = TRUE}. If \code{TRUE}, areas of
-the raster covered by \code{x} are masked.}
+\item{inverse}{Logical. Only used when \code{mask = TRUE}. If \code{TRUE}, areas
+covered by \code{x} are masked instead of areas outside \code{x}.}
 
 \item{crs}{Character string describing a CRS. This parameter only applies
 when \code{x} is a \code{SpatExtent}, \code{sfg}, \code{bbox} or a numeric coordinate vector.
