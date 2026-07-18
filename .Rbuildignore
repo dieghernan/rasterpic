@@ -61,3 +61,10 @@
 ^dev$
 ^dev/
 ^AGENTS\.md$
+^\.quarto/
+^vignettes/\.quarto/
+^vignettes/articles/\.quarto/
+^vignettes/articles/
+^\.positai/
+^index_files/
+^README_files/
