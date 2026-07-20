@@ -30,7 +30,7 @@ asp_ratio <- function(x) {
     # Handle a bounding box in `xmin`, `ymin`, `xmax`, `ymax` order.
     ratio <- (x[3] - x[1]) / (x[4] - x[2])
   } else {
-    cli::cli_abort("Cannot compute the aspect ratio for {.arg x}.")
+    cli::cli_abort("Cannot compute the aspect ratio of {.arg x}.")
   }
 
   ratio <- as.double(ratio)

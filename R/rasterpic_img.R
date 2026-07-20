@@ -490,7 +490,7 @@ rasterpic_img_impl <- function(
   crs <- rpic_crs(crs)
 
   if (!nzchar(crs)) {
-    cli::cli_alert_info("No CRS supplied in {.arg crs}.")
+    cli::cli_alert_info("No CRS was supplied in {.arg crs}.")
   } else if (terra::is.lonlat(crs, warn = FALSE)) {
     cli::cli_alert_info(
       "{.arg x} uses geographic coordinates. Assuming planar coordinates."
@@ -504,8 +504,8 @@ rasterpic_img_impl <- function(
   if (terra::nlyr(rast) < 3) {
     n_layers <- terra::nlyr(rast) # nolint
     cli::cli_alert_warning(paste0(
-      "{.arg img} has {.val {n_layers}} layer{?s}, not ",
-      "{.val {3}} or {.val {4}}. Result will not have an RGB specification."
+      "The file supplied to {.arg img} has {.val {n_layers}} layer{?s}, not ",
+      "{.val {3}} or {.val {4}}. The result will not have an RGB specification."
     ))
   }
 
