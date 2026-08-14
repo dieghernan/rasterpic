@@ -19,3 +19,19 @@ testhelp_logo_url <- function() {
     "main/man/figures/logo.png"
   )
 }
+
+expect_complementary_masks <- function(x, y) {
+  testthat::expect_true(terra::compareGeom(x, y))
+
+  x_na <- is.na(terra::values(x))
+  y_na <- is.na(terra::values(y))
+  x_mask <- x_na[, 1]
+  y_mask <- y_na[, 1]
+
+  testthat::expect_true(all(x_na == x_mask))
+  testthat::expect_true(all(y_na == y_mask))
+  testthat::expect_gt(sum(x_mask), 0)
+  testthat::expect_gt(sum(y_mask), 0)
+  testthat::expect_false(any(x_mask & y_mask))
+  testthat::expect_false(any(!x_mask & !y_mask))
+}
