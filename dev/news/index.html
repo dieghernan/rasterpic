@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="rasterpic logo" height="34" width="34" class="d-inline-block me-1">rasterpic</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.5.0.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.5.1.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,6 +52,15 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="rasterpic-development-version">rasterpic (development version)<a class="anchor" aria-label="anchor" href="#rasterpic-development-version"></a></h2>
+<ul><li>
+<code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> now reports clearer errors when <code>halign</code> or <code>valign</code> are not single numeric values.</li>
+<li>
+<code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> now reports clearer input errors for missing image files and unsupported file extensions, and images with fewer than three layers now emit a warning condition instead of a CLI alert.</li>
+<li>
+<code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> now reports clearer errors when numeric bounding boxes contain missing, infinite or incorrectly ordered coordinates.</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.5.1" id="rasterpic-051">rasterpic 0.5.1<a class="anchor" aria-label="anchor" href="#rasterpic-051"></a></h2><p class="text-muted">CRAN release: 2026-06-23</p>
 <ul><li>User-facing errors, warnings and notes now use <strong>cli</strong> alerts and inline markup for consistent argument, file and URL formatting.</li>
 <li>
 <code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> with <code>mask = TRUE</code>, <code>inverse = TRUE</code> or both again returns a <code>SpatRaster</code> with an RGB specification (<code><a href="https://rspatial.github.io/terra/reference/RGB.html" class="external-link">terra::has.RGB()</a></code> returns <code>TRUE</code>).</li>
@@ -76,7 +85,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.0" id="rasterpic-030">rasterpic 0.3.0<a class="anchor" aria-label="anchor" href="#rasterpic-030"></a></h2><p class="text-muted">CRAN release: 2025-03-19</p>
-<ul><li>When the output has 3 or more layers, the first three are renamed as <code>"r"</code>, <code>"g"</code> and <code>"b"</code>. In cases with 4 layers or more, the fourth layer is renamed as <code>"alpha"</code>. This allows compatibility with <strong>tmap</strong> <code>&gt;= 4.0</code> and avoids the error <code>! [subset] you cannot select a layer with a name that is not unique</code>.</li>
+<ul><li>When the output has 3 or more layers, the first three are renamed to <code>"r"</code>, <code>"g"</code> and <code>"b"</code>. In cases with 4 layers or more, the fourth layer is renamed as <code>"alpha"</code>. This allows compatibility with <strong>tmap</strong> <code>&gt;= 4.0</code> and avoids the error <code>! [subset] you cannot select a layer with a name that is not unique</code>.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.6" id="rasterpic-026">rasterpic 0.2.6<a class="anchor" aria-label="anchor" href="#rasterpic-026"></a></h2><p class="text-muted">CRAN release: 2024-12-17</p>

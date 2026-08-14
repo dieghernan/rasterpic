@@ -2,6 +2,21 @@
 
 ## rasterpic (development version)
 
+- [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
+  now reports clearer errors when `halign` or `valign` are not single
+  numeric values.
+- [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
+  now reports clearer input errors for missing image files and
+  unsupported file extensions, and images with fewer than three layers
+  now emit a warning condition instead of a CLI alert.
+- [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
+  now reports clearer errors when numeric bounding boxes contain
+  missing, infinite or incorrectly ordered coordinates.
+
+## rasterpic 0.5.1
+
+CRAN release: 2026-06-23
+
 - User-facing errors, warnings and notes now use **cli** alerts and
   inline markup for consistent argument, file and URL formatting.
 - [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
@@ -40,7 +55,7 @@ CRAN release: 2026-01-14
 
 CRAN release: 2025-03-19
 
-- When the output has 3 or more layers, the first three are renamed as
+- When the output has 3 or more layers, the first three are renamed to
   `"r"`, `"g"` and `"b"`. In cases with 4 layers or more, the fourth
   layer is renamed as `"alpha"`. This allows compatibility with **tmap**
   `>= 4.0` and avoids the error

@@ -178,8 +178,8 @@ rasterpic_img(
 
 - inverse:
 
-  Logical. Only used when `mask = TRUE`. If `TRUE`, areas of the raster
-  covered by `x` are masked.
+  Logical. Only used when `mask = TRUE`. If `TRUE`, areas covered by `x`
+  are masked instead of areas outside `x`.
 
 - crs:
 
