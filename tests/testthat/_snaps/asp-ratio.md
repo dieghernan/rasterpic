@@ -1,4 +1,4 @@
-# Error on asp_ratio
+# asp_ratio() errors for unsupported inputs
 
     Code
       asp_ratio(df)

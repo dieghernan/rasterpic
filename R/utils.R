@@ -7,9 +7,9 @@ rpic_crop <- function(crop, box_marg, new_rast) {
   new_rast
 }
 
-rpic_read <- function(img, crs = NA) {
-  img <- rpic_local_img(img)
-  rpic_check_img_ext(img)
+rpic_read <- function(img, crs = NA, call = NULL) {
+  img <- rpic_local_img(img, call = call)
+  rpic_check_img_ext(img, call = call)
 
   ext <- tools::file_ext(img)
 
@@ -23,7 +23,7 @@ rpic_read <- function(img, crs = NA) {
   rast
 }
 
-rpic_local_img <- function(img) {
+rpic_local_img <- function(img, call = NULL) {
   if (grepl("^http:|^https:", img)) {
     tmp <- tempfile(fileext = paste0(".", tools::file_ext(img)))
 
@@ -40,7 +40,7 @@ rpic_local_img <- function(img) {
     if (err_dwnload) {
       cli::cli_abort(
         "Cannot download {.arg img} from {.url {img}}.",
-        call = sys.call(-1)
+        call = call
       )
     }
 
@@ -50,8 +50,8 @@ rpic_local_img <- function(img) {
 
   if (!file.exists(img)) {
     cli::cli_abort(
-      "File supplied to {.arg img} does not exist.",
-      call = sys.call(-1)
+      "File {.file {img}} supplied to {.arg img} does not exist.",
+      call = call
     )
   }
 
@@ -62,14 +62,20 @@ rpic_download_file <- function(url, destfile, quiet = TRUE, mode = "wb", ...) {
   utils::download.file(url, destfile, quiet = quiet, mode = mode, ...)
 }
 
-rpic_check_img_ext <- function(img) {
-  if (!tools::file_ext(img) %in% c("jpg", "jpeg", "tif", "tiff", "png")) {
+rpic_check_img_ext <- function(img, call = NULL) {
+  ext <- tools::file_ext(img)
+  supported_ext <- c("png", "jpg", "jpeg", "tif", "tiff")
+
+  if (!ext %in% supported_ext) {
     cli::cli_abort(
-      paste0(
-        "{.arg img} must have extension {.val png}, {.val jpg}, ",
-        "{.val jpeg}, {.val tif} or {.val tiff}."
+      c(
+        "Unsupported {.arg img} extension {.val {ext}}.",
+        "i" = paste0(
+          "{.arg img} must use one of: ",
+          "{.val {supported_ext}}."
+        )
       ),
-      call = sys.call(-1)
+      call = call
     )
   }
 }
@@ -109,11 +115,50 @@ rpic_crs <- function(crs) {
   crs
 }
 
-rpic_check_unit_interval <- function(x, arg) {
+rpic_check_unit_interval <- function(x, arg, call = NULL) {
+  if (!is.numeric(x) || length(x) != 1 || is.na(x)) {
+    cli::cli_abort(
+      "{.arg {arg}} must be a number between 0 and 1.",
+      call = call
+    )
+  }
+
   if (x < 0 || x > 1) {
     cli::cli_abort(
       "{.arg {arg}} must be between 0 and 1.",
-      call = sys.call(-1)
+      call = call
+    )
+  }
+}
+
+rpic_check_bbox <- function(x, arg, call = NULL) {
+  if (!is.numeric(x) || length(x) != 4) {
+    cli::cli_abort(
+      c(
+        "{.arg {arg}} must be a numeric vector of length 4.",
+        "i" = paste0(
+          "Use {.code c(xmin, ymin, xmax, ymax)} order for bounding box ",
+          "coordinates."
+        )
+      ),
+      call = call
+    )
+  }
+
+  if (!all(is.finite(x))) {
+    cli::cli_abort(
+      "{.arg {arg}} must contain finite bounding box coordinates.",
+      call = call
+    )
+  }
+
+  if (x[3] <= x[1] || x[4] <= x[2]) {
+    cli::cli_abort(
+      paste0(
+        "{.arg {arg}} must be ordered as {.code c(xmin, ymin, xmax, ymax)} ",
+        "with {.var xmax} > {.var xmin} and {.var ymax} > {.var ymin}."
+      ),
+      call = call
     )
   }
 }

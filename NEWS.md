@@ -1,3 +1,9 @@
+# rasterpic (development version)
+
+- `rasterpic_img()` now reports clearer errors when `halign` or `valign` are not single numeric values.
+- `rasterpic_img()` now reports clearer input errors for missing image files and unsupported file extensions, and images with fewer than three layers now emit a warning condition instead of a CLI alert.
+- `rasterpic_img()` now reports clearer errors when numeric bounding boxes contain missing, infinite or incorrectly ordered coordinates.
+
 # rasterpic 0.5.1
 
 - User-facing errors, warnings and notes now use **cli** alerts and inline

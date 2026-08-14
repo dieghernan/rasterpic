@@ -364,9 +364,7 @@ rasterpic_img.numeric <- function(
   ...,
   crs = NULL
 ) {
-  if (length(x) != 4) {
-    cli::cli_abort("Cannot extract a bounding box from {.arg x}.")
-  }
+  rpic_check_bbox(x, "x", call = call("rasterpic_img"))
 
   rasterpic_img_impl(
     box = x,
@@ -482,9 +480,11 @@ rasterpic_img_impl <- function(
   crs = NULL,
   ...
 ) {
+  call <- call("rasterpic_img")
+
   # Validate alignment inputs.
-  rpic_check_unit_interval(halign, "halign")
-  rpic_check_unit_interval(valign, "valign")
+  rpic_check_unit_interval(halign, "halign", call = call)
+  rpic_check_unit_interval(valign, "valign", call = call)
 
   # Normalize missing CRS values.
   crs <- rpic_crs(crs)
@@ -498,12 +498,12 @@ rasterpic_img_impl <- function(
   }
 
   # A. Read the `img` file. ----
-  rast <- rpic_read(img, crs)
+  rast <- rpic_read(img, crs, call = call)
 
   # Warn when the image does not have the expected number of layers.
   if (terra::nlyr(rast) < 3) {
     n_layers <- terra::nlyr(rast) # nolint
-    cli::cli_alert_warning(paste0(
+    cli::cli_warn(paste0(
       "The file supplied to {.arg img} has {.val {n_layers}} layer{?s}, not ",
       "{.val {3}} or {.val {4}}. The result will not have an RGB specification."
     ))
