@@ -214,7 +214,7 @@ External posts and examples that use rasterpic.
 - [Beautiful maps with R (IV): Fun with flags
   revisited](https://dieghernan.github.io/202201_maps-flags/):
 
-  Blog post showing how to use rasterpic to add flag images to maps.
+  Any picture as a basemap
 
 - [Quick Brazil](https://x.com/dhernangomez/status/1486666356544225281):
 
