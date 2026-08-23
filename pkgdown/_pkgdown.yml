@@ -54,8 +54,7 @@ reference:
 external-articles:
 - name: beautiful-maps-flags
   title: "Beautiful maps with R (IV): Fun with flags revisited"
-  description: >
-    Blog post showing how to use rasterpic to add flag images to maps.
+  description: "Any picture as a basemap"
   href: https://dieghernan.github.io/202201_maps-flags/
 - name: quick-brazil
   title: Quick Brazil
