@@ -7,7 +7,7 @@ Learn how to geotag an image and control its placement, extent and mask.
 - [Get
   started](https://dieghernan.github.io/rasterpic/dev/articles/rasterpic.md):
 
-  Introduction to the rasterpic package.
+  Introduction to the **rasterpic** package.
 
 ### Plotting geotagged images
 
@@ -16,7 +16,7 @@ Compare plotting approaches for the resulting `SpatRaster` objects.
 - [Plotting SpatRaster
   objects](https://dieghernan.github.io/rasterpic/dev/articles/plots.md):
 
-  Several ways to plot geotagged SpatRaster objects in R.
+  Several ways to plot geotagged SpatRaster objects in **R**.
 
 ### External examples
 

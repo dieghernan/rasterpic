@@ -8,8 +8,8 @@ spatial input classes (see
 Note
 
 This package is stable and maintained on a best-effort basis. I
-currently prioritize CRAN compatibility, bug fixes and regressions over
-new features.
+currently prioritize **CRAN** compatibility, bug fixes and regressions
+over new features.
 
 ## Installation
 
@@ -25,7 +25,7 @@ pak::pak("dieghernan/rasterpic")
 ```
 
 Alternatively, you can install **rasterpic** using the
-[r-universe](https://dieghernan.r-universe.dev/rasterpic):
+[**r-universe**](https://dieghernan.r-universe.dev/rasterpic):
 
 ``` r
 
@@ -53,7 +53,7 @@ can geotag an image from several spatial input classes:
 is an S3 generic. Methods for extent-like inputs use the object extent,
 and vector methods can also mask the image to the object shape.
 
-This example uses an `sf` object:
+This example uses an **sf** object:
 
 ``` r
 
@@ -124,7 +124,7 @@ SpatRaster Objects*.
 [doi:10.32614/CRAN.package.rasterpic](https://doi.org/10.32614/CRAN.package.rasterpic).
 <https://dieghernan.github.io/rasterpic/>.
 
-A BibTeX entry for LaTeX users is:
+A **BibTeX** entry for **LaTeX** users is:
 
 ``` R
 @Manual{R-rasterpic,
@@ -144,6 +144,9 @@ A BibTeX entry for LaTeX users is:
 
 Create geotagged `SpatRaster` objects from supported spatial input
 classes and local image files or image URLs.
+
+- [`asp_ratio()`](https://dieghernan.github.io/rasterpic/dev/reference/asp_ratio.md)
+  : Compute the aspect ratio of spatial input
 
 - [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
   :
@@ -193,7 +196,7 @@ Learn how to geotag an image and control its placement, extent and mask.
 - [Get
   started](https://dieghernan.github.io/rasterpic/dev/articles/rasterpic.md):
 
-  Introduction to the rasterpic package.
+  Introduction to the **rasterpic** package.
 
 ### Plotting geotagged images
 
@@ -202,7 +205,7 @@ Compare plotting approaches for the resulting `SpatRaster` objects.
 - [Plotting SpatRaster
   objects](https://dieghernan.github.io/rasterpic/dev/articles/plots.md):
 
-  Several ways to plot geotagged SpatRaster objects in R.
+  Several ways to plot geotagged SpatRaster objects in **R**.
 
 ### External examples
 

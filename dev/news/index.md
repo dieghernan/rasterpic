@@ -2,16 +2,22 @@
 
 ## rasterpic (development version)
 
+- [`asp_ratio()`](https://dieghernan.github.io/rasterpic/dev/reference/asp_ratio.md)
+  now reports the supported input types when `x` is invalid.
 - [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
-  now reports clearer errors when `halign` or `valign` are not single
-  numeric values.
+  now reports clearer inclusive-range errors when `halign` or `valign`
+  are not single numeric values.
 - [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
   now reports clearer input errors for missing image files and
-  unsupported file extensions, and images with fewer than three layers
-  now emit a warning condition instead of a CLI alert.
+  unsupported file extensions, preserves download failure details, warns
+  when geographic coordinates are treated as planar and emits a warning
+  condition for images with fewer than three layers.
 - [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
   now reports clearer errors when numeric bounding boxes contain
   missing, infinite or incorrectly ordered coordinates.
+- [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
+  now validates `img`, `expand`, `crop`, `mask`, `inverse` and `crs`
+  before processing.
 
 ## rasterpic 0.5.1
 
@@ -35,13 +41,13 @@ CRAN release: 2026-05-21
   is now an S3 generic with methods for supported spatial input classes
   ([\#39](https://github.com/dieghernan/rasterpic/issues/39)).
 - [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
-  now supports `stars` objects.
+  now supports **stars** objects.
 
 ## rasterpic 0.4.0
 
 CRAN release: 2026-03-21
 
-- Migrated vignettes to Quarto.
+- Migrated vignettes to **Quarto**.
 
 ## rasterpic 0.3.1
 
@@ -58,7 +64,7 @@ CRAN release: 2025-03-19
 - When the output has 3 or more layers, the first three are renamed to
   `"r"`, `"g"` and `"b"`. In cases with 4 layers or more, the fourth
   layer is renamed as `"alpha"`. This allows compatibility with **tmap**
-  `>= 4.0` and avoids the error
+  \>= 4.0 and avoids the error
   `! [subset] you cannot select a layer with a name that is not unique`.
 
 ## rasterpic 0.2.6
@@ -128,7 +134,7 @@ CRAN release: 2022-02-18
   now accepts image URLs.
 - Added an
   [article](https://dieghernan.github.io/rasterpic/articles/plots.html)
-  to the pkgdown site.
+  to the **pkgdown** site.
 - Fixed **CRAN** errors.
 
 ## rasterpic 0.1.0

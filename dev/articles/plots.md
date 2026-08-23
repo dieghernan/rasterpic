@@ -127,8 +127,9 @@ ISSN 2475-9066.
 [doi:10.21105/joss.05751](https://doi.org/10.21105/joss.05751).
 <https://doi.org/10.21105/joss.05751>.
 
-Hijmans R, Brown A, Barbosa M (2026). *terra: Spatial Data Analysis*. R
-package version 1.9-34, <https://rspatial.org/>.
+Hijmans R, Brown A, Barbosa AM, Cordano E, Dyba K (2026). *terra:
+Spatial Data Analysis*. R package version 1.9-46,
+<https://rspatial.org/>.
 
 Wickham H (2016). *ggplot2: Elegant Graphics for Data Analysis*.
 Springer-Verlag New York. ISBN 978-3-319-24277-4.

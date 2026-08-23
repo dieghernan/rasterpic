@@ -8,8 +8,8 @@ spatial input classes (see
 Note
 
 This package is stable and maintained on a best-effort basis. I
-currently prioritize CRAN compatibility, bug fixes and regressions over
-new features.
+currently prioritize **CRAN** compatibility, bug fixes and regressions
+over new features.
 
 ## Installation
 
@@ -25,7 +25,7 @@ pak::pak("dieghernan/rasterpic")
 ```
 
 Alternatively, you can install **rasterpic** using the
-[r-universe](https://dieghernan.r-universe.dev/rasterpic):
+[**r-universe**](https://dieghernan.r-universe.dev/rasterpic):
 
 ``` r
 
@@ -53,7 +53,7 @@ can geotag an image from several spatial input classes:
 is an S3 generic. Methods for extent-like inputs use the object extent,
 and vector methods can also mask the image to the object shape.
 
-This example uses an `sf` object:
+This example uses an **sf** object:
 
 ``` r
 
@@ -124,7 +124,7 @@ SpatRaster Objects*.
 [doi:10.32614/CRAN.package.rasterpic](https://doi.org/10.32614/CRAN.package.rasterpic).
 <https://dieghernan.github.io/rasterpic/>.
 
-A BibTeX entry for LaTeX users is:
+A **BibTeX** entry for **LaTeX** users is:
 
 ``` R
 @Manual{R-rasterpic,

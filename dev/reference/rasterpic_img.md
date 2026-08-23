@@ -1,6 +1,6 @@
 # Geotag an image as a `SpatRaster`
 
-Geotag an image and return a `SpatRaster` based on coordinates from a
+Geotag an image and return a `SpatRaster` using coordinates from a
 supported spatial input class.
 
 `rasterpic_img()` is an S3 generic. See **S3 methods** for supported
@@ -9,6 +9,17 @@ input classes.
 ## Usage
 
 ``` r
+rasterpic_img(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  ...
+)
+
+# Default S3 method
 rasterpic_img(
   x,
   img,
@@ -172,7 +183,7 @@ rasterpic_img(
 
 - mask:
 
-  Logical, for vector methods. Should the raster be
+  Logical for vector methods. Should the raster be
   [masked](https://rspatial.github.io/terra/reference/mask.html) to the
   shape of `x`? See **Details**.
 
@@ -193,9 +204,9 @@ A `SpatRaster` object (see
 [`terra::rast()`](https://rspatial.github.io/terra/reference/rast.html))
 where each layer corresponds to a color channel of `img`:
 
-- If `img` has at least 3 layers, the result records layers 1 to 3 as
-  the red, green and blue channels with names `"r"`, `"g"` and `"b"` and
-  `alpha` if applicable.
+- If `img` has at least 3 layers, the result names layers 1 to 3 `"r"`,
+  `"g"` and `"b"` for the red, green and blue channels and names layer 4
+  `"alpha"` when applicable.
 
 - If `img` already has an RGB specification (this may be the case for
   `tif`/`tiff` files), the result keeps that specification.
@@ -212,23 +223,22 @@ and `mask` with examples.
 
 ### S3 methods
 
-[rasterpic](https://CRAN.R-project.org/package=rasterpic) supports these
-spatial input classes:
+All methods share the parameters, return value and examples documented
+on this page. [rasterpic](https://CRAN.R-project.org/package=rasterpic)
+groups them by input behavior:
 
-- [sf](https://CRAN.R-project.org/package=sf) classes: `sf`, `sfc`,
-  `sfg` and `bbox`.
+- Vector methods for the [sf](https://CRAN.R-project.org/package=sf)
+  classes `sf`, `sfc` and `sfg` and the
+  [terra](https://CRAN.R-project.org/package=terra) class `SpatVector`
+  can mask the image to the input shape.
 
-- [terra](https://CRAN.R-project.org/package=terra) classes:
-  `SpatRaster`, `SpatVector` and `SpatExtent`.
+- Extent-like methods for `bbox`, numeric coordinate vectors, the
+  [stars](https://CRAN.R-project.org/package=stars) class `stars` and
+  the [terra](https://CRAN.R-project.org/package=terra) classes
+  `SpatRaster` and `SpatExtent` use the input bounding box.
 
-- [stars](https://CRAN.R-project.org/package=stars) class: `stars`.
-
-- A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
-
-Other packages can provide methods for additional spatial classes.
-
-Methods for extent-like inputs use the object extent. Methods for vector
-inputs can also mask the image to the object shape.
+- The default method reports unsupported classes. Other packages can
+  provide methods for additional spatial classes.
 
 ### CRS
 
@@ -294,6 +304,9 @@ For plotting:
 - [tmap](https://CRAN.R-project.org/package=tmap),
   [mapsf](https://CRAN.R-project.org/package=mapsf) and
   [maptiles](https://CRAN.R-project.org/package=maptiles).
+
+Other image geotagging tools:
+[`asp_ratio()`](https://dieghernan.github.io/rasterpic/dev/reference/asp_ratio.md)
 
 ## Examples
 

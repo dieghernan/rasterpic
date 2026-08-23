@@ -53,11 +53,15 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="rasterpic-development-version">rasterpic (development version)<a class="anchor" aria-label="anchor" href="#rasterpic-development-version"></a></h2>
 <ul><li>
-<code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> now reports clearer errors when <code>halign</code> or <code>valign</code> are not single numeric values.</li>
+<code><a href="../reference/asp_ratio.html">asp_ratio()</a></code> now reports the supported input types when <code>x</code> is invalid.</li>
 <li>
-<code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> now reports clearer input errors for missing image files and unsupported file extensions, and images with fewer than three layers now emit a warning condition instead of a CLI alert.</li>
+<code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> now reports clearer inclusive-range errors when <code>halign</code> or <code>valign</code> are not single numeric values.</li>
+<li>
+<code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> now reports clearer input errors for missing image files and unsupported file extensions, preserves download failure details, warns when geographic coordinates are treated as planar and emits a warning condition for images with fewer than three layers.</li>
 <li>
 <code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> now reports clearer errors when numeric bounding boxes contain missing, infinite or incorrectly ordered coordinates.</li>
+<li>
+<code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> now validates <code>img</code>, <code>expand</code>, <code>crop</code>, <code>mask</code>, <code>inverse</code> and <code>crs</code> before processing.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.1" id="rasterpic-051">rasterpic 0.5.1<a class="anchor" aria-label="anchor" href="#rasterpic-051"></a></h2><p class="text-muted">CRAN release: 2026-06-23</p>
@@ -71,11 +75,11 @@
 <li>
 <code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> is now an S3 generic with methods for supported spatial input classes (<a href="https://github.com/dieghernan/rasterpic/issues/39" class="external-link">#39</a>).</li>
 <li>
-<code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> now supports <code>stars</code> objects.</li>
+<code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> now supports <strong>stars</strong> objects.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.0" id="rasterpic-040">rasterpic 0.4.0<a class="anchor" aria-label="anchor" href="#rasterpic-040"></a></h2><p class="text-muted">CRAN release: 2026-03-21</p>
-<ul><li>Migrated vignettes to Quarto.</li>
+<ul><li>Migrated vignettes to <strong>Quarto</strong>.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.1" id="rasterpic-031">rasterpic 0.3.1<a class="anchor" aria-label="anchor" href="#rasterpic-031"></a></h2><p class="text-muted">CRAN release: 2026-01-14</p>
@@ -85,7 +89,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.0" id="rasterpic-030">rasterpic 0.3.0<a class="anchor" aria-label="anchor" href="#rasterpic-030"></a></h2><p class="text-muted">CRAN release: 2025-03-19</p>
-<ul><li>When the output has 3 or more layers, the first three are renamed to <code>"r"</code>, <code>"g"</code> and <code>"b"</code>. In cases with 4 layers or more, the fourth layer is renamed as <code>"alpha"</code>. This allows compatibility with <strong>tmap</strong> <code>&gt;= 4.0</code> and avoids the error <code>! [subset] you cannot select a layer with a name that is not unique</code>.</li>
+<ul><li>When the output has 3 or more layers, the first three are renamed to <code>"r"</code>, <code>"g"</code> and <code>"b"</code>. In cases with 4 layers or more, the fourth layer is renamed as <code>"alpha"</code>. This allows compatibility with <strong>tmap</strong> &gt;= 4.0 and avoids the error <code>! [subset] you cannot select a layer with a name that is not unique</code>.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.6" id="rasterpic-026">rasterpic 0.2.6<a class="anchor" aria-label="anchor" href="#rasterpic-026"></a></h2><p class="text-muted">CRAN release: 2024-12-17</p>
@@ -130,7 +134,7 @@
 <li>Numeric vectors <code>c(xmin, ymin, xmax, ymax)</code>.</li>
 </ul></li>
 <li>The <code>img</code> parameter in <code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> now accepts image URLs.</li>
-<li>Added an <a href="https://dieghernan.github.io/rasterpic/articles/plots.html">article</a> to the pkgdown site.</li>
+<li>Added an <a href="https://dieghernan.github.io/rasterpic/articles/plots.html">article</a> to the <strong>pkgdown</strong> site.</li>
 <li>Fixed <strong>CRAN</strong> errors.</li>
 </ul></div>
     <div class="section level2">
