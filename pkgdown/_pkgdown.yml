@@ -32,7 +32,7 @@ reference:
     Create geotagged `SpatRaster` objects from supported spatial input classes
     and local image files or image URLs.
 - contents:
-  - rasterpic_img
+  - has_concept("geotagging", internal = TRUE)
 
 - title: Package metadata
   desc: >

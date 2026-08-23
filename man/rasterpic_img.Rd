@@ -3,6 +3,7 @@
 \encoding{UTF-8}
 \name{rasterpic_img}
 \alias{rasterpic_img}
+\alias{rasterpic_img.default}
 \alias{rasterpic_img.sf}
 \alias{rasterpic_img.sfc}
 \alias{rasterpic_img.sfg}
@@ -15,6 +16,16 @@
 \title{Geotag an image as a \code{SpatRaster}}
 \usage{
 rasterpic_img(
+  x,
+  img,
+  halign = 0.5,
+  valign = 0.5,
+  expand = 0,
+  crop = FALSE,
+  ...
+)
+
+\method{rasterpic_img}{default}(
   x,
   img,
   halign = 0.5,
@@ -150,7 +161,7 @@ box of \code{x}? See \strong{Details}.}
 
 \item{...}{Further arguments passed to methods.}
 
-\item{mask}{Logical, for vector methods. Should the raster be
+\item{mask}{Logical for vector methods. Should the raster be
 \link[terra:mask]{masked} to the shape of \code{x}? See \strong{Details}.}
 
 \item{inverse}{Logical. Only used when \code{mask = TRUE}. If \code{TRUE}, areas
@@ -164,9 +175,9 @@ See the \strong{CRS} section.}
 A \code{SpatRaster} object (see \code{\link[terra:rast]{terra::rast()}}) where each layer corresponds to
 a color channel of \code{img}:
 \itemize{
-\item If \code{img} has at least 3 layers, the result records layers 1 to 3 as the
-red, green and blue channels with names \code{"r"}, \code{"g"} and \code{"b"} and \code{alpha}
-if applicable.
+\item If \code{img} has at least 3 layers, the result names layers 1 to 3 \code{"r"}, \code{"g"}
+and \code{"b"} for the red, green and blue channels and names layer 4 \code{"alpha"}
+when applicable.
 \item If \code{img} already has an RGB specification (this may be the case for
 \code{tif}/\code{tiff} files), the result keeps that specification.
 }
@@ -175,8 +186,8 @@ The resulting \code{SpatRaster} will have an RGB specification as explained in
 \code{\link[terra:RGB]{terra::RGB()}}.
 }
 \description{
-Geotag an image and return a \code{SpatRaster} based on coordinates from a
-supported spatial input class.
+Geotag an image and return a \code{SpatRaster} using coordinates from a supported
+spatial input class.
 
 \code{rasterpic_img()} is an S3 generic. See \strong{S3 methods} for supported input
 classes.
@@ -186,18 +197,17 @@ classes.
 parameters \code{halign}, \code{valign}, \code{expand}, \code{crop} and \code{mask} with examples.
 \subsection{S3 methods}{
 
-\CRANpkg{rasterpic} supports these spatial input classes:
+All methods share the parameters, return value and examples documented on
+this page. \CRANpkg{rasterpic} groups them by input behavior:
 \itemize{
-\item \CRANpkg{sf} classes: \code{sf}, \code{sfc}, \code{sfg} and \code{bbox}.
-\item \CRANpkg{terra} classes: \code{SpatRaster}, \code{SpatVector} and \code{SpatExtent}.
-\item \CRANpkg{stars} class: \code{stars}.
-\item A numeric coordinate vector of the form \code{c(xmin, ymin, xmax, ymax)}.
+\item Vector methods for the \CRANpkg{sf} classes \code{sf}, \code{sfc} and \code{sfg} and the
+\CRANpkg{terra} class \code{SpatVector} can mask the image to the input shape.
+\item Extent-like methods for \code{bbox}, numeric coordinate vectors, the
+\CRANpkg{stars} class \code{stars} and the \CRANpkg{terra} classes \code{SpatRaster}
+and \code{SpatExtent} use the input bounding box.
+\item The default method reports unsupported classes. Other packages can provide
+methods for additional spatial classes.
 }
-
-Other packages can provide methods for additional spatial classes.
-
-Methods for extent-like inputs use the object extent. Methods for vector
-inputs can also mask the image to the object shape.
 }
 
 \subsection{CRS}{
@@ -309,4 +319,8 @@ For plotting:
 \code{\link[tidyterra:geom_spatraster_rgb]{tidyterra::geom_spatraster_rgb()}} with \CRANpkg{ggplot2}.
 \item \CRANpkg{tmap}, \CRANpkg{mapsf} and \CRANpkg{maptiles}.
 }
+
+Other image geotagging tools:
+\code{\link[=asp_ratio]{asp_ratio()}}
 }
+\concept{geotagging}

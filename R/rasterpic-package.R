@@ -1,5 +1,5 @@
-#' @encoding UTF-8
 #' @keywords internal
+#' @encoding UTF-8
 "_PACKAGE"
 
 ## usethis namespace: start

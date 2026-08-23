@@ -1,4 +1,4 @@
-test_that("rasterpic_img() dispatches as an S3 generic", {
+test_that("custom S3 methods receive rasterpic_img() calls", {
   # nolint start
   rasterpic_img.rpic_test <- function(x, img, ...) {
     "dispatched"
@@ -10,7 +10,7 @@ test_that("rasterpic_img() dispatches as an S3 generic", {
   expect_identical(rasterpic_img(x, NULL), "dispatched")
 })
 
-test_that("rasterpic_img() errors for unsupported S3 classes", {
+test_that("unsupported S3 classes report the missing rasterpic_img() method", {
   x <- "a"
 
   expect_snapshot(error = TRUE, rasterpic_img(x, NULL))
@@ -20,7 +20,7 @@ test_that("rasterpic_img() errors for unsupported S3 classes", {
   expect_snapshot(error = TRUE, rasterpic_img(x, NULL))
 })
 
-test_that("rasterpic_img() registers supported input methods", {
+test_that("every documented input class has a registered S3 method", {
   methods <- c(
     "default",
     "sf",
@@ -39,13 +39,13 @@ test_that("rasterpic_img() registers supported input methods", {
   }
 })
 
-test_that("rasterpic_img() errors for invalid numeric coordinates", {
+test_that("numeric input with the wrong length reports bbox requirements", {
   x <- 1
   img <- system.file("img/UK_flag.png", package = "rasterpic")
   expect_snapshot(rasterpic_img(x, img), error = TRUE)
 })
 
-test_that("rasterpic_img() errors for missing and unsupported image files", {
+test_that("missing files and unsupported extensions report actionable errors", {
   x <- sf::st_read(
     system.file("gpkg/UK.gpkg", package = "rasterpic"),
     quiet = TRUE
@@ -58,7 +58,7 @@ test_that("rasterpic_img() errors for missing and unsupported image files", {
   expect_snapshot(rasterpic_img(x, img2), error = TRUE)
 })
 
-test_that("rasterpic_img() errors for alignment values outside [0, 1]", {
+test_that("alignment values outside the unit interval report their bounds", {
   x <- c(1, 2, 3, 4)
   img <- system.file("img/UK_flag.png", package = "rasterpic")
   expect_snapshot(rasterpic_img(x, img, valign = 1.2), error = TRUE)
@@ -70,7 +70,7 @@ test_that("rasterpic_img() errors for alignment values outside [0, 1]", {
   expect_snapshot(rasterpic_img(x, img, halign = -1.2), error = TRUE)
 })
 
-test_that("rasterpic_img() errors for invalid alignment types", {
+test_that("nonscalar and nonnumeric alignments report scalar requirements", {
   x <- c(1, 2, 3, 4)
   img <- system.file("img/UK_flag.png", package = "rasterpic")
 
@@ -79,9 +79,54 @@ test_that("rasterpic_img() errors for invalid alignment types", {
   expect_snapshot(rasterpic_img(x, img, halign = c(0, 1)), error = TRUE)
 
   expect_snapshot(rasterpic_img(x, img, valign = "top"), error = TRUE)
+
+  expect_snapshot(rasterpic_img(x, img, halign = 0.5 + 0i), error = TRUE)
 })
 
-test_that("rasterpic_img() informs for geographic sf coordinates", {
+test_that("invalid image arguments report a scalar path requirement", {
+  x <- c(1, 2, 3, 4)
+
+  expect_snapshot(rasterpic_img(x, NA_character_), error = TRUE)
+  expect_snapshot(rasterpic_img(x, character()), error = TRUE)
+  expect_snapshot(rasterpic_img(x, c("a.png", "b.png")), error = TRUE)
+  expect_snapshot(rasterpic_img(x, ""), error = TRUE)
+})
+
+test_that("invalid expansion values report finite nonnegative requirements", {
+  x <- c(1, 2, 3, 4)
+  img <- system.file("img/UK_flag.png", package = "rasterpic")
+
+  expect_snapshot(rasterpic_img(x, img, expand = -0.1), error = TRUE)
+  expect_snapshot(rasterpic_img(x, img, expand = Inf), error = TRUE)
+  expect_snapshot(rasterpic_img(x, img, expand = c(0, 1)), error = TRUE)
+})
+
+test_that("nonlogical control flags report TRUE or FALSE requirements", {
+  img <- system.file("img/UK_flag.png", package = "rasterpic")
+  bbox <- c(1, 2, 3, 4)
+
+  expect_snapshot(rasterpic_img(bbox, img, crop = NA), error = TRUE)
+
+  x <- terra::vect(sf::st_read(
+    system.file("gpkg/UK.gpkg", package = "rasterpic"),
+    quiet = TRUE
+  ))
+  expect_snapshot(rasterpic_img(x, img, mask = 1), error = TRUE)
+  expect_snapshot(rasterpic_img(x, img, inverse = NA), error = TRUE)
+})
+
+test_that("invalid CRS values report optional scalar string requirements", {
+  x <- c(1, 2, 3, 4)
+  img <- system.file("img/UK_flag.png", package = "rasterpic")
+
+  expect_snapshot(rasterpic_img(x, img, crs = 4326), error = TRUE)
+  expect_snapshot(
+    rasterpic_img(x, img, crs = c("EPSG:4326", "EPSG:3857")),
+    error = TRUE
+  )
+})
+
+test_that("geographic sf input warns before planar placement", {
   x <- sf::st_read(
     system.file("gpkg/UK.gpkg", package = "rasterpic"),
     quiet = TRUE
@@ -99,7 +144,7 @@ test_that("rasterpic_img() informs for geographic sf coordinates", {
   expect_true(terra::has.RGB(s2))
 })
 
-test_that("rasterpic_img() informs for geographic raster coordinates", {
+test_that("geographic SpatRaster input warns before planar placement", {
   x <- testhelp_load_rast(system.file("tiff/elev.tiff", package = "rasterpic"))
   x <- terra::project(x, "epsg:4326")
   img <- system.file("img/UK_flag.png", package = "rasterpic")
@@ -113,763 +158,7 @@ test_that("rasterpic_img() informs for geographic raster coordinates", {
   expect_true(terra::has.RGB(s2))
 })
 
-test_that("mask is ignored for SpatRaster input", {
-  x <- testhelp_load_rast(system.file("tiff/elev.tiff", package = "rasterpic"))
-  x <- terra::project(x, "epsg:3857")
-  img <- system.file("img/UK_flag.png", package = "rasterpic")
-  res1 <- rasterpic_img(x, img)
-  res2 <- rasterpic_img(x, img, mask = TRUE)
-
-  expect_equal(as.vector(terra::ext(res1)), as.vector(terra::ext(res2)))
-  expect_equal(terra::crs(res1), terra::crs(res2))
-
-  expect_true(terra::compareGeom(res1, res2))
-})
-
-test_that("mask is ignored for SpatExtent input", {
-  x <- testhelp_load_rast(system.file("tiff/elev.tiff", package = "rasterpic"))
-  x <- terra::project(x, "epsg:3857")
-  img <- system.file("img/UK_flag.png", package = "rasterpic")
-
-  extent <- terra::ext(x)
-  crs <- terra::crs(x)
-
-  res1 <- rasterpic_img(extent, img, crs = crs)
-
-  res2 <- rasterpic_img(extent, img, mask = TRUE, crs = crs)
-
-  expect_equal(as.vector(terra::ext(res1)), as.vector(terra::ext(res2)))
-  expect_equal(terra::crs(res1), terra::crs(res2))
-  v1 <- terra::values(res1)
-  v2 <- terra::values(res2)
-
-  expect_identical(v1, v2)
-  expect_true(terra::compareGeom(res1, res2))
-})
-
-test_that("halign = 0 anchors the image to the left edge", {
-  img <- system.file("img/UK_flag.png", package = "rasterpic")
-  x <- sf::st_read(
-    system.file("gpkg/austria.gpkg", package = "rasterpic"),
-    quiet = TRUE
-  )
-
-  raster <- rasterpic_img(x, img, halign = 0)
-  png_dim <- terra::rast(img, noflip = TRUE)
-  expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
-
-  bbox_x <- unname(sf::st_bbox(x))
-
-  expect_equal(terra::ymin(raster), bbox_x[2])
-  expect_equal(terra::ymax(raster), bbox_x[4])
-  expect_equal(terra::xmin(raster), bbox_x[1])
-  expect_gt(terra::xmax(raster), bbox_x[3])
-})
-
-test_that("halign = 1 anchors the image to the right edge", {
-  img <- system.file("img/UK_flag.png", package = "rasterpic")
-  x <- sf::st_read(
-    system.file("gpkg/austria.gpkg", package = "rasterpic"),
-    quiet = TRUE
-  )
-
-  raster <- rasterpic_img(x, img, halign = 1)
-  png_dim <- terra::rast(img, noflip = TRUE)
-  expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
-
-  bbox_x <- unname(sf::st_bbox(x))
-
-  expect_equal(terra::ymin(raster), bbox_x[2])
-  expect_equal(terra::ymax(raster), bbox_x[4])
-  expect_equal(terra::xmax(raster), bbox_x[3])
-  expect_lt(terra::xmin(raster), bbox_x[1])
-})
-
-test_that("valign = 0 anchors the image to the bottom edge", {
-  img <- system.file("img/vertical.png", package = "rasterpic")
-  x <- sf::st_read(
-    system.file("gpkg/austria.gpkg", package = "rasterpic"),
-    quiet = TRUE
-  )
-
-  raster <- rasterpic_img(x, img, valign = 0)
-  png_dim <- terra::rast(img, noflip = TRUE)
-  expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
-
-  bbox_x <- unname(sf::st_bbox(x))
-
-  expect_equal(terra::ymin(raster), bbox_x[2])
-  expect_equal(terra::xmax(raster), bbox_x[3])
-  expect_equal(terra::xmin(raster), bbox_x[1])
-  expect_gt(terra::ymax(raster), bbox_x[4])
-})
-
-test_that("valign = 1 anchors the image to the top edge", {
-  img <- system.file("img/vertical.png", package = "rasterpic")
-  x <- sf::st_read(
-    system.file("gpkg/austria.gpkg", package = "rasterpic"),
-    quiet = TRUE
-  )
-
-  raster <- rasterpic_img(x, img, valign = 1)
-  png_dim <- terra::rast(img, noflip = TRUE)
-  expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
-
-  bbox_x <- unname(sf::st_bbox(x))
-
-  expect_equal(terra::xmin(raster), bbox_x[1])
-  expect_equal(terra::ymax(raster), bbox_x[4])
-  expect_equal(terra::xmax(raster), bbox_x[3])
-  expect_lt(terra::ymin(raster), bbox_x[2])
-})
-
-test_that("bbox input preserves CRS and expands the shorter axis", {
-  img <- system.file("img/UK_flag.png", package = "rasterpic")
-  x <- sf::st_read(
-    system.file("gpkg/UK.gpkg", package = "rasterpic"),
-    quiet = TRUE
-  )
-
-  x <- sf::st_bbox(x)
-  expect_s3_class(x, "bbox")
-
-  expect_silent(raster <- rasterpic_img(x, img))
-
-  v <- terra::vect(sf::st_as_sfc(x))
-  expect_identical(terra::crs(raster), terra::crs(v))
-
-  png_dim <- terra::rast(img, noflip = TRUE)
-  expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
-
-  # Same y coords
-  expect_equal(terra::ymin(raster), unname(x[2]))
-  expect_equal(terra::ymax(raster), unname(x[4]))
-
-  # Different x coords
-  expect_lt(terra::xmin(raster), unname(x[1]))
-  expect_gt(terra::xmax(raster), unname(x[3]))
-})
-
-test_that("bbox input accepts an explicit CRS and can be cropped", {
-  img <- system.file("img/UK_flag.png", package = "rasterpic")
-  x <- sf::st_read(
-    system.file("gpkg/UK.gpkg", package = "rasterpic"),
-    quiet = TRUE
-  )
-
-  x_a <- sf::st_transform(x, 25830)
-  crs_wkt_sf <- sf::st_crs(x_a)$wkt
-
-  sf::st_crs(x) <- NA
-  x <- sf::st_bbox(x)
-  expect_s3_class(x, "bbox")
-
-  # NULL crs
-  raster_null <- rasterpic_img(x, img)
-  expect_false(nzchar(terra::crs(raster_null)))
-
-  raster <- rasterpic_img(x, img, crs = crs_wkt_sf)
-  expect_true(nzchar(terra::crs(raster)))
-
-  png_dim <- terra::rast(img, noflip = TRUE)
-  expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
-
-  # Same y coords
-  expect_equal(terra::ymin(raster), unname(x[2]))
-  expect_equal(terra::ymax(raster), unname(x[4]))
-
-  # Different x coords
-  expect_lt(terra::xmin(raster), unname(x[1]))
-  expect_gt(terra::xmax(raster), unname(x[3]))
-
-  # On crop ok
-  crop <- rasterpic_img(x, img, crs = crs_wkt_sf, crop = TRUE)
-  expect_false(identical(
-    as.vector(terra::ext(raster)),
-    as.vector(terra::ext(crop))
-  ))
-})
-
-test_that("crop trims sf output to the input bounding box", {
-  img <- system.file("img/UK_flag.png", package = "rasterpic")
-  x <- sf::st_read(
-    system.file("gpkg/austria.gpkg", package = "rasterpic"),
-    quiet = TRUE
-  )
-
-  x0 <- rasterpic_img(x, img, expand = 0, crop = TRUE)
-
-  png_dim <- terra::rast(img, noflip = TRUE)
-  expect_false(identical(asp_ratio(x0), dim(png_dim)[2] / dim(png_dim)[1]))
-
-  # Bboxes
-  bbox_x <- as.double(sf::st_bbox(x))
-  bbox_x0 <- as.vector(terra::ext(x0))
-
-  # Tolerance limit
-  min_length <- min(abs(bbox_x))
-
-  diff <- max(abs(bbox_x - bbox_x0[c(1, 3, 2, 4)]))
-
-  expect_lt(diff / min_length, 0.0001)
-})
-
-test_that("mask and inverse create complementary sf masks", {
-  img <- system.file("img/UK_flag.png", package = "rasterpic")
-  x <- sf::st_read(
-    system.file("gpkg/austria.gpkg", package = "rasterpic"),
-    quiet = TRUE
-  )
-
-  raster <- rasterpic_img(x, img, mask = TRUE)
-
-  png_dim <- terra::rast(img, noflip = TRUE)
-
-  expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
-
-  bbox_x <- unname(sf::st_bbox(x))
-
-  # Same y coords
-  expect_equal(terra::ymin(raster), bbox_x[2])
-  expect_equal(terra::ymax(raster), bbox_x[4])
-
-  # Different x coords
-  expect_lt(terra::xmin(raster), bbox_x[1])
-  expect_gt(terra::xmax(raster), bbox_x[3])
-
-  # Expect NAs
-  rws <- terra::ncell(raster)
-  df <- as.data.frame(raster, na.rm = TRUE)
-  expect_gt(rws, nrow(df))
-
-  # Inverse
-  raster_inv <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
-
-  expect_equal(asp_ratio(raster_inv), dim(png_dim)[2] / dim(png_dim)[1])
-
-  # Same y coords
-  expect_equal(terra::ymin(raster_inv), bbox_x[2])
-  expect_equal(terra::ymax(raster_inv), bbox_x[4])
-
-  # Different x coords
-  expect_lt(terra::xmin(raster_inv), bbox_x[1])
-  expect_gt(terra::xmax(raster_inv), bbox_x[3])
-
-  # Expect NAs
-  df2 <- as.data.frame(raster_inv, na.rm = TRUE)
-  expect_gt(rws, nrow(df2))
-  expect_gt(nrow(df2), nrow(df))
-  expect_complementary_masks(raster, raster_inv)
-})
-
-test_that("crop trims SpatVector output to the input bounding box", {
-  img <- system.file("img/UK_flag.png", package = "rasterpic")
-  x <- sf::st_read(
-    system.file("gpkg/austria.gpkg", package = "rasterpic"),
-    quiet = TRUE
-  )
-
-  x <- terra::vect(x)
-  expect_s4_class(x, "SpatVector")
-
-  x0 <- rasterpic_img(x, img, expand = 0, crop = TRUE)
-
-  png_dim <- terra::rast(img, noflip = TRUE)
-  expect_false(identical(asp_ratio(x0), dim(png_dim)[2] / dim(png_dim)[1]))
-
-  # Bboxes
-  bbox_x <- as.double(sf::st_bbox(x))
-  bbox_x0 <- as.vector(terra::ext(x0))
-
-  # Tolerance limit
-  min_length <- min(abs(bbox_x))
-
-  diff <- max(abs(bbox_x - bbox_x0[c(1, 3, 2, 4)]))
-
-  expect_lt(diff / min_length, 0.0001)
-})
-
-test_that("mask and inverse create complementary SpatVector masks", {
-  img <- system.file("img/UK_flag.png", package = "rasterpic")
-  x <- sf::st_read(
-    system.file("gpkg/austria.gpkg", package = "rasterpic"),
-    quiet = TRUE
-  )
-
-  x <- terra::vect(x)
-  expect_s4_class(x, "SpatVector")
-
-  raster <- rasterpic_img(x, img, mask = TRUE)
-
-  expect_true(terra::has.RGB(raster))
-
-  png_dim <- terra::rast(img, noflip = TRUE)
-
-  expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
-
-  bbox_x <- unname(sf::st_bbox(x))
-
-  # Same y coords
-  expect_equal(terra::ymin(raster), bbox_x[2])
-  expect_equal(terra::ymax(raster), bbox_x[4])
-
-  # Different x coords
-  expect_lt(terra::xmin(raster), bbox_x[1])
-  expect_gt(terra::xmax(raster), bbox_x[3])
-
-  # Expect NAs
-  rws <- terra::ncell(raster)
-  df <- as.data.frame(raster, na.rm = TRUE)
-  expect_gt(rws, nrow(df))
-
-  # Inverse
-  raster_inv <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
-
-  expect_true(terra::has.RGB(raster_inv))
-
-  expect_equal(asp_ratio(raster_inv), dim(png_dim)[2] / dim(png_dim)[1])
-
-  # Same y coords
-  expect_equal(terra::ymin(raster_inv), bbox_x[2])
-  expect_equal(terra::ymax(raster_inv), bbox_x[4])
-
-  # Different x coords
-  expect_lt(terra::xmin(raster_inv), bbox_x[1])
-  expect_gt(terra::xmax(raster_inv), bbox_x[3])
-
-  # Expect NAs
-  df2 <- as.data.frame(raster_inv, na.rm = TRUE)
-  expect_gt(rws, nrow(df2))
-  expect_gt(nrow(df2), nrow(df))
-  expect_complementary_masks(raster, raster_inv)
-})
-
-test_that("crop trims sfg output to the input bounding box", {
-  img <- system.file("img/UK_flag.png", package = "rasterpic")
-  x <- sf::st_read(
-    system.file("gpkg/austria.gpkg", package = "rasterpic"),
-    quiet = TRUE
-  )
-
-  x_a <- sf::st_transform(x, 25830)
-  crs_wkt_sf <- sf::st_crs(x_a)$wkt
-
-  # Create an sfg
-
-  f <- sf::st_coordinates(sf::st_geometry(x))
-
-  # Extract a polygon
-  x <- sf::st_polygon(list(as.matrix(f[f[, 4] == 1, 1:2], ncol = 2)))
-
-  expect_s3_class(x, "sfg")
-
-  x0 <- rasterpic_img(x, img, expand = 0, crop = TRUE, crs = crs_wkt_sf)
-
-  png_dim <- terra::rast(img, noflip = TRUE)
-  expect_false(identical(asp_ratio(x0), dim(png_dim)[2] / dim(png_dim)[1]))
-
-  # Bboxes
-  bbox_x <- as.double(sf::st_bbox(x))
-  bbox_x0 <- as.vector(terra::ext(x0))
-
-  # Tolerance limit
-  min_length <- min(abs(bbox_x))
-
-  diff <- max(abs(bbox_x - bbox_x0[c(1, 3, 2, 4)]))
-
-  expect_lt(diff / min_length, 0.0001)
-})
-
-test_that("mask and inverse create complementary sfg masks", {
-  img <- system.file("img/UK_flag.png", package = "rasterpic")
-  x <- sf::st_read(
-    system.file("gpkg/austria.gpkg", package = "rasterpic"),
-    quiet = TRUE
-  )
-
-  x_a <- sf::st_transform(x, 25830)
-  crs_wkt_sf <- sf::st_crs(x_a)$wkt
-
-  # Create an sfg
-
-  f <- sf::st_coordinates(sf::st_geometry(x))
-
-  # Extract a polygon
-  x <- sf::st_polygon(list(as.matrix(f[f[, 4] == 1, 1:2], ncol = 2)))
-
-  expect_s3_class(x, "sfg")
-
-  raster <- rasterpic_img(x, img, mask = TRUE, crs = crs_wkt_sf)
-
-  png_dim <- terra::rast(img, noflip = TRUE)
-
-  expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
-
-  bbox_x <- unname(sf::st_bbox(x))
-
-  # Same y coords
-  expect_equal(terra::ymin(raster), bbox_x[2])
-  expect_equal(terra::ymax(raster), bbox_x[4])
-
-  # Different x coords
-  expect_lt(terra::xmin(raster), bbox_x[1])
-  expect_gt(terra::xmax(raster), bbox_x[3])
-
-  # Expect NAs
-  rws <- terra::ncell(raster)
-  df <- as.data.frame(raster, na.rm = TRUE)
-  expect_gt(rws, nrow(df))
-
-  # Inverse
-  raster_inv <- rasterpic_img(
-    x,
-    img,
-    mask = TRUE,
-    inverse = TRUE,
-    crs = crs_wkt_sf
-  )
-
-  expect_equal(asp_ratio(raster_inv), dim(png_dim)[2] / dim(png_dim)[1])
-
-  # Same y coords
-  expect_equal(terra::ymin(raster_inv), bbox_x[2])
-  expect_equal(terra::ymax(raster_inv), bbox_x[4])
-
-  # Different x coords
-  expect_lt(terra::xmin(raster_inv), bbox_x[1])
-  expect_gt(terra::xmax(raster_inv), bbox_x[3])
-
-  # Expect NAs
-  df2 <- as.data.frame(raster_inv, na.rm = TRUE)
-  expect_gt(rws, nrow(df2))
-  expect_gt(nrow(df2), nrow(df))
-  expect_complementary_masks(raster, raster_inv)
-})
-
-test_that("expand increases the output bounds while preserving aspect ratio", {
-  img <- system.file("img/UK_flag.png", package = "rasterpic")
-  x <- sf::st_read(
-    system.file("gpkg/austria.gpkg", package = "rasterpic"),
-    quiet = TRUE
-  )
-
-  x0 <- rasterpic_img(x, img, expand = 0)
-  x_5 <- rasterpic_img(x, img, expand = 0.5)
-  x1 <- rasterpic_img(x, img, expand = 1)
-
-  # Asp ratios
-  expect_equal(asp_ratio(x0), asp_ratio(x_5))
-  expect_equal(asp_ratio(x0), asp_ratio(x1))
-
-  # Check bboxes
-  bbox_x <- as.double(sf::st_bbox(x))
-  bbox_x0 <- unname(as.vector(terra::ext(x0)))
-  expect_equal(bbox_x[c(2, 4)], bbox_x0[c(3, 4)])
-  expect_gt(bbox_x[1], bbox_x0[1])
-  expect_lt(bbox_x[3], bbox_x0[2])
-
-  bbox_x_5 <- unname(as.vector(terra::ext(x_5)))
-  expect_all_true(c(
-    bbox_x[c(1, 3)] > bbox_x_5[c(1, 3)],
-    bbox_x[c(2, 4)] < bbox_x_5[c(2, 4)]
-  ))
-
-  bbox_x1 <- unname(as.vector(terra::ext(x1)))
-  expect_all_true(c(
-    bbox_x_5[c(1, 3)] > bbox_x1[c(1, 3)],
-    bbox_x_5[c(2, 4)] < bbox_x1[c(2, 4)]
-  ))
-})
-
-test_that("horizontal images produce equivalent output across formats", {
-  img <- system.file("img/UK_flag.png", package = "rasterpic")
-  x <- sf::st_read(
-    system.file("gpkg/UK.gpkg", package = "rasterpic"),
-    quiet = TRUE
-  )
-
-  raster <- rasterpic_img(x, img)
-  expect_true(terra::has.RGB(raster))
-  png_dim <- terra::rast(img, noflip = TRUE)
-  expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
-
-  bbox_x <- unname(sf::st_bbox(x))
-
-  # Same y coords
-  expect_equal(terra::ymin(raster), bbox_x[2])
-  expect_equal(terra::ymax(raster), bbox_x[4])
-
-  # Different x coords
-  expect_lt(terra::xmin(raster), bbox_x[1])
-  expect_gt(terra::xmax(raster), bbox_x[3])
-
-  otherformats <- list.files(
-    system.file("img", package = "rasterpic"),
-    pattern = "^UK_flag",
-    full.names = TRUE
-  )
-  expect_setequal(
-    basename(otherformats),
-    c(
-      "UK_flag.jpeg",
-      "UK_flag.jpg",
-      "UK_flag.png",
-      "UK_flag.tif",
-      "UK_flag.tiff"
-    )
-  )
-
-  for (file in otherformats) {
-    file_name <- basename(file)
-    raster_test <- rasterpic_img(x, file)
-    expect_equal(asp_ratio(raster_test), asp_ratio(raster), info = file_name)
-    expect_equal(
-      as.vector(terra::ext(raster_test)),
-      as.vector(terra::ext(raster)),
-      info = file_name
-    )
-    expect_equal(terra::crs(raster_test), terra::crs(raster), info = file_name)
-    expect_true(terra::has.RGB(raster_test), info = file_name)
-  }
-})
-
-test_that("vertical images produce equivalent sf output across formats", {
-  img <- system.file("img/vertical.png", package = "rasterpic")
-  x <- sf::st_read(
-    system.file("gpkg/austria.gpkg", package = "rasterpic"),
-    quiet = TRUE
-  )
-
-  raster <- rasterpic_img(x, img)
-  expect_true(terra::has.RGB(raster))
-
-  png_dim <- terra::rast(img, noflip = TRUE)
-  expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
-
-  bbox_x <- unname(sf::st_bbox(x))
-
-  # Different y coords
-  expect_lt(terra::ymin(raster), bbox_x[2])
-  expect_gt(terra::ymax(raster), bbox_x[4])
-
-  # Same x coords
-  expect_equal(terra::xmin(raster), bbox_x[1])
-  expect_equal(terra::xmax(raster), bbox_x[3])
-
-  otherformats <- list.files(
-    system.file("img", package = "rasterpic"),
-    pattern = "^vertical",
-    full.names = TRUE
-  )
-  expect_setequal(
-    basename(otherformats),
-    c(
-      "vertical.jpeg",
-      "vertical.jpg",
-      "vertical.png",
-      "vertical.tif",
-      "vertical.tiff"
-    )
-  )
-
-  for (file in otherformats) {
-    file_name <- basename(file)
-    raster_test <- rasterpic_img(x, file)
-    expect_equal(asp_ratio(raster_test), asp_ratio(raster), info = file_name)
-    expect_equal(
-      as.vector(terra::ext(raster_test)),
-      as.vector(terra::ext(raster)),
-      info = file_name
-    )
-    expect_equal(terra::crs(raster_test), terra::crs(raster), info = file_name)
-    expect_true(terra::has.RGB(raster_test), info = file_name)
-  }
-})
-
-test_that("vertical images produce equivalent raster output across formats", {
-  img <- system.file("img/vertical.png", package = "rasterpic")
-  x <- testhelp_load_rast(system.file("tiff/elev.tiff", package = "rasterpic"))
-
-  # Project
-  x <- terra::project(x, "epsg:3857")
-
-  raster <- rasterpic_img(x, img)
-  expect_true(terra::has.RGB(raster))
-  png_dim <- terra::rast(img, noflip = TRUE)
-  expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
-
-  # Different y coords
-  expect_lt(terra::ymin(raster), terra::ymin(x))
-  expect_gt(terra::ymax(raster), terra::ymax(x))
-
-  # Same x coords
-  expect_equal(terra::xmin(raster), terra::xmin(x))
-  expect_equal(terra::xmax(raster), terra::xmax(x))
-
-  otherformats <- list.files(
-    system.file("img", package = "rasterpic"),
-    pattern = "^vertical",
-    full.names = TRUE
-  )
-  expect_setequal(
-    basename(otherformats),
-    c(
-      "vertical.jpeg",
-      "vertical.jpg",
-      "vertical.png",
-      "vertical.tif",
-      "vertical.tiff"
-    )
-  )
-
-  for (file in otherformats) {
-    file_name <- basename(file)
-    raster_test <- rasterpic_img(x, file)
-    expect_equal(asp_ratio(raster_test), asp_ratio(raster), info = file_name)
-    expect_equal(
-      as.vector(terra::ext(raster_test)),
-      as.vector(terra::ext(raster)),
-      info = file_name
-    )
-    expect_equal(terra::crs(raster_test), terra::crs(raster), info = file_name)
-    expect_true(terra::has.RGB(raster_test), info = file_name)
-  }
-})
-
-test_that("vertical images produce equivalent sfc output across formats", {
-  img <- system.file("img/vertical.png", package = "rasterpic")
-  x <- sf::st_read(
-    system.file("gpkg/austria.gpkg", package = "rasterpic"),
-    quiet = TRUE
-  )
-
-  x <- sf::st_geometry(x)
-  expect_s3_class(x, "sfc")
-
-  raster <- rasterpic_img(x, img)
-  expect_true(terra::has.RGB(raster))
-
-  png_dim <- terra::rast(img, noflip = TRUE)
-  expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
-
-  bbox_x <- unname(sf::st_bbox(x))
-
-  # Different y coords
-  expect_lt(terra::ymin(raster), bbox_x[2])
-  expect_gt(terra::ymax(raster), bbox_x[4])
-
-  # Same x coords
-  expect_equal(terra::xmin(raster), bbox_x[1])
-  expect_equal(terra::xmax(raster), bbox_x[3])
-
-  otherformats <- list.files(
-    system.file("img", package = "rasterpic"),
-    pattern = "^vertical",
-    full.names = TRUE
-  )
-  expect_setequal(
-    basename(otherformats),
-    c(
-      "vertical.jpeg",
-      "vertical.jpg",
-      "vertical.png",
-      "vertical.tif",
-      "vertical.tiff"
-    )
-  )
-
-  for (file in otherformats) {
-    file_name <- basename(file)
-    raster_test <- rasterpic_img(x, file)
-    expect_equal(asp_ratio(raster_test), asp_ratio(raster), info = file_name)
-    expect_equal(
-      as.vector(terra::ext(raster_test)),
-      as.vector(terra::ext(raster)),
-      info = file_name
-    )
-    expect_equal(terra::crs(raster_test), terra::crs(raster), info = file_name)
-    expect_true(terra::has.RGB(raster_test), info = file_name)
-  }
-})
-
-test_that("vertical images work with SpatExtent input across formats", {
-  skip_on_cran()
-
-  img <- system.file("img/vertical.png", package = "rasterpic")
-  x <- sf::st_read(
-    system.file("gpkg/austria.gpkg", package = "rasterpic"),
-    quiet = TRUE
-  )
-
-  x <- terra::ext(terra::vect(x))
-  expect_s4_class(x, "SpatExtent")
-
-  raster <- rasterpic_img(x, img, crs = "epsg:3035")
-  png_dim <- terra::rast(img, noflip = TRUE)
-  expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
-
-  bbox_x <- unname(sf::st_bbox(x))
-
-  # Different y coords
-  expect_lt(terra::ymin(raster), bbox_x[2])
-  expect_gt(terra::ymax(raster), bbox_x[4])
-
-  # Same x coords
-  expect_equal(terra::xmin(raster), bbox_x[1])
-  expect_equal(terra::xmax(raster), bbox_x[3])
-
-  otherformats <- list.files(
-    system.file("img", package = "rasterpic"),
-    pattern = "^vertical",
-    full.names = TRUE
-  )
-  expect_setequal(
-    basename(otherformats),
-    c(
-      "vertical.jpeg",
-      "vertical.jpg",
-      "vertical.png",
-      "vertical.tif",
-      "vertical.tiff"
-    )
-  )
-
-  for (file in otherformats) {
-    file_name <- basename(file)
-    raster_test <- rasterpic_img(x, file, crs = "epsg:3035")
-    expect_equal(asp_ratio(raster_test), asp_ratio(raster), info = file_name)
-    expect_equal(
-      as.vector(terra::ext(raster_test)),
-      as.vector(terra::ext(raster)),
-      info = file_name
-    )
-    expect_equal(terra::crs(raster_test), terra::crs(raster), info = file_name)
-  }
-})
-
-test_that("transparent images keep the alpha layer", {
-  img <- system.file("img/transparent.png", package = "rasterpic")
-
-  x <- sf::st_read(
-    system.file("gpkg/UK.gpkg", package = "rasterpic"),
-    quiet = TRUE
-  )
-
-  raster <- rasterpic_img(x, img)
-
-  expect_named(raster, c("r", "g", "b", "alpha"))
-
-  expect_true(terra::has.RGB(raster))
-
-  png_dim <- terra::rast(img, noflip = TRUE)
-  png_dim <- terra::colorize(png_dim, to = "rgb", alpha = TRUE)
-
-  expect_equal(dim(png_dim)[3], 4)
-  expect_equal(terra::nlyr(raster), 4)
-  expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
-})
-
-test_that("single-layer images warn and do not get RGB metadata", {
+test_that("single-layer input warns and remains without RGB metadata", {
   # PNG
   img <- system.file("grays/grays.png", package = "rasterpic")
   x <- sf::st_read(
@@ -885,7 +174,7 @@ test_that("single-layer images warn and do not get RGB metadata", {
   expect_equal(terra::nlyr(raster), 1)
 })
 
-test_that("two-layer images warn and do not get RGB metadata", {
+test_that("two-layer input warns and remains without RGB metadata", {
   # PNG
   img <- system.file("img/UK_flag.png", package = "rasterpic")
   x <- sf::st_read(
@@ -915,7 +204,7 @@ test_that("two-layer images warn and do not get RGB metadata", {
   expect_identical(terra::nlyr(r_new), terra::nlyr(r_12))
 })
 
-test_that("images with more than four layers keep RGB metadata", {
+test_that("multilayer input preserves every layer and RGB metadata", {
   # PNG
   img <- system.file("img/transparent.png", package = "rasterpic")
   x <- sf::st_read(
@@ -947,7 +236,6 @@ test_that("images with more than four layers keep RGB metadata", {
 
 test_that("tiff images with existing RGB metadata preserve that mapping", {
   # PNG
-  skip_on_cran()
   img <- system.file("img/UK_flag.png", package = "rasterpic")
   x <- sf::st_read(
     system.file("gpkg/UK.gpkg", package = "rasterpic"),
@@ -980,7 +268,7 @@ test_that("tiff images with existing RGB metadata preserve that mapping", {
   expect_equal(terra::RGB(r_new), terra::RGB(rr))
 })
 
-test_that("remote image download warnings become rasterpic_img() errors", {
+test_that("download warnings become rasterpic_img() errors with their cause", {
   testthat::local_mocked_bindings(
     rpic_download_file = function(url, destfile, ...) {
       warning("Cannot open URL")
@@ -996,7 +284,37 @@ test_that("remote image download warnings become rasterpic_img() errors", {
   expect_snapshot(rasterpic_img(x, img), error = TRUE)
 })
 
-test_that("rasterpic_img() geotags mocked remote images", {
+test_that("download errors become rasterpic_img() errors with their cause", {
+  testthat::local_mocked_bindings(
+    rpic_download_file = function(url, destfile, ...) {
+      stop("Cannot open URL")
+    }
+  )
+
+  img <- "http://this_is_an_error_url.fake"
+  x <- sf::st_read(
+    system.file("gpkg/UK.gpkg", package = "rasterpic"),
+    quiet = TRUE
+  )
+
+  expect_snapshot(rasterpic_img(x, img), error = TRUE)
+})
+
+test_that("nonzero download statuses become rasterpic_img() errors", {
+  testthat::local_mocked_bindings(
+    rpic_download_file = \(url, destfile, ...) 1
+  )
+
+  img <- "http://this_is_an_error_url.fake"
+  x <- sf::st_read(
+    system.file("gpkg/UK.gpkg", package = "rasterpic"),
+    quiet = TRUE
+  )
+
+  expect_snapshot(rasterpic_img(x, img), error = TRUE)
+})
+
+test_that("successful mocked downloads produce geotagged RGB rasters", {
   local_img <- system.file("img/UK_flag.png", package = "rasterpic")
   logo_url <- testhelp_logo_url()
 
@@ -1019,23 +337,12 @@ test_that("rasterpic_img() geotags mocked remote images", {
   expect_equal(terra::crs(raster), terra::crs(x))
 })
 
-test_that("rasterpic_img() can download real online images", {
+test_that("reachable online images produce geotagged RGB rasters", {
   skip_on_cran()
   skip_if_not_installed("curl")
   skip_if_offline()
 
   img <- testhelp_logo_url()
-  test_download <- suppressWarnings(
-    try(
-      rpic_download_file(img, withr::local_tempfile(fileext = ".png")),
-      silent = TRUE
-    )
-  )
-  skip_if(
-    inherits(test_download, "try-error"),
-    "Cannot download the test logo."
-  )
-
   x <- sf::st_read(
     system.file("gpkg/UK.gpkg", package = "rasterpic"),
     quiet = TRUE
@@ -1081,7 +388,7 @@ test_that("sfg input uses empty CRS when none is supplied", {
   expect_gt(terra::xmax(raster), bbox_x[3])
 })
 
-test_that("sfg input accepts an explicit CRS", {
+test_that("sfg input preserves an explicit CRS", {
   img <- system.file("img/UK_flag.png", package = "rasterpic")
   x <- sf::st_read(
     system.file("gpkg/UK.gpkg", package = "rasterpic"),
@@ -1143,7 +450,7 @@ test_that("SpatExtent input uses empty CRS when none is supplied", {
   expect_gt(terra::xmax(raster), terra::xmax(x))
 })
 
-test_that("SpatExtent input accepts an explicit CRS", {
+test_that("SpatExtent input preserves an explicit CRS", {
   img <- system.file("img/UK_flag.png", package = "rasterpic")
   x <- sf::st_read(
     system.file("gpkg/UK.gpkg", package = "rasterpic"),
@@ -1172,6 +479,8 @@ test_that("SpatExtent input accepts an explicit CRS", {
 })
 
 test_that("stars input expands to contain the source bounds", {
+  skip_if_not_installed("stars")
+
   img <- system.file("img/UK_flag.png", package = "rasterpic")
   x <- stars::read_stars(
     system.file("tiff/elev.tiff", package = "rasterpic"),
@@ -1193,7 +502,9 @@ test_that("stars input expands to contain the source bounds", {
   expect_gte(terra::ymax(raster), bbox_x[4])
 })
 
-test_that("stars input preserves CRS and can be cropped", {
+test_that("stars input preserves CRS through cropping", {
+  skip_if_not_installed("stars")
+
   img <- system.file("img/UK_flag.png", package = "rasterpic")
   x <- sf::st_read(
     system.file("gpkg/UK.gpkg", package = "rasterpic"),
@@ -1222,13 +533,12 @@ test_that("stars input preserves CRS and can be cropped", {
 
   # Crop keeps the raster within the stars extent.
   crop <- rasterpic_img(x, img, crop = TRUE)
-  expect_false(identical(
-    as.vector(terra::ext(raster)),
-    as.vector(terra::ext(crop))
-  ))
+  expect_extent_matches_bbox(crop, bbox_x)
 })
 
 test_that("stars input uses empty CRS when none is supplied", {
+  skip_if_not_installed("stars")
+
   img <- system.file("img/UK_flag.png", package = "rasterpic")
   x <- sf::st_read(
     system.file("gpkg/UK.gpkg", package = "rasterpic"),
@@ -1283,7 +593,7 @@ test_that("numeric bounding box input rejects invalid coordinates", {
   expect_snapshot(rasterpic_img(c(0, 0, 1, 0), img), error = TRUE)
 })
 
-test_that("numeric bounding box input accepts an explicit CRS", {
+test_that("numeric bounds preserve an explicit CRS through cropping", {
   img <- system.file("img/UK_flag.png", package = "rasterpic")
   x <- sf::st_read(
     system.file("gpkg/UK.gpkg", package = "rasterpic"),
@@ -1313,8 +623,5 @@ test_that("numeric bounding box input accepts an explicit CRS", {
 
   # On crop ok
   crop <- rasterpic_img(x, img, crs = crs_wkt_sf, crop = TRUE)
-  expect_false(identical(
-    as.vector(terra::ext(raster)),
-    as.vector(terra::ext(crop))
-  ))
+  expect_extent_matches_bbox(crop, x)
 })

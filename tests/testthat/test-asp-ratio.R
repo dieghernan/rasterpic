@@ -1,4 +1,4 @@
-test_that("asp_ratio() computes columns divided by rows for rasters", {
+test_that("SpatRaster input returns the column-to-row ratio", {
   x <- testhelp_load_rast(system.file("tiff/elev.tiff", package = "rasterpic"))
   expect_s4_class(x, "SpatRaster")
 
@@ -8,7 +8,7 @@ test_that("asp_ratio() computes columns divided by rows for rasters", {
   expect_equal(ratio, terra::ncol(x) / terra::nrow(x))
 })
 
-test_that("asp_ratio() computes width divided by height for vector bounds", {
+test_that("sf, sfc and numeric bounds return width divided by height", {
   x <- sf::st_read(
     system.file("gpkg/UK.gpkg", package = "rasterpic"),
     quiet = TRUE
@@ -43,7 +43,7 @@ test_that("asp_ratio() computes width divided by height for vector bounds", {
   expect_identical(asp_ratio(x), asp_ratio(x3))
 })
 
-test_that("asp_ratio() errors for unsupported inputs", {
+test_that("unsupported inputs report the accepted spatial types", {
   df <- data.frame(x = 1, y = 3)
   expect_snapshot(asp_ratio(df), error = TRUE)
 
@@ -55,7 +55,7 @@ test_that("asp_ratio() errors for unsupported inputs", {
   expect_snapshot(asp_ratio(chars), error = TRUE)
 })
 
-test_that("asp_ratio() supports numeric bounding boxes", {
+test_that("numeric bounding boxes return width divided by height", {
   chars <- c("1", "2", "3", "4")
   nums <- as.double(chars)
   rat <- asp_ratio(nums)

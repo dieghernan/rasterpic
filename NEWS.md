@@ -1,8 +1,15 @@
 # rasterpic (development version)
 
-- `rasterpic_img()` now reports clearer errors when `halign` or `valign` are not single numeric values.
-- `rasterpic_img()` now reports clearer input errors for missing image files and unsupported file extensions, and images with fewer than three layers now emit a warning condition instead of a CLI alert.
-- `rasterpic_img()` now reports clearer errors when numeric bounding boxes contain missing, infinite or incorrectly ordered coordinates.
+- `asp_ratio()` now reports the supported input types when `x` is invalid.
+- `rasterpic_img()` now reports clearer inclusive-range errors when `halign` or
+  `valign` are not single numeric values.
+- `rasterpic_img()` now reports clearer input errors for missing image files and
+  unsupported file extensions, preserves download failure details, warns when
+  geographic coordinates are treated as planar and emits a warning condition
+  for images with fewer than three layers.
+- `rasterpic_img()` now reports clearer errors when numeric bounding boxes
+  contain missing, infinite or incorrectly ordered coordinates.
+- `rasterpic_img()` now validates `img`, `expand`, `crop`, `mask`, `inverse` and `crs` before processing.
 
 # rasterpic 0.5.1
 
@@ -16,11 +23,11 @@
 - Package documentation was reviewed and updated with AI-assisted editing.
 - `rasterpic_img()` is now an S3 generic with methods for supported spatial
   input classes (#39).
-- `rasterpic_img()` now supports `stars` objects.
+- `rasterpic_img()` now supports **stars** objects.
 
 # rasterpic 0.4.0
 
-- Migrated vignettes to Quarto.
+- Migrated vignettes to **Quarto**.
 
 # rasterpic 0.3.1
 
@@ -32,7 +39,7 @@
 
 - When the output has 3 or more layers, the first three are renamed to `"r"`,
   `"g"` and `"b"`. In cases with 4 layers or more, the fourth layer is renamed
-  as `"alpha"`. This allows compatibility with **tmap** `>= 4.0` and avoids the
+  as `"alpha"`. This allows compatibility with **tmap** >= 4.0 and avoids the
   error `! [subset] you cannot select a layer with a name that is not unique`.
 
 # rasterpic 0.2.6
@@ -79,7 +86,7 @@
   - Numeric vectors `c(xmin, ymin, xmax, ymax)`.
 - The `img` parameter in `rasterpic_img()` now accepts image URLs.
 - Added an [article](https://dieghernan.github.io/rasterpic/articles/plots.html)
-  to the pkgdown site.
+  to the **pkgdown** site.
 - Fixed **CRAN** errors.
 
 # rasterpic 0.1.0

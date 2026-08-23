@@ -1,6 +1,6 @@
 ---
 title: "Plotting SpatRaster objects"
-description: Several ways to plot geotagged SpatRaster objects in R.
+description: Several ways to plot geotagged SpatRaster objects in **R**.
 knitr:
   opts_chunk:
     collapse: true

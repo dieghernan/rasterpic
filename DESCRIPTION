@@ -28,7 +28,7 @@ Suggests:
     knitr,
     quarto,
     stars,
-    testthat (>= 3.0.0),
+    testthat (>= 3.3.0),
     tidyterra,
     withr
 VignetteBuilder: 

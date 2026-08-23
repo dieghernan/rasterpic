@@ -1,11 +1,43 @@
 #' Geotag an image as a `SpatRaster`
 #'
 #' @description
-#' Geotag an image and return a `SpatRaster` based on coordinates from a
-#' supported spatial input class.
+#' Geotag an image and return a `SpatRaster` using coordinates from a supported
+#' spatial input class.
 #'
 #' `rasterpic_img()` is an S3 generic. See **S3 methods** for supported input
 #' classes.
+#'
+#' @details
+#' `vignette("rasterpic", package = "rasterpic")` explains the effect of
+#' parameters `halign`, `valign`, `expand`, `crop` and `mask` with examples.
+#'
+#' ## S3 methods
+#'
+#' All methods share the parameters, return value and examples documented on
+#' this page. \CRANpkg{rasterpic} groups them by input behavior:
+#'
+#' - Vector methods for the \CRANpkg{sf} classes `sf`, `sfc` and `sfg` and the
+#'   \CRANpkg{terra} class `SpatVector` can mask the image to the input shape.
+#' - Extent-like methods for `bbox`, numeric coordinate vectors, the
+#'   \CRANpkg{stars} class `stars` and the \CRANpkg{terra} classes `SpatRaster`
+#'   and `SpatExtent` use the input bounding box.
+#' - The default method reports unsupported classes. Other packages can provide
+#'   methods for additional spatial classes.
+#'
+#' ## CRS
+#'
+#' This function preserves the CRS of `x` when applicable. For optimal results,
+#' **do not use** geographic coordinates (longitude/latitude).
+#'
+#' `crs` can be in WKT format, as an `"authority:number"` code such as
+#' `"EPSG:4326"` or as a PROJ-string such as `"+proj=utm +zone=12"`. It can also
+#' be retrieved with:
+#'
+#' - [`sf::st_crs(25830)$wkt`][sf::st_crs()].
+#' - [terra::crs()].
+#' - [tidyterra::pull_crs()].
+#'
+#' See the **Value** and **Notes** sections in [terra::crs()].
 #'
 #' @param x An \R object. See **S3 methods** for supported classes.
 #'
@@ -28,7 +60,7 @@
 #' @param crop Logical. Should the raster be cropped to the (expanded) bounding
 #'   box of `x`? See **Details**.
 #'
-#' @param mask Logical, for vector methods. Should the raster be
+#' @param mask Logical for vector methods. Should the raster be
 #'   [masked][terra::mask] to the shape of `x`? See **Details**.
 #'
 #' @param inverse Logical. Only used when `mask = TRUE`. If `TRUE`, areas
@@ -40,51 +72,18 @@
 #'
 #' @param ... Further arguments passed to methods.
 #'
-#' @return
+#' @returns
 #' A `SpatRaster` object (see [terra::rast()]) where each layer corresponds to
 #' a color channel of `img`:
 #'
-#' - If `img` has at least 3 layers, the result records layers 1 to 3 as the
-#'   red, green and blue channels with names `"r"`, `"g"` and `"b"` and `alpha`
-#'   if applicable.
+#' - If `img` has at least 3 layers, the result names layers 1 to 3 `"r"`, `"g"`
+#'   and `"b"` for the red, green and blue channels and names layer 4 `"alpha"`
+#'   when applicable.
 #' - If `img` already has an RGB specification (this may be the case for
 #'   `tif`/`tiff` files), the result keeps that specification.
 #'
 #' The resulting `SpatRaster` will have an RGB specification as explained in
 #' [terra::RGB()].
-#'
-#' @details
-#' `vignette("rasterpic", package = "rasterpic")` explains the effect of
-#' parameters `halign`, `valign`, `expand`, `crop` and `mask` with examples.
-#'
-#' ## S3 methods
-#'
-#' \CRANpkg{rasterpic} supports these spatial input classes:
-#'
-#' - \CRANpkg{sf} classes: `sf`, `sfc`, `sfg` and `bbox`.
-#' - \CRANpkg{terra} classes: `SpatRaster`, `SpatVector` and `SpatExtent`.
-#' - \CRANpkg{stars} class: `stars`.
-#' - A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
-#'
-#' Other packages can provide methods for additional spatial classes.
-#'
-#' Methods for extent-like inputs use the object extent. Methods for vector
-#' inputs can also mask the image to the object shape.
-#'
-#' ## CRS
-#'
-#' This function preserves the CRS of `x` when applicable. For optimal results,
-#' **do not use** geographic coordinates (longitude/latitude).
-#'
-#' `crs` can be in WKT format, as an `"authority:number"` code such as
-#' `"EPSG:4326"` or as a PROJ-string such as `"+proj=utm +zone=12"`. It can also
-#' be retrieved with:
-#'
-#' - [`sf::st_crs(25830)$wkt`][sf::st_crs].
-#' - [terra::crs()].
-#' - [tidyterra::pull_crs()].
-#'
-#' See the **Value** and **Notes** sections in [terra::crs()].
 #'
 #' @seealso
 #' `vignette("rasterpic", package = "rasterpic")` for examples.
@@ -114,6 +113,7 @@
 #'   [tidyterra::geom_spatraster_rgb()] with \CRANpkg{ggplot2}.
 #' - \CRANpkg{tmap}, \CRANpkg{mapsf} and \CRANpkg{maptiles}.
 #'
+#' @family geotagging
 #' @export
 #' @encoding UTF-8
 #' @examples
@@ -188,6 +188,7 @@ rasterpic_img <- function(
   UseMethod("rasterpic_img")
 }
 
+#' @rdname rasterpic_img
 #' @export
 rasterpic_img.default <- function(
   x,
@@ -280,6 +281,8 @@ rasterpic_img.sfg <- function(
   inverse = FALSE,
   crs = NULL
 ) {
+  rpic_check_crs(crs, call = call("rasterpic_img"))
+
   if (any(is.null(crs), is.na(crs))) {
     crs <- NA
   }
@@ -335,6 +338,8 @@ rasterpic_img.bbox <- function(
   ...,
   crs = NULL
 ) {
+  rpic_check_crs(crs, call = call("rasterpic_img"))
+
   x <- sf::st_as_sfc(x)
 
   crs_orig <- sf::st_crs(x)
@@ -418,6 +423,10 @@ rasterpic_img.SpatVector <- function(
   mask = FALSE,
   inverse = FALSE
 ) {
+  call <- call("rasterpic_img")
+  rpic_check_bool(mask, "mask", call = call)
+  rpic_check_bool(inverse, "inverse", call = call)
+
   processed <- rpic_input_spat(x)
 
   box <- processed$box
@@ -482,18 +491,22 @@ rasterpic_img_impl <- function(
 ) {
   call <- call("rasterpic_img")
 
-  # Validate alignment inputs.
+  # Validate inputs.
+  rpic_check_img(img, call = call)
   rpic_check_unit_interval(halign, "halign", call = call)
   rpic_check_unit_interval(valign, "valign", call = call)
+  rpic_check_expand(expand, call = call)
+  rpic_check_bool(crop, "crop", call = call)
+  rpic_check_crs(crs, call = call)
 
   # Normalize missing CRS values.
   crs <- rpic_crs(crs)
 
   if (!nzchar(crs)) {
-    cli::cli_alert_info("No CRS was supplied in {.arg crs}.")
+    cli::cli_alert_info("No CRS was supplied via {.arg crs}.")
   } else if (terra::is.lonlat(crs, warn = FALSE)) {
-    cli::cli_alert_info(
-      "{.arg x} uses geographic coordinates. Assuming planar coordinates."
+    cli::cli_warn(
+      "{.arg x} uses geographic coordinates. Treating them as planar."
     )
   }
 

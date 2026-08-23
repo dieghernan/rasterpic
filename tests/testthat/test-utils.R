@@ -1,16 +1,16 @@
-test_that("rpic_crs() normalizes missing CRS values", {
+test_that("NULL and NA CRS values become empty strings", {
   expect_identical(rpic_crs(NULL), "")
   expect_identical(rpic_crs(NA_character_), "")
   expect_identical(rpic_crs("epsg:3857"), "epsg:3857")
 })
 
-test_that("rpic_check_unit_interval() accepts scalar values in [0, 1]", {
+test_that("unit interval validation accepts boundaries and interior values", {
   expect_no_error(rpic_check_unit_interval(0, "halign"))
   expect_no_error(rpic_check_unit_interval(0.5, "halign"))
   expect_no_error(rpic_check_unit_interval(1, "halign"))
 })
 
-test_that("rpic_check_unit_interval() errors for invalid scalar values", {
+test_that("unit interval validation reports invalid type, length and range", {
   expect_snapshot(rpic_check_unit_interval(NA_real_, "halign"), error = TRUE)
 
   expect_snapshot(rpic_check_unit_interval(c(0, 1), "halign"), error = TRUE)
@@ -22,11 +22,11 @@ test_that("rpic_check_unit_interval() errors for invalid scalar values", {
   expect_snapshot(rpic_check_unit_interval(1.1, "valign"), error = TRUE)
 })
 
-test_that("rpic_check_bbox() accepts finite ordered bounding boxes", {
+test_that("bounding box validation accepts finite increasing coordinates", {
   expect_no_error(rpic_check_bbox(c(0, 1, 2, 3), "x"))
 })
 
-test_that("rpic_check_bbox() errors for invalid bounding boxes", {
+test_that("bounding box validation reports length, finiteness and ordering", {
   expect_snapshot(rpic_check_bbox(c(1, 2, 3), "x"), error = TRUE)
 
   expect_snapshot(rpic_check_bbox(c(NA, 0, 1, 1), "x"), error = TRUE)
@@ -36,9 +36,11 @@ test_that("rpic_check_bbox() errors for invalid bounding boxes", {
   expect_snapshot(rpic_check_bbox(c(1, 0, 0, 1), "x"), error = TRUE)
 
   expect_snapshot(rpic_check_bbox(c(0, 0, 1, 0), "x"), error = TRUE)
+
+  expect_snapshot(rpic_check_bbox(c(0, 0, 1, 1) + 0i, "x"), error = TRUE)
 })
 
-test_that("rpic_expand_box() expands each side by the same margin", {
+test_that("box expansion adds the shortest-axis margin to every side", {
   box <- c(0, 0, 10, 20)
 
   expect_equal(rpic_expand_box(box, 0), box)
@@ -46,7 +48,7 @@ test_that("rpic_expand_box() expands each side by the same margin", {
   expect_equal(rpic_expand_box(box, 1), c(-10, -10, 20, 30))
 })
 
-test_that("rpic_place_extent() expands width when the image is wider", {
+test_that("wide images expand width and preserve vertical bounds", {
   rast <- terra::rast(nrows = 10, ncols = 20)
 
   placement <- rpic_place_extent(
@@ -59,7 +61,7 @@ test_that("rpic_place_extent() expands width when the image is wider", {
   expect_equal(placement$ext, c(-5, 15, 0, 10))
 })
 
-test_that("rpic_place_extent() expands height when the image is taller", {
+test_that("tall images expand height using the requested alignment", {
   rast <- terra::rast(nrows = 10, ncols = 10)
 
   placement <- rpic_place_extent(
@@ -72,7 +74,7 @@ test_that("rpic_place_extent() expands height when the image is taller", {
   expect_equal(placement$ext, c(0, 20, -2.5, 17.5))
 })
 
-test_that("rpic_download_file() downloads local file URLs", {
+test_that("file URLs copy their contents and return a success status", {
   tmp_dir <- withr::local_tempdir()
   source_file <- withr::local_tempfile(tmpdir = tmp_dir, fileext = ".txt")
   dest_file <- withr::local_tempfile(tmpdir = tmp_dir, fileext = ".txt")

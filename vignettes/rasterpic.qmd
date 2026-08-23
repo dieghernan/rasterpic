@@ -1,6 +1,6 @@
 ---
 title: "Get started"
-description: Introduction to the rasterpic package.
+description: Introduction to the **rasterpic** package.
 vignette: >
   %\VignetteIndexEntry{Get started}
   %\VignetteEngine{quarto::html}

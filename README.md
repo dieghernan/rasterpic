@@ -16,7 +16,7 @@ results](https://badges.cranchecks.info/worst/rasterpic.svg)](https://cran.r-pro
 [![CodeFactor](https://www.codefactor.io/repository/github/dieghernan/rasterpic/badge)](https://www.codefactor.io/repository/github/dieghernan/rasterpic)
 [![DOI](https://img.shields.io/badge/DOI-10.32614/CRAN.package.rasterpic-blue)](https://doi.org/10.32614/CRAN.package.rasterpic)
 [![Project Status: Inactive – The project has reached a stable, usable
-state but is no longer being actively developed; support/maintenance
+state but is no longer being actively developed, support/maintenance
 will be provided as time
 allows.](https://www.repostatus.org/badges/latest/inactive.svg)](https://www.repostatus.org/#inactive)
 [![status](https://tinyverse.netlify.app/status/rasterpic)](https://CRAN.R-project.org/package=rasterpic)
@@ -30,7 +30,7 @@ spatial input classes (see `?terra::SpatRaster`).
 > [!NOTE]
 >
 > This package is stable and maintained on a best-effort basis. I
-> currently prioritize CRAN compatibility, bug fixes and regressions
+> currently prioritize **CRAN** compatibility, bug fixes and regressions
 > over new features.
 
 ## Installation
@@ -59,7 +59,7 @@ pak::pak("dieghernan/rasterpic")
 ```
 
 Alternatively, you can install **rasterpic** using the
-[r-universe](https://dieghernan.r-universe.dev/rasterpic):
+[**r-universe**](https://dieghernan.r-universe.dev/rasterpic):
 
 ``` r
 # Install rasterpic in R.
@@ -88,7 +88,7 @@ classes:
 the object extent, and vector methods can also mask the image to the
 object shape.
 
-This example uses an `sf` object:
+This example uses an **sf** object:
 
 ``` r
 library(rasterpic)
@@ -160,7 +160,7 @@ Referenced SpatRaster Objects</em>.
 <a href="https://dieghernan.github.io/rasterpic/">https://dieghernan.github.io/rasterpic/</a>.
 </p>
 
-A BibTeX entry for LaTeX users is:
+A **BibTeX** entry for **LaTeX** users is:
 
     @Manual{R-rasterpic,
       title = {{rasterpic}: Convert Images to Spatially Referenced {SpatRaster} Objects},

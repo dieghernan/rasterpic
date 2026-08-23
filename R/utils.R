@@ -27,17 +27,21 @@ rpic_local_img <- function(img, call = NULL) {
   if (grepl("^http:|^https:", img)) {
     tmp <- tempfile(fileext = paste0(".", tools::file_ext(img)))
 
-    err_dwnload <- tryCatch(
+    download_result <- tryCatch(
       rpic_download_file(img, tmp, quiet = TRUE, mode = "wb"),
-      warning = function(x) {
-        TRUE
-      },
-      error = function(x) {
-        TRUE # nocov
-      }
+      warning = identity,
+      error = identity
     )
 
-    if (err_dwnload) {
+    if (inherits(download_result, "condition")) {
+      cli::cli_abort(
+        "Cannot download {.arg img} from {.url {img}}.",
+        parent = download_result,
+        call = call
+      )
+    }
+
+    if (isTRUE(download_result != 0)) {
       cli::cli_abort(
         "Cannot download {.arg img} from {.url {img}}.",
         call = call
@@ -115,24 +119,85 @@ rpic_crs <- function(crs) {
   crs
 }
 
-rpic_check_unit_interval <- function(x, arg, call = NULL) {
-  if (!is.numeric(x) || length(x) != 1 || is.na(x)) {
+rpic_check_img <- function(x, call = NULL) {
+  if (
+    !is.character(x) ||
+      length(x) != 1 ||
+      is.na(x) ||
+      !nzchar(x)
+  ) {
     cli::cli_abort(
-      "{.arg {arg}} must be a number between 0 and 1.",
+      paste0(
+        "{.arg img} must be a single nonempty string containing a file path ",
+        "or URL."
+      ),
+      call = call
+    )
+  }
+}
+
+rpic_check_bool <- function(x, arg, call = NULL) {
+  if (!is.logical(x) || length(x) != 1 || is.na(x)) {
+    cli::cli_abort(
+      "{.arg {arg}} must be {.val {TRUE}} or {.val {FALSE}}.",
+      call = call
+    )
+  }
+}
+
+rpic_check_expand <- function(x, call = NULL) {
+  is_real <- is.double(x) || is.integer(x)
+
+  if (!is_real || length(x) != 1 || is.na(x) || !is.finite(x) || x < 0) {
+    cli::cli_abort(
+      paste0(
+        "{.arg expand} must be a single finite number greater than or equal ",
+        "to {.val {0}}."
+      ),
+      call = call
+    )
+  }
+}
+
+rpic_check_crs <- function(x, call = NULL) {
+  is_missing <- length(x) == 1 && is.na(x)
+
+  if (!is.null(x) && !is_missing && (!is.character(x) || length(x) != 1)) {
+    cli::cli_abort(
+      "{.arg crs} must be {.code NULL}, {.code NA} or a single string.",
+      call = call
+    )
+  }
+}
+
+rpic_check_unit_interval <- function(x, arg, call = NULL) {
+  is_real <- is.double(x) || is.integer(x)
+
+  if (!is_real || length(x) != 1 || is.na(x)) {
+    cli::cli_abort(
+      paste0(
+        "{.arg {arg}} must be a single number from {.val {0}} to ",
+        "{.val {1}}, inclusive."
+      ),
       call = call
     )
   }
 
   if (x < 0 || x > 1) {
     cli::cli_abort(
-      "{.arg {arg}} must be between 0 and 1.",
+      paste0(
+        "{.arg {arg}} must be from {.val {0}} to {.val {1}}, ",
+        "inclusive."
+      ),
       call = call
     )
   }
 }
 
 rpic_check_bbox <- function(x, arg, call = NULL) {
-  if (!is.numeric(x) || length(x) != 4) {
+  is_real <- is.double(x) || is.integer(x)
+
+  if (!is_real || length(x) != 4) {
     cli::cli_abort(
       c(
         "{.arg {arg}} must be a numeric vector of length 4.",

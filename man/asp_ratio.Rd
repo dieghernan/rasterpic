@@ -3,12 +3,12 @@
 \encoding{UTF-8}
 \name{asp_ratio}
 \alias{asp_ratio}
-\title{Compute aspect ratio for spatial input}
+\title{Compute the aspect ratio of spatial input}
 \usage{
 asp_ratio(x)
 }
 \arguments{
-\item{x}{A \code{SpatRaster} object, an \code{sf} or \code{sfc} object or a numeric vector
+\item{x}{A \code{SpatRaster}, \code{sf} or \code{sfc} object or a numeric vector
 of length 4 with coordinates \code{c(xmin, ymin, xmax, ymax)}, as created by
 \code{\link[sf:st_bbox]{sf::st_bbox()}}.}
 }
@@ -16,7 +16,7 @@ of length 4 with coordinates \code{c(xmin, ymin, xmax, ymax)}, as created by
 A numeric scalar giving the aspect ratio.
 }
 \description{
-Compute the aspect ratio as width divided by height, or columns divided by
+Compute the aspect ratio as width divided by height or columns divided by
 rows.
 }
 \examples{
@@ -28,4 +28,9 @@ plot(x)
 asp_ratio(x)
 }
 }
+\seealso{
+Other image geotagging tools:
+\code{\link[=rasterpic_img]{rasterpic_img()}}
+}
+\concept{geotagging}
 \keyword{internal}
