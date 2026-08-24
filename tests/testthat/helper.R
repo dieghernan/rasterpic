@@ -8,7 +8,7 @@ testhelp_load_rast <- function(path) {
   )
   file.copy(path, tmp, overwrite = TRUE)
 
-  x <- terra::rast(tmp)
+  x <- suppressWarnings(terra::rast(tmp))
 
   x
 }

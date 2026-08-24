@@ -53,7 +53,8 @@ reference:
 
 external-articles:
 - name: beautiful-maps-flags
-  title: "Beautiful maps with R (IV): Fun with flags revisited"
+  title: >
+    Beautiful maps with R (IV): Fun with flags revisited
   description: "Any picture as a basemap"
   href: https://dieghernan.github.io/202201_maps-flags/
 - name: quick-brazil

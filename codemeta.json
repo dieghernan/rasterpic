@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/dieghernan/rasterpic",
   "issueTracker": "https://github.com/dieghernan/rasterpic/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.5.1.9000",
+  "version": "1.0.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -205,7 +205,7 @@
     "SystemRequirements": null
   },
   "keywords": ["cran", "jpeg", "jpg", "maps", "png", "r", "r-package", "r-stats", "raster", "rstats", "sf", "stars", "terra", "tif", "tiff", "cran-r"],
-  "fileSize": "1206.951KB",
+  "fileSize": "1206.622KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

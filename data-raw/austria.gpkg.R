@@ -12,8 +12,8 @@ austria <- gisco_get_nuts(
 )
 
 
-austria <- austria %>%
-  mutate(name = "Austria") %>%
+austria <- austria |>
+  mutate(name = "Austria") |>
   select(name)
 plot(austria)
 

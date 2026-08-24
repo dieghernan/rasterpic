@@ -1,15 +1,16 @@
-# rasterpic (development version)
+# rasterpic 1.0.0
 
 - `asp_ratio()` now reports the supported input types when `x` is invalid.
 - `rasterpic_img()` now reports clearer inclusive-range errors when `halign` or
   `valign` are not single numeric values.
 - `rasterpic_img()` now reports clearer input errors for missing image files and
   unsupported file extensions, preserves download failure details, warns when
-  geographic coordinates are treated as planar and emits a warning condition
-  for images with fewer than three layers.
+  geographic coordinates are treated as planar and emits a warning condition for
+  images with fewer than three layers.
 - `rasterpic_img()` now reports clearer errors when numeric bounding boxes
   contain missing, infinite or incorrectly ordered coordinates.
-- `rasterpic_img()` now validates `img`, `expand`, `crop`, `mask`, `inverse` and `crs` before processing.
+- `rasterpic_img()` now validates `img`, `expand`, `crop`, `mask`, `inverse` and
+  `crs` before processing.
 
 # rasterpic 0.5.1
 
@@ -39,7 +40,7 @@
 
 - When the output has 3 or more layers, the first three are renamed to `"r"`,
   `"g"` and `"b"`. In cases with 4 layers or more, the fourth layer is renamed
-  as `"alpha"`. This allows compatibility with **tmap** >= 4.0 and avoids the
+  as `"alpha"`. This allows compatibility with **tmap** \>= 4.0 and avoids the
   error `! [subset] you cannot select a layer with a name that is not unique`.
 
 # rasterpic 0.2.6

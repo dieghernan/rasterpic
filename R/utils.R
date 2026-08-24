@@ -74,10 +74,7 @@ rpic_check_img_ext <- function(img, call = NULL) {
     cli::cli_abort(
       c(
         "Unsupported {.arg img} extension {.val {ext}}.",
-        "i" = paste0(
-          "{.arg img} must use one of: ",
-          "{.val {supported_ext}}."
-        )
+        "i" = paste0("{.arg img} must use one of: ", "{.val {supported_ext}}.")
       ),
       call = call
     )
@@ -99,11 +96,11 @@ rpic_read_png <- function(img) {
     }
   }
 
-  terra::rast(pngfile)
+  suppressWarnings(terra::rast(pngfile))
 }
 
 rpic_read_raster_img <- function(img) {
-  terra::rast(img, noflip = TRUE)
+  suppressWarnings(terra::rast(img, noflip = TRUE))
 }
 
 rpic_input_spat <- function(x) {
@@ -120,12 +117,7 @@ rpic_crs <- function(crs) {
 }
 
 rpic_check_img <- function(x, call = NULL) {
-  if (
-    !is.character(x) ||
-      length(x) != 1 ||
-      is.na(x) ||
-      !nzchar(x)
-  ) {
+  if (!is.character(x) || length(x) != 1 || is.na(x) || !nzchar(x)) {
     cli::cli_abort(
       paste0(
         "{.arg img} must be a single nonempty string containing a file path ",

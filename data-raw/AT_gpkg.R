@@ -12,8 +12,8 @@ UK <- gisco_get_nuts(
 )
 
 
-UK <- UK %>%
-  mutate(name = "United Kingdom") %>%
+UK <- UK |>
+  mutate(name = "United Kingdom") |>
   select(name)
 plot(UK)
 

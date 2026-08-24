@@ -269,11 +269,13 @@ test_that("tiff images with existing RGB metadata preserve that mapping", {
 })
 
 test_that("download warnings become rasterpic_img() errors with their cause", {
-  testthat::local_mocked_bindings(
-    rpic_download_file = function(url, destfile, ...) {
-      warning("Cannot open URL")
-    }
-  )
+  testthat::local_mocked_bindings(rpic_download_file = function(
+    url,
+    destfile,
+    ...
+  ) {
+    warning("Cannot open URL")
+  })
 
   img <- "http://this_is_an_error_url.fake"
   x <- sf::st_read(
@@ -285,11 +287,13 @@ test_that("download warnings become rasterpic_img() errors with their cause", {
 })
 
 test_that("download errors become rasterpic_img() errors with their cause", {
-  testthat::local_mocked_bindings(
-    rpic_download_file = function(url, destfile, ...) {
-      stop("Cannot open URL")
-    }
-  )
+  testthat::local_mocked_bindings(rpic_download_file = function(
+    url,
+    destfile,
+    ...
+  ) {
+    stop("Cannot open URL")
+  })
 
   img <- "http://this_is_an_error_url.fake"
   x <- sf::st_read(
@@ -301,9 +305,7 @@ test_that("download errors become rasterpic_img() errors with their cause", {
 })
 
 test_that("nonzero download statuses become rasterpic_img() errors", {
-  testthat::local_mocked_bindings(
-    rpic_download_file = \(url, destfile, ...) 1
-  )
+  testthat::local_mocked_bindings(rpic_download_file = \(url, destfile, ...) 1)
 
   img <- "http://this_is_an_error_url.fake"
   x <- sf::st_read(
@@ -318,12 +320,14 @@ test_that("successful mocked downloads produce geotagged RGB rasters", {
   local_img <- system.file("img/UK_flag.png", package = "rasterpic")
   logo_url <- testhelp_logo_url()
 
-  testthat::local_mocked_bindings(
-    rpic_download_file = function(url, destfile, ...) {
-      file.copy(local_img, destfile, overwrite = TRUE)
-      0
-    }
-  )
+  testthat::local_mocked_bindings(rpic_download_file = function(
+    url,
+    destfile,
+    ...
+  ) {
+    file.copy(local_img, destfile, overwrite = TRUE)
+    0
+  })
 
   img <- logo_url
   x <- sf::st_read(
@@ -374,7 +378,7 @@ test_that("sfg input uses empty CRS when none is supplied", {
 
   expect_false(nzchar(terra::crs(raster)))
 
-  png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- rpic_read_png(img)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
   bbox_x <- unname(sf::st_bbox(x))
@@ -410,7 +414,7 @@ test_that("sfg input preserves an explicit CRS", {
   raster <- rasterpic_img(x, img, crs = crs_wkt_sf)
   expect_true(nzchar(terra::crs(raster)))
 
-  png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- rpic_read_png(img)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
   bbox_x <- unname(sf::st_bbox(x))
@@ -438,7 +442,7 @@ test_that("SpatExtent input uses empty CRS when none is supplied", {
 
   expect_false(nzchar(terra::crs(raster)))
 
-  png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- rpic_read_png(img)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
   # Same y coords
@@ -466,7 +470,7 @@ test_that("SpatExtent input preserves an explicit CRS", {
   raster <- rasterpic_img(x, img, crs = crs_wkt_terra)
   expect_equal(terra::crs(raster), crs_wkt_terra)
 
-  png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- rpic_read_png(img)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
   # Same y coords
@@ -490,7 +494,7 @@ test_that("stars input expands to contain the source bounds", {
 
   expect_snapshot(raster <- rasterpic_img(x, img))
 
-  png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- rpic_read_png(img)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
   bbox_x <- unname(sf::st_bbox(x))
@@ -520,7 +524,7 @@ test_that("stars input preserves CRS through cropping", {
   raster <- rasterpic_img(x, img)
   expect_equal(terra::crs(raster), crs_wkt_sf)
 
-  png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- rpic_read_png(img)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
   bbox_x <- unname(sf::st_bbox(x))
@@ -569,7 +573,7 @@ test_that("numeric bounding box input uses empty CRS when none is supplied", {
 
   expect_false(nzchar(terra::crs(raster)))
 
-  png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- rpic_read_png(img)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
   # Same y coords
@@ -610,7 +614,7 @@ test_that("numeric bounds preserve an explicit CRS through cropping", {
   raster <- rasterpic_img(x, img, crs = crs_wkt_sf)
   expect_true(nzchar(terra::crs(raster)))
 
-  png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- rpic_read_png(img)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
   # Same y coords

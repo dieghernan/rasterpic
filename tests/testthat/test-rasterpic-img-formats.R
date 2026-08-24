@@ -7,7 +7,7 @@ test_that("horizontal images produce equivalent output across formats", {
 
   raster <- rasterpic_img(x, img)
   expect_true(terra::has.RGB(raster))
-  png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- rpic_read_png(img)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
   bbox_x <- unname(sf::st_bbox(x))
@@ -77,7 +77,7 @@ test_that("vertical images produce equivalent sf output across formats", {
   raster <- rasterpic_img(x, img)
   expect_true(terra::has.RGB(raster))
 
-  png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- rpic_read_png(img)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
   bbox_x <- unname(sf::st_bbox(x))
@@ -130,7 +130,7 @@ test_that("vertical images produce equivalent raster output across formats", {
 
   raster <- rasterpic_img(x, img)
   expect_true(terra::has.RGB(raster))
-  png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- rpic_read_png(img)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
   # Different y coords
@@ -185,7 +185,7 @@ test_that("vertical images produce equivalent sfc output across formats", {
   raster <- rasterpic_img(x, img)
   expect_true(terra::has.RGB(raster))
 
-  png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- rpic_read_png(img)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
   bbox_x <- unname(sf::st_bbox(x))
@@ -240,7 +240,7 @@ test_that("vertical formats preserve SpatExtent placement", {
   expect_s4_class(x, "SpatExtent")
 
   raster <- rasterpic_img(x, img, crs = "epsg:3035")
-  png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- rpic_read_png(img)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
   bbox_x <- unname(sf::st_bbox(x))
@@ -297,7 +297,7 @@ test_that("transparent PNG input preserves RGB and alpha channels", {
 
   expect_true(terra::has.RGB(raster))
 
-  png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- suppressWarnings(terra::rast(img))
   png_dim <- terra::colorize(png_dim, to = "rgb", alpha = TRUE)
 
   expect_equal(dim(png_dim)[3], 4)
@@ -307,8 +307,5 @@ test_that("transparent PNG input preserves RGB and alpha channels", {
   pixels <- terra::values(raster, mat = TRUE)
   expect_equal(dim(raster), c(480, 482, 4))
   expect_all_true(is.na(pixels[1, ]))
-  expect_equal(
-    pixels[115439, ],
-    c(r = 89, g = 95, b = 113, alpha = 255)
-  )
+  expect_equal(pixels[115439, ], c(r = 89, g = 95, b = 113, alpha = 255))
 })

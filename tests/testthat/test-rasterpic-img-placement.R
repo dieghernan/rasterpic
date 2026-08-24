@@ -42,7 +42,7 @@ test_that("halign = 0 anchors the image to the left edge", {
   )
 
   raster <- rasterpic_img(x, img, halign = 0)
-  png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- rpic_read_png(img)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
   bbox_x <- unname(sf::st_bbox(x))
@@ -61,7 +61,7 @@ test_that("halign = 1 anchors the image to the right edge", {
   )
 
   raster <- rasterpic_img(x, img, halign = 1)
-  png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- rpic_read_png(img)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
   bbox_x <- unname(sf::st_bbox(x))
@@ -80,7 +80,7 @@ test_that("valign = 0 anchors the image to the bottom edge", {
   )
 
   raster <- rasterpic_img(x, img, valign = 0)
-  png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- rpic_read_png(img)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
   bbox_x <- unname(sf::st_bbox(x))
@@ -99,7 +99,7 @@ test_that("valign = 1 anchors the image to the top edge", {
   )
 
   raster <- rasterpic_img(x, img, valign = 1)
-  png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- rpic_read_png(img)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
   bbox_x <- unname(sf::st_bbox(x))
@@ -125,7 +125,7 @@ test_that("bbox input preserves CRS and expands the shorter axis", {
   v <- terra::vect(sf::st_as_sfc(x))
   expect_identical(terra::crs(raster), terra::crs(v))
 
-  png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- rpic_read_png(img)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
   # Same y coords
@@ -158,7 +158,7 @@ test_that("bbox input propagates an explicit CRS through cropping", {
   raster <- rasterpic_img(x, img, crs = crs_wkt_sf)
   expect_true(nzchar(terra::crs(raster)))
 
-  png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- rpic_read_png(img)
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
   # Same y coords
@@ -183,7 +183,7 @@ test_that("crop trims sf output to the input bounding box", {
 
   x0 <- rasterpic_img(x, img, expand = 0, crop = TRUE)
 
-  png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- rpic_read_png(img)
   expect_false(identical(asp_ratio(x0), dim(png_dim)[2] / dim(png_dim)[1]))
 
   # Bboxes
@@ -207,7 +207,7 @@ test_that("mask and inverse create complementary sf masks", {
 
   raster <- rasterpic_img(x, img, mask = TRUE)
 
-  png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- rpic_read_png(img)
 
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
@@ -258,7 +258,7 @@ test_that("crop trims SpatVector output to the input bounding box", {
 
   x0 <- rasterpic_img(x, img, expand = 0, crop = TRUE)
 
-  png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- rpic_read_png(img)
   expect_false(identical(asp_ratio(x0), dim(png_dim)[2] / dim(png_dim)[1]))
 
   # Bboxes
@@ -287,7 +287,7 @@ test_that("mask and inverse create complementary SpatVector masks", {
 
   expect_true(terra::has.RGB(raster))
 
-  png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- rpic_read_png(img)
 
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
@@ -349,7 +349,7 @@ test_that("crop trims sfg output to the input bounding box", {
 
   x0 <- rasterpic_img(x, img, expand = 0, crop = TRUE, crs = crs_wkt_sf)
 
-  png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- rpic_read_png(img)
   expect_false(identical(asp_ratio(x0), dim(png_dim)[2] / dim(png_dim)[1]))
 
   # Bboxes
@@ -385,7 +385,7 @@ test_that("mask and inverse create complementary sfg masks", {
 
   raster <- rasterpic_img(x, img, mask = TRUE, crs = crs_wkt_sf)
 
-  png_dim <- terra::rast(img, noflip = TRUE)
+  png_dim <- rpic_read_png(img)
 
   expect_equal(asp_ratio(raster), dim(png_dim)[2] / dim(png_dim)[1])
 
