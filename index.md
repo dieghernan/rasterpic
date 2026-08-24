@@ -8,8 +8,8 @@ spatial input classes (see
 Note
 
 This package is stable and maintained on a best-effort basis. I
-currently prioritize CRAN compatibility, bug fixes and regressions over
-new features.
+currently prioritize **CRAN** compatibility, bug fixes and regressions
+over new features.
 
 ## Installation
 
@@ -35,7 +35,7 @@ can geotag an image from several spatial input classes:
 is an S3 generic. Methods for extent-like inputs use the object extent,
 and vector methods can also mask the image to the object shape.
 
-This example uses an `sf` object:
+This example uses an **sf** object:
 
 ``` r
 
@@ -106,7 +106,7 @@ SpatRaster Objects*.
 [doi:10.32614/CRAN.package.rasterpic](https://doi.org/10.32614/CRAN.package.rasterpic).
 <https://dieghernan.github.io/rasterpic/>.
 
-A BibTeX entry for LaTeX users is:
+A **BibTeX** entry for **LaTeX** users is:
 
 ``` R
 @Manual{R-rasterpic,
@@ -114,7 +114,7 @@ A BibTeX entry for LaTeX users is:
   doi = {10.32614/CRAN.package.rasterpic},
   author = {Diego Hernangómez},
   year = {2026},
-  version = {0.5.1},
+  version = {1.0.0},
   url = {https://dieghernan.github.io/rasterpic/},
   abstract = {Convert digital images to spatially referenced SpatRaster objects, as defined by the terra package, using coordinates from supported spatial input classes. Supported inputs include numeric coordinate vectors and objects from the sf, terra and stars packages. The main function is an S3 generic, allowing other packages to extend support to additional spatial classes.},
 }

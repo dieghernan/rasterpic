@@ -5,6 +5,9 @@
 Create geotagged `SpatRaster` objects from supported spatial input
 classes and local image files or image URLs.
 
+- [`asp_ratio()`](https://dieghernan.github.io/rasterpic/reference/asp_ratio.md)
+  : Compute the aspect ratio of spatial input
+
 - [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/reference/rasterpic_img.md)
   :
 
