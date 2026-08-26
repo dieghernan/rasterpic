@@ -2,6 +2,8 @@
 
 ## rasterpic 1.0.0
 
+CRAN release: 2026-08-24
+
 - [`asp_ratio()`](https://dieghernan.github.io/rasterpic/reference/asp_ratio.md)
   now reports the supported input types when `x` is invalid.
 - [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/reference/rasterpic_img.md)
