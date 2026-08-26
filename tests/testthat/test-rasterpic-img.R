@@ -292,7 +292,7 @@ test_that("download errors become rasterpic_img() errors with their cause", {
     destfile,
     ...
   ) {
-    stop("Cannot open URL")
+    stop("Cannot open URL", call. = FALSE)
   })
 
   img <- "http://this_is_an_error_url.fake"

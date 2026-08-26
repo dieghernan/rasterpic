@@ -396,7 +396,6 @@ rasterpic_img.SpatRaster <- function(
   processed <- rpic_input_spat(x)
 
   box <- processed$box
-  x <- processed$x
   crs <- processed$crs
 
   rasterpic_img_impl(

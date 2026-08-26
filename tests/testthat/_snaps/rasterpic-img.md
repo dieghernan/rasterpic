@@ -249,7 +249,7 @@
     Condition
       Error in `rasterpic_img()`:
       ! Cannot download `img` from <http://this_is_an_error_url.fake>.
-      Caused by error in `rpic_download_file()`:
+      Caused by error:
       ! Cannot open URL
 
 # nonzero download statuses become rasterpic_img() errors

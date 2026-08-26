@@ -205,7 +205,7 @@
     "SystemRequirements": null
   },
   "keywords": ["cran", "jpeg", "jpg", "maps", "png", "r", "r-package", "r-stats", "raster", "rstats", "sf", "stars", "terra", "tif", "tiff", "cran-r"],
-  "fileSize": "1206.622KB",
+  "fileSize": "1206.592KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
