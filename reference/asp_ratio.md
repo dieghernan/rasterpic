@@ -13,13 +13,18 @@ asp_ratio(x)
 
 - x:
 
-  A `SpatRaster`, `sf` or `sfc` object or a numeric vector of length 4
-  with coordinates `c(xmin, ymin, xmax, ymax)`, as created by
+  A
+  [`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html),
+  an [`sf`](https://r-spatial.github.io/sf/reference/sf.html) or
+  [`sfc`](https://r-spatial.github.io/sf/reference/sfc.html) object or a
+  numeric vector of length 4 with coordinates
+  `c(xmin, ymin, xmax, ymax)`, as created by
   [`sf::st_bbox()`](https://r-spatial.github.io/sf/reference/st_bbox.html).
 
 ## Value
 
-A numeric scalar giving the aspect ratio.
+A [`numeric`](https://rdrr.io/r/base/numeric.html) scalar giving the
+aspect ratio.
 
 ## See also
 
@@ -31,7 +36,7 @@ Other image geotagging tools:
 ``` r
 # \donttest{
 library(terra)
-#> terra 1.9.46
+#> terra 1.9.50
 
 x <- rast(system.file("tiff/elev.tiff", package = "rasterpic"))
 plot(x)

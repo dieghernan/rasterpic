@@ -1,7 +1,8 @@
 # Geotag an image as a `SpatRaster`
 
-Geotag an image and return a `SpatRaster` using coordinates from a
-supported spatial input class.
+Geotag an image and return a
+[`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html)
+using coordinates from a supported spatial input class.
 
 `rasterpic_img()` is an S3 generic. See **S3 methods** for supported
 input classes.
@@ -168,9 +169,9 @@ rasterpic_img(
 
 - expand:
 
-  An expansion factor of the bounding box of `x`. `0` means that no
-  expansion is added, `1` means that the bounding box is expanded to
-  double the original size. See **Details**.
+  A nonnegative expansion factor for the bounding box of `x`. Each side
+  is extended by `expand` times the shorter dimension of the bounding
+  box. `0` adds no expansion. See **Details**.
 
 - crop:
 
@@ -195,14 +196,16 @@ rasterpic_img(
 - crs:
 
   Character string describing a CRS. This parameter only applies when
-  `x` is a `SpatExtent`, `sfg`, `bbox` or a numeric coordinate vector.
-  See the **CRS** section.
+  `x` is a
+  [`SpatExtent`](https://rspatial.github.io/terra/reference/ext.html),
+  [`sfg`](https://r-spatial.github.io/sf/reference/st.html),
+  [`bbox`](https://r-spatial.github.io/sf/reference/st_bbox.html) or a
+  numeric coordinate vector. See the **CRS** section.
 
 ## Value
 
-A `SpatRaster` object (see
-[`terra::rast()`](https://rspatial.github.io/terra/reference/rast.html))
-where each layer corresponds to a color channel of `img`:
+A [`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html)
+object containing the image layers of `img`:
 
 - If `img` has at least 3 layers, the result names layers 1 to 3 `"r"`,
   `"g"` and `"b"` for the red, green and blue channels and names layer 4
@@ -211,8 +214,8 @@ where each layer corresponds to a color channel of `img`:
 - If `img` already has an RGB specification (this may be the case for
   `tif`/`tiff` files), the result keeps that specification.
 
-The resulting `SpatRaster` will have an RGB specification as explained
-in
+If `img` has at least 3 layers, the resulting `SpatRaster` has an RGB
+specification as explained in
 [`terra::RGB()`](https://rspatial.github.io/terra/reference/RGB.html).
 
 ## Details
@@ -228,14 +231,23 @@ on this page. [rasterpic](https://CRAN.R-project.org/package=rasterpic)
 groups them by input behavior:
 
 - Vector methods for the [sf](https://CRAN.R-project.org/package=sf)
-  classes `sf`, `sfc` and `sfg` and the
-  [terra](https://CRAN.R-project.org/package=terra) class `SpatVector`
+  classes [`sf`](https://r-spatial.github.io/sf/reference/sf.html),
+  [`sfc`](https://r-spatial.github.io/sf/reference/sfc.html) and
+  [`sfg`](https://r-spatial.github.io/sf/reference/st.html) and the
+  [terra](https://CRAN.R-project.org/package=terra) class
+  [`SpatVector`](https://rspatial.github.io/terra/reference/vect.html)
   can mask the image to the input shape.
 
-- Extent-like methods for `bbox`, numeric coordinate vectors, the
-  [stars](https://CRAN.R-project.org/package=stars) class `stars` and
-  the [terra](https://CRAN.R-project.org/package=terra) classes
-  `SpatRaster` and `SpatExtent` use the input bounding box.
+- Extent-like methods for
+  [`bbox`](https://r-spatial.github.io/sf/reference/st_bbox.html),
+  numeric coordinate vectors, the
+  [stars](https://CRAN.R-project.org/package=stars) class
+  [`stars`](https://r-spatial.github.io/stars/reference/st_as_stars.html)
+  and the [terra](https://CRAN.R-project.org/package=terra) classes
+  [`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html)
+  and
+  [`SpatExtent`](https://rspatial.github.io/terra/reference/ext.html)
+  use the input bounding box.
 
 - The default method reports unsupported classes. Other packages can
   provide methods for additional spatial classes.
@@ -377,7 +389,7 @@ autoplot(ex5) +
   labs(title = "Mask")
 
 
-# Mask outside the vector shape.
+# Mask inside the vector shape.
 ex6 <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
 
 autoplot(ex6) +

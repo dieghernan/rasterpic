@@ -55,7 +55,7 @@
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Articles</h6></li>
-    <li><a class="dropdown-item" href="articles/plots.html">Plotting SpatRaster objects</a></li>
+    <li><a class="dropdown-item" href="articles/plots.html">Plotting `SpatRaster` objects</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Examples</h6></li>
     <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/202201_maps-flags/">Beautiful maps with R (IV): Fun with flags revisited
@@ -123,7 +123,7 @@ Note
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
-<p><code><a href="reference/rasterpic_img.html">rasterpic_img()</a></code> can geotag an image from several spatial input classes:</p>
+<p><code><a href="reference/rasterpic_img.html">rasterpic_img()</a></code> can geotag an image using several spatial input classes:</p>
 <ul>
 <li>
 <strong>sf</strong> classes: <code>sf</code>, <code>sfc</code>, <code>sfg</code> and <code>bbox</code>.</li>
@@ -133,7 +133,7 @@ Note
 <strong>stars</strong> class: <code>stars</code>.</li>
 <li>A numeric coordinate vector of the form <code>c(xmin, ymin, xmax, ymax)</code>.</li>
 </ul>
-<p><code><a href="reference/rasterpic_img.html">rasterpic_img()</a></code> is an S3 generic. Methods for extent-like inputs use the object extent, and vector methods can also mask the image to the object shape.</p>
+<p><code><a href="reference/rasterpic_img.html">rasterpic_img()</a></code> is an S3 generic. Methods for extent-like inputs use the object’s extent, and vector methods can also mask the image to its shape.</p>
 <p>This example uses an <strong>sf</strong> object:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/rasterpic/">rasterpic</a></span><span class="op">)</span></span>
@@ -168,7 +168,7 @@ Note
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">uk_flag</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">uk</span>, color <span class="op">=</span> <span class="fu"><a href="https://scales.r-lib.org/reference/alpha.html" class="external-link">alpha</a></span><span class="op">(</span><span class="st">"blue"</span>, <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-example-basic-1.png" style="width:100.0%" alt="Example using rasterpic with the UK flag."></p>
+<p><img src="reference/figures/README-example-basic-1.png" style="width:100.0%" data-fig-alt="Map with longitude on the horizontal axis and latitude on the vertical axis. A rectangular UK flag extends beyond the country, with the UK land area filled gray and outlined in blue. " alt="Example using rasterpic with the UK flag."></p>
 <p>You can also adjust the expansion, alignment, cropping and masking options:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Align, crop and mask the image.</span></span>
@@ -176,19 +176,16 @@ Note
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">uk_flag2</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">uk</span>, fill <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-align-crop-mask-1.png" style="width:100.0%" alt="Example using rasterpic with the UK flag cropped to the shape."></p>
+<p><img src="reference/figures/README-align-crop-mask-1.png" style="width:100.0%" data-fig-alt="Map with longitude on the horizontal axis and latitude on the vertical axis. The UK flag fills the country silhouette, including its islands, while the area outside the coastline is blank. " alt="UK flag masked to the country shape using rasterpic."></p>
 </div>
 <div class="section level2">
 <h2 id="supported-image-formats">Supported image formats<a class="anchor" aria-label="anchor" href="#supported-image-formats"></a>
 </h2>
 <p><strong>rasterpic</strong> can read the following image formats:</p>
 <ul>
-<li>
-<code>png</code> files.</li>
-<li>
-<code>jpeg</code>/<code>jpg</code> files.</li>
-<li>
-<code>tiff</code>/<code>tif</code> files.</li>
+<li>PNG files (<code>png</code>).</li>
+<li>JPEG files (<code>jpeg</code>/<code>jpg</code>).</li>
+<li>TIFF files (<code>tiff</code>/<code>tif</code>).</li>
 </ul>
 </div>
 <div class="section level2">

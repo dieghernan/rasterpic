@@ -53,7 +53,7 @@
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Articles</h6></li>
-    <li><a class="dropdown-item" href="../articles/plots.html">Plotting SpatRaster objects</a></li>
+    <li><a class="dropdown-item" href="../articles/plots.html">Plotting `SpatRaster` objects</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Examples</h6></li>
     <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/202201_maps-flags/">Beautiful maps with R (IV): Fun with flags revisited
@@ -86,7 +86,7 @@
 </nav><div class="container template-quarto">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="../logo.png" class="logo" alt=""><h1>Plotting SpatRaster objects</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Plotting <code>SpatRaster</code> objects</h1>
 
 
 
@@ -124,17 +124,18 @@
 <span><span class="va">uk_img</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rasterpic_img.html">rasterpic_img</a></span><span class="op">(</span><span class="va">uk</span>, <span class="va">img</span>, mask <span class="op">=</span> <span class="cn">TRUE</span>, inverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plotRGB.html" class="external-link">plotRGB</a></span><span class="op">(</span><span class="va">uk_img</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-terra" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-terra" class="quarto-float quarto-figure quarto-figure-center" alt="Map of a rectangular UK flag with the UK land area cut out. The flag remains visible outside the country coastline, illustrating an inverse mask. ">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-terra-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="plots_files/figure-html/fig-terra-1.png" style="width:100.0%">
+<img src="plots_files/figure-html/fig-terra-1.png" style="width:100.0%" alt="Map of a rectangular UK flag with the UK land area cut out. The flag remains visible outside the country coastline, illustrating an inverse mask. ">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-terra-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 1: Plot with the <strong>terra</strong> package
+Figure 1: Plot with the <strong>terra</strong> package.
 </figcaption></figure>
 </div>
 </div>
 </div>
-</section><section class="level2"><h2 id="with-ggplot2-and-tidyterra">With ggplot2 and tidyterra<a class="anchor" aria-label="anchor" href="#with-ggplot2-and-tidyterra"></a>
+</section><section class="level2"><h2 id="with-ggplot2-and-tidyterra">With <strong>ggplot2</strong> and <strong>tidyterra</strong>
+<a class="anchor" aria-label="anchor" href="#with-ggplot2-and-tidyterra"></a>
 </h2>
 <p>The <strong>tidyterra</strong> package provides <strong>ggplot2</strong> support for <strong>terra</strong> <code>SpatRaster</code> objects:</p>
 <div class="cell">
@@ -145,17 +146,18 @@ Figure 1: Plot with the <strong>terra</strong> package
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">uk_img</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-tterra" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-tterra" class="quarto-float quarto-figure quarto-figure-center" alt="Map with longitude on the horizontal axis and latitude on the vertical axis. A rectangular UK flag surrounds a blank silhouette of the UK, including its islands. The inverse mask retains the flag outside the country coastline. ">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-tterra-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="plots_files/figure-html/fig-tterra-1.png" style="width:100.0%">
+<img src="plots_files/figure-html/fig-tterra-1.png" style="width:100.0%" alt="Map with longitude on the horizontal axis and latitude on the vertical axis. A rectangular UK flag surrounds a blank silhouette of the UK, including its islands. The inverse mask retains the flag outside the country coastline. ">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tterra-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 2: Plot with the <strong>tidyterra</strong> package
+Figure 2: Plot with the <strong>tidyterra</strong> package.
 </figcaption></figure>
 </div>
 </div>
 </div>
-</section><section class="level2"><h2 id="with-tmap">With tmap<a class="anchor" aria-label="anchor" href="#with-tmap"></a>
+</section><section class="level2"><h2 id="with-tmap">With <strong>tmap</strong>
+<a class="anchor" aria-label="anchor" href="#with-tmap"></a>
 </h2>
 <p>The <strong>tmap</strong> package can also create maps from <code>SpatRaster</code> objects:</p>
 <div class="cell">
@@ -166,17 +168,18 @@ Figure 2: Plot with the <strong>tidyterra</strong> package
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html" class="external-link">tm_graticules</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_rgb.html" class="external-link">tm_rgb</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-tmap" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-tmap" class="quarto-float quarto-figure quarto-figure-center" alt="Map of a rectangular UK flag surrounding a blank silhouette of the UK. Longitude and latitude grid lines provide geographic reference. The flag remains visible outside the country coastline. ">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-tmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="plots_files/figure-html/fig-tmap-1.png" style="width:100.0%">
+<img src="plots_files/figure-html/fig-tmap-1.png" style="width:100.0%" alt="Map of a rectangular UK flag surrounding a blank silhouette of the UK. Longitude and latitude grid lines provide geographic reference. The flag remains visible outside the country coastline. ">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 3: Plot with the <strong>tmap</strong> package
+Figure 3: Plot with the <strong>tmap</strong> package.
 </figcaption></figure>
 </div>
 </div>
 </div>
-</section><section class="level2"><h2 id="with-mapsf">With mapsf<a class="anchor" aria-label="anchor" href="#with-mapsf"></a>
+</section><section class="level2"><h2 id="with-mapsf">With <strong>mapsf</strong>
+<a class="anchor" aria-label="anchor" href="#with-mapsf"></a>
 </h2>
 <p>The <strong>mapsf</strong> package can also plot <code>SpatRaster</code> objects:</p>
 <div class="cell">
@@ -190,17 +193,18 @@ Figure 3: Plot with the <strong>tmap</strong> package
 <span><span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_worldmap.html" class="external-link">mf_worldmap</a></span><span class="op">(</span><span class="va">uk</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_inset_on.html" class="external-link">mf_inset_off</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-mapsf" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-mapsf" class="quarto-float quarto-figure quarto-figure-center" alt="Map of a rectangular UK flag with the UK land area cut out. A scale bar indicates distance, and a world map inset at the upper right locates the UK. ">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-mapsf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="plots_files/figure-html/fig-mapsf-1.png" style="width:100.0%">
+<img src="plots_files/figure-html/fig-mapsf-1.png" style="width:100.0%" alt="Map of a rectangular UK flag with the UK land area cut out. A scale bar indicates distance, and a world map inset at the upper right locates the UK. ">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mapsf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 4: Plot with the <strong>mapsf</strong> package
+Figure 4: Plot with the <strong>mapsf</strong> package.
 </figcaption></figure>
 </div>
 </div>
 </div>
-</section><section class="level2"><h2 id="with-maptiles">With maptiles<a class="anchor" aria-label="anchor" href="#with-maptiles"></a>
+</section><section class="level2"><h2 id="with-maptiles">With <strong>maptiles</strong>
+<a class="anchor" aria-label="anchor" href="#with-maptiles"></a>
 </h2>
 <p>The <strong>maptiles</strong> package can download map tiles from different providers. It also provides functions for plotting <strong>terra</strong> <code>SpatRaster</code> objects:</p>
 <div class="cell">
@@ -214,12 +218,12 @@ Figure 4: Plot with the <strong>mapsf</strong> package
 <span><span class="fu"><a href="https://rdrr.io/pkg/maptiles/man/plot_tiles.html" class="external-link">plot_tiles</a></span><span class="op">(</span><span class="va">other_tile_crop</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/maptiles/man/plot_tiles.html" class="external-link">plot_tiles</a></span><span class="op">(</span><span class="va">uk_img</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-maptiles" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-maptiles" class="quarto-float quarto-figure quarto-figure-center" alt="Map combining a geographic basemap with a rectangular UK flag. The flag covers the basemap outside the UK coastline, while the inverse mask reveals the basemap within the country silhouette. ">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-maptiles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="plots_files/figure-html/fig-maptiles-1.png" style="width:100.0%">
+<img src="plots_files/figure-html/fig-maptiles-1.png" style="width:100.0%" alt="Map combining a geographic basemap with a rectangular UK flag. The flag covers the basemap outside the UK coastline, while the inverse mask reveals the basemap within the country silhouette. ">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-maptiles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 5: Plot with the <strong>maptiles</strong> package
+Figure 5: Plot with the <strong>maptiles</strong> package.
 </figcaption></figure>
 </div>
 </div>
@@ -236,7 +240,7 @@ Giraud T (2026). <em>mapsf: Thematic Cartography</em>. <a href="https://doi.org/
 Hernangómez D (2023). “Using the tidyverse with terra objects: the tidyterra package.” <em>Journal of Open Source Software</em>, <b>8</b>(91), 5751. ISSN 2475-9066. <a href="https://doi.org/10.21105/joss.05751" class="external-link">doi:10.21105/joss.05751</a>. <a href="https://doi.org/10.21105/joss.05751" class="external-link">https://doi.org/10.21105/joss.05751</a>.
 </p>
 <p>
-Hijmans R, Brown A, Barbosa AM, Cordano E, Dyba K (2026). <em>terra: Spatial Data Analysis</em>. R package version 1.9-46, <a href="https://rspatial.org/" class="external-link">https://rspatial.org/</a>.
+Hijmans R, Brown A, Barbosa AM, Cordano E, Dyba K (2026). <em>terra: Spatial Data Analysis</em>. R package version 1.9-50, <a href="https://rspatial.org/" class="external-link">https://rspatial.org/</a>.
 </p>
 <p>
 Wickham H (2016). <em>ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. ISBN 978-3-319-24277-4. <a href="https://ggplot2.tidyverse.org" class="external-link">https://ggplot2.tidyverse.org</a>.

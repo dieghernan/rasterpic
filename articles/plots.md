@@ -1,4 +1,4 @@
-# Plotting SpatRaster objects
+# Plotting `SpatRaster` objects
 
 This article shows several ways to plot the `SpatRaster` object returned
 by
@@ -31,11 +31,13 @@ uk_img <- rasterpic_img(uk, img, mask = TRUE, inverse = TRUE)
 plotRGB(uk_img)
 ```
 
-![](plots_files/figure-html/fig-terra-1.png)
+![Map of a rectangular UK flag with the UK land area cut out. The flag
+remains visible outside the country coastline, illustrating an inverse
+mask. ](plots_files/figure-html/fig-terra-1.png)
 
-Figure 1: Plot with the **terra** package
+Figure 1: Plot with the **terra** package.
 
-## With ggplot2 and tidyterra
+## With **ggplot2** and **tidyterra**
 
 The **tidyterra** package provides **ggplot2** support for **terra**
 `SpatRaster` objects:
@@ -49,11 +51,14 @@ ggplot() +
   geom_spatraster_rgb(data = uk_img)
 ```
 
-![](plots_files/figure-html/fig-tterra-1.png)
+![Map with longitude on the horizontal axis and latitude on the vertical
+axis. A rectangular UK flag surrounds a blank silhouette of the UK,
+including its islands. The inverse mask retains the flag outside the
+country coastline. ](plots_files/figure-html/fig-tterra-1.png)
 
-Figure 2: Plot with the **tidyterra** package
+Figure 2: Plot with the **tidyterra** package.
 
-## With tmap
+## With **tmap**
 
 The **tmap** package can also create maps from `SpatRaster` objects:
 
@@ -66,11 +71,14 @@ tm_shape(uk_img) +
   tm_rgb()
 ```
 
-![](plots_files/figure-html/fig-tmap-1.png)
+![Map of a rectangular UK flag surrounding a blank silhouette of the UK.
+Longitude and latitude grid lines provide geographic reference. The flag
+remains visible outside the country coastline.
+](plots_files/figure-html/fig-tmap-1.png)
 
-Figure 3: Plot with the **tmap** package
+Figure 3: Plot with the **tmap** package.
 
-## With mapsf
+## With **mapsf**
 
 The **mapsf** package can also plot `SpatRaster` objects:
 
@@ -86,11 +94,13 @@ mf_worldmap(uk)
 mf_inset_off()
 ```
 
-![](plots_files/figure-html/fig-mapsf-1.png)
+![Map of a rectangular UK flag with the UK land area cut out. A scale
+bar indicates distance, and a world map inset at the upper right locates
+the UK. ](plots_files/figure-html/fig-mapsf-1.png)
 
-Figure 4: Plot with the **mapsf** package
+Figure 4: Plot with the **mapsf** package.
 
-## With maptiles
+## With **maptiles**
 
 The **maptiles** package can download map tiles from different
 providers. It also provides functions for plotting **terra**
@@ -108,9 +118,12 @@ plot_tiles(other_tile_crop)
 plot_tiles(uk_img, add = TRUE)
 ```
 
-![](plots_files/figure-html/fig-maptiles-1.png)
+![Map combining a geographic basemap with a rectangular UK flag. The
+flag covers the basemap outside the UK coastline, while the inverse mask
+reveals the basemap within the country silhouette.
+](plots_files/figure-html/fig-maptiles-1.png)
 
-Figure 5: Plot with the **maptiles** package
+Figure 5: Plot with the **maptiles** package.
 
 ## References
 
@@ -128,7 +141,7 @@ ISSN 2475-9066.
 <https://doi.org/10.21105/joss.05751>.
 
 Hijmans R, Brown A, Barbosa AM, Cordano E, Dyba K (2026). *terra:
-Spatial Data Analysis*. R package version 1.9-46,
+Spatial Data Analysis*. R package version 1.9-50,
 <https://rspatial.org/>.
 
 Wickham H (2016). *ggplot2: Elegant Graphics for Data Analysis*.

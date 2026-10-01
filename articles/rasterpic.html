@@ -53,7 +53,7 @@
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Articles</h6></li>
-    <li><a class="dropdown-item" href="../articles/plots.html">Plotting SpatRaster objects</a></li>
+    <li><a class="dropdown-item" href="../articles/plots.html">Plotting `SpatRaster` objects</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Examples</h6></li>
     <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/202201_maps-flags/">Beautiful maps with R (IV): Fun with flags revisited
@@ -100,7 +100,7 @@
 
 
 
-    <p>Getting started with <strong>rasterpic</strong> is straightforward: you need an image file (<code>png</code>, <code>jpeg</code>/<code>jpg</code> or <code>tiff</code>/<code>tif</code>) and a supported spatial input class, such as an object from the <strong>sf</strong>, <strong>terra</strong> or <strong>stars</strong> packages.</p>
+    <p>Getting started with <strong>rasterpic</strong> is straightforward: you need an image file (<code>png</code>, <code>jpeg</code>/<code>jpg</code> or <code>tiff</code>/<code>tif</code>) and an object of a supported spatial class, such as those from the <strong>sf</strong>, <strong>terra</strong> or <strong>stars</strong> packages.</p>
 <section class="level2"><h2 id="basic-usage">Basic usage<a class="anchor" aria-label="anchor" href="#basic-usage"></a>
 </h2>
 <p>This example geotags an image using the shape of Austria:</p>
@@ -124,9 +124,9 @@
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">default</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-setup" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-setup" class="quarto-float quarto-figure quarto-figure-center" alt="Map with longitude on the horizontal axis and latitude on the vertical axis. A portrait photograph of a one-way sign is centered behind the gray silhouette of Austria. The photograph extends above and below the country to preserve its proportions. ">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-setup-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="rasterpic_files/figure-html/fig-setup-1.png" style="width:100.0%">
+<img src="rasterpic_files/figure-html/fig-setup-1.png" style="width:100.0%" alt="Map with longitude on the horizontal axis and latitude on the vertical axis. A portrait photograph of a one-way sign is centered behind the gray silhouette of Austria. The photograph extends above and below the country to preserve its proportions. ">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-setup-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure 1: Image geotagged with the coordinates of Austria.
@@ -137,7 +137,7 @@ Figure 1: Image geotagged with the coordinates of Austria.
 </section><section class="level2"><h2 id="options">Options<a class="anchor" aria-label="anchor" href="#options"></a>
 </h2>
 <p><code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> provides options for expansion, alignment, cropping and masking.</p>
-<section class="level3"><h3 id="expand">Expand<a class="anchor" aria-label="anchor" href="#expand"></a>
+<section class="level3"><h3 id="expansion">Expansion<a class="anchor" aria-label="anchor" href="#expansion"></a>
 </h3>
 <p>The <code>expand</code> argument expands the raster extent beyond the spatial object:</p>
 <div class="cell">
@@ -147,9 +147,9 @@ Figure 1: Image geotagged with the coordinates of Austria.
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">expand</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-expand" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-expand" class="quarto-float quarto-figure quarto-figure-center" alt="Map with longitude on the horizontal axis and latitude on the vertical axis. A portrait photograph of a one-way sign is centered behind the gray silhouette of Austria. The expanded photograph extends beyond the country on all four sides. ">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-expand-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="rasterpic_files/figure-html/fig-expand-1.png" style="width:100.0%">
+<img src="rasterpic_files/figure-html/fig-expand-1.png" style="width:100.0%" alt="Map with longitude on the horizontal axis and latitude on the vertical axis. A portrait photograph of a one-way sign is centered behind the gray silhouette of Austria. The expanded photograph extends beyond the country on all four sides. ">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-expand-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure 2: Example image expansion.
@@ -159,7 +159,7 @@ Figure 2: Example image expansion.
 </div>
 </section><section class="level3"><h3 id="alignment">Alignment<a class="anchor" aria-label="anchor" href="#alignment"></a>
 </h3>
-<p>The <code>halign</code> and <code>valign</code> arguments control the alignment of the image within the spatial extent:</p>
+<p>The <code>halign</code> and <code>valign</code> arguments control the alignment of the image relative to the spatial extent:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bottom</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rasterpic_img.html">rasterpic_img</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">img</span>, valign <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
@@ -167,9 +167,9 @@ Figure 2: Example image expansion.
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">bottom</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-bottom" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-bottom" class="quarto-float quarto-figure quarto-figure-center" alt="Map with longitude on the horizontal axis and latitude on the vertical axis. A portrait photograph of a one-way sign sits behind the gray silhouette of Austria. The bottom edge of the photograph aligns with the southern edge of the country, leaving the extra image height above it. ">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-bottom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="rasterpic_files/figure-html/fig-bottom-1.png" style="width:100.0%">
+<img src="rasterpic_files/figure-html/fig-bottom-1.png" style="width:100.0%" alt="Map with longitude on the horizontal axis and latitude on the vertical axis. A portrait photograph of a one-way sign sits behind the gray silhouette of Austria. The bottom edge of the photograph aligns with the southern edge of the country, leaving the extra image height above it. ">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bottom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure 3: Example image alignment.
@@ -179,7 +179,7 @@ Figure 3: Example image alignment.
 </div>
 </section><section class="level3"><h3 id="crop-and-mask">Crop and mask<a class="anchor" aria-label="anchor" href="#crop-and-mask"></a>
 </h3>
-<p>The <code>crop</code>, <code>mask</code> and <code>inverse</code> arguments control whether the raster is cropped to the object extent, masked to the object shape or inversely masked:</p>
+<p>The <code>crop</code>, <code>mask</code> and <code>inverse</code> arguments control whether the raster is cropped to the object’s extent, masked to its shape or inversely masked:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mask</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rasterpic_img.html">rasterpic_img</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">img</span>, crop <span class="op">=</span> <span class="cn">TRUE</span>, mask <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -190,9 +190,9 @@ Figure 3: Example image alignment.
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">maskinverse</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-mask-1" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-mask-1" class="quarto-float quarto-figure quarto-figure-center" alt="Map with longitude and latitude axes. A photograph of a one-way sign is visible only inside the silhouette of Austria, with the area outside the country left blank. ">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-mask-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="rasterpic_files/figure-html/fig-mask-1.png" style="width:100.0%">
+<img src="rasterpic_files/figure-html/fig-mask-1.png" style="width:100.0%" alt="Map with longitude and latitude axes. A photograph of a one-way sign is visible only inside the silhouette of Austria, with the area outside the country left blank. ">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mask-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure 4: Example masked image.
@@ -200,12 +200,12 @@ Figure 4: Example masked image.
 </div>
 </div>
 <div class="cell-output-display">
-<div id="fig-mask-2" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-mask-2" class="quarto-float quarto-figure quarto-figure-center" alt="Map with longitude and latitude axes. A photograph of a one-way sign fills the rectangular extent around Austria, while the country silhouette is blank. The inverse mask retains the image outside the country. ">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-mask-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="rasterpic_files/figure-html/fig-mask-2.png" style="width:100.0%">
+<img src="rasterpic_files/figure-html/fig-mask-2.png" style="width:100.0%" alt="Map with longitude and latitude axes. A photograph of a one-way sign fills the rectangular extent around Austria, while the country silhouette is blank. The inverse mask retains the image outside the country. ">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mask-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 5: Example inverse masked image.
+Figure 5: Example inversely masked image.
 </figcaption></figure>
 </div>
 </div>
@@ -222,17 +222,14 @@ Figure 5: Example inverse masked image.
 <strong>stars</strong> class: <code>stars</code>.</li>
 <li>A numeric coordinate vector of the form <code>c(xmin, ymin, xmax, ymax)</code>.</li>
 </ul>
-<p><code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> is an S3 generic. Methods for extent-like inputs use the object extent, and vector methods can also mask the image to the object shape.</p>
+<p><code><a href="../reference/rasterpic_img.html">rasterpic_img()</a></code> is an S3 generic. Methods for extent-like inputs use the object’s extent, and vector methods can also mask the image to its shape.</p>
 </section><section class="level2"><h2 id="supported-image-formats">Supported image formats<a class="anchor" aria-label="anchor" href="#supported-image-formats"></a>
 </h2>
 <p><strong>rasterpic</strong> can read the following image formats:</p>
 <ul>
-<li>
-<code>png</code> files.</li>
-<li>
-<code>jpeg</code>/<code>jpg</code> files.</li>
-<li>
-<code>tiff</code>/<code>tif</code> files.</li>
+<li>PNG files (<code>png</code>).</li>
+<li>JPEG files (<code>jpeg</code>/<code>jpg</code>).</li>
+<li>TIFF files (<code>tiff</code>/<code>tif</code>).</li>
 </ul></section><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);

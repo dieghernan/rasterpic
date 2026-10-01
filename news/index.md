@@ -63,10 +63,10 @@ CRAN release: 2026-01-14
 
 CRAN release: 2025-03-19
 
-- When the output has 3 or more layers, the first three are renamed to
-  `"r"`, `"g"` and `"b"`. In cases with 4 layers or more, the fourth
-  layer is renamed as `"alpha"`. This allows compatibility with **tmap**
-  \>= 4.0 and avoids the error
+- When the output has three or more layers, the first three are renamed
+  to `"r"`, `"g"` and `"b"`. In cases with four or more layers, the
+  fourth layer is renamed to `"alpha"`. This allows compatibility with
+  **tmap** \>= 4.0 and avoids the error
   `! [subset] you cannot select a layer with a name that is not unique`.
 
 ## rasterpic 0.2.6
@@ -88,12 +88,12 @@ CRAN release: 2024-04-12
 CRAN release: 2024-01-18
 
 - Ensured that `SpatVector` objects always have a CRS.
-- If the image has fewer than 3 layers, the raster output does not have
-  an RGB specification
+- If the image has fewer than three layers, the raster output does not
+  have an RGB specification
   ([`terra::has.RGB()`](https://rspatial.github.io/terra/reference/RGB.html)
   is `FALSE`). This is expected to be a corner case.
-- If the image file (e.g., `tiff`) already has an RGB specification,
-  preserve it in the output.
+- If the image file (e.g., `tiff`) already has an RGB specification, it
+  is preserved in the output.
 - Updated documentation and tests.
 
 ## rasterpic 0.2.3

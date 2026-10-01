@@ -24,7 +24,7 @@ install.packages("rasterpic")
 ## Example
 
 [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/reference/rasterpic_img.md)
-can geotag an image from several spatial input classes:
+can geotag an image using several spatial input classes:
 
 - **sf** classes: `sf`, `sfc`, `sfg` and `bbox`.
 - **terra** classes: `SpatRaster`, `SpatVector` and `SpatExtent`.
@@ -32,8 +32,8 @@ can geotag an image from several spatial input classes:
 - A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 
 [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/reference/rasterpic_img.md)
-is an S3 generic. Methods for extent-like inputs use the object extent,
-and vector methods can also mask the image to the object shape.
+is an S3 generic. Methods for extent-like inputs use the object’s
+extent, and vector methods can also mask the image to its shape.
 
 This example uses an **sf** object:
 
@@ -88,16 +88,16 @@ autoplot(uk_flag2) +
   geom_sf(data = uk, fill = NA)
 ```
 
-![Example using rasterpic with the UK flag cropped to the
-shape.](reference/figures/README-align-crop-mask-1.png)
+![UK flag masked to the country shape using
+rasterpic.](reference/figures/README-align-crop-mask-1.png)
 
 ## Supported image formats
 
 **rasterpic** can read the following image formats:
 
-- `png` files.
-- `jpeg`/`jpg` files.
-- `tiff`/`tif` files.
+- PNG files (`png`).
+- JPEG files (`jpeg`/`jpg`).
+- TIFF files (`tiff`/`tif`).
 
 ## Citation
 

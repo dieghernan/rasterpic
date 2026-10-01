@@ -1,8 +1,8 @@
 # Get started
 
 Getting started with **rasterpic** is straightforward: you need an image
-file (`png`, `jpeg`/`jpg` or `tiff`/`tif`) and a supported spatial input
-class, such as an object from the **sf**, **terra** or **stars**
+file (`png`, `jpeg`/`jpg` or `tiff`/`tif`) and an object of a supported
+spatial class, such as those from the **sf**, **terra** or **stars**
 packages.
 
 ## Basic usage
@@ -30,7 +30,11 @@ autoplot(default) +
   geom_sf(data = x)
 ```
 
-![](rasterpic_files/figure-html/fig-setup-1.png)
+![Map with longitude on the horizontal axis and latitude on the vertical
+axis. A portrait photograph of a one-way sign is centered behind the
+gray silhouette of Austria. The photograph extends above and below the
+country to preserve its proportions.
+](rasterpic_files/figure-html/fig-setup-1.png)
 
 Figure 1: Image geotagged with the coordinates of Austria.
 
@@ -39,7 +43,7 @@ Figure 1: Image geotagged with the coordinates of Austria.
 [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/reference/rasterpic_img.md)
 provides options for expansion, alignment, cropping and masking.
 
-### Expand
+### Expansion
 
 The `expand` argument expands the raster extent beyond the spatial
 object:
@@ -52,14 +56,18 @@ autoplot(expand) +
   geom_sf(data = x)
 ```
 
-![](rasterpic_files/figure-html/fig-expand-1.png)
+![Map with longitude on the horizontal axis and latitude on the vertical
+axis. A portrait photograph of a one-way sign is centered behind the
+gray silhouette of Austria. The expanded photograph extends beyond the
+country on all four sides.
+](rasterpic_files/figure-html/fig-expand-1.png)
 
 Figure 2: Example image expansion.
 
 ### Alignment
 
 The `halign` and `valign` arguments control the alignment of the image
-within the spatial extent:
+relative to the spatial extent:
 
 ``` r
 
@@ -69,15 +77,18 @@ autoplot(bottom) +
   geom_sf(data = x)
 ```
 
-![](rasterpic_files/figure-html/fig-bottom-1.png)
+![Map with longitude on the horizontal axis and latitude on the vertical
+axis. A portrait photograph of a one-way sign sits behind the gray
+silhouette of Austria. The bottom edge of the photograph aligns with the
+southern edge of the country, leaving the extra image height above it.
+](rasterpic_files/figure-html/fig-bottom-1.png)
 
 Figure 3: Example image alignment.
 
 ### Crop and mask
 
 The `crop`, `mask` and `inverse` arguments control whether the raster is
-cropped to the object extent, masked to the object shape or inversely
-masked:
+cropped to the object’s extent, masked to its shape or inversely masked:
 
 ``` r
 
@@ -90,13 +101,18 @@ maskinverse <- rasterpic_img(x, img, crop = TRUE, mask = TRUE, inverse = TRUE)
 autoplot(maskinverse)
 ```
 
-![](rasterpic_files/figure-html/fig-mask-1.png)
+![Map with longitude and latitude axes. A photograph of a one-way sign
+is visible only inside the silhouette of Austria, with the area outside
+the country left blank. ](rasterpic_files/figure-html/fig-mask-1.png)
 
 Figure 4: Example masked image.
 
-![](rasterpic_files/figure-html/fig-mask-2.png)
+![Map with longitude and latitude axes. A photograph of a one-way sign
+fills the rectangular extent around Austria, while the country
+silhouette is blank. The inverse mask retains the image outside the
+country. ](rasterpic_files/figure-html/fig-mask-2.png)
 
-Figure 5: Example inverse masked image.
+Figure 5: Example inversely masked image.
 
 ## Supported spatial input classes
 
@@ -109,13 +125,13 @@ supports the following spatial input classes:
 - A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 
 [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/reference/rasterpic_img.md)
-is an S3 generic. Methods for extent-like inputs use the object extent,
-and vector methods can also mask the image to the object shape.
+is an S3 generic. Methods for extent-like inputs use the object’s
+extent, and vector methods can also mask the image to its shape.
 
 ## Supported image formats
 
 **rasterpic** can read the following image formats:
 
-- `png` files.
-- `jpeg`/`jpg` files.
-- `tiff`/`tif` files.
+- PNG files (`png`).
+- JPEG files (`jpeg`/`jpg`).
+- TIFF files (`tiff`/`tif`).
