@@ -1,29 +1,20 @@
 # rasterpic 1.0.0
 
 - `asp_ratio()` now reports the supported input types when `x` is invalid.
-- `rasterpic_img()` now reports clearer inclusive-range errors when `halign` or
-  `valign` are not single numeric values.
-- `rasterpic_img()` now reports clearer input errors for missing image files and
-  unsupported file extensions, preserves download failure details, warns when
-  geographic coordinates are treated as planar and emits a warning condition for
-  images with fewer than three layers.
-- `rasterpic_img()` now reports clearer errors when numeric bounding boxes
-  contain missing, infinite or incorrectly ordered coordinates.
-- `rasterpic_img()` now validates `img`, `expand`, `crop`, `mask`, `inverse` and
-  `crs` before processing.
+- `rasterpic_img()` now reports clearer inclusive-range errors when `halign` or `valign` are not single numeric values.
+- `rasterpic_img()` now reports clearer input errors for missing image files and unsupported file extensions, preserves download failure details, warns when geographic coordinates are treated as planar and emits a warning condition for images with fewer than three layers.
+- `rasterpic_img()` now reports clearer errors when numeric bounding boxes contain missing, infinite or incorrectly ordered coordinates.
+- `rasterpic_img()` now validates `img`, `expand`, `crop`, `mask`, `inverse` and `crs` before processing.
 
 # rasterpic 0.5.1
 
-- User-facing errors, warnings and notes now use **cli** alerts and inline
-  markup for consistent argument, file and URL formatting.
-- `rasterpic_img()` with `mask = TRUE`, `inverse = TRUE` or both again returns a
-  `SpatRaster` with an RGB specification (`terra::has.RGB()` returns `TRUE`).
+- User-facing errors, warnings and notes now use **cli** alerts and inline markup for consistent argument, file and URL formatting.
+- `rasterpic_img()` with `mask = TRUE`, `inverse = TRUE` or both again returns a `SpatRaster` with an RGB specification (`terra::has.RGB()` returns `TRUE`).
 
 # rasterpic 0.5.0
 
 - Package documentation was reviewed and updated with AI-assisted editing.
-- `rasterpic_img()` is now an S3 generic with methods for supported spatial
-  input classes (#39).
+- `rasterpic_img()` is now an S3 generic with methods for supported spatial input classes (#39).
 - `rasterpic_img()` now supports **stars** objects.
 
 # rasterpic 0.4.0
@@ -38,10 +29,7 @@
 
 # rasterpic 0.3.0
 
-- When the output has 3 or more layers, the first three are renamed to `"r"`,
-  `"g"` and `"b"`. In cases with 4 layers or more, the fourth layer is renamed
-  as `"alpha"`. This allows compatibility with **tmap** \>= 4.0 and avoids the
-  error `! [subset] you cannot select a layer with a name that is not unique`.
+- When the output has three or more layers, the first three are renamed to `"r"`, `"g"` and `"b"`. In cases with four or more layers, the fourth layer is renamed to `"alpha"`. This allows compatibility with **tmap** \>= 4.0 and avoids the error `! [subset] you cannot select a layer with a name that is not unique`.
 
 # rasterpic 0.2.6
 
@@ -55,11 +43,8 @@
 # rasterpic 0.2.4
 
 - Ensured that `SpatVector` objects always have a CRS.
-- If the image has fewer than 3 layers, the raster output does not have an RGB
-  specification (`terra::has.RGB()` is `FALSE`). This is expected to be a corner
-  case.
-- If the image file (e.g., `tiff`) already has an RGB specification, preserve it
-  in the output.
+- If the image has fewer than three layers, the raster output does not have an RGB specification (`terra::has.RGB()` is `FALSE`). This is expected to be a corner case.
+- If the image file (e.g., `tiff`) already has an RGB specification, it is preserved in the output.
 - Updated documentation and tests.
 
 # rasterpic 0.2.3
@@ -86,8 +71,7 @@
   - **sf**: `sfg`, `sf::st_bbox()`.
   - Numeric vectors `c(xmin, ymin, xmax, ymax)`.
 - The `img` parameter in `rasterpic_img()` now accepts image URLs.
-- Added an [article](https://dieghernan.github.io/rasterpic/articles/plots.html)
-  to the **pkgdown** site.
+- Added an [article](https://dieghernan.github.io/rasterpic/articles/plots.html) to the **pkgdown** site.
 - Fixed **CRAN** errors.
 
 # rasterpic 0.1.0

@@ -1,4 +1,4 @@
-## code to prepare `UK.gpkg` dataset goes here
+# Prepare the `UK.gpkg` dataset.
 
 library(dplyr)
 library(giscoR)
@@ -11,7 +11,6 @@ UK <- gisco_get_nuts(
   epsg = 3857
 )
 
-
 UK <- UK |>
   mutate(name = "United Kingdom") |>
   select(name)
@@ -21,7 +20,7 @@ UK <- st_make_valid(UK)
 
 st_write(UK, "inst/gpkg/UK.gpkg", append = FALSE)
 
-# Check
+# Check the generated file.
 
 UK_test <- st_read("inst/gpkg/UK.gpkg")
 plot(UK_test)

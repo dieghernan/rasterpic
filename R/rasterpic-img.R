@@ -1,8 +1,8 @@
 #' Geotag an image as a `SpatRaster`
 #'
 #' @description
-#' Geotag an image and return a `SpatRaster` using coordinates from a supported
-#' spatial input class.
+#' Geotag an image and return a [`SpatRaster`][terra::rast] using coordinates
+#' from a supported spatial input class.
 #'
 #' `rasterpic_img()` is an S3 generic. See **S3 methods** for supported input
 #' classes.
@@ -16,11 +16,13 @@
 #' All methods share the parameters, return value and examples documented on
 #' this page. \CRANpkg{rasterpic} groups them by input behavior:
 #'
-#' - Vector methods for the \CRANpkg{sf} classes `sf`, `sfc` and `sfg` and the
-#'   \CRANpkg{terra} class `SpatVector` can mask the image to the input shape.
-#' - Extent-like methods for `bbox`, numeric coordinate vectors, the
-#'   \CRANpkg{stars} class `stars` and the \CRANpkg{terra} classes `SpatRaster`
-#'   and `SpatExtent` use the input bounding box.
+#' - Vector methods for the \CRANpkg{sf} classes [`sf`][sf::st_sf],
+#'   [`sfc`][sf::st_sfc] and [`sfg`][sf::st] and the \CRANpkg{terra} class
+#'   [`SpatVector`][terra::vect] can mask the image to the input shape.
+#' - Extent-like methods for [`bbox`][sf::st_bbox], numeric coordinate vectors,
+#'   the \CRANpkg{stars} class [`stars`][stars::st_as_stars] and the
+#'   \CRANpkg{terra} classes [`SpatRaster`][terra::rast] and
+#'   [`SpatExtent`][terra::ext] use the input bounding box.
 #' - The default method reports unsupported classes. Other packages can provide
 #'   methods for additional spatial classes.
 #'
@@ -53,9 +55,9 @@
 #'   `img` relative to `x`. `0` aligns `img` with the bottom edge of `x`, `1`
 #'   aligns it with the top edge and `0.5` centers it vertically.
 #'
-#' @param expand An expansion factor of the bounding box of `x`. `0` means that
-#'   no expansion is added, `1` means that the bounding box is expanded to
-#'   double the original size. See **Details**.
+#' @param expand A nonnegative expansion factor for the bounding box of `x`.
+#'   Each side is extended by `expand` times the shorter dimension of the
+#'   bounding box. `0` adds no expansion. See **Details**.
 #'
 #' @param crop Logical. Should the raster be cropped to the (expanded) bounding
 #'   box of `x`? See **Details**.
@@ -67,14 +69,14 @@
 #'   covered by `x` are masked instead of areas outside `x`.
 #'
 #' @param crs Character string describing a CRS. This parameter only applies
-#'   when `x` is a `SpatExtent`, `sfg`, `bbox` or a numeric coordinate vector.
-#'   See the **CRS** section.
+#'   when `x` is a [`SpatExtent`][terra::ext], [`sfg`][sf::st],
+#'   [`bbox`][sf::st_bbox] or a numeric coordinate vector. See the **CRS**
+#'   section.
 #'
 #' @param ... Further arguments passed to methods.
 #'
 #' @returns
-#' A `SpatRaster` object (see [terra::rast()]) where each layer corresponds to
-#' a color channel of `img`:
+#' A [`SpatRaster`][terra::rast] object containing the image layers of `img`:
 #'
 #' - If `img` has at least 3 layers, the result names layers 1 to 3 `"r"`, `"g"`
 #'   and `"b"` for the red, green and blue channels and names layer 4 `"alpha"`
@@ -82,8 +84,8 @@
 #' - If `img` already has an RGB specification (this may be the case for
 #'   `tif`/`tiff` files), the result keeps that specification.
 #'
-#' The resulting `SpatRaster` will have an RGB specification as explained in
-#' [terra::RGB()].
+#' If `img` has at least 3 layers, the resulting `SpatRaster` has an RGB
+#' specification as explained in [terra::RGB()].
 #'
 #' @seealso
 #' `vignette("rasterpic", package = "rasterpic")` for examples.
@@ -162,7 +164,7 @@
 #'   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5) +
 #'   labs(title = "Mask")
 #'
-#' # Mask outside the vector shape.
+#' # Mask inside the vector shape.
 #' ex6 <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
 #'
 #' autoplot(ex6) +

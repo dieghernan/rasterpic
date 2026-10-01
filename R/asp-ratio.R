@@ -4,11 +4,11 @@
 #' Compute the aspect ratio as width divided by height or columns divided by
 #' rows.
 #'
-#' @param x A `SpatRaster`, `sf` or `sfc` object or a numeric vector
-#'   of length 4 with coordinates `c(xmin, ymin, xmax, ymax)`, as created by
-#'   [sf::st_bbox()].
+#' @param x A [`SpatRaster`][terra::rast], an [`sf`][sf::st_sf] or
+#'   [`sfc`][sf::st_sfc] object or a numeric vector of length 4 with coordinates
+#'   `c(xmin, ymin, xmax, ymax)`, as created by [sf::st_bbox()].
 #'
-#' @returns A numeric scalar giving the aspect ratio.
+#' @returns A [`numeric`][base::numeric] scalar giving the aspect ratio.
 #' @family geotagging
 #' @keywords internal
 #' @export

@@ -16,7 +16,7 @@ knitr:
 
 <!-- index.md is generated from index.qmd. Please edit that file -->
 
-# rasterpic <a href="https://dieghernan.github.io/rasterpic/"><img src="man/figures/logo.png" alt="rasterpic website" align="right" height="139"/></a>
+# rasterpic <a href="https://dieghernan.github.io/rasterpic/"><img src="man/figures/logo.png" alt="rasterpic hex logo with a patterned world map, linking to the rasterpic website." align="right" height="139"/></a>
 
 <!-- badges: start -->
 
@@ -81,7 +81,7 @@ You can install the development version of **rasterpic** with:
 pak::pak("dieghernan/rasterpic")
 ```
 
-Alternatively, you can install **rasterpic** using the
+Alternatively, you can install **rasterpic** using
 [**r-universe**](https://dieghernan.r-universe.dev/rasterpic):
 
 ```{r}
@@ -99,7 +99,7 @@ install.packages(
 
 ## Example
 
-`rasterpic_img()` can geotag an image from several spatial input classes:
+`rasterpic_img()` can geotag an image using several spatial input classes:
 
 - **sf** classes: `sf`, `sfc`, `sfg` and `bbox`.
 - **terra** classes: `SpatRaster`, `SpatVector` and `SpatExtent`.
@@ -107,12 +107,16 @@ install.packages(
 - A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 
 `rasterpic_img()` is an S3 generic. Methods for extent-like inputs use the
-object extent, and vector methods can also mask the image to the object shape.
+object's extent, and vector methods can also mask the image to its shape.
 
 This example uses an **sf** object:
 
 ```{r}
 #| label: example-basic
+#| fig-alt: >
+#|   Map with longitude on the horizontal axis and latitude on the vertical
+#|   axis. A rectangular UK flag extends beyond the country, with the UK land
+#|   area filled gray and outlined in blue.
 #| fig-cap: Example using **rasterpic** with the UK flag.
 library(rasterpic)
 library(sf)
@@ -141,7 +145,11 @@ You can also adjust the expansion, alignment, cropping and masking options:
 
 ```{r}
 #| label: align-crop-mask
-#| fig-cap: Example using **rasterpic** with the UK flag cropped to the shape.
+#| fig-alt: >
+#|   Map with longitude on the horizontal axis and latitude on the vertical
+#|   axis. The UK flag fills the country silhouette, including its islands,
+#|   while the area outside the coastline is blank.
+#| fig-cap: UK flag masked to the country shape using **rasterpic**.
 
 # Align, crop and mask the image.
 uk_flag2 <- rasterpic_img(uk, img, halign = 0.2, crop = TRUE, mask = TRUE)
@@ -154,9 +162,9 @@ autoplot(uk_flag2) +
 
 **rasterpic** can read the following image formats:
 
-- `png` files.
-- `jpeg`/`jpg` files.
-- `tiff`/`tif` files.
+- PNG files (`png`).
+- JPEG files (`jpeg`/`jpg`).
+- TIFF files (`tiff`/`tif`).
 
 ## Citation
 

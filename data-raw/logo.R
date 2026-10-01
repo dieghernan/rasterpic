@@ -1,4 +1,4 @@
-## code to prepare `logo` dataset goes here
+# Prepare the package logo.
 library(giscoR)
 
 devtools::load_all()
@@ -25,7 +25,6 @@ ggplot() +
 
 ggsave("data-raw/modify.png", dpi = 300, scale = 2)
 knitr::plot_crop("data-raw/modify.png")
-
 
 file.copy("data-raw/logo.png", "man/figures", overwrite = TRUE)
 pkgdown::build_favicons(overwrite = TRUE)

@@ -152,9 +152,9 @@ aligns it with the right edge and \code{0.5} centers it horizontally.}
 \code{img} relative to \code{x}. \code{0} aligns \code{img} with the bottom edge of \code{x}, \code{1}
 aligns it with the top edge and \code{0.5} centers it vertically.}
 
-\item{expand}{An expansion factor of the bounding box of \code{x}. \code{0} means that
-no expansion is added, \code{1} means that the bounding box is expanded to
-double the original size. See \strong{Details}.}
+\item{expand}{A nonnegative expansion factor for the bounding box of \code{x}.
+Each side is extended by \code{expand} times the shorter dimension of the
+bounding box. \code{0} adds no expansion. See \strong{Details}.}
 
 \item{crop}{Logical. Should the raster be cropped to the (expanded) bounding
 box of \code{x}? See \strong{Details}.}
@@ -168,12 +168,12 @@ box of \code{x}? See \strong{Details}.}
 covered by \code{x} are masked instead of areas outside \code{x}.}
 
 \item{crs}{Character string describing a CRS. This parameter only applies
-when \code{x} is a \code{SpatExtent}, \code{sfg}, \code{bbox} or a numeric coordinate vector.
-See the \strong{CRS} section.}
+when \code{x} is a \code{\link[terra:ext]{SpatExtent}}, \code{\link[sf:st]{sfg}},
+\code{\link[sf:st_bbox]{bbox}} or a numeric coordinate vector. See the \strong{CRS}
+section.}
 }
 \value{
-A \code{SpatRaster} object (see \code{\link[terra:rast]{terra::rast()}}) where each layer corresponds to
-a color channel of \code{img}:
+A \code{\link[terra:rast]{SpatRaster}} object containing the image layers of \code{img}:
 \itemize{
 \item If \code{img} has at least 3 layers, the result names layers 1 to 3 \code{"r"}, \code{"g"}
 and \code{"b"} for the red, green and blue channels and names layer 4 \code{"alpha"}
@@ -182,12 +182,12 @@ when applicable.
 \code{tif}/\code{tiff} files), the result keeps that specification.
 }
 
-The resulting \code{SpatRaster} will have an RGB specification as explained in
-\code{\link[terra:RGB]{terra::RGB()}}.
+If \code{img} has at least 3 layers, the resulting \code{SpatRaster} has an RGB
+specification as explained in \code{\link[terra:RGB]{terra::RGB()}}.
 }
 \description{
-Geotag an image and return a \code{SpatRaster} using coordinates from a supported
-spatial input class.
+Geotag an image and return a \code{\link[terra:rast]{SpatRaster}} using coordinates
+from a supported spatial input class.
 
 \code{rasterpic_img()} is an S3 generic. See \strong{S3 methods} for supported input
 classes.
@@ -200,11 +200,13 @@ parameters \code{halign}, \code{valign}, \code{expand}, \code{crop} and \code{ma
 All methods share the parameters, return value and examples documented on
 this page. \CRANpkg{rasterpic} groups them by input behavior:
 \itemize{
-\item Vector methods for the \CRANpkg{sf} classes \code{sf}, \code{sfc} and \code{sfg} and the
-\CRANpkg{terra} class \code{SpatVector} can mask the image to the input shape.
-\item Extent-like methods for \code{bbox}, numeric coordinate vectors, the
-\CRANpkg{stars} class \code{stars} and the \CRANpkg{terra} classes \code{SpatRaster}
-and \code{SpatExtent} use the input bounding box.
+\item Vector methods for the \CRANpkg{sf} classes \code{\link[sf:st_sf]{sf}},
+\code{\link[sf:st_sfc]{sfc}} and \code{\link[sf:st]{sfg}} and the \CRANpkg{terra} class
+\code{\link[terra:vect]{SpatVector}} can mask the image to the input shape.
+\item Extent-like methods for \code{\link[sf:st_bbox]{bbox}}, numeric coordinate vectors,
+the \CRANpkg{stars} class \code{\link[stars:st_as_stars]{stars}} and the
+\CRANpkg{terra} classes \code{\link[terra:rast]{SpatRaster}} and
+\code{\link[terra:ext]{SpatExtent}} use the input bounding box.
 \item The default method reports unsupported classes. Other packages can provide
 methods for additional spatial classes.
 }
@@ -273,7 +275,7 @@ autoplot(ex5) +
   geom_sf(data = x, fill = NA, color = "white", linewidth = 0.5) +
   labs(title = "Mask")
 
-# Mask outside the vector shape.
+# Mask inside the vector shape.
 ex6 <- rasterpic_img(x, img, mask = TRUE, inverse = TRUE)
 
 autoplot(ex6) +

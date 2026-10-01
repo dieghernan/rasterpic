@@ -1,4 +1,4 @@
-## code to prepare `Austria.gpkg` dataset goes here
+# Prepare the `Austria.gpkg` dataset.
 
 library(dplyr)
 library(giscoR)
@@ -11,7 +11,6 @@ austria <- gisco_get_nuts(
   epsg = 3035
 )
 
-
 austria <- austria |>
   mutate(name = "Austria") |>
   select(name)
@@ -21,7 +20,7 @@ austria <- st_make_valid(austria)
 
 st_write(austria, "inst/gpkg/austria.gpkg", append = FALSE)
 
-# Check
+# Check the generated file.
 
 austria_test <- st_read("inst/gpkg/austria.gpkg")
 plot(austria_test)

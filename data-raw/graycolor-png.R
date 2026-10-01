@@ -1,4 +1,4 @@
-## code to prepare `graycolor.png` dataset goes here
+# Prepare the `grays.png` image.
 library(ggplot2)
 library(terra)
 library(giscoR)
@@ -18,8 +18,7 @@ dev.off()
 
 knitr::plot_crop("inst/grays/grays.png")
 
-
-# Check
+# Check the generated file.
 
 pn <- png::readPNG("inst/grays/grays.png", native = TRUE)
 
