@@ -24,7 +24,7 @@ You can install the development version of **rasterpic** with:
 pak::pak("dieghernan/rasterpic")
 ```
 
-Alternatively, you can install **rasterpic** using the
+Alternatively, you can install **rasterpic** using
 [**r-universe**](https://dieghernan.r-universe.dev/rasterpic):
 
 ``` r
@@ -42,7 +42,7 @@ install.packages(
 ## Example
 
 [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
-can geotag an image from several spatial input classes:
+can geotag an image using several spatial input classes:
 
 - **sf** classes: `sf`, `sfc`, `sfg` and `bbox`.
 - **terra** classes: `SpatRaster`, `SpatVector` and `SpatExtent`.
@@ -50,8 +50,8 @@ can geotag an image from several spatial input classes:
 - A numeric coordinate vector of the form `c(xmin, ymin, xmax, ymax)`.
 
 [`rasterpic_img()`](https://dieghernan.github.io/rasterpic/dev/reference/rasterpic_img.md)
-is an S3 generic. Methods for extent-like inputs use the object extent,
-and vector methods can also mask the image to the object shape.
+is an S3 generic. Methods for extent-like inputs use the object’s
+extent, and vector methods can also mask the image to its shape.
 
 This example uses an **sf** object:
 
@@ -106,16 +106,16 @@ autoplot(uk_flag2) +
   geom_sf(data = uk, fill = NA)
 ```
 
-![Example using rasterpic with the UK flag cropped to the
-shape.](reference/figures/README-align-crop-mask-1.png)
+![UK flag masked to the country shape using
+rasterpic.](reference/figures/README-align-crop-mask-1.png)
 
 ## Supported image formats
 
 **rasterpic** can read the following image formats:
 
-- `png` files.
-- `jpeg`/`jpg` files.
-- `tiff`/`tif` files.
+- PNG files (`png`).
+- JPEG files (`jpeg`/`jpg`).
+- TIFF files (`tiff`/`tif`).
 
 ## Citation
 
@@ -132,7 +132,7 @@ A **BibTeX** entry for **LaTeX** users is:
   doi = {10.32614/CRAN.package.rasterpic},
   author = {Diego Hernangómez},
   year = {2026},
-  version = {0.5.1.9000},
+  version = {1.0.0},
   url = {https://dieghernan.github.io/rasterpic/},
   abstract = {Convert digital images to spatially referenced SpatRaster objects, as defined by the terra package, using coordinates from supported spatial input classes. Supported inputs include numeric coordinate vectors and objects from the sf, terra and stars packages. The main function is an S3 generic, allowing other packages to extend support to additional spatial classes.},
 }
@@ -174,7 +174,9 @@ Functions from other packages that are commonly used to plot the
 - [`geom_spatraster_rgb()`](https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html)
   :
 
-  Plot `SpatRaster` objects as images (from tidyterra)
+  Plot
+  [`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html)
+  objects as images (from tidyterra)
 
 - [`tm_rgb()`](https://r-tmap.github.io/tmap/reference/tm_rgb.html)
   [`tm_rgba()`](https://r-tmap.github.io/tmap/reference/tm_rgb.html)
@@ -202,17 +204,17 @@ Learn how to geotag an image and control its placement, extent and mask.
 
 Compare plotting approaches for the resulting `SpatRaster` objects.
 
-- [Plotting SpatRaster
+- [Plotting \`SpatRaster\`
   objects](https://dieghernan.github.io/rasterpic/dev/articles/plots.md):
 
-  Several ways to plot geotagged SpatRaster objects in **R**.
+  Several ways to plot geotagged `SpatRaster` objects in **R**.
 
 ### External examples
 
 External posts and examples that use rasterpic.
 
 - [Beautiful maps with R (IV): Fun with flags
-  revisited](https://dieghernan.github.io/202201_maps-flags/):
+  revisited](https://dieghernan.github.io/202201_maps-flags/) :
 
   Any picture as a basemap
 

@@ -13,17 +13,17 @@ Learn how to geotag an image and control its placement, extent and mask.
 
 Compare plotting approaches for the resulting `SpatRaster` objects.
 
-- [Plotting SpatRaster
+- [Plotting \`SpatRaster\`
   objects](https://dieghernan.github.io/rasterpic/dev/articles/plots.md):
 
-  Several ways to plot geotagged SpatRaster objects in **R**.
+  Several ways to plot geotagged `SpatRaster` objects in **R**.
 
 ### External examples
 
 External posts and examples that use rasterpic.
 
 - [Beautiful maps with R (IV): Fun with flags
-  revisited](https://dieghernan.github.io/202201_maps-flags/):
+  revisited](https://dieghernan.github.io/202201_maps-flags/) :
 
   Any picture as a basemap
 
