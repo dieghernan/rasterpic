@@ -1,3 +1,5 @@
+# rasterpic (development version)
+
 # rasterpic 1.0.0
 
 - `asp_ratio()` now reports the supported input types when `x` is invalid.
